@@ -15,7 +15,7 @@ import 'in_memory_recipe_repository.dart';
 class AppDatabase {
   AppDatabase._(this._db);
 
-  static const _version = 1;
+  static const _version = 2;
   static const _dbName = 'norma.db';
 
   final ffi.Database _db;
@@ -32,6 +32,16 @@ class AppDatabase {
         },
         onCreate: (db, version) async {
           await _createSchema(db);
+        },
+        onUpgrade: (db, oldVersion, newVersion) async {
+          if (oldVersion < 2) {
+            await db.execute('''
+CREATE TABLE IF NOT EXISTS app_meta (
+  key TEXT PRIMARY KEY,
+  value TEXT NOT NULL
+)
+''');
+          }
         },
       ),
     );
@@ -115,6 +125,12 @@ CREATE TABLE recipe_steps (
   FOREIGN KEY (recipe_id) REFERENCES recipes(id) ON DELETE CASCADE
 )
 ''');
+    await db.execute('''
+CREATE TABLE app_meta (
+  key TEXT PRIMARY KEY,
+  value TEXT NOT NULL
+)
+''');
     await db.execute(
       'CREATE INDEX idx_recipe_meal_types_type ON recipe_meal_types(meal_type)',
     );
@@ -131,8 +147,23 @@ CREATE TABLE recipe_steps (
     return count is num && count == 0;
   }
 
-  Future<void> seedIfEmpty(SeedBundle bundle) async {
-    if (!await isEmpty) {
+  Future<int?> _storedSeedVersion() async {
+    final rows = await _db.query(
+      'app_meta',
+      where: 'key = ?',
+      whereArgs: ['seed_version'],
+      limit: 1,
+    );
+    if (rows.isEmpty) {
+      return null;
+    }
+    final raw = rows.first['value'];
+    return raw is String ? int.tryParse(raw) : null;
+  }
+
+  Future<void> seedIfNeeded(SeedBundle bundle) async {
+    final stored = await _storedSeedVersion();
+    if (!await isEmpty && stored != null && stored >= bundle.version) {
       return;
     }
     await import(bundle);
@@ -201,6 +232,11 @@ CREATE TABLE recipe_steps (
           });
         }
       }
+
+      await txn.rawInsert(
+        'INSERT OR REPLACE INTO app_meta (key, value) VALUES (?, ?)',
+        ['seed_version', '${bundle.version}'],
+      );
     });
   }
 

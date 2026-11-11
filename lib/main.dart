@@ -29,7 +29,7 @@ Future<void> main() async {
   RecipeRepository repository;
   try {
     final database = await AppDatabase.open();
-    await database.seedIfEmpty(seed);
+    await database.seedIfNeeded(seed);
     repository = await database.loadRepository();
   } catch (_) {
     repository = InMemoryRecipeRepository(

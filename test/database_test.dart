@@ -1,6 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:norma/core/data/app_database.dart';
 import 'package:norma/core/models/enums.dart';
+import 'package:norma/core/models/recipe.dart';
 import 'package:norma/core/models/seed_bundle.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
@@ -15,7 +16,7 @@ void main() {
 
   test('импортирует и загружает seed из SQLite', () async {
     final database = await AppDatabase.open(path: inMemoryDatabasePath);
-    await database.seedIfEmpty(seed);
+    await database.seedIfNeeded(seed);
     final repository = await database.loadRepository();
 
     expect(repository.ingredients, hasLength(seed.ingredients.length));
@@ -40,12 +41,40 @@ void main() {
 
   test('повторный импорт не дублирует данные', () async {
     final database = await AppDatabase.open(path: inMemoryDatabasePath);
-    await database.seedIfEmpty(seed);
-    await database.seedIfEmpty(seed);
+    await database.seedIfNeeded(seed);
+    await database.seedIfNeeded(seed);
     final repository = await database.loadRepository();
 
     expect(repository.ingredients, hasLength(seed.ingredients.length));
     expect(repository.recipes, hasLength(seed.recipes.length));
+
+    await database.close();
+  });
+
+  test('обновляет данные при росте версии seed', () async {
+    final database = await AppDatabase.open(path: inMemoryDatabasePath);
+    await database.seedIfNeeded(seed);
+
+    final extra = Recipe(
+      id: 'test_extra',
+      title: 'Тестовый перекус',
+      mealTypes: {MealType.snack},
+      servings: 1,
+      minutes: 3,
+      ingredients: [RecipeIngredient(ingredientId: 'apple', grams: 100)],
+      steps: ['Нарежьте яблоко.'],
+    );
+    final bumped = SeedBundle(
+      version: seed.version + 1,
+      ingredients: seed.ingredients,
+      recipes: [...seed.recipes, extra],
+      prices: seed.prices,
+    );
+    await database.seedIfNeeded(bumped);
+    final repository = await database.loadRepository();
+
+    expect(repository.recipes, hasLength(seed.recipes.length + 1));
+    expect(repository.recipeById('test_extra'), isNotNull);
 
     await database.close();
   });

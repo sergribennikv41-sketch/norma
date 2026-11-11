@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "ingredients": [
     {
       "id": "chicken_breast",
@@ -1696,6 +1696,1974 @@
       ],
       "steps": [
         "Нарежьте морковь и огурец палочками."
+      ]
+    },
+    {
+      "id": "chicken_breast_buckwheat_broccoli",
+      "title": "Куриная грудка с гречкой и брокколи",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 1,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "chicken_breast",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "buckwheat",
+          "grams": 70.0
+        },
+        {
+          "ingredientId": "broccoli",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "olive_oil",
+          "grams": 6.0
+        }
+      ],
+      "steps": [
+        "Отварите или запеките гречку.",
+        "Обжарьте курицу на масле до готовности.",
+        "Добавьте брокколи и готовьте 5 минут.",
+        "Соедините, посолите и поперчите."
+      ]
+    },
+    {
+      "id": "chicken_breast_buckwheat_carrot",
+      "title": "Куриная грудка с гречкой и морковью",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 1,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "chicken_breast",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "buckwheat",
+          "grams": 70.0
+        },
+        {
+          "ingredientId": "carrot",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "olive_oil",
+          "grams": 6.0
+        }
+      ],
+      "steps": [
+        "Отварите или запеките гречку.",
+        "Обжарьте курицу на масле до готовности.",
+        "Добавьте морковь и готовьте 5 минут.",
+        "Соедините, посолите и поперчите."
+      ]
+    },
+    {
+      "id": "chicken_breast_brown_rice_bell_pepper",
+      "title": "Куриная грудка с бурым рисом и болгарским перцем",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 1,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "chicken_breast",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "brown_rice",
+          "grams": 70.0
+        },
+        {
+          "ingredientId": "bell_pepper",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "olive_oil",
+          "grams": 6.0
+        }
+      ],
+      "steps": [
+        "Отварите или запеките бурый рис.",
+        "Обжарьте курицу на масле до готовности.",
+        "Добавьте болгарский перец и готовьте 5 минут.",
+        "Соедините, посолите и поперчите."
+      ]
+    },
+    {
+      "id": "chicken_breast_brown_rice_spinach",
+      "title": "Куриная грудка с бурым рисом и шпинатом",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 1,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "chicken_breast",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "brown_rice",
+          "grams": 70.0
+        },
+        {
+          "ingredientId": "spinach",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "olive_oil",
+          "grams": 6.0
+        }
+      ],
+      "steps": [
+        "Отварите или запеките бурый рис.",
+        "Обжарьте курицу на масле до готовности.",
+        "Добавьте шпинат и готовьте 5 минут.",
+        "Соедините, посолите и поперчите."
+      ]
+    },
+    {
+      "id": "chicken_breast_pasta_spinach",
+      "title": "Куриная грудка с пастой и шпинатом",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 1,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "chicken_breast",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "pasta",
+          "grams": 70.0
+        },
+        {
+          "ingredientId": "spinach",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "olive_oil",
+          "grams": 6.0
+        }
+      ],
+      "steps": [
+        "Отварите или запеките пасту.",
+        "Обжарьте курицу на масле до готовности.",
+        "Добавьте шпинат и готовьте 5 минут.",
+        "Соедините, посолите и поперчите."
+      ]
+    },
+    {
+      "id": "chicken_breast_potato_carrot",
+      "title": "Куриная грудка с картофелем и морковью",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 1,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "chicken_breast",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "potato",
+          "grams": 200.0
+        },
+        {
+          "ingredientId": "carrot",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "olive_oil",
+          "grams": 6.0
+        }
+      ],
+      "steps": [
+        "Отварите или запеките картофель.",
+        "Обжарьте курицу на масле до готовности.",
+        "Добавьте морковь и готовьте 5 минут.",
+        "Соедините, посолите и поперчите."
+      ]
+    },
+    {
+      "id": "chicken_breast_sweet_potato_broccoli",
+      "title": "Куриная грудка с бататом и брокколи",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 1,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "chicken_breast",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "sweet_potato",
+          "grams": 200.0
+        },
+        {
+          "ingredientId": "broccoli",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "olive_oil",
+          "grams": 6.0
+        }
+      ],
+      "steps": [
+        "Отварите или запеките батат.",
+        "Обжарьте курицу на масле до готовности.",
+        "Добавьте брокколи и готовьте 5 минут.",
+        "Соедините, посолите и поперчите."
+      ]
+    },
+    {
+      "id": "turkey_fillet_buckwheat_broccoli",
+      "title": "Индейка с гречкой и брокколи",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 1,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "turkey_fillet",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "buckwheat",
+          "grams": 70.0
+        },
+        {
+          "ingredientId": "broccoli",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "olive_oil",
+          "grams": 6.0
+        }
+      ],
+      "steps": [
+        "Отварите или запеките гречку.",
+        "Обжарьте индейку на масле до готовности.",
+        "Добавьте брокколи и готовьте 5 минут.",
+        "Соедините, посолите и поперчите."
+      ]
+    },
+    {
+      "id": "turkey_fillet_brown_rice_bell_pepper",
+      "title": "Индейка с бурым рисом и болгарским перцем",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 1,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "turkey_fillet",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "brown_rice",
+          "grams": 70.0
+        },
+        {
+          "ingredientId": "bell_pepper",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "olive_oil",
+          "grams": 6.0
+        }
+      ],
+      "steps": [
+        "Отварите или запеките бурый рис.",
+        "Обжарьте индейку на масле до готовности.",
+        "Добавьте болгарский перец и готовьте 5 минут.",
+        "Соедините, посолите и поперчите."
+      ]
+    },
+    {
+      "id": "turkey_fillet_brown_rice_spinach",
+      "title": "Индейка с бурым рисом и шпинатом",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 1,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "turkey_fillet",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "brown_rice",
+          "grams": 70.0
+        },
+        {
+          "ingredientId": "spinach",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "olive_oil",
+          "grams": 6.0
+        }
+      ],
+      "steps": [
+        "Отварите или запеките бурый рис.",
+        "Обжарьте индейку на масле до готовности.",
+        "Добавьте шпинат и готовьте 5 минут.",
+        "Соедините, посолите и поперчите."
+      ]
+    },
+    {
+      "id": "turkey_fillet_pasta_carrot",
+      "title": "Индейка с пастой и морковью",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 1,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "turkey_fillet",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "pasta",
+          "grams": 70.0
+        },
+        {
+          "ingredientId": "carrot",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "olive_oil",
+          "grams": 6.0
+        }
+      ],
+      "steps": [
+        "Отварите или запеките пасту.",
+        "Обжарьте индейку на масле до готовности.",
+        "Добавьте морковь и готовьте 5 минут.",
+        "Соедините, посолите и поперчите."
+      ]
+    },
+    {
+      "id": "turkey_fillet_potato_cabbage",
+      "title": "Индейка с картофелем и капустой",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 1,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "turkey_fillet",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "potato",
+          "grams": 200.0
+        },
+        {
+          "ingredientId": "cabbage",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "olive_oil",
+          "grams": 6.0
+        }
+      ],
+      "steps": [
+        "Отварите или запеките картофель.",
+        "Обжарьте индейку на масле до готовности.",
+        "Добавьте капусту и готовьте 5 минут.",
+        "Соедините, посолите и поперчите."
+      ]
+    },
+    {
+      "id": "turkey_fillet_sweet_potato_broccoli",
+      "title": "Индейка с бататом и брокколи",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 1,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "turkey_fillet",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "sweet_potato",
+          "grams": 200.0
+        },
+        {
+          "ingredientId": "broccoli",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "olive_oil",
+          "grams": 6.0
+        }
+      ],
+      "steps": [
+        "Отварите или запеките батат.",
+        "Обжарьте индейку на масле до готовности.",
+        "Добавьте брокколи и готовьте 5 минут.",
+        "Соедините, посолите и поперчите."
+      ]
+    },
+    {
+      "id": "salmon_brown_rice_broccoli",
+      "title": "Лосось с бурым рисом и брокколи",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 1,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "salmon",
+          "grams": 160.0
+        },
+        {
+          "ingredientId": "brown_rice",
+          "grams": 70.0
+        },
+        {
+          "ingredientId": "broccoli",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "olive_oil",
+          "grams": 6.0
+        }
+      ],
+      "steps": [
+        "Отварите или запеките бурый рис.",
+        "Обжарьте лосось на масле до готовности.",
+        "Добавьте брокколи и готовьте 5 минут.",
+        "Соедините, посолите и поперчите."
+      ]
+    },
+    {
+      "id": "salmon_brown_rice_spinach",
+      "title": "Лосось с бурым рисом и шпинатом",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 1,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "salmon",
+          "grams": 160.0
+        },
+        {
+          "ingredientId": "brown_rice",
+          "grams": 70.0
+        },
+        {
+          "ingredientId": "spinach",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "olive_oil",
+          "grams": 6.0
+        }
+      ],
+      "steps": [
+        "Отварите или запеките бурый рис.",
+        "Обжарьте лосось на масле до готовности.",
+        "Добавьте шпинат и готовьте 5 минут.",
+        "Соедините, посолите и поперчите."
+      ]
+    },
+    {
+      "id": "salmon_potato_bell_pepper",
+      "title": "Лосось с картофелем и болгарским перцем",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 1,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "salmon",
+          "grams": 160.0
+        },
+        {
+          "ingredientId": "potato",
+          "grams": 200.0
+        },
+        {
+          "ingredientId": "bell_pepper",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "olive_oil",
+          "grams": 6.0
+        }
+      ],
+      "steps": [
+        "Отварите или запеките картофель.",
+        "Обжарьте лосось на масле до готовности.",
+        "Добавьте болгарский перец и готовьте 5 минут.",
+        "Соедините, посолите и поперчите."
+      ]
+    },
+    {
+      "id": "cod_buckwheat_broccoli",
+      "title": "Треска с гречкой и брокколи",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 1,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "cod",
+          "grams": 160.0
+        },
+        {
+          "ingredientId": "buckwheat",
+          "grams": 70.0
+        },
+        {
+          "ingredientId": "broccoli",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "olive_oil",
+          "grams": 6.0
+        }
+      ],
+      "steps": [
+        "Отварите или запеките гречку.",
+        "Обжарьте треску на масле до готовности.",
+        "Добавьте брокколи и готовьте 5 минут.",
+        "Соедините, посолите и поперчите."
+      ]
+    },
+    {
+      "id": "cod_brown_rice_spinach",
+      "title": "Треска с бурым рисом и шпинатом",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 1,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "cod",
+          "grams": 160.0
+        },
+        {
+          "ingredientId": "brown_rice",
+          "grams": 70.0
+        },
+        {
+          "ingredientId": "spinach",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "olive_oil",
+          "grams": 6.0
+        }
+      ],
+      "steps": [
+        "Отварите или запеките бурый рис.",
+        "Обжарьте треску на масле до готовности.",
+        "Добавьте шпинат и готовьте 5 минут.",
+        "Соедините, посолите и поперчите."
+      ]
+    },
+    {
+      "id": "cod_potato_carrot",
+      "title": "Треска с картофелем и морковью",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 1,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "cod",
+          "grams": 160.0
+        },
+        {
+          "ingredientId": "potato",
+          "grams": 200.0
+        },
+        {
+          "ingredientId": "carrot",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "olive_oil",
+          "grams": 6.0
+        }
+      ],
+      "steps": [
+        "Отварите или запеките картофель.",
+        "Обжарьте треску на масле до готовности.",
+        "Добавьте морковь и готовьте 5 минут.",
+        "Соедините, посолите и поперчите."
+      ]
+    },
+    {
+      "id": "cod_pasta_bell_pepper",
+      "title": "Треска с пастой и болгарским перцем",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 1,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "cod",
+          "grams": 160.0
+        },
+        {
+          "ingredientId": "pasta",
+          "grams": 70.0
+        },
+        {
+          "ingredientId": "bell_pepper",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "olive_oil",
+          "grams": 6.0
+        }
+      ],
+      "steps": [
+        "Отварите или запеките пасту.",
+        "Обжарьте треску на масле до готовности.",
+        "Добавьте болгарский перец и готовьте 5 минут.",
+        "Соедините, посолите и поперчите."
+      ]
+    },
+    {
+      "id": "shrimp_brown_rice_bell_pepper",
+      "title": "Креветки с бурым рисом и болгарским перцем",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 1,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "shrimp",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "brown_rice",
+          "grams": 70.0
+        },
+        {
+          "ingredientId": "bell_pepper",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "olive_oil",
+          "grams": 6.0
+        }
+      ],
+      "steps": [
+        "Отварите или запеките бурый рис.",
+        "Обжарьте креветки на масле до готовности.",
+        "Добавьте болгарский перец и готовьте 5 минут.",
+        "Соедините, посолите и поперчите."
+      ]
+    },
+    {
+      "id": "shrimp_pasta_tomato",
+      "title": "Креветки с пастой и помидором",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 1,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "shrimp",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "pasta",
+          "grams": 70.0
+        },
+        {
+          "ingredientId": "tomato",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "olive_oil",
+          "grams": 6.0
+        }
+      ],
+      "steps": [
+        "Отварите или запеките пасту.",
+        "Обжарьте креветки на масле до готовности.",
+        "Добавьте помидор и готовьте 5 минут.",
+        "Соедините, посолите и поперчите."
+      ]
+    },
+    {
+      "id": "shrimp_buckwheat_spinach",
+      "title": "Креветки с гречкой и шпинатом",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 1,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "shrimp",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "buckwheat",
+          "grams": 70.0
+        },
+        {
+          "ingredientId": "spinach",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "olive_oil",
+          "grams": 6.0
+        }
+      ],
+      "steps": [
+        "Отварите или запеките гречку.",
+        "Обжарьте креветки на масле до готовности.",
+        "Добавьте шпинат и готовьте 5 минут.",
+        "Соедините, посолите и поперчите."
+      ]
+    },
+    {
+      "id": "beef_chuck_buckwheat_cabbage",
+      "title": "Говядина с гречкой и капустой",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 1,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "beef_chuck",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "buckwheat",
+          "grams": 70.0
+        },
+        {
+          "ingredientId": "cabbage",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "olive_oil",
+          "grams": 6.0
+        }
+      ],
+      "steps": [
+        "Отварите или запеките гречку.",
+        "Обжарьте говядину на масле до готовности.",
+        "Добавьте капусту и готовьте 5 минут.",
+        "Соедините, посолите и поперчите."
+      ]
+    },
+    {
+      "id": "beef_chuck_brown_rice_bell_pepper",
+      "title": "Говядина с бурым рисом и болгарским перцем",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 1,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "beef_chuck",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "brown_rice",
+          "grams": 70.0
+        },
+        {
+          "ingredientId": "bell_pepper",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "olive_oil",
+          "grams": 6.0
+        }
+      ],
+      "steps": [
+        "Отварите или запеките бурый рис.",
+        "Обжарьте говядину на масле до готовности.",
+        "Добавьте болгарский перец и готовьте 5 минут.",
+        "Соедините, посолите и поперчите."
+      ]
+    },
+    {
+      "id": "beef_chuck_pasta_broccoli",
+      "title": "Говядина с пастой и брокколи",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 1,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "beef_chuck",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "pasta",
+          "grams": 70.0
+        },
+        {
+          "ingredientId": "broccoli",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "olive_oil",
+          "grams": 6.0
+        }
+      ],
+      "steps": [
+        "Отварите или запеките пасту.",
+        "Обжарьте говядину на масле до готовности.",
+        "Добавьте брокколи и готовьте 5 минут.",
+        "Соедините, посолите и поперчите."
+      ]
+    },
+    {
+      "id": "beef_chuck_potato_carrot",
+      "title": "Говядина с картофелем и морковью",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 1,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "beef_chuck",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "potato",
+          "grams": 200.0
+        },
+        {
+          "ingredientId": "carrot",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "olive_oil",
+          "grams": 6.0
+        }
+      ],
+      "steps": [
+        "Отварите или запеките картофель.",
+        "Обжарьте говядину на масле до готовности.",
+        "Добавьте морковь и готовьте 5 минут.",
+        "Соедините, посолите и поперчите."
+      ]
+    },
+    {
+      "id": "lentils_buckwheat_broccoli",
+      "title": "Чечевица с гречкой и брокколи",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 1,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "lentils",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "buckwheat",
+          "grams": 70.0
+        },
+        {
+          "ingredientId": "broccoli",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "olive_oil",
+          "grams": 6.0
+        }
+      ],
+      "steps": [
+        "Отварите или запеките гречку.",
+        "Обжарьте чечевицу на масле до готовности.",
+        "Добавьте брокколи и готовьте 5 минут.",
+        "Соедините, посолите и поперчите."
+      ]
+    },
+    {
+      "id": "lentils_brown_rice_carrot",
+      "title": "Чечевица с бурым рисом и морковью",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 1,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "lentils",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "brown_rice",
+          "grams": 70.0
+        },
+        {
+          "ingredientId": "carrot",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "olive_oil",
+          "grams": 6.0
+        }
+      ],
+      "steps": [
+        "Отварите или запеките бурый рис.",
+        "Обжарьте чечевицу на масле до готовности.",
+        "Добавьте морковь и готовьте 5 минут.",
+        "Соедините, посолите и поперчите."
+      ]
+    },
+    {
+      "id": "lentils_potato_spinach",
+      "title": "Чечевица с картофелем и шпинатом",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 1,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "lentils",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "potato",
+          "grams": 200.0
+        },
+        {
+          "ingredientId": "spinach",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "olive_oil",
+          "grams": 6.0
+        }
+      ],
+      "steps": [
+        "Отварите или запеките картофель.",
+        "Обжарьте чечевицу на масле до готовности.",
+        "Добавьте шпинат и готовьте 5 минут.",
+        "Соедините, посолите и поперчите."
+      ]
+    },
+    {
+      "id": "canned_beans_buckwheat_spinach",
+      "title": "Фасоль с гречкой и шпинатом",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 1,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "canned_beans",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "buckwheat",
+          "grams": 70.0
+        },
+        {
+          "ingredientId": "spinach",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "olive_oil",
+          "grams": 6.0
+        }
+      ],
+      "steps": [
+        "Отварите или запеките гречку.",
+        "Обжарьте фасоль на масле до готовности.",
+        "Добавьте шпинат и готовьте 5 минут.",
+        "Соедините, посолите и поперчите."
+      ]
+    },
+    {
+      "id": "canned_beans_brown_rice_tomato",
+      "title": "Фасоль с бурым рисом и помидором",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 1,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "canned_beans",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "brown_rice",
+          "grams": 70.0
+        },
+        {
+          "ingredientId": "tomato",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "olive_oil",
+          "grams": 6.0
+        }
+      ],
+      "steps": [
+        "Отварите или запеките бурый рис.",
+        "Обжарьте фасоль на масле до готовности.",
+        "Добавьте помидор и готовьте 5 минут.",
+        "Соедините, посолите и поперчите."
+      ]
+    },
+    {
+      "id": "canned_beans_potato_broccoli",
+      "title": "Фасоль с картофелем и брокколи",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 1,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "canned_beans",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "potato",
+          "grams": 200.0
+        },
+        {
+          "ingredientId": "broccoli",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "olive_oil",
+          "grams": 6.0
+        }
+      ],
+      "steps": [
+        "Отварите или запеките картофель.",
+        "Обжарьте фасоль на масле до готовности.",
+        "Добавьте брокколи и готовьте 5 минут.",
+        "Соедините, посолите и поперчите."
+      ]
+    },
+    {
+      "id": "salad_chicken_breast_cucumber_bell_pepper",
+      "title": "Салат с курицей, огурцом и болгарским перцем",
+      "mealTypes": [
+        "lunch"
+      ],
+      "servings": 1,
+      "minutes": 15,
+      "ingredients": [
+        {
+          "ingredientId": "chicken_breast",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "cucumber",
+          "grams": 100.0
+        },
+        {
+          "ingredientId": "bell_pepper",
+          "grams": 100.0
+        },
+        {
+          "ingredientId": "olive_oil",
+          "grams": 5.0
+        }
+      ],
+      "steps": [
+        "Нарежьте огурец и болгарский перец.",
+        "Подготовьте курицу.",
+        "Смешайте, посолите и заправьте маслом."
+      ]
+    },
+    {
+      "id": "salad_chicken_breast_cabbage_carrot",
+      "title": "Салат с курицей, капустой и морковью",
+      "mealTypes": [
+        "lunch"
+      ],
+      "servings": 1,
+      "minutes": 15,
+      "ingredients": [
+        {
+          "ingredientId": "chicken_breast",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "cabbage",
+          "grams": 100.0
+        },
+        {
+          "ingredientId": "carrot",
+          "grams": 100.0
+        },
+        {
+          "ingredientId": "olive_oil",
+          "grams": 5.0
+        }
+      ],
+      "steps": [
+        "Нарежьте капусту и морковь.",
+        "Подготовьте курицу.",
+        "Смешайте, посолите и заправьте маслом."
+      ]
+    },
+    {
+      "id": "salad_turkey_fillet_cucumber_tomato",
+      "title": "Салат с индейкой, огурцом и помидором",
+      "mealTypes": [
+        "lunch"
+      ],
+      "servings": 1,
+      "minutes": 15,
+      "ingredients": [
+        {
+          "ingredientId": "turkey_fillet",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "cucumber",
+          "grams": 100.0
+        },
+        {
+          "ingredientId": "tomato",
+          "grams": 100.0
+        },
+        {
+          "ingredientId": "olive_oil",
+          "grams": 5.0
+        }
+      ],
+      "steps": [
+        "Нарежьте огурец и помидор.",
+        "Подготовьте индейку.",
+        "Смешайте, посолите и заправьте маслом."
+      ]
+    },
+    {
+      "id": "salad_tuna_canned_cucumber_spinach",
+      "title": "Салат с тунцом, огурцом и шпинатом",
+      "mealTypes": [
+        "lunch"
+      ],
+      "servings": 1,
+      "minutes": 15,
+      "ingredients": [
+        {
+          "ingredientId": "tuna_canned",
+          "grams": 120.0
+        },
+        {
+          "ingredientId": "cucumber",
+          "grams": 100.0
+        },
+        {
+          "ingredientId": "spinach",
+          "grams": 100.0
+        },
+        {
+          "ingredientId": "olive_oil",
+          "grams": 5.0
+        }
+      ],
+      "steps": [
+        "Нарежьте огурец и шпинат.",
+        "Слейте жидкость из тунца.",
+        "Смешайте, посолите и заправьте маслом."
+      ]
+    },
+    {
+      "id": "salad_tuna_canned_cabbage_carrot",
+      "title": "Салат с тунцом, капустой и морковью",
+      "mealTypes": [
+        "lunch"
+      ],
+      "servings": 1,
+      "minutes": 15,
+      "ingredients": [
+        {
+          "ingredientId": "tuna_canned",
+          "grams": 120.0
+        },
+        {
+          "ingredientId": "cabbage",
+          "grams": 100.0
+        },
+        {
+          "ingredientId": "carrot",
+          "grams": 100.0
+        },
+        {
+          "ingredientId": "olive_oil",
+          "grams": 5.0
+        }
+      ],
+      "steps": [
+        "Нарежьте капусту и морковь.",
+        "Слейте жидкость из тунца.",
+        "Смешайте, посолите и заправьте маслом."
+      ]
+    },
+    {
+      "id": "salad_shrimp_spinach_bell_pepper",
+      "title": "Салат с креветками, шпинатом и болгарским перцем",
+      "mealTypes": [
+        "lunch"
+      ],
+      "servings": 1,
+      "minutes": 15,
+      "ingredients": [
+        {
+          "ingredientId": "shrimp",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "spinach",
+          "grams": 100.0
+        },
+        {
+          "ingredientId": "bell_pepper",
+          "grams": 100.0
+        },
+        {
+          "ingredientId": "olive_oil",
+          "grams": 5.0
+        }
+      ],
+      "steps": [
+        "Нарежьте шпинат и болгарский перец.",
+        "Подготовьте креветки.",
+        "Смешайте, посолите и заправьте маслом."
+      ]
+    },
+    {
+      "id": "salad_egg_cucumber_tomato",
+      "title": "Салат с яйцом, огурцом и помидором",
+      "mealTypes": [
+        "lunch"
+      ],
+      "servings": 1,
+      "minutes": 15,
+      "ingredients": [
+        {
+          "ingredientId": "egg",
+          "grams": 100.0
+        },
+        {
+          "ingredientId": "cucumber",
+          "grams": 100.0
+        },
+        {
+          "ingredientId": "tomato",
+          "grams": 100.0
+        },
+        {
+          "ingredientId": "olive_oil",
+          "grams": 5.0
+        }
+      ],
+      "steps": [
+        "Нарежьте огурец и помидор.",
+        "Отварите яйца и нарежьте.",
+        "Смешайте, посолите и заправьте маслом."
+      ]
+    },
+    {
+      "id": "salad_egg_spinach_bell_pepper",
+      "title": "Салат с яйцом, шпинатом и болгарским перцем",
+      "mealTypes": [
+        "lunch"
+      ],
+      "servings": 1,
+      "minutes": 15,
+      "ingredients": [
+        {
+          "ingredientId": "egg",
+          "grams": 100.0
+        },
+        {
+          "ingredientId": "spinach",
+          "grams": 100.0
+        },
+        {
+          "ingredientId": "bell_pepper",
+          "grams": 100.0
+        },
+        {
+          "ingredientId": "olive_oil",
+          "grams": 5.0
+        }
+      ],
+      "steps": [
+        "Нарежьте шпинат и болгарский перец.",
+        "Отварите яйца и нарежьте.",
+        "Смешайте, посолите и заправьте маслом."
+      ]
+    },
+    {
+      "id": "salad_canned_beans_cucumber_tomato",
+      "title": "Салат с фасолью, огурцом и помидором",
+      "mealTypes": [
+        "lunch"
+      ],
+      "servings": 1,
+      "minutes": 15,
+      "ingredients": [
+        {
+          "ingredientId": "canned_beans",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "cucumber",
+          "grams": 100.0
+        },
+        {
+          "ingredientId": "tomato",
+          "grams": 100.0
+        },
+        {
+          "ingredientId": "olive_oil",
+          "grams": 5.0
+        }
+      ],
+      "steps": [
+        "Нарежьте огурец и помидор.",
+        "Подготовьте фасоль.",
+        "Смешайте, посолите и заправьте маслом."
+      ]
+    },
+    {
+      "id": "salad_canned_beans_cabbage_carrot",
+      "title": "Салат с фасолью, капустой и морковью",
+      "mealTypes": [
+        "lunch"
+      ],
+      "servings": 1,
+      "minutes": 15,
+      "ingredients": [
+        {
+          "ingredientId": "canned_beans",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "cabbage",
+          "grams": 100.0
+        },
+        {
+          "ingredientId": "carrot",
+          "grams": 100.0
+        },
+        {
+          "ingredientId": "olive_oil",
+          "grams": 5.0
+        }
+      ],
+      "steps": [
+        "Нарежьте капусту и морковь.",
+        "Подготовьте фасоль.",
+        "Смешайте, посолите и заправьте маслом."
+      ]
+    },
+    {
+      "id": "soup_lentils_cabbage",
+      "title": "Суп с чечевицей и капустой",
+      "mealTypes": [
+        "lunch"
+      ],
+      "servings": 1,
+      "minutes": 35,
+      "ingredients": [
+        {
+          "ingredientId": "lentils",
+          "grams": 70.0
+        },
+        {
+          "ingredientId": "cabbage",
+          "grams": 100.0
+        },
+        {
+          "ingredientId": "potato",
+          "grams": 100.0
+        },
+        {
+          "ingredientId": "carrot",
+          "grams": 80.0
+        },
+        {
+          "ingredientId": "onion",
+          "grams": 60.0
+        },
+        {
+          "ingredientId": "tomato_paste",
+          "grams": 20.0
+        },
+        {
+          "ingredientId": "olive_oil",
+          "grams": 5.0
+        }
+      ],
+      "steps": [
+        "Промойте чечевицу.",
+        "Добавьте нарезанные картофель, морковь, лук и капусту.",
+        "Варите 25 минут, в конце добавьте томатную пасту и масло."
+      ]
+    },
+    {
+      "id": "soup_canned_beans_cabbage",
+      "title": "Суп с фасолью и капустой",
+      "mealTypes": [
+        "lunch"
+      ],
+      "servings": 1,
+      "minutes": 35,
+      "ingredients": [
+        {
+          "ingredientId": "canned_beans",
+          "grams": 70.0
+        },
+        {
+          "ingredientId": "cabbage",
+          "grams": 100.0
+        },
+        {
+          "ingredientId": "potato",
+          "grams": 100.0
+        },
+        {
+          "ingredientId": "carrot",
+          "grams": 80.0
+        },
+        {
+          "ingredientId": "onion",
+          "grams": 60.0
+        },
+        {
+          "ingredientId": "tomato_paste",
+          "grams": 20.0
+        },
+        {
+          "ingredientId": "olive_oil",
+          "grams": 5.0
+        }
+      ],
+      "steps": [
+        "Промойте фасоль.",
+        "Добавьте нарезанные картофель, морковь, лук и капусту.",
+        "Варите 25 минут, в конце добавьте томатную пасту и масло."
+      ]
+    },
+    {
+      "id": "soup_canned_beans_spinach",
+      "title": "Суп с фасолью и шпинатом",
+      "mealTypes": [
+        "lunch"
+      ],
+      "servings": 1,
+      "minutes": 35,
+      "ingredients": [
+        {
+          "ingredientId": "canned_beans",
+          "grams": 70.0
+        },
+        {
+          "ingredientId": "spinach",
+          "grams": 100.0
+        },
+        {
+          "ingredientId": "potato",
+          "grams": 100.0
+        },
+        {
+          "ingredientId": "carrot",
+          "grams": 80.0
+        },
+        {
+          "ingredientId": "onion",
+          "grams": 60.0
+        },
+        {
+          "ingredientId": "tomato_paste",
+          "grams": 20.0
+        },
+        {
+          "ingredientId": "olive_oil",
+          "grams": 5.0
+        }
+      ],
+      "steps": [
+        "Промойте фасоль.",
+        "Добавьте нарезанные картофель, морковь, лук и шпинат.",
+        "Варите 25 минут, в конце добавьте томатную пасту и масло."
+      ]
+    },
+    {
+      "id": "oats_apple_walnuts",
+      "title": "Овсянка с яблоком и грецким орехом",
+      "mealTypes": [
+        "breakfast"
+      ],
+      "servings": 1,
+      "minutes": 10,
+      "ingredients": [
+        {
+          "ingredientId": "oats",
+          "grams": 60.0
+        },
+        {
+          "ingredientId": "milk_25",
+          "grams": 200.0
+        },
+        {
+          "ingredientId": "apple",
+          "grams": 120.0
+        },
+        {
+          "ingredientId": "walnuts",
+          "grams": 15.0
+        },
+        {
+          "ingredientId": "honey",
+          "grams": 5.0
+        }
+      ],
+      "steps": [
+        "Сварите овсяные хлопья на молоке.",
+        "Добавьте нарезанное яблоко, орехи и мед."
+      ]
+    },
+    {
+      "id": "oats_blueberry_almonds",
+      "title": "Овсянка с черникой и миндалем",
+      "mealTypes": [
+        "breakfast"
+      ],
+      "servings": 1,
+      "minutes": 10,
+      "ingredients": [
+        {
+          "ingredientId": "oats",
+          "grams": 60.0
+        },
+        {
+          "ingredientId": "milk_25",
+          "grams": 200.0
+        },
+        {
+          "ingredientId": "blueberry",
+          "grams": 80.0
+        },
+        {
+          "ingredientId": "almonds",
+          "grams": 15.0
+        },
+        {
+          "ingredientId": "honey",
+          "grams": 5.0
+        }
+      ],
+      "steps": [
+        "Сварите овсяные хлопья на молоке.",
+        "Добавьте чернику, миндаль и мед."
+      ]
+    },
+    {
+      "id": "oats_water_apple",
+      "title": "Овсянка на воде с яблоком",
+      "mealTypes": [
+        "breakfast"
+      ],
+      "servings": 1,
+      "minutes": 10,
+      "ingredients": [
+        {
+          "ingredientId": "oats",
+          "grams": 60.0
+        },
+        {
+          "ingredientId": "apple",
+          "grams": 120.0
+        },
+        {
+          "ingredientId": "walnuts",
+          "grams": 15.0
+        },
+        {
+          "ingredientId": "honey",
+          "grams": 5.0
+        }
+      ],
+      "steps": [
+        "Сварите овсяные хлопья на воде.",
+        "Добавьте яблоко, орехи и мед."
+      ]
+    },
+    {
+      "id": "cottage_banana_walnuts",
+      "title": "Творог с бананом и грецким орехом",
+      "mealTypes": [
+        "breakfast"
+      ],
+      "servings": 1,
+      "minutes": 5,
+      "ingredients": [
+        {
+          "ingredientId": "cottage_5",
+          "grams": 200.0
+        },
+        {
+          "ingredientId": "banana",
+          "grams": 100.0
+        },
+        {
+          "ingredientId": "walnuts",
+          "grams": 15.0
+        },
+        {
+          "ingredientId": "honey",
+          "grams": 5.0
+        }
+      ],
+      "steps": [
+        "Выложите творог в миску.",
+        "Добавьте банан, орехи и мед."
+      ]
+    },
+    {
+      "id": "cottage_apple_honey",
+      "title": "Творог с яблоком и медом",
+      "mealTypes": [
+        "breakfast"
+      ],
+      "servings": 1,
+      "minutes": 5,
+      "ingredients": [
+        {
+          "ingredientId": "cottage_2",
+          "grams": 200.0
+        },
+        {
+          "ingredientId": "apple",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "honey",
+          "grams": 10.0
+        }
+      ],
+      "steps": [
+        "Нарежьте яблоко.",
+        "Смешайте с творогом и добавьте мед."
+      ]
+    },
+    {
+      "id": "yogurt_banana_almonds",
+      "title": "Йогурт с бананом и миндалем",
+      "mealTypes": [
+        "breakfast"
+      ],
+      "servings": 1,
+      "minutes": 5,
+      "ingredients": [
+        {
+          "ingredientId": "greek_yogurt",
+          "grams": 200.0
+        },
+        {
+          "ingredientId": "banana",
+          "grams": 100.0
+        },
+        {
+          "ingredientId": "almonds",
+          "grams": 15.0
+        },
+        {
+          "ingredientId": "honey",
+          "grams": 5.0
+        }
+      ],
+      "steps": [
+        "Нарежьте банан.",
+        "Смешайте с йогуртом, добавьте миндаль и мед."
+      ]
+    },
+    {
+      "id": "omelet_broccoli_cheese",
+      "title": "Омлет с брокколи и сыром",
+      "mealTypes": [
+        "breakfast"
+      ],
+      "servings": 1,
+      "minutes": 15,
+      "ingredients": [
+        {
+          "ingredientId": "egg",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "milk_25",
+          "grams": 30.0
+        },
+        {
+          "ingredientId": "broccoli",
+          "grams": 100.0
+        },
+        {
+          "ingredientId": "hard_cheese",
+          "grams": 30.0
+        },
+        {
+          "ingredientId": "olive_oil",
+          "grams": 5.0
+        }
+      ],
+      "steps": [
+        "Взбейте яйца с молоком.",
+        "Обжарьте брокколи на масле и залейте яйцами.",
+        "Готовьте под крышкой 4 минуты, посыпьте сыром."
+      ]
+    },
+    {
+      "id": "toast_cheese_tomato",
+      "title": "Тост с сыром и помидором",
+      "mealTypes": [
+        "breakfast"
+      ],
+      "servings": 1,
+      "minutes": 10,
+      "ingredients": [
+        {
+          "ingredientId": "bread_rye",
+          "grams": 80.0
+        },
+        {
+          "ingredientId": "hard_cheese",
+          "grams": 50.0
+        },
+        {
+          "ingredientId": "tomato",
+          "grams": 100.0
+        },
+        {
+          "ingredientId": "olive_oil",
+          "grams": 3.0
+        }
+      ],
+      "steps": [
+        "Подсушите хлеб.",
+        "Выложите сыр и помидор, сбрызните маслом."
+      ]
+    },
+    {
+      "id": "snack_egg_cucumber",
+      "title": "Яйцо с огурцом",
+      "mealTypes": [
+        "snack"
+      ],
+      "servings": 1,
+      "minutes": 5,
+      "ingredients": [
+        {
+          "ingredientId": "egg",
+          "grams": 100.0
+        },
+        {
+          "ingredientId": "cucumber",
+          "grams": 150.0
+        }
+      ],
+      "steps": [
+        "Отварите яйцо.",
+        "Нарежьте огурец и подавайте."
+      ]
+    },
+    {
+      "id": "snack_cottage_banana",
+      "title": "Творог с бананом",
+      "mealTypes": [
+        "snack"
+      ],
+      "servings": 1,
+      "minutes": 5,
+      "ingredients": [
+        {
+          "ingredientId": "cottage_2",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "banana",
+          "grams": 100.0
+        }
+      ],
+      "steps": [
+        "Нарежьте банан.",
+        "Смешайте с творогом."
+      ]
+    },
+    {
+      "id": "snack_yogurt_orange",
+      "title": "Йогурт с апельсином",
+      "mealTypes": [
+        "snack"
+      ],
+      "servings": 1,
+      "minutes": 5,
+      "ingredients": [
+        {
+          "ingredientId": "greek_yogurt",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "orange",
+          "grams": 120.0
+        }
+      ],
+      "steps": [
+        "Очистите апельсин.",
+        "Подавайте с йогуртом."
+      ]
+    },
+    {
+      "id": "snack_apple_walnuts",
+      "title": "Яблоко с грецким орехом",
+      "mealTypes": [
+        "snack"
+      ],
+      "servings": 1,
+      "minutes": 3,
+      "ingredients": [
+        {
+          "ingredientId": "apple",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "walnuts",
+          "grams": 15.0
+        }
+      ],
+      "steps": [
+        "Нарежьте яблоко.",
+        "Добавьте орехи."
+      ]
+    },
+    {
+      "id": "snack_banana_almonds",
+      "title": "Банан с миндалем",
+      "mealTypes": [
+        "snack"
+      ],
+      "servings": 1,
+      "minutes": 3,
+      "ingredients": [
+        {
+          "ingredientId": "banana",
+          "grams": 120.0
+        },
+        {
+          "ingredientId": "almonds",
+          "grams": 15.0
+        }
+      ],
+      "steps": [
+        "Нарежьте банан.",
+        "Добавьте миндаль."
+      ]
+    },
+    {
+      "id": "snack_cottage_blueberry",
+      "title": "Творог с черникой",
+      "mealTypes": [
+        "snack"
+      ],
+      "servings": 1,
+      "minutes": 5,
+      "ingredients": [
+        {
+          "ingredientId": "cottage_2",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "blueberry",
+          "grams": 100.0
+        }
+      ],
+      "steps": [
+        "Смешайте творог с черникой."
       ]
     }
   ]
