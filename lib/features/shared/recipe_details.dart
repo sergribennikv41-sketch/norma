@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../core/data/recipe_repository.dart';
 import '../../core/models/enums.dart';
 import '../../core/models/nutrients.dart';
 import 'recipe_image.dart';
+import 'recipe_links.dart';
 
 Future<double?> showRecipeDetails(
   BuildContext context, {
@@ -102,6 +104,49 @@ Future<double?> showRecipeDetails(
                         style: theme.textTheme.bodySmall,
                       ),
                     ],
+                    const SizedBox(height: 12),
+                    Wrap(
+                      spacing: 8,
+                      runSpacing: 8,
+                      children: [
+                        ActionChip(
+                          avatar: const Icon(Icons.travel_explore, size: 18),
+                          label: const Text('Pinterest'),
+                          onPressed: () {
+                            _openLink(context, pinterestSearchUri(title));
+                          },
+                        ),
+                        PopupMenuButton<String>(
+                          tooltip: 'Видео рецепта',
+                          onSelected: (value) {
+                            final uri = switch (value) {
+                              'rutube' => rutubeSearchUri(title),
+                              'vk' => vkVideoSearchUri(title),
+                              _ => youtubeSearchUri(title),
+                            };
+                            _openLink(context, uri);
+                          },
+                          itemBuilder: (menuContext) => const [
+                            PopupMenuItem<String>(
+                              value: 'youtube',
+                              child: Text('YouTube'),
+                            ),
+                            PopupMenuItem<String>(
+                              value: 'rutube',
+                              child: Text('Rutube'),
+                            ),
+                            PopupMenuItem<String>(
+                              value: 'vk',
+                              child: Text('VK Видео'),
+                            ),
+                          ],
+                          child: const Chip(
+                            avatar: Icon(Icons.play_circle_outline, size: 18),
+                            label: Text('Видео'),
+                          ),
+                        ),
+                      ],
+                    ),
                     const SizedBox(height: 16),
                     Text(
                       'Приготовление',
@@ -143,4 +188,13 @@ Future<double?> showRecipeDetails(
       );
     },
   );
+}
+
+Future<void> _openLink(BuildContext context, Uri uri) async {
+  final launched = await launchUrl(uri, mode: LaunchMode.externalApplication);
+  if (!launched && context.mounted) {
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(const SnackBar(content: Text('Не удалось открыть ссылку')));
+  }
 }
