@@ -196,6 +196,90 @@ void main() {
     expect(updated.shoppingList, isNotEmpty);
   });
 
+  test('альтернативы соответствуют слоту и ограничениям', () {
+    const noLactose = UserProfile(
+      sex: Sex.female,
+      age: 28,
+      heightCm: 168,
+      weightKg: 62,
+      activity: ActivityLevel.light,
+      goal: Goal.maintain,
+      pace: Pace.medium,
+      mealsPerDay: 4,
+      excludedAllergens: {Allergen.lactose},
+    );
+    final noLactoseTargets = const TargetsCalculator().calculate(noLactose);
+    final plan = const MenuGenerator().generate(
+      profile: noLactose,
+      targets: noLactoseTargets,
+      repository: repository,
+    );
+    final alternatives = const MenuGenerator().alternativesForMeal(
+      plan: plan,
+      profile: noLactose,
+      repository: repository,
+      dayIndex: 0,
+      mealIndex: 1,
+    );
+    final current = plan.days.first.meals[1];
+
+    expect(alternatives, isNotEmpty);
+    for (final alternative in alternatives) {
+      expect(alternative.recipe.mealTypes, contains(MealType.lunch));
+      expect(alternative.recipe.id, isNot(current.recipe.id));
+      expect(
+        repository.allergensForRecipe(alternative.recipe),
+        isNot(contains(Allergen.lactose)),
+      );
+      expect(alternative.scale, inInclusiveRange(0.5, 1.5));
+      expect(alternative.nutrients.calories, greaterThan(0));
+      expect(alternative.cost, greaterThan(0));
+    }
+  });
+
+  test('выбранная альтернатива применяется к рациону', () {
+    final plan = const MenuGenerator().generate(
+      profile: profile,
+      targets: targets,
+      repository: repository,
+    );
+    final alternatives = const MenuGenerator().alternativesForMeal(
+      plan: plan,
+      profile: profile,
+      repository: repository,
+      dayIndex: 0,
+      mealIndex: 0,
+    );
+    expect(alternatives, isNotEmpty);
+
+    final chosen = alternatives.first;
+    final updated = const MenuGenerator().applyMealAlternative(
+      plan: plan,
+      dayIndex: 0,
+      mealIndex: 0,
+      alternative: chosen,
+      repository: repository,
+    );
+
+    expect(updated.days.first.meals.first.recipe.id, chosen.recipe.id);
+    expect(updated.days.first.meals.first.scale, closeTo(chosen.scale, 0.0001));
+    expect(
+      updated.days.first.meals.first.nutrients.calories,
+      closeTo(chosen.nutrients.calories, 0.001),
+    );
+    for (
+      var mealIndex = 1;
+      mealIndex < plan.days.first.meals.length;
+      mealIndex++
+    ) {
+      expect(
+        updated.days.first.meals[mealIndex].recipe.id,
+        plan.days.first.meals[mealIndex].recipe.id,
+      );
+    }
+    expect(updated.shoppingList, isNotEmpty);
+  });
+
   test('список покупок агрегирует ингредиенты без дублей', () {
     final plan = const MenuGenerator().generate(
       profile: profile,

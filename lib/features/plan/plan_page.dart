@@ -106,19 +106,55 @@ class _PlanPageState extends State<PlanPage> {
     });
   }
 
-  void _replaceMeal(int dayIndex, int mealIndex) {
+  Future<void> _replaceMeal(int dayIndex, int mealIndex) async {
     final current = _plan;
     if (current == null) {
       return;
     }
+
+    final List<MealAlternative> alternatives;
     try {
-      final updated = const MenuGenerator().replaceMeal(
+      alternatives = const MenuGenerator().alternativesForMeal(
         plan: current,
         profile: _profile,
         repository: _repository,
         dayIndex: dayIndex,
         mealIndex: mealIndex,
-        seed: _seed + dayIndex * 31 + mealIndex * 17,
+      );
+    } on StateError catch (error) {
+      _showMessage(error.message);
+      return;
+    }
+
+    if (alternatives.isEmpty) {
+      _showMessage('Нет альтернатив с учётом ограничений');
+      return;
+    }
+
+    final selected = await showModalBottomSheet<MealAlternative>(
+      context: context,
+      showDragHandle: true,
+      isScrollControlled: true,
+      builder: (context) => _AlternativesSheet(
+        alternatives: alternatives,
+        current: current.days[dayIndex].meals[mealIndex],
+      ),
+    );
+    if (selected == null || !mounted) {
+      return;
+    }
+
+    final plan = _plan;
+    if (plan == null) {
+      return;
+    }
+    try {
+      final updated = const MenuGenerator().applyMealAlternative(
+        plan: plan,
+        dayIndex: dayIndex,
+        mealIndex: mealIndex,
+        alternative: selected,
+        repository: _repository,
       );
       setState(() => _plan = updated);
       unawaited(_saveSession());
@@ -610,6 +646,56 @@ class _ShoppingCard extends StatelessWidget {
               trailing: Text('${item.grams.round()} г'),
             ),
         ],
+      ),
+    );
+  }
+}
+
+class _AlternativesSheet extends StatelessWidget {
+  const _AlternativesSheet({required this.alternatives, required this.current});
+
+  final List<MealAlternative> alternatives;
+  final PlannedMeal current;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return SafeArea(
+      child: ConstrainedBox(
+        constraints: BoxConstraints(
+          maxHeight: MediaQuery.of(context).size.height * 0.75,
+        ),
+        child: ListView(
+          shrinkWrap: true,
+          padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+          children: [
+            Text(
+              'Заменить «${current.recipe.title}»',
+              style: theme.textTheme.titleLarge?.copyWith(
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+            const SizedBox(height: 4),
+            Text(
+              '${current.type.label} · отсортировано по близости к норме',
+              style: theme.textTheme.bodySmall,
+            ),
+            const SizedBox(height: 8),
+            for (final alternative in alternatives)
+              ListTile(
+                contentPadding: EdgeInsets.zero,
+                title: Text(alternative.recipe.title),
+                subtitle: Text(
+                  '${alternative.nutrients.calories.round()} ккал · '
+                  'Б ${alternative.nutrients.protein.round()} · '
+                  '${alternative.recipe.minutes} мин · '
+                  '~${alternative.cost.round()} ₽',
+                ),
+                trailing: Text('${(alternative.scale * 100).round()}%'),
+                onTap: () => Navigator.of(context).pop(alternative),
+              ),
+          ],
+        ),
       ),
     );
   }

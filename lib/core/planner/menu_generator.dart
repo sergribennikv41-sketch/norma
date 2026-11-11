@@ -4,6 +4,7 @@ import '../data/recipe_repository.dart';
 import '../models/daily_targets.dart';
 import '../models/enums.dart';
 import '../models/meal_plan.dart';
+import '../models/nutrients.dart';
 import '../models/recipe.dart';
 import '../models/user_profile.dart';
 import 'shopping_list_builder.dart';
@@ -38,6 +39,20 @@ List<MenuSlot> slotsForMeals(int mealsPerDay) {
   };
 }
 
+class MealAlternative {
+  const MealAlternative({
+    required this.recipe,
+    required this.scale,
+    required this.nutrients,
+    required this.cost,
+  });
+
+  final Recipe recipe;
+  final double scale;
+  final Nutrients nutrients;
+  final double cost;
+}
+
 class _MealOption {
   const _MealOption({
     required this.meal,
@@ -48,6 +63,13 @@ class _MealOption {
   final PlannedMeal meal;
   final double score;
   final bool overBudget;
+}
+
+class _ScoredAlternative {
+  const _ScoredAlternative(this.alternative, this.score);
+
+  final MealAlternative alternative;
+  final double score;
 }
 
 class MenuGenerator {
@@ -214,9 +236,146 @@ class MenuGenerator {
     );
   }
 
+  List<MealAlternative> alternativesForMeal({
+    required WeeklyPlan plan,
+    required UserProfile profile,
+    required RecipeRepository repository,
+    required int dayIndex,
+    required int mealIndex,
+  }) {
+    if (dayIndex < 0 || dayIndex >= plan.days.length) {
+      throw StateError('Неверный день меню');
+    }
+    final day = plan.days[dayIndex];
+    if (mealIndex < 0 || mealIndex >= day.meals.length) {
+      throw StateError('Неверный приём пищи');
+    }
+    final slots = slotsForMeals(profile.mealsPerDay);
+    if (mealIndex >= slots.length) {
+      throw StateError('Не удалось определить приём пищи');
+    }
+
+    final current = day.meals[mealIndex];
+    final slot = slots[mealIndex];
+    final targetCalories = plan.targets.nutrients.calories * slot.share;
+    final targetProtein = plan.targets.nutrients.protein * slot.share;
+    final targetFat = plan.targets.nutrients.fat * slot.share;
+    final targetCarbs = plan.targets.nutrients.carbs * slot.share;
+    final usedToday = <String>{
+      for (var index = 0; index < day.meals.length; index++)
+        if (index != mealIndex) day.meals[index].recipe.id,
+    };
+
+    final scored = <_ScoredAlternative>[];
+    for (final recipe in repository.recipes) {
+      if (!recipe.mealTypes.contains(current.type) ||
+          recipe.id == current.recipe.id ||
+          usedToday.contains(recipe.id) ||
+          !repository.canUseRecipe(recipe, profile) ||
+          !_fitsTime(recipe, profile)) {
+        continue;
+      }
+      final perServing = repository.nutrientsPerServing(recipe);
+      if (perServing.calories <= 0) {
+        continue;
+      }
+      final scale = (targetCalories / perServing.calories)
+          .clamp(0.5, 1.5)
+          .toDouble();
+      final nutrients = perServing * scale;
+      final cost = repository.costPerServing(recipe) * scale;
+      scored.add(
+        _ScoredAlternative(
+          MealAlternative(
+            recipe: recipe,
+            scale: scale,
+            nutrients: nutrients,
+            cost: cost,
+          ),
+          _deviationScore(
+            nutrients: nutrients,
+            targetCalories: targetCalories,
+            targetProtein: targetProtein,
+            targetFat: targetFat,
+            targetCarbs: targetCarbs,
+          ),
+        ),
+      );
+    }
+
+    scored.sort((a, b) => a.score.compareTo(b.score));
+    return [for (final item in scored) item.alternative];
+  }
+
+  WeeklyPlan applyMealAlternative({
+    required WeeklyPlan plan,
+    required int dayIndex,
+    required int mealIndex,
+    required MealAlternative alternative,
+    required RecipeRepository repository,
+  }) {
+    if (dayIndex < 0 || dayIndex >= plan.days.length) {
+      throw StateError('Неверный день меню');
+    }
+    final day = plan.days[dayIndex];
+    if (mealIndex < 0 || mealIndex >= day.meals.length) {
+      throw StateError('Неверный приём пищи');
+    }
+    final current = day.meals[mealIndex];
+    if (!alternative.recipe.mealTypes.contains(current.type)) {
+      throw StateError('Блюдо не подходит для «${current.type.label}»');
+    }
+    if (alternative.scale <= 0) {
+      throw StateError('Неверный размер порции');
+    }
+
+    final nutrients =
+        repository.nutrientsPerServing(alternative.recipe) * alternative.scale;
+    final cost =
+        repository.costPerServing(alternative.recipe) * alternative.scale;
+    final meal = PlannedMeal(
+      type: current.type,
+      recipe: alternative.recipe,
+      scale: alternative.scale,
+      nutrients: nutrients,
+      ingredientGrams: {
+        for (final item in alternative.recipe.ingredients)
+          item.ingredientId: item.grams * alternative.scale,
+      },
+      cost: cost,
+    );
+
+    final newMeals = [...day.meals];
+    newMeals[mealIndex] = meal;
+    final newDays = [...plan.days];
+    newDays[dayIndex] = DayPlan(index: day.index, meals: newMeals);
+
+    return WeeklyPlan(
+      days: newDays,
+      targets: plan.targets,
+      shoppingList: buildShoppingList(newDays, repository),
+    );
+  }
+
   bool _fitsTime(Recipe recipe, UserProfile profile) {
     final maxMinutes = profile.maxCookMinutes;
     return maxMinutes == null || recipe.minutes <= maxMinutes;
+  }
+
+  double _deviationScore({
+    required Nutrients nutrients,
+    required double targetCalories,
+    required double targetProtein,
+    required double targetFat,
+    required double targetCarbs,
+  }) {
+    var score =
+        (nutrients.calories - targetCalories).abs() / targetCalories * 2.0;
+    score +=
+        (nutrients.protein - targetProtein).abs() / max(targetProtein, 1) * 1.2;
+    score += (nutrients.fat - targetFat).abs() / max(targetFat, 1) * 0.6;
+    score += (nutrients.carbs - targetCarbs).abs() / max(targetCarbs, 1) * 0.6;
+    return score;
   }
 
   PlannedMeal _pickMeal({
@@ -249,15 +408,13 @@ class MenuGenerator {
       final nutrients = perServing * scale;
       final cost = repository.costPerServing(recipe) * scale;
 
-      var score =
-          (nutrients.calories - targetCalories).abs() / targetCalories * 2.0;
-      score +=
-          (nutrients.protein - targetProtein).abs() /
-          max(targetProtein, 1) *
-          1.2;
-      score += (nutrients.fat - targetFat).abs() / max(targetFat, 1) * 0.6;
-      score +=
-          (nutrients.carbs - targetCarbs).abs() / max(targetCarbs, 1) * 0.6;
+      var score = _deviationScore(
+        nutrients: nutrients,
+        targetCalories: targetCalories,
+        targetProtein: targetProtein,
+        targetFat: targetFat,
+        targetCarbs: targetCarbs,
+      );
       score += (usage[recipe.id] ?? 0) * 0.18;
       if (usedYesterday.contains(recipe.id)) {
         score += 0.5;
