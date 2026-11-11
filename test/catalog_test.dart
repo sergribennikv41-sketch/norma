@@ -30,6 +30,21 @@ void main() {
     expect(find.text('Шарлотка'), findsNothing);
   });
 
+  testWidgets('каталог ищет по продукту и показывает его блюда', (
+    tester,
+  ) async {
+    await tester.pumpWidget(
+      MaterialApp(home: CatalogPage(repository: repository)),
+    );
+
+    await tester.enterText(find.byType(TextField), 'свекла');
+    await tester.pump();
+
+    expect(find.text('Продукты'), findsOneWidget);
+    expect(find.textContaining('Свёкла', findRichText: true), findsWidgets);
+    expect(find.text('Винегрет'), findsOneWidget);
+  });
+
   testWidgets('каталог фильтрует по приёму пищи', (tester) async {
     await tester.pumpWidget(
       MaterialApp(home: CatalogPage(repository: repository)),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../core/data/recipe_repository.dart';
 import '../../core/models/enums.dart';
+import '../../core/models/ingredient.dart';
 import '../../core/models/meal_plan.dart';
 import '../../core/models/recipe.dart';
 import '../shared/recipe_details.dart';
@@ -164,17 +165,155 @@ class _CatalogPageState extends State<CatalogPage> {
         .showSnackBar(SnackBar(content: Text(message)));
   }
 
+  void _openRecipe(Recipe recipe) {
+    final nutrients = widget.repository.nutrientsPerServing(recipe);
+    final cost = widget.repository.costPerServing(recipe);
+    showRecipeDetails(
+      context,
+      title: recipe.title,
+      nutrients: nutrients,
+      cost: cost,
+      ingredientGrams: {
+        for (final item in recipe.ingredients) item.ingredientId: item.grams,
+      },
+      steps: recipe.steps,
+      repository: widget.repository,
+      image: recipe.image,
+      source: recipe.source,
+      mealType: recipe.mealTypes.isEmpty ? null : recipe.mealTypes.first,
+      onAddToPlan: widget.plan == null ? null : () => _addToPlan(recipe),
+    );
+  }
+
+  Widget _recipeTile({
+    required Recipe recipe,
+    required String query,
+    Ingredient? containsIngredient,
+  }) {
+    final theme = Theme.of(context);
+    final nutrients = widget.repository.nutrientsPerServing(recipe);
+    final cost = widget.repository.costPerServing(recipe);
+    final details =
+        '${recipe.mealTypes.map((type) => type.label).join(' · ')} · '
+        '${recipe.minutes} мин · '
+        '${nutrients.calories.round()} ккал · '
+        'Б ${nutrients.protein.round()}';
+    return ListTile(
+      leading: RecipeImage(
+        image: recipe.image,
+        mealType: recipe.mealTypes.isEmpty ? null : recipe.mealTypes.first,
+        width: 56,
+        height: 56,
+        borderRadius: 10,
+      ),
+      title: Text(recipe.title),
+      subtitle: containsIngredient == null
+          ? Text(details)
+          : _HighlightedText(
+              text: 'Содержит: ${containsIngredient.name} · $details',
+              query: query,
+              style: theme.textTheme.bodyMedium,
+            ),
+      trailing: Text('~${cost.round()} ₽'),
+      onTap: () => _openRecipe(recipe),
+    );
+  }
+
+  Widget _dishCard(Recipe recipe, String query) {
+    return Card(
+      margin: const EdgeInsets.only(bottom: 8),
+      child: _recipeTile(recipe: recipe, query: query),
+    );
+  }
+
+  Widget _productCard(
+    ({Ingredient ingredient, List<Recipe> recipes}) entry,
+    String query,
+  ) {
+    final theme = Theme.of(context);
+    return Card(
+      margin: const EdgeInsets.only(bottom: 8),
+      clipBehavior: Clip.antiAlias,
+      child: ExpansionTile(
+        initiallyExpanded: true,
+        leading: const Icon(Icons.shopping_basket_outlined),
+        title: _HighlightedText(
+          text: entry.ingredient.name,
+          query: query,
+          style: theme.textTheme.titleMedium?.copyWith(
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+        subtitle: Text(
+          '${entry.recipes.length} ${_plural(entry.recipes.length, 'блюдо', 'блюда', 'блюд')}',
+        ),
+        children: [
+          for (final recipe in entry.recipes)
+            _recipeTile(
+              recipe: recipe,
+              query: query,
+              containsIngredient: entry.ingredient,
+            ),
+        ],
+      ),
+    );
+  }
+
+  Widget _sectionTitle(String title) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 4, bottom: 8),
+      child: Text(
+        title,
+        style: Theme.of(context).textTheme.titleMedium
+            ?.copyWith(fontWeight: FontWeight.w700),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final recipes = widget.repository.recipes.where((recipe) {
-      final matchesQuery =
-          _query.isEmpty ||
-          recipe.title.toLowerCase().contains(_query.toLowerCase());
-      final matchesType =
-          _mealType == null || recipe.mealTypes.contains(_mealType);
-      return matchesQuery && matchesType;
+    final query = _normalize(_query.trim());
+    final filteredRecipes = widget.repository.recipes.where((recipe) {
+      return _mealType == null || recipe.mealTypes.contains(_mealType);
     }).toList()..sort((a, b) => a.title.compareTo(b.title));
+
+    final dishMatches = query.isEmpty
+        ? filteredRecipes
+        : filteredRecipes
+              .where((recipe) => _normalize(recipe.title).contains(query))
+              .toList();
+
+    final productMatches = <({Ingredient ingredient, List<Recipe> recipes})>[];
+    if (query.isNotEmpty) {
+      final ingredients =
+          widget.repository.ingredients
+              .where(
+                (ingredient) => _normalize(ingredient.name).contains(query),
+              )
+              .toList()
+            ..sort((a, b) => a.name.compareTo(b.name));
+      for (final ingredient in ingredients) {
+        final recipes =
+            filteredRecipes
+                .where(
+                  (recipe) => recipe.ingredients.any(
+                    (item) => item.ingredientId == ingredient.id,
+                  ),
+                )
+                .toList()
+              ..sort((a, b) => a.title.compareTo(b.title));
+        if (recipes.isNotEmpty) {
+          productMatches.add((ingredient: ingredient, recipes: recipes));
+        }
+      }
+    }
+
+    final hasResults = dishMatches.isNotEmpty || productMatches.isNotEmpty;
+    final summary = query.isEmpty
+        ? 'Найдено: ${filteredRecipes.length}'
+        : 'Найдено: ${dishMatches.length} ${_plural(dishMatches.length, 'блюдо', 'блюда', 'блюд')} · '
+              '${productMatches.length} ${_plural(productMatches.length, 'продукт', 'продукта', 'продуктов')}';
 
     return Scaffold(
       appBar: AppBar(title: const Text('Каталог рецептов')),
@@ -191,7 +330,7 @@ class _CatalogPageState extends State<CatalogPage> {
                     controller: _searchController,
                     decoration: const InputDecoration(
                       prefixIcon: Icon(Icons.search),
-                      hintText: 'Поиск по названию',
+                      hintText: 'Поиск по блюду или продукту',
                       border: OutlineInputBorder(),
                       isDense: true,
                     ),
@@ -223,67 +362,31 @@ class _CatalogPageState extends State<CatalogPage> {
                 ),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(16, 12, 16, 8),
-                  child: Text(
-                    'Найдено: ${recipes.length}',
-                    style: theme.textTheme.bodySmall,
-                  ),
+                  child: Text(summary, style: theme.textTheme.bodySmall),
                 ),
                 Expanded(
-                  child: recipes.isEmpty
+                  child: !hasResults
                       ? const Center(child: Text('Ничего не найдено'))
-                      : ListView.builder(
+                      : ListView(
                           padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
-                          itemCount: recipes.length,
-                          itemBuilder: (context, index) {
-                            final recipe = recipes[index];
-                            final nutrients = widget.repository
-                                .nutrientsPerServing(recipe);
-                            final cost = widget.repository.costPerServing(
-                              recipe,
-                            );
-                            return Card(
-                              margin: const EdgeInsets.only(bottom: 8),
-                              child: ListTile(
-                                leading: RecipeImage(
-                                  image: recipe.image,
-                                  mealType: recipe.mealTypes.isEmpty
-                                      ? null
-                                      : recipe.mealTypes.first,
-                                  width: 56,
-                                  height: 56,
-                                  borderRadius: 10,
-                                ),
-                                title: Text(recipe.title),
-                                subtitle: Text(
-                                  '${recipe.mealTypes.map((type) => type.label).join(' · ')} · '
-                                  '${recipe.minutes} мин · '
-                                  '${nutrients.calories.round()} ккал · '
-                                  'Б ${nutrients.protein.round()}',
-                                ),
-                                trailing: Text('~${cost.round()} ₽'),
-                                onTap: () => showRecipeDetails(
-                                  context,
-                                  title: recipe.title,
-                                  nutrients: nutrients,
-                                  cost: cost,
-                                  ingredientGrams: {
-                                    for (final item in recipe.ingredients)
-                                      item.ingredientId: item.grams,
-                                  },
-                                  steps: recipe.steps,
-                                  repository: widget.repository,
-                                  image: recipe.image,
-                                  source: recipe.source,
-                                  mealType: recipe.mealTypes.isEmpty
-                                      ? null
-                                      : recipe.mealTypes.first,
-                                  onAddToPlan: widget.plan == null
-                                      ? null
-                                      : () => _addToPlan(recipe),
-                                ),
-                              ),
-                            );
-                          },
+                          children: [
+                            if (query.isNotEmpty && dishMatches.isNotEmpty) ...[
+                              _sectionTitle('Блюда'),
+                              for (final recipe in dishMatches)
+                                _dishCard(recipe, ''),
+                            ],
+                            if (query.isNotEmpty &&
+                                productMatches.isNotEmpty) ...[
+                              if (dishMatches.isNotEmpty)
+                                const SizedBox(height: 12),
+                              _sectionTitle('Продукты'),
+                              for (final entry in productMatches)
+                                _productCard(entry, query),
+                            ],
+                            if (query.isEmpty)
+                              for (final recipe in dishMatches)
+                                _dishCard(recipe, ''),
+                          ],
                         ),
                 ),
               ],
@@ -292,5 +395,63 @@ class _CatalogPageState extends State<CatalogPage> {
         ),
       ),
     );
+  }
+}
+
+String _normalize(String value) {
+  return value.toLowerCase().replaceAll('ё', 'е');
+}
+
+String _plural(int count, String one, String few, String many) {
+  final mod10 = count % 10;
+  final mod100 = count % 100;
+  if (mod10 == 1 && mod100 != 11) {
+    return one;
+  }
+  if (mod10 >= 2 && mod10 <= 4 && (mod100 < 12 || mod100 > 14)) {
+    return few;
+  }
+  return many;
+}
+
+class _HighlightedText extends StatelessWidget {
+  const _HighlightedText({required this.text, required this.query, this.style});
+
+  final String text;
+  final String query;
+  final TextStyle? style;
+
+  @override
+  Widget build(BuildContext context) {
+    final lowerText = _normalize(text);
+    final lowerQuery = _normalize(query.trim());
+    if (lowerQuery.isEmpty || !lowerText.contains(lowerQuery)) {
+      return Text(text, style: style);
+    }
+
+    final spans = <TextSpan>[];
+    var start = 0;
+    while (start < text.length) {
+      final index = lowerText.indexOf(lowerQuery, start);
+      if (index < 0) {
+        spans.add(TextSpan(text: text.substring(start)));
+        break;
+      }
+      if (index > start) {
+        spans.add(TextSpan(text: text.substring(start, index)));
+      }
+      spans.add(
+        TextSpan(
+          text: text.substring(index, index + lowerQuery.length),
+          style: TextStyle(
+            backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+            fontWeight: FontWeight.w700,
+          ),
+        ),
+      );
+      start = index + lowerQuery.length;
+    }
+
+    return Text.rich(TextSpan(style: style, children: spans));
   }
 }

@@ -9,7 +9,20 @@ $version = if ($versionLine) {
     '0.0.0'
 }
 
-flutter build windows --release
+$flutter = Get-Command flutter -ErrorAction SilentlyContinue
+if (-not $flutter) {
+    $flutterPath = Join-Path $env:LOCALAPPDATA 'flutter\bin\flutter.bat'
+    if (Test-Path -LiteralPath $flutterPath) {
+        $flutter = $flutterPath
+    } else {
+        throw 'flutter not found. Add Flutter bin to PATH.'
+    }
+}
+
+& $flutter build windows --release
+if ($LASTEXITCODE -ne 0) {
+    throw "flutter build failed with exit code $LASTEXITCODE"
+}
 
 $dist = Join-Path $root 'dist'
 New-Item -ItemType Directory -Path $dist -Force | Out-Null
