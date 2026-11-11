@@ -105,6 +105,7 @@ void main() {
         RecipeIngredient(ingredientId: 'test_import_ingredient', grams: 100),
       ],
       steps: const ['Съешьте.'],
+      image: 'assets/import_recipe.jpg',
     );
     final count = await database.merge(
       SeedBundle(
@@ -119,6 +120,10 @@ void main() {
     expect(count, 1);
     expect(repository.recipes, hasLength(seed.recipes.length + 1));
     expect(repository.recipeById('test_import_recipe'), isNotNull);
+    expect(
+      repository.recipeById('test_import_recipe')?.image,
+      'assets/import_recipe.jpg',
+    );
     expect(repository.pricePerKg('test_import_ingredient'), 150);
     expect(repository.allergensForRecipe(recipe), {Allergen.nuts});
 
@@ -224,6 +229,7 @@ void main() {
             {'ingredientId': 'test_ingredient', 'grams': 100},
           ],
           'steps': ['Смешайте.'],
+          'image': 'assets/test_recipe.jpg',
         },
       ],
     });
@@ -233,6 +239,7 @@ void main() {
     expect(bundle.prices['test_ingredient'], 250);
     expect(bundle.recipes.single.mealTypes, {MealType.lunch});
     expect(bundle.recipes.single.ingredients.single.grams, 100);
+    expect(bundle.recipes.single.image, 'assets/test_recipe.jpg');
   });
 
   test('JSON round-trip сохраняет данные', () {

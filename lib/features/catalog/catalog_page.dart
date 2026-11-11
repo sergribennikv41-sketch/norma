@@ -5,6 +5,7 @@ import '../../core/models/enums.dart';
 import '../../core/models/meal_plan.dart';
 import '../../core/models/recipe.dart';
 import '../shared/recipe_details.dart';
+import '../shared/recipe_image.dart';
 
 class CatalogPick {
   const CatalogPick({
@@ -243,6 +244,15 @@ class _CatalogPageState extends State<CatalogPage> {
                             return Card(
                               margin: const EdgeInsets.only(bottom: 8),
                               child: ListTile(
+                                leading: RecipeImage(
+                                  image: recipe.image,
+                                  mealType: recipe.mealTypes.isEmpty
+                                      ? null
+                                      : recipe.mealTypes.first,
+                                  width: 56,
+                                  height: 56,
+                                  borderRadius: 10,
+                                ),
                                 title: Text(recipe.title),
                                 subtitle: Text(
                                   '${recipe.mealTypes.map((type) => type.label).join(' · ')} · '
@@ -262,6 +272,10 @@ class _CatalogPageState extends State<CatalogPage> {
                                   },
                                   steps: recipe.steps,
                                   repository: widget.repository,
+                                  image: recipe.image,
+                                  mealType: recipe.mealTypes.isEmpty
+                                      ? null
+                                      : recipe.mealTypes.first,
                                   onAddToPlan: widget.plan == null
                                       ? null
                                       : () => _addToPlan(recipe),

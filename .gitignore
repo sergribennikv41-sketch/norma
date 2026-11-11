@@ -33,6 +33,8 @@ migrate_working_dir/
 /build/
 /coverage/
 /dist/
+*.pfx
+*.p12
 
 # Symbolication related
 app.*.symbols

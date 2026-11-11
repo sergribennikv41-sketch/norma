@@ -189,6 +189,8 @@ class _PlanPageState extends State<PlanPage> {
       ingredientGrams: meal.ingredientGrams,
       steps: meal.recipe.steps,
       repository: _repository,
+      image: meal.recipe.image,
+      mealType: meal.type,
       allowScaleEdit: true,
       initialScale: meal.scale,
     );

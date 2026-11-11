@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '../../core/data/recipe_repository.dart';
+import '../../core/models/enums.dart';
 import '../../core/models/nutrients.dart';
+import 'recipe_image.dart';
 
 Future<double?> showRecipeDetails(
   BuildContext context, {
@@ -11,6 +13,8 @@ Future<double?> showRecipeDetails(
   required Map<String, double> ingredientGrams,
   required List<String> steps,
   required RecipeRepository repository,
+  String? image,
+  MealType? mealType,
   bool allowScaleEdit = false,
   double initialScale = 1,
   VoidCallback? onAddToPlan,
@@ -41,6 +45,15 @@ Future<double?> showRecipeDetails(
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    if (image != null && image.isNotEmpty) ...[
+                      RecipeImage(
+                        image: image,
+                        mealType: mealType,
+                        height: 180,
+                        borderRadius: 12,
+                      ),
+                      const SizedBox(height: 12),
+                    ],
                     Text(
                       '${currentNutrients.calories.round()} ккал · '
                       'Б ${currentNutrients.protein.round()} · '

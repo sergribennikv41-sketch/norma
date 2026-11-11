@@ -32,7 +32,8 @@ CREATE TABLE recipes (
   title TEXT NOT NULL,
   servings INTEGER NOT NULL DEFAULT 1,
   minutes INTEGER NOT NULL,
-  source TEXT
+  source TEXT,
+  image TEXT
 );
 
 CREATE TABLE recipe_meal_types (
