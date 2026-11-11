@@ -1,25 +1,28 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:norma/core/data/app_database.dart';
-import 'package:norma/core/data/seed_data.dart';
 import 'package:norma/core/models/enums.dart';
 import 'package:norma/core/models/seed_bundle.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
+import 'support/seed_fixture.dart';
+
 void main() {
+  late SeedBundle seed;
   setUpAll(() {
     sqfliteFfiInit();
+    seed = loadSeedBundleFromFile();
   });
 
   test('импортирует и загружает seed из SQLite', () async {
     final database = await AppDatabase.open(path: inMemoryDatabasePath);
-    await database.seedIfEmpty(seedBundle);
+    await database.seedIfEmpty(seed);
     final repository = await database.loadRepository();
 
-    expect(repository.ingredients, hasLength(seedIngredients.length));
-    expect(repository.recipes, hasLength(seedRecipes.length));
+    expect(repository.ingredients, hasLength(seed.ingredients.length));
+    expect(repository.recipes, hasLength(seed.recipes.length));
     expect(
       repository.pricePerKg('chicken_breast'),
-      seedPrices['chicken_breast'],
+      seed.prices['chicken_breast'],
     );
 
     final recipe = repository.recipes.firstWhere(
@@ -37,12 +40,12 @@ void main() {
 
   test('повторный импорт не дублирует данные', () async {
     final database = await AppDatabase.open(path: inMemoryDatabasePath);
-    await database.seedIfEmpty(seedBundle);
-    await database.seedIfEmpty(seedBundle);
+    await database.seedIfEmpty(seed);
+    await database.seedIfEmpty(seed);
     final repository = await database.loadRepository();
 
-    expect(repository.ingredients, hasLength(seedIngredients.length));
-    expect(repository.recipes, hasLength(seedRecipes.length));
+    expect(repository.ingredients, hasLength(seed.ingredients.length));
+    expect(repository.recipes, hasLength(seed.recipes.length));
 
     await database.close();
   });
@@ -84,17 +87,17 @@ void main() {
 
   test('JSON round-trip сохраняет данные', () {
     final restored = SeedBundle.fromJson(
-      Map<String, dynamic>.from(seedBundle.toJson()),
+      Map<String, dynamic>.from(seed.toJson()),
     );
 
-    expect(restored.ingredients, hasLength(seedIngredients.length));
-    expect(restored.recipes, hasLength(seedRecipes.length));
-    expect(restored.prices.length, seedPrices.length);
+    expect(restored.ingredients, hasLength(seed.ingredients.length));
+    expect(restored.recipes, hasLength(seed.recipes.length));
+    expect(restored.prices.length, seed.prices.length);
 
     final ingredient = restored.ingredients.firstWhere(
       (item) => item.id == 'egg',
     );
     expect(ingredient.allergens, {Allergen.eggs});
-    expect(restored.prices['egg'], seedPrices['egg']);
+    expect(restored.prices['egg'], seed.prices['egg']);
   });
 }

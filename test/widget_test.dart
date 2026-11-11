@@ -1,17 +1,24 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:norma/app.dart';
+import 'package:norma/core/data/in_memory_recipe_repository.dart';
 import 'package:norma/core/data/session_storage.dart';
 import 'package:norma/core/models/enums.dart';
 import 'package:norma/core/models/user_profile.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'support/seed_fixture.dart';
+
 void main() {
+  late InMemoryRecipeRepository repository;
+  setUpAll(() {
+    repository = loadSeedRepository();
+  });
   setUp(() {
     SharedPreferences.setMockInitialValues({});
   });
 
   testWidgets('онбординг и переход к рациону', (tester) async {
-    await tester.pumpWidget(const NormaApp());
+    await tester.pumpWidget(NormaApp(repository: repository));
 
     expect(find.text('Рацион под вас'), findsOneWidget);
     expect(find.text('Рассчитать рацион'), findsOneWidget);
@@ -26,8 +33,9 @@ void main() {
 
   testWidgets('сохранённая сессия сразу открывает рацион', (tester) async {
     await tester.pumpWidget(
-      const NormaApp(
-        initialSession: SavedSession(
+      NormaApp(
+        repository: repository,
+        initialSession: const SavedSession(
           profile: UserProfile(
             sex: Sex.female,
             age: 32,

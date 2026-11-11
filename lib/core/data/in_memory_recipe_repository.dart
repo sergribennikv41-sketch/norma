@@ -4,26 +4,18 @@ import '../models/nutrients.dart';
 import '../models/recipe.dart';
 import '../models/user_profile.dart';
 import 'recipe_repository.dart';
-import 'seed_data.dart';
 
 class InMemoryRecipeRepository implements RecipeRepository {
   InMemoryRecipeRepository({
     required List<Ingredient> ingredients,
     required List<Recipe> recipes,
-    Map<String, double> prices = seedPrices,
+    Map<String, double> prices = const {},
   }) : _ingredients = List.unmodifiable(ingredients),
        _recipes = List.unmodifiable(recipes),
        _prices = Map.unmodifiable(prices),
        _byId = {
          for (final ingredient in ingredients) ingredient.id: ingredient,
        };
-
-  factory InMemoryRecipeRepository.seeded() {
-    return InMemoryRecipeRepository(
-      ingredients: seedIngredients,
-      recipes: seedRecipes,
-    );
-  }
 
   final List<Ingredient> _ingredients;
   final List<Recipe> _recipes;

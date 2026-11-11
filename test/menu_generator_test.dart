@@ -5,8 +5,13 @@ import 'package:norma/core/models/user_profile.dart';
 import 'package:norma/core/nutrition/targets_calculator.dart';
 import 'package:norma/core/planner/menu_generator.dart';
 
+import 'support/seed_fixture.dart';
+
 void main() {
-  final repository = InMemoryRecipeRepository.seeded();
+  late InMemoryRecipeRepository repository;
+  setUpAll(() {
+    repository = loadSeedRepository();
+  });
   const profile = UserProfile(
     sex: Sex.male,
     age: 30,
