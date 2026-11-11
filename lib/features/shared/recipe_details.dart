@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../core/data/recipe_repository.dart';
 import '../../core/models/nutrients.dart';
 
-void showRecipeDetails(
+Future<double?> showRecipeDetails(
   BuildContext context, {
   required String title,
   required Nutrients nutrients,
@@ -11,64 +11,105 @@ void showRecipeDetails(
   required Map<String, double> ingredientGrams,
   required List<String> steps,
   required RecipeRepository repository,
+  bool allowScaleEdit = false,
+  double initialScale = 1,
 }) {
-  showDialog<void>(
+  final safeScale = initialScale > 0 ? initialScale : 1.0;
+  final baseNutrients = nutrients * (1 / safeScale);
+  final baseCost = cost / safeScale;
+  final baseGrams = {
+    for (final entry in ingredientGrams.entries)
+      entry.key: entry.value / safeScale,
+  };
+  var scale = safeScale;
+
+  return showDialog<double>(
     context: context,
     builder: (dialogContext) {
-      final theme = Theme.of(dialogContext);
-      return AlertDialog(
-        title: Text(title),
-        content: SizedBox(
-          width: double.maxFinite,
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  '${nutrients.calories.round()} ккал · '
-                  'Б ${nutrients.protein.round()} · '
-                  'Ж ${nutrients.fat.round()} · '
-                  'У ${nutrients.carbs.round()} · '
-                  '~${cost.round()} ₽',
-                  style: theme.textTheme.bodyMedium,
+      return StatefulBuilder(
+        builder: (dialogContext, setDialogState) {
+          final theme = Theme.of(dialogContext);
+          final currentNutrients = baseNutrients * scale;
+          final currentCost = baseCost * scale;
+          return AlertDialog(
+            title: Text(title),
+            content: SizedBox(
+              width: double.maxFinite,
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      '${currentNutrients.calories.round()} ккал · '
+                      'Б ${currentNutrients.protein.round()} · '
+                      'Ж ${currentNutrients.fat.round()} · '
+                      'У ${currentNutrients.carbs.round()} · '
+                      '~${currentCost.round()} ₽',
+                      style: theme.textTheme.bodyMedium,
+                    ),
+                    if (allowScaleEdit) ...[
+                      const SizedBox(height: 12),
+                      Text(
+                        'Порция: ${(scale * 100).round()}%',
+                        style: theme.textTheme.titleSmall?.copyWith(
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      Slider(
+                        value: scale,
+                        min: 0.5,
+                        max: 1.5,
+                        divisions: 20,
+                        label: '${(scale * 100).round()}%',
+                        onChanged: (value) {
+                          setDialogState(() => scale = value);
+                        },
+                      ),
+                    ],
+                    const SizedBox(height: 16),
+                    Text(
+                      'Ингредиенты',
+                      style: theme.textTheme.titleSmall?.copyWith(
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    const SizedBox(height: 6),
+                    for (final entry in baseGrams.entries)
+                      Text(
+                        '• ${repository.ingredientById(entry.key)?.name ?? entry.key} — '
+                        '${(entry.value * scale).round()} г',
+                      ),
+                    const SizedBox(height: 16),
+                    Text(
+                      'Приготовление',
+                      style: theme.textTheme.titleSmall?.copyWith(
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    const SizedBox(height: 6),
+                    for (var index = 0; index < steps.length; index++)
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 4),
+                        child: Text('${index + 1}. ${steps[index]}'),
+                      ),
+                  ],
                 ),
-                const SizedBox(height: 16),
-                Text(
-                  'Ингредиенты',
-                  style: theme.textTheme.titleSmall?.copyWith(
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                const SizedBox(height: 6),
-                for (final entry in ingredientGrams.entries)
-                  Text(
-                    '• ${repository.ingredientById(entry.key)?.name ?? entry.key} — '
-                    '${entry.value.round()} г',
-                  ),
-                const SizedBox(height: 16),
-                Text(
-                  'Приготовление',
-                  style: theme.textTheme.titleSmall?.copyWith(
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                const SizedBox(height: 6),
-                for (var index = 0; index < steps.length; index++)
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 4),
-                    child: Text('${index + 1}. ${steps[index]}'),
-                  ),
-              ],
+              ),
             ),
-          ),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.of(dialogContext).pop(),
-            child: const Text('Закрыть'),
-          ),
-        ],
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.of(dialogContext).pop(),
+                child: const Text('Закрыть'),
+              ),
+              if (allowScaleEdit)
+                FilledButton(
+                  onPressed: () => Navigator.of(dialogContext).pop(scale),
+                  child: const Text('Применить'),
+                ),
+            ],
+          );
+        },
       );
     },
   );

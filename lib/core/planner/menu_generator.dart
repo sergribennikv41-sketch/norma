@@ -357,6 +357,49 @@ class MenuGenerator {
     );
   }
 
+  WeeklyPlan rescaleMeal({
+    required WeeklyPlan plan,
+    required int dayIndex,
+    required int mealIndex,
+    required double scale,
+    required RecipeRepository repository,
+  }) {
+    if (dayIndex < 0 || dayIndex >= plan.days.length) {
+      throw StateError('Неверный день меню');
+    }
+    final day = plan.days[dayIndex];
+    if (mealIndex < 0 || mealIndex >= day.meals.length) {
+      throw StateError('Неверный приём пищи');
+    }
+    if (scale <= 0) {
+      throw StateError('Неверный размер порции');
+    }
+    final safeScale = scale.clamp(0.5, 1.5).toDouble();
+    final current = day.meals[mealIndex];
+    final meal = PlannedMeal(
+      type: current.type,
+      recipe: current.recipe,
+      scale: safeScale,
+      nutrients: repository.nutrientsPerServing(current.recipe) * safeScale,
+      ingredientGrams: {
+        for (final item in current.recipe.ingredients)
+          item.ingredientId: item.grams * safeScale,
+      },
+      cost: repository.costPerServing(current.recipe) * safeScale,
+    );
+
+    final newMeals = [...day.meals];
+    newMeals[mealIndex] = meal;
+    final newDays = [...plan.days];
+    newDays[dayIndex] = DayPlan(index: day.index, meals: newMeals);
+
+    return WeeklyPlan(
+      days: newDays,
+      targets: plan.targets,
+      shoppingList: buildShoppingList(newDays, repository),
+    );
+  }
+
   bool _fitsTime(Recipe recipe, UserProfile profile) {
     final maxMinutes = profile.maxCookMinutes;
     return maxMinutes == null || recipe.minutes <= maxMinutes;

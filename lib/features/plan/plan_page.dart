@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../../core/data/recipe_repository.dart';
 import '../../core/data/session_storage.dart';
@@ -12,6 +13,7 @@ import '../../core/models/user_profile.dart';
 import '../../core/nutrition/targets_calculator.dart';
 import '../../core/planner/menu_generator.dart';
 import '../../core/planner/plan_restorer.dart';
+import '../../core/planner/shopping_list_text.dart';
 import '../catalog/catalog_page.dart';
 import '../onboarding/onboarding_page.dart';
 import '../shared/recipe_details.dart';
@@ -45,6 +47,7 @@ class _PlanPageState extends State<PlanPage> {
   WeeklyPlan? _plan;
   String? _error;
   late int _seed;
+  final Set<String> _checkedIngredients = {};
 
   @override
   void initState() {
@@ -73,6 +76,7 @@ class _PlanPageState extends State<PlanPage> {
   }
 
   void _generate() {
+    _checkedIngredients.clear();
     final targets = const TargetsCalculator().calculate(_profile);
     try {
       _plan = const MenuGenerator().generate(
@@ -165,6 +169,70 @@ class _PlanPageState extends State<PlanPage> {
     } on StateError catch (error) {
       _showMessage(error.message);
     }
+  }
+
+  Future<void> _openMeal(int dayIndex, int mealIndex) async {
+    final plan = _plan;
+    if (plan == null) {
+      return;
+    }
+    final meal = plan.days[dayIndex].meals[mealIndex];
+    final scale = await showRecipeDetails(
+      context,
+      title: meal.recipe.title,
+      nutrients: meal.nutrients,
+      cost: meal.cost,
+      ingredientGrams: meal.ingredientGrams,
+      steps: meal.recipe.steps,
+      repository: _repository,
+      allowScaleEdit: true,
+      initialScale: meal.scale,
+    );
+    if (scale == null || !mounted) {
+      return;
+    }
+    if ((scale - meal.scale).abs() < 0.001) {
+      return;
+    }
+    final currentPlan = _plan;
+    if (currentPlan == null) {
+      return;
+    }
+    try {
+      final updated = const MenuGenerator().rescaleMeal(
+        plan: currentPlan,
+        dayIndex: dayIndex,
+        mealIndex: mealIndex,
+        scale: scale,
+        repository: _repository,
+      );
+      setState(() => _plan = updated);
+      unawaited(_saveSession());
+      _showMessage('Порция обновлена');
+    } on StateError catch (error) {
+      _showMessage(error.message);
+    }
+  }
+
+  void _toggleIngredient(String ingredientId, bool checked) {
+    setState(() {
+      if (checked) {
+        _checkedIngredients.add(ingredientId);
+      } else {
+        _checkedIngredients.remove(ingredientId);
+      }
+    });
+  }
+
+  Future<void> _copyShoppingList() async {
+    final plan = _plan;
+    if (plan == null) {
+      return;
+    }
+    await Clipboard.setData(
+      ClipboardData(text: buildShoppingListText(plan.shoppingList)),
+    );
+    _showMessage('Список покупок скопирован');
   }
 
   void _likeRecipe(Recipe recipe) {
@@ -308,10 +376,13 @@ class _PlanPageState extends State<PlanPage> {
           : _PlanView(
               plan: plan,
               profile: _profile,
-              repository: _repository,
               onReplace: _replaceMeal,
               onLike: _likeRecipe,
               onBlock: _blockRecipe,
+              onOpenMeal: _openMeal,
+              checkedIngredients: _checkedIngredients,
+              onToggleIngredient: _toggleIngredient,
+              onCopyShoppingList: _copyShoppingList,
             ),
     );
   }
@@ -321,18 +392,24 @@ class _PlanView extends StatelessWidget {
   const _PlanView({
     required this.plan,
     required this.profile,
-    required this.repository,
     required this.onReplace,
     required this.onLike,
     required this.onBlock,
+    required this.onOpenMeal,
+    required this.checkedIngredients,
+    required this.onToggleIngredient,
+    required this.onCopyShoppingList,
   });
 
   final WeeklyPlan plan;
   final UserProfile profile;
-  final RecipeRepository repository;
   final void Function(int dayIndex, int mealIndex) onReplace;
   final void Function(Recipe recipe) onLike;
   final void Function(Recipe recipe) onBlock;
+  final void Function(int dayIndex, int mealIndex) onOpenMeal;
+  final Set<String> checkedIngredients;
+  final void Function(String ingredientId, bool checked) onToggleIngredient;
+  final VoidCallback onCopyShoppingList;
 
   @override
   Widget build(BuildContext context) {
@@ -367,21 +444,37 @@ class _PlanView extends StatelessWidget {
               for (final day in plan.days)
                 _DayCard(
                   day: day,
-                  repository: repository,
                   onReplace: onReplace,
                   onLike: onLike,
                   onBlock: onBlock,
+                  onOpen: onOpenMeal,
                 ),
               const SizedBox(height: 12),
-              Text(
-                'Список покупок',
-                style: theme.textTheme.titleLarge?.copyWith(
-                  fontWeight: FontWeight.w700,
-                ),
+              Row(
+                children: [
+                  Expanded(
+                    child: Text(
+                      'Список покупок',
+                      style: theme.textTheme.titleLarge?.copyWith(
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ),
+                  IconButton(
+                    onPressed: onCopyShoppingList,
+                    tooltip: 'Скопировать список',
+                    icon: const Icon(Icons.copy_all_outlined),
+                  ),
+                ],
               ),
-              const SizedBox(height: 8),
+              const SizedBox(height: 4),
               for (final entry in grouped.entries)
-                _ShoppingCard(category: entry.key, items: entry.value),
+                _ShoppingCard(
+                  category: entry.key,
+                  items: entry.value,
+                  checkedIngredients: checkedIngredients,
+                  onToggleIngredient: onToggleIngredient,
+                ),
               const SizedBox(height: 12),
               Text(
                 'Норма — ориентир, а не медицинская рекомендация.',
@@ -491,17 +584,17 @@ class _MacroChip extends StatelessWidget {
 class _DayCard extends StatelessWidget {
   const _DayCard({
     required this.day,
-    required this.repository,
     required this.onReplace,
     required this.onLike,
     required this.onBlock,
+    required this.onOpen,
   });
 
   final DayPlan day;
-  final RecipeRepository repository;
   final void Function(int dayIndex, int mealIndex) onReplace;
   final void Function(Recipe recipe) onLike;
   final void Function(Recipe recipe) onBlock;
+  final void Function(int dayIndex, int mealIndex) onOpen;
 
   @override
   Widget build(BuildContext context) {
@@ -570,24 +663,23 @@ class _DayCard extends StatelessWidget {
           ),
         ],
       ),
-      onTap: () => showRecipeDetails(
-        context,
-        title: meal.recipe.title,
-        nutrients: meal.nutrients,
-        cost: meal.cost,
-        ingredientGrams: meal.ingredientGrams,
-        steps: meal.recipe.steps,
-        repository: repository,
-      ),
+      onTap: () => onOpen(day.index - 1, mealIndex),
     );
   }
 }
 
 class _ShoppingCard extends StatelessWidget {
-  const _ShoppingCard({required this.category, required this.items});
+  const _ShoppingCard({
+    required this.category,
+    required this.items,
+    required this.checkedIngredients,
+    required this.onToggleIngredient,
+  });
 
   final String category;
   final List<ShoppingItem> items;
+  final Set<String> checkedIngredients;
+  final void Function(String ingredientId, bool checked) onToggleIngredient;
 
   @override
   Widget build(BuildContext context) {
@@ -601,8 +693,25 @@ class _ShoppingCard extends StatelessWidget {
           for (final item in items)
             ListTile(
               dense: true,
-              title: Text(item.ingredient.name),
+              leading: Checkbox(
+                value: checkedIngredients.contains(item.ingredient.id),
+                onChanged: (value) {
+                  onToggleIngredient(item.ingredient.id, value ?? false);
+                },
+              ),
+              title: Text(
+                item.ingredient.name,
+                style: checkedIngredients.contains(item.ingredient.id)
+                    ? const TextStyle(decoration: TextDecoration.lineThrough)
+                    : null,
+              ),
               trailing: Text('${item.grams.round()} г'),
+              onTap: () {
+                onToggleIngredient(
+                  item.ingredient.id,
+                  !checkedIngredients.contains(item.ingredient.id),
+                );
+              },
             ),
         ],
       ),

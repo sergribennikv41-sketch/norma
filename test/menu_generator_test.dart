@@ -285,6 +285,36 @@ void main() {
     expect(updated.shoppingList, isNotEmpty);
   });
 
+  test('изменение порции пересчитывает блюдо и покупки', () {
+    final plan = const MenuGenerator().generate(
+      profile: profile,
+      targets: targets,
+      repository: repository,
+    );
+    final original = plan.days.first.meals.first;
+    final updated = const MenuGenerator().rescaleMeal(
+      plan: plan,
+      dayIndex: 0,
+      mealIndex: 0,
+      scale: 1.25,
+      repository: repository,
+    );
+    final meal = updated.days.first.meals.first;
+
+    expect(meal.recipe.id, original.recipe.id);
+    expect(meal.scale, closeTo(1.25, 0.0001));
+    expect(
+      meal.nutrients.calories,
+      closeTo(original.nutrients.calories / original.scale * 1.25, 0.001),
+    );
+    expect(meal.cost, closeTo(original.cost / original.scale * 1.25, 0.001));
+    expect(
+      updated.days.first.meals[1].recipe.id,
+      plan.days.first.meals[1].recipe.id,
+    );
+    expect(updated.shoppingList, isNotEmpty);
+  });
+
   test('список покупок агрегирует ингредиенты без дублей', () {
     final plan = const MenuGenerator().generate(
       profile: profile,
