@@ -119,8 +119,7 @@ void main() {
 
     expect(find.text('Приготовление'), findsOneWidget);
     expect(find.textContaining('Овсяные хлопья'), findsOneWidget);
-    expect(find.text('Pinterest'), findsOneWidget);
-    expect(find.text('Видео'), findsOneWidget);
+    expect(find.text('Видео в Pinterest'), findsOneWidget);
     expect(find.text('Закрыть'), findsOneWidget);
   });
 }

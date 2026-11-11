@@ -110,40 +110,14 @@ Future<double?> showRecipeDetails(
                       runSpacing: 8,
                       children: [
                         ActionChip(
-                          avatar: const Icon(Icons.travel_explore, size: 18),
-                          label: const Text('Pinterest'),
-                          onPressed: () {
-                            _openLink(context, pinterestSearchUri(title));
-                          },
-                        ),
-                        PopupMenuButton<String>(
-                          tooltip: 'Видео рецепта',
-                          onSelected: (value) {
-                            final uri = switch (value) {
-                              'rutube' => rutubeSearchUri(title),
-                              'vk' => vkVideoSearchUri(title),
-                              _ => youtubeSearchUri(title),
-                            };
-                            _openLink(context, uri);
-                          },
-                          itemBuilder: (menuContext) => const [
-                            PopupMenuItem<String>(
-                              value: 'youtube',
-                              child: Text('YouTube'),
-                            ),
-                            PopupMenuItem<String>(
-                              value: 'rutube',
-                              child: Text('Rutube'),
-                            ),
-                            PopupMenuItem<String>(
-                              value: 'vk',
-                              child: Text('VK Видео'),
-                            ),
-                          ],
-                          child: const Chip(
-                            avatar: Icon(Icons.play_circle_outline, size: 18),
-                            label: Text('Видео'),
+                          avatar: const Icon(
+                            Icons.play_circle_outline,
+                            size: 18,
                           ),
+                          label: const Text('Видео в Pinterest'),
+                          onPressed: () {
+                            _openLink(context, pinterestVideoSearchUri(title));
+                          },
                         ),
                       ],
                     ),
