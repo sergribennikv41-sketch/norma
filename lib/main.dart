@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:window_manager/window_manager.dart';
 
 import 'app.dart';
 import 'core/data/app_database.dart';
@@ -6,10 +9,12 @@ import 'core/data/in_memory_recipe_repository.dart';
 import 'core/data/recipe_repository.dart';
 import 'core/data/seed_loader.dart';
 import 'core/data/session_storage.dart';
+import 'core/data/window_bounds_storage.dart';
 import 'core/models/seed_bundle.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await _setupWindow();
 
   final SeedBundle seed;
   try {
@@ -42,6 +47,63 @@ Future<void> main() async {
   }
 
   runApp(NormaApp(initialSession: session, repository: repository));
+}
+
+bool get _isDesktop =>
+    Platform.isWindows || Platform.isLinux || Platform.isMacOS;
+
+Future<void> _setupWindow() async {
+  if (!_isDesktop) {
+    return;
+  }
+  await windowManager.ensureInitialized();
+  final savedBounds = await WindowBoundsStorage().load();
+  final size = savedBounds == null
+      ? const Size(1280, 860)
+      : Size(
+          savedBounds.width < 1024 ? 1024 : savedBounds.width,
+          savedBounds.height < 700 ? 700 : savedBounds.height,
+        );
+  await windowManager.waitUntilReadyToShow(
+    WindowOptions(
+      size: size,
+      minimumSize: const Size(1024, 700),
+      center: savedBounds == null,
+      title: 'Норма',
+    ),
+    () async {
+      if (savedBounds != null) {
+        await windowManager.setBounds(
+          Rect.fromLTWH(
+            savedBounds.left,
+            savedBounds.top,
+            size.width,
+            size.height,
+          ),
+        );
+      }
+      await windowManager.show();
+      await windowManager.focus();
+    },
+  );
+  await windowManager.setPreventClose(true);
+  windowManager.addListener(_WindowStateListener());
+}
+
+class _WindowStateListener with WindowListener {
+  @override
+  void onWindowClose() {
+    _saveAndDestroy();
+  }
+
+  Future<void> _saveAndDestroy() async {
+    try {
+      final bounds = await windowManager.getBounds();
+      await WindowBoundsStorage().save(bounds);
+    } finally {
+      await windowManager.destroy();
+    }
+  }
 }
 
 class _StartupErrorApp extends StatelessWidget {
