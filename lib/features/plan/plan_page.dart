@@ -12,7 +12,9 @@ import '../../core/models/user_profile.dart';
 import '../../core/nutrition/targets_calculator.dart';
 import '../../core/planner/menu_generator.dart';
 import '../../core/planner/plan_restorer.dart';
+import '../catalog/catalog_page.dart';
 import '../onboarding/onboarding_page.dart';
+import '../shared/recipe_details.dart';
 
 enum _MealAction { replace, like, block }
 
@@ -248,6 +250,14 @@ class _PlanPageState extends State<PlanPage> {
         .showSnackBar(SnackBar(content: Text(message)));
   }
 
+  void _openCatalog() {
+    Navigator.of(context).push(
+      MaterialPageRoute<void>(
+        builder: (context) => CatalogPage(repository: _repository),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final plan = _plan;
@@ -256,6 +266,11 @@ class _PlanPageState extends State<PlanPage> {
       appBar: AppBar(
         title: const Text('Ваш рацион'),
         actions: [
+          IconButton(
+            onPressed: _openCatalog,
+            tooltip: 'Каталог рецептов',
+            icon: const Icon(Icons.menu_book_outlined),
+          ),
           IconButton(
             onPressed: _regenerate,
             tooltip: 'Перегенерировать меню',
@@ -555,77 +570,17 @@ class _DayCard extends StatelessWidget {
           ),
         ],
       ),
-      onTap: () => _showRecipe(context, meal, repository),
+      onTap: () => showRecipeDetails(
+        context,
+        title: meal.recipe.title,
+        nutrients: meal.nutrients,
+        cost: meal.cost,
+        ingredientGrams: meal.ingredientGrams,
+        steps: meal.recipe.steps,
+        repository: repository,
+      ),
     );
   }
-}
-
-void _showRecipe(
-  BuildContext context,
-  PlannedMeal meal,
-  RecipeRepository repository,
-) {
-  showDialog<void>(
-    context: context,
-    builder: (dialogContext) {
-      final theme = Theme.of(dialogContext);
-      final nutrients = meal.nutrients;
-      return AlertDialog(
-        title: Text(meal.recipe.title),
-        content: SizedBox(
-          width: double.maxFinite,
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  '${nutrients.calories.round()} ккал · '
-                  'Б ${nutrients.protein.round()} · '
-                  'Ж ${nutrients.fat.round()} · '
-                  'У ${nutrients.carbs.round()} · '
-                  '~${meal.cost.round()} ₽',
-                  style: theme.textTheme.bodyMedium,
-                ),
-                const SizedBox(height: 16),
-                Text(
-                  'Ингредиенты',
-                  style: theme.textTheme.titleSmall?.copyWith(
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                const SizedBox(height: 6),
-                for (final entry in meal.ingredientGrams.entries)
-                  Text(
-                    '• ${repository.ingredientById(entry.key)?.name ?? entry.key} — '
-                    '${entry.value.round()} г',
-                  ),
-                const SizedBox(height: 16),
-                Text(
-                  'Приготовление',
-                  style: theme.textTheme.titleSmall?.copyWith(
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                const SizedBox(height: 6),
-                for (var index = 0; index < meal.recipe.steps.length; index++)
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 4),
-                    child: Text('${index + 1}. ${meal.recipe.steps[index]}'),
-                  ),
-              ],
-            ),
-          ),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.of(dialogContext).pop(),
-            child: const Text('Закрыть'),
-          ),
-        ],
-      );
-    },
-  );
 }
 
 class _ShoppingCard extends StatelessWidget {
