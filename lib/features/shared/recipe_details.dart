@@ -14,6 +14,7 @@ Future<double?> showRecipeDetails(
   required List<String> steps,
   required RecipeRepository repository,
   String? image,
+  String? source,
   MealType? mealType,
   bool allowScaleEdit = false,
   double initialScale = 1,
@@ -94,6 +95,13 @@ Future<double?> showRecipeDetails(
                         '• ${repository.ingredientById(entry.key)?.name ?? entry.key} — '
                         '${(entry.value * scale).round()} г',
                       ),
+                    if (source != null && source.isNotEmpty) ...[
+                      const SizedBox(height: 12),
+                      Text(
+                        'Источник: $source',
+                        style: theme.textTheme.bodySmall,
+                      ),
+                    ],
                     const SizedBox(height: 16),
                     Text(
                       'Приготовление',

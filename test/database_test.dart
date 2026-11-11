@@ -143,6 +143,7 @@ void main() {
       ],
       steps: const ['Съешьте.'],
       image: 'assets/import_recipe.jpg',
+      source: 'https://ru.wikibooks.org/wiki/Рецепт:Сырники',
     );
     final count = await database.merge(
       SeedBundle(
@@ -160,6 +161,10 @@ void main() {
     expect(
       repository.recipeById('test_import_recipe')?.image,
       'assets/import_recipe.jpg',
+    );
+    expect(
+      repository.recipeById('test_import_recipe')?.source,
+      'https://ru.wikibooks.org/wiki/Рецепт:Сырники',
     );
     expect(repository.pricePerKg('test_import_ingredient'), 150);
     expect(repository.allergensForRecipe(recipe), {Allergen.nuts});
@@ -267,6 +272,7 @@ void main() {
           ],
           'steps': ['Смешайте.'],
           'image': 'assets/test_recipe.jpg',
+          'source': 'https://ru.wikibooks.org/wiki/Рецепт:Тест',
         },
       ],
     });
@@ -277,6 +283,10 @@ void main() {
     expect(bundle.recipes.single.mealTypes, {MealType.lunch});
     expect(bundle.recipes.single.ingredients.single.grams, 100);
     expect(bundle.recipes.single.image, 'assets/test_recipe.jpg');
+    expect(
+      bundle.recipes.single.source,
+      'https://ru.wikibooks.org/wiki/Рецепт:Тест',
+    );
   });
 
   test('JSON round-trip сохраняет данные', () {

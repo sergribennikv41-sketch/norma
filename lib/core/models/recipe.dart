@@ -30,6 +30,7 @@ class Recipe {
     required this.ingredients,
     required this.steps,
     this.image,
+    this.source,
   });
 
   final String id;
@@ -40,6 +41,7 @@ class Recipe {
   final List<RecipeIngredient> ingredients;
   final List<String> steps;
   final String? image;
+  final String? source;
 
   Map<String, Object?> toJson() {
     return {
@@ -53,6 +55,7 @@ class Recipe {
       ],
       'steps': steps,
       'image': image,
+      'source': source,
     };
   }
 
@@ -85,6 +88,9 @@ class Recipe {
       steps: steps,
       image: json['image'] is String && (json['image'] as String).isNotEmpty
           ? json['image'] as String
+          : null,
+      source: json['source'] is String && (json['source'] as String).isNotEmpty
+          ? json['source'] as String
           : null,
     );
   }

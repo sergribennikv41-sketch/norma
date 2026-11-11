@@ -273,6 +273,7 @@ class _CatalogPageState extends State<CatalogPage> {
                                   steps: recipe.steps,
                                   repository: widget.repository,
                                   image: recipe.image,
+                                  source: recipe.source,
                                   mealType: recipe.mealTypes.isEmpty
                                       ? null
                                       : recipe.mealTypes.first,

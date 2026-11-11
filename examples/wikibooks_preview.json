@@ -1,0 +1,112 @@
+{
+  "version": 1,
+  "ingredients": [
+    {
+      "id": "sugar",
+      "name": "Сахар",
+      "category": "Бакалея",
+      "per100g": {"calories": 400, "protein": 0, "fat": 0, "carbs": 99.8},
+      "allergens": [],
+      "pricePerKg": 80
+    },
+    {
+      "id": "semolina",
+      "name": "Манная крупа",
+      "category": "Крупы и макароны",
+      "per100g": {"calories": 333, "protein": 10.3, "fat": 1, "carbs": 70.6},
+      "allergens": ["gluten"],
+      "pricePerKg": 90
+    },
+    {
+      "id": "flour",
+      "name": "Мука пшеничная",
+      "category": "Бакалея",
+      "per100g": {"calories": 342, "protein": 10.3, "fat": 1.1, "carbs": 70.6},
+      "allergens": ["gluten"],
+      "pricePerKg": 80
+    },
+    {
+      "id": "breadcrumbs",
+      "name": "Сухари панировочные",
+      "category": "Бакалея",
+      "per100g": {"calories": 395, "protein": 11.9, "fat": 5.1, "carbs": 72.2},
+      "allergens": ["gluten"],
+      "pricePerKg": 200
+    },
+    {
+      "id": "mayonnaise",
+      "name": "Майонез",
+      "category": "Бакалея",
+      "per100g": {"calories": 680, "protein": 2.4, "fat": 74, "carbs": 2.6},
+      "allergens": ["eggs"],
+      "pricePerKg": 300
+    },
+    {
+      "id": "green_peas",
+      "name": "Горошек зелёный консервированный",
+      "category": "Бакалея",
+      "per100g": {"calories": 55, "protein": 5, "fat": 0.2, "carbs": 8.3},
+      "allergens": [],
+      "pricePerKg": 250
+    },
+    {
+      "id": "pickle",
+      "name": "Огурцы солёные",
+      "category": "Овощи",
+      "per100g": {"calories": 19, "protein": 0.8, "fat": 0.1, "carbs": 4.4},
+      "allergens": [],
+      "pricePerKg": 200
+    }
+  ],
+  "recipes": [
+    {
+      "id": "wikibooks_syrniki",
+      "title": "Сырники классические",
+      "mealTypes": ["breakfast"],
+      "servings": 4,
+      "minutes": 25,
+      "ingredients": [
+        {"ingredientId": "cottage_5", "grams": 500},
+        {"ingredientId": "egg", "grams": 55},
+        {"ingredientId": "sugar", "grams": 25},
+        {"ingredientId": "semolina", "grams": 25},
+        {"ingredientId": "flour", "grams": 10},
+        {"ingredientId": "breadcrumbs", "grams": 20},
+        {"ingredientId": "olive_oil", "grams": 10}
+      ],
+      "steps": [
+        "Смешайте творог, яйцо, соль, сахар, манку и муку.",
+        "Сформируйте сырники и обваляйте их в панировочных сухарях.",
+        "Обжарьте с двух сторон на растительном масле на среднем огне.",
+        "Подавайте со сметаной, вареньем или сиропом.",
+        "Источник: Викиучебник, рецепт «Сырники», CC BY-SA 4.0."
+      ],
+      "image": null
+    },
+    {
+      "id": "wikibooks_olivier",
+      "title": "Салат Оливье",
+      "mealTypes": ["lunch", "dinner"],
+      "servings": 4,
+      "minutes": 45,
+      "ingredients": [
+        {"ingredientId": "chicken_breast", "grams": 200},
+        {"ingredientId": "potato", "grams": 200},
+        {"ingredientId": "egg", "grams": 100},
+        {"ingredientId": "carrot", "grams": 100},
+        {"ingredientId": "cucumber", "grams": 100},
+        {"ingredientId": "pickle", "grams": 100},
+        {"ingredientId": "green_peas", "grams": 100},
+        {"ingredientId": "mayonnaise", "grams": 150}
+      ],
+      "steps": [
+        "Отварите курицу, картофель, морковь и яйца до готовности.",
+        "Нарежьте все ингредиенты кубиками.",
+        "Добавьте зелёный горошек, свежие и солёные огурцы.",
+        "Заправьте майонезом, посолите и аккуратно перемешайте.",
+        "Источник: Викиучебник, рецепт «Оливье», CC BY-SA 4.0."
+      ],
+      "image": null
+    }
+  ]
+}

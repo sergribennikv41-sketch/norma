@@ -227,6 +227,7 @@ CREATE TABLE app_meta (
           'servings': recipe.servings,
           'minutes': recipe.minutes,
           'image': recipe.image,
+          'source': recipe.source,
         });
         for (final mealType in recipe.mealTypes) {
           await txn.insert('recipe_meal_types', {
@@ -335,6 +336,7 @@ ON CONFLICT(id) DO UPDATE SET
           'servings': recipe.servings,
           'minutes': recipe.minutes,
           'image': recipe.image,
+          'source': recipe.source,
         }, conflictAlgorithm: ffi.ConflictAlgorithm.replace);
         await txn.delete(
           'recipe_meal_types',
@@ -482,6 +484,10 @@ ON CONFLICT(id) DO UPDATE SET
           steps: stepsByRecipe[row['id']] ?? const [],
           image: row['image'] is String && (row['image'] as String).isNotEmpty
               ? row['image'] as String
+              : null,
+          source:
+              row['source'] is String && (row['source'] as String).isNotEmpty
+              ? row['source'] as String
               : null,
         ),
     ];
