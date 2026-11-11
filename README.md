@@ -1,17 +1,98 @@
-# norma
+# Норма
 
-A new Flutter project.
+Локальное приложение для Windows на Flutter: расчёт КБЖУ и подбор рациона на неделю с учётом цели, активности, аллергенов, времени готовки и бюджета.
 
-## Getting Started
+## Возможности
 
-This project is a starting point for a Flutter application.
+- Расчёт BMR/TDEE по Миффлину-Сент-Джору и целевых КБЖУ.
+- Меню на 7 дней с автоматическим масштабом порций под норму.
+- Фильтры: аллергены, максимальное время готовки, дневной бюджет.
+- Ручной выбор альтернатив блюда, лайки и блокировки.
+- Список покупок с агрегацией и стоимостью.
+- Локальное сохранение профиля и точного снимка плана.
+- SQLite-база рецептов: 42 ингредиента и 33 рецепта на старте.
+- Импорт/экспорт seed-данных через JSON-структуру.
 
-A few resources to get you started if this is your first Flutter project:
+## Стек
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+- Flutter 3.47.9, Dart 3.13.7, Material 3.
+- SQLite: `sqflite_common_ffi` на Windows, `sqflite` на мобильных.
+- `shared_preferences` для профиля и плана.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Запуск
+
+```powershell
+flutter pub get
+flutter run -d windows
+```
+
+Release-сборка:
+
+```powershell
+flutter build windows --release
+```
+
+Exe: `build\windows\x64\runner\Release\norma.exe`.
+
+## Проверки
+
+```powershell
+flutter analyze
+flutter test
+```
+
+## Данные
+
+- Рецепты, ингредиенты и цены: SQLite `%APPDATA%\ru.norma\norma\norma.db`.
+- Профиль и снимок рациона: `shared_preferences`.
+- Сервер не используется, всё хранится локально.
+
+## Структура
+
+```
+lib/core/models       — доменные модели и JSON-сериализация
+lib/core/data         — репозитории, SQLite, seed-данные, сессия
+lib/core/nutrition    — расчёт нормы КБЖУ
+lib/core/planner      — генератор меню, альтернативы, покупки, восстановление плана
+lib/features          — онбординг и экран рациона
+test                  — тесты расчётов, генератора, БД и хранения
+```
+
+## Формат импорта
+
+`SeedBundle.fromJson` принимает объект с ингредиентами, ценами и рецептами:
+
+```json
+{
+  "version": 1,
+  "ingredients": [
+    {
+      "id": "oats",
+      "name": "Овсяные хлопья",
+      "category": "Крупы и макароны",
+      "per100g": {"calories": 352, "protein": 12.3, "fat": 6.1, "carbs": 61.8},
+      "allergens": [],
+      "pricePerKg": 120
+    }
+  ],
+  "recipes": [
+    {
+      "id": "oatmeal",
+      "title": "Овсянка",
+      "mealTypes": ["breakfast"],
+      "servings": 1,
+      "minutes": 10,
+      "ingredients": [{"ingredientId": "oats", "grams": 60}],
+      "steps": ["Сварите хлопья."]
+    }
+  ]
+}
+```
+
+## Дальше
+
+- Расширение библиотеки рецептов и импорт из JSON-файлов.
+- Каталог рецептов с поиском.
+- Редактирование порций вручную.
+- Чекбоксы и экспорт списка покупок.
+- Установщик Windows и иконка приложения.

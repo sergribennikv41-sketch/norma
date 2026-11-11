@@ -30,4 +30,26 @@ class Nutrients {
       carbs: carbs * factor,
     );
   }
+
+  Map<String, Object?> toJson() {
+    return {
+      'calories': calories,
+      'protein': protein,
+      'fat': fat,
+      'carbs': carbs,
+    };
+  }
+
+  factory Nutrients.fromJson(Map<String, dynamic> json) {
+    return Nutrients(
+      calories: _doubleValue(json['calories']),
+      protein: _doubleValue(json['protein']),
+      fat: _doubleValue(json['fat']),
+      carbs: _doubleValue(json['carbs']),
+    );
+  }
+}
+
+double _doubleValue(Object? value) {
+  return value is num ? value.toDouble() : 0;
 }

@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../../core/data/recipe_repository.dart';
 import '../../core/models/enums.dart';
 import '../../core/models/user_profile.dart';
 import '../plan/plan_page.dart';
 
 class OnboardingPage extends StatefulWidget {
-  const OnboardingPage({super.key, this.initialProfile});
+  const OnboardingPage({
+    super.key,
+    required this.repository,
+    this.initialProfile,
+  });
 
+  final RecipeRepository repository;
   final UserProfile? initialProfile;
 
   @override
@@ -112,7 +118,10 @@ class _OnboardingPageState extends State<OnboardingPage> {
       return;
     }
     navigator.push(
-      MaterialPageRoute<void>(builder: (context) => PlanPage(profile: profile)),
+      MaterialPageRoute<void>(
+        builder: (context) =>
+            PlanPage(profile: profile, repository: widget.repository),
+      ),
     );
   }
 

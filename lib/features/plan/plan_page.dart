@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-import '../../core/data/in_memory_recipe_repository.dart';
 import '../../core/data/recipe_repository.dart';
 import '../../core/data/session_storage.dart';
 import '../../core/models/daily_targets.dart';
@@ -23,11 +22,13 @@ class PlanPage extends StatefulWidget {
   const PlanPage({
     super.key,
     required this.profile,
+    required this.repository,
     this.initialSeed = 1,
     this.initialPlan,
   });
 
   final UserProfile profile;
+  final RecipeRepository repository;
   final int initialSeed;
   final SavedPlan? initialPlan;
 
@@ -46,7 +47,7 @@ class _PlanPageState extends State<PlanPage> {
   @override
   void initState() {
     super.initState();
-    _repository = InMemoryRecipeRepository.seeded();
+    _repository = widget.repository;
     _profile = widget.profile;
     _seed = widget.initialSeed;
     _restoreOrGenerate();
@@ -190,7 +191,8 @@ class _PlanPageState extends State<PlanPage> {
   Future<void> _editProfile() async {
     final updated = await Navigator.of(context).push<UserProfile>(
       MaterialPageRoute<UserProfile>(
-        builder: (context) => OnboardingPage(initialProfile: _profile),
+        builder: (context) =>
+            OnboardingPage(repository: _repository, initialProfile: _profile),
       ),
     );
     if (updated == null || !mounted) {
@@ -231,7 +233,9 @@ class _PlanPageState extends State<PlanPage> {
       return;
     }
     Navigator.of(context).pushAndRemoveUntil(
-      MaterialPageRoute<void>(builder: (context) => const OnboardingPage()),
+      MaterialPageRoute<void>(
+        builder: (context) => OnboardingPage(repository: _repository),
+      ),
       (route) => false,
     );
   }

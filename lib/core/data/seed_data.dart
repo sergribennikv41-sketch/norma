@@ -2,6 +2,7 @@ import '../models/enums.dart';
 import '../models/ingredient.dart';
 import '../models/nutrients.dart';
 import '../models/recipe.dart';
+import '../models/seed_bundle.dart';
 
 const List<Ingredient> seedIngredients = [
   Ingredient(
@@ -907,3 +908,9 @@ const List<Recipe> seedRecipes = [
     steps: ['Нарежьте морковь и огурец палочками.'],
   ),
 ];
+
+const SeedBundle seedBundle = SeedBundle(
+  ingredients: seedIngredients,
+  recipes: seedRecipes,
+  prices: seedPrices,
+);
