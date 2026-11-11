@@ -46,13 +46,24 @@ flutter analyze
 flutter test
 ```
 
-## Сборка и portable
+## Сборка
+
+Portable-версия:
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File tool\build_windows.ps1
 ```
 
 Результат: `dist\norma-<версия>-windows-x64-portable.zip`.
+
+Установщик:
+
+```powershell
+winget install --id JRSoftware.InnoSetup -e
+powershell -ExecutionPolicy Bypass -File tool\build_installer.ps1
+```
+
+Результат: `dist\norma-<версия>-windows-x64-setup.exe`.
 
 ## Данные
 
@@ -106,4 +117,4 @@ test                  — тесты расчётов, генератора, Б�
 ## Дальше
 
 - Расширение библиотеки рецептов и импорт из JSON-файлов.
-- Установщик Windows (Inno Setup или MSIX).
+- Подпись установщика (code signing) и релизы.

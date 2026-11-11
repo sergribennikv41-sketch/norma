@@ -53,6 +53,16 @@ flutter build windows --release
 
 Готовый exe: `build\windows\x64\runner\Release\`.
 
+Portable-архив и установщик:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File tool\build_windows.ps1
+winget install --id JRSoftware.InnoSetup -e
+powershell -ExecutionPolicy Bypass -File tool\build_installer.ps1
+```
+
+Результаты в `dist\`.
+
 ## 6. Проверки
 
 ```powershell
