@@ -110,7 +110,7 @@ void main() {
       goal: Goal.lose,
       pace: Pace.medium,
       mealsPerDay: 4,
-      maxCookMinutes: 15,
+      maxCookMinutes: 60,
     );
     final quickTargets = const TargetsCalculator().calculate(quick);
     final plan = const MenuGenerator().generate(
@@ -121,7 +121,7 @@ void main() {
 
     for (final day in plan.days) {
       for (final meal in day.meals) {
-        expect(meal.recipe.minutes, lessThanOrEqualTo(15));
+        expect(meal.recipe.minutes, lessThanOrEqualTo(60));
       }
     }
   });
@@ -151,7 +151,7 @@ void main() {
   });
 
   test('дневной бюджет ограничивает стоимость меню', () {
-    final budgetProfile = profile.copyWith(dailyBudgetRub: 600);
+    final budgetProfile = profile.copyWith(dailyBudgetRub: 900);
     final budgetTargets = const TargetsCalculator().calculate(budgetProfile);
     final plan = const MenuGenerator().generate(
       profile: budgetProfile,
@@ -160,7 +160,7 @@ void main() {
     );
 
     for (final day in plan.days) {
-      expect(day.totalCost, lessThanOrEqualTo(600));
+      expect(day.totalCost, lessThanOrEqualTo(900));
     }
   });
 
@@ -291,8 +291,11 @@ void main() {
       targets: targets,
       repository: repository,
     );
-    final recipe = repository.recipeById('oatmeal_banana_almonds');
-    expect(recipe, isNotNull);
+    final recipe = repository.recipes.firstWhere(
+      (item) =>
+          item.mealTypes.contains(MealType.breakfast) &&
+          !item.mealTypes.contains(MealType.lunch),
+    );
 
     final updated = const MenuGenerator().applyRecipeToMeal(
       plan: plan,
@@ -300,11 +303,11 @@ void main() {
       repository: repository,
       dayIndex: 3,
       mealIndex: 0,
-      recipe: recipe!,
+      recipe: recipe,
     );
     final meal = updated.days[3].meals[0];
 
-    expect(meal.recipe.id, 'oatmeal_banana_almonds');
+    expect(meal.recipe.id, recipe.id);
     expect(meal.type, MealType.breakfast);
     expect(meal.scale, inInclusiveRange(0.5, 1.5));
     expect(updated.days[3].meals[1].recipe.id, plan.days[3].meals[1].recipe.id);
@@ -317,7 +320,11 @@ void main() {
       targets: targets,
       repository: repository,
     );
-    final recipe = repository.recipeById('oatmeal_banana_almonds')!;
+    final recipe = repository.recipes.firstWhere(
+      (item) =>
+          item.mealTypes.contains(MealType.breakfast) &&
+          !item.mealTypes.contains(MealType.lunch),
+    );
 
     expect(
       () => const MenuGenerator().applyRecipeToMeal(

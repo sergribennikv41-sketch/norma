@@ -23,11 +23,11 @@ void main() {
     expect(find.text('Каталог рецептов'), findsOneWidget);
     expect(find.text('Найдено: ${repository.recipes.length}'), findsOneWidget);
 
-    await tester.enterText(find.byType(TextField), 'овсянка');
+    await tester.enterText(find.byType(TextField), 'винегрет');
     await tester.pump();
 
-    expect(find.text('Овсянка с бананом и миндалем'), findsOneWidget);
-    expect(find.text('Треска с картофелем и брокколи'), findsNothing);
+    expect(find.text('Винегрет'), findsOneWidget);
+    expect(find.text('Шарлотка'), findsNothing);
   });
 
   testWidgets('каталог фильтрует по приёму пищи', (tester) async {
@@ -88,21 +88,22 @@ void main() {
     await tester.tap(find.text('Открыть каталог'));
     await tester.pumpAndSettle();
 
-    await tester.enterText(find.byType(TextField), 'овсянка');
+    await tester.enterText(find.byType(TextField), 'винегрет');
     await tester.pump();
-    await tester.tap(
-      find.widgetWithText(ListTile, 'Овсянка с бананом и миндалем'),
-    );
+    await tester.tap(find.widgetWithText(ListTile, 'Винегрет'));
     await tester.pumpAndSettle();
     await tester.tap(find.text('В рацион'));
     await tester.pumpAndSettle();
     await tester.tap(find.text('Добавить'));
     await tester.pumpAndSettle();
 
+    final expected = repository.recipes.firstWhere(
+      (recipe) => recipe.title == 'Винегрет',
+    );
     expect(pick, isNotNull);
-    expect(pick!.recipeId, 'oatmeal_banana_almonds');
+    expect(pick!.recipeId, expected.id);
     expect(pick!.dayIndex, 0);
-    expect(pick!.mealIndex, 0);
+    expect(pick!.mealIndex, 1);
   });
 
   testWidgets('каталог открывает карточку рецепта', (tester) async {
@@ -110,15 +111,13 @@ void main() {
       MaterialApp(home: CatalogPage(repository: repository)),
     );
 
-    await tester.enterText(find.byType(TextField), 'овсянка');
+    await tester.enterText(find.byType(TextField), 'винегрет');
     await tester.pump();
-    await tester.tap(
-      find.widgetWithText(ListTile, 'Овсянка с бананом и миндалем'),
-    );
+    await tester.tap(find.widgetWithText(ListTile, 'Винегрет'));
     await tester.pumpAndSettle();
 
     expect(find.text('Приготовление'), findsOneWidget);
-    expect(find.textContaining('Овсяные хлопья'), findsOneWidget);
+    expect(find.textContaining('Свёкла'), findsWidgets);
     expect(find.text('Видео в Pinterest'), findsOneWidget);
     expect(find.text('Закрыть'), findsOneWidget);
   });

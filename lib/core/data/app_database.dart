@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:path/path.dart' as p;
@@ -174,8 +175,40 @@ CREATE TABLE app_meta (
     if (stored != null && stored >= bundle.version) {
       return;
     }
+    final previousIds = await _storedSeedRecipeIds();
     await merge(bundle);
+    final newIds = bundle.recipes.map((recipe) => recipe.id).toSet();
+    final staleIds = previousIds.where((id) => !newIds.contains(id)).toList();
+    if (staleIds.isNotEmpty) {
+      await _deleteRecipes(staleIds);
+    }
     await _setSeedVersion(bundle.version);
+    await _setSeedRecipeIds(newIds.toList());
+  }
+
+  Future<List<String>> _storedSeedRecipeIds() async {
+    final rows = await _db.query(
+      'app_meta',
+      where: 'key = ?',
+      whereArgs: ['seed_recipe_ids'],
+      limit: 1,
+    );
+    if (rows.isEmpty) {
+      return const [];
+    }
+    final raw = rows.first['value'];
+    if (raw is! String) {
+      return const [];
+    }
+    try {
+      final decoded = jsonDecode(raw);
+      if (decoded is List) {
+        return decoded.whereType<String>().toList();
+      }
+    } catch (_) {
+      return const [];
+    }
+    return const [];
   }
 
   Future<void> _setSeedVersion(int version) async {
@@ -183,6 +216,26 @@ CREATE TABLE app_meta (
       'INSERT OR REPLACE INTO app_meta (key, value) VALUES (?, ?)',
       ['seed_version', '$version'],
     );
+  }
+
+  Future<void> _setSeedRecipeIds(List<String> ids) async {
+    await _db.rawInsert(
+      'INSERT OR REPLACE INTO app_meta (key, value) VALUES (?, ?)',
+      ['seed_recipe_ids', jsonEncode(ids)],
+    );
+  }
+
+  Future<void> _deleteRecipes(List<String> ids) async {
+    for (var start = 0; start < ids.length; start += 500) {
+      final end = start + 500 > ids.length ? ids.length : start + 500;
+      final chunk = ids.sublist(start, end);
+      final placeholders = List.filled(chunk.length, '?').join(', ');
+      await _db.delete(
+        'recipes',
+        where: 'id IN ($placeholders)',
+        whereArgs: chunk,
+      );
+    }
   }
 
   Future<void> import(SeedBundle bundle) async {
@@ -254,6 +307,13 @@ CREATE TABLE app_meta (
       await txn.rawInsert(
         'INSERT OR REPLACE INTO app_meta (key, value) VALUES (?, ?)',
         ['seed_version', '${bundle.version}'],
+      );
+      await txn.rawInsert(
+        'INSERT OR REPLACE INTO app_meta (key, value) VALUES (?, ?)',
+        [
+          'seed_recipe_ids',
+          jsonEncode([for (final recipe in bundle.recipes) recipe.id]),
+        ],
       );
     });
   }

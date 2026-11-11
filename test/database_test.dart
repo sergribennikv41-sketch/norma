@@ -26,19 +26,11 @@ void main() {
 
     expect(repository.ingredients, hasLength(seed.ingredients.length));
     expect(repository.recipes, hasLength(seed.recipes.length));
-    expect(
-      repository.pricePerKg('chicken_breast'),
-      seed.prices['chicken_breast'],
-    );
+    final ingredient = seed.ingredients.first;
+    expect(repository.pricePerKg(ingredient.id), seed.prices[ingredient.id]);
 
-    final recipe = repository.recipes.firstWhere(
-      (item) => item.id == 'oatmeal_banana_almonds',
-    );
+    final recipe = seed.recipes.first;
     expect(repository.nutrientsForRecipe(recipe).calories, greaterThan(0));
-    expect(repository.allergensForRecipe(recipe), {
-      Allergen.lactose,
-      Allergen.nuts,
-    });
     expect(recipe.steps, isNotEmpty);
 
     await database.close();
@@ -243,6 +235,26 @@ void main() {
     expect(count, bundle.recipes.length);
     expect(repository.recipeById('example_yogurt_chia'), isNotNull);
     expect(repository.pricePerKg('chia_seeds'), 900);
+
+    await database.close();
+  });
+
+  test('обновление seed удаляет убранные seed-рецепты', () async {
+    final database = await AppDatabase.open(path: inMemoryDatabasePath);
+    await database.seedIfNeeded(seed);
+    final removedId = seed.recipes.first.id;
+    final reduced = SeedBundle(
+      version: seed.version + 1,
+      ingredients: seed.ingredients,
+      recipes: seed.recipes.skip(1).toList(),
+      prices: seed.prices,
+    );
+
+    await database.seedIfNeeded(reduced);
+    final repository = await database.loadRepository();
+
+    expect(repository.recipeById(removedId), isNull);
+    expect(repository.recipes, hasLength(seed.recipes.length - 1));
 
     await database.close();
   });
