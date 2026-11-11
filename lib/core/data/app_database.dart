@@ -167,10 +167,22 @@ CREATE TABLE app_meta (
 
   Future<void> seedIfNeeded(SeedBundle bundle) async {
     final stored = await _storedSeedVersion();
-    if (!await isEmpty && stored != null && stored >= bundle.version) {
+    if (await isEmpty) {
+      await import(bundle);
       return;
     }
-    await import(bundle);
+    if (stored != null && stored >= bundle.version) {
+      return;
+    }
+    await merge(bundle);
+    await _setSeedVersion(bundle.version);
+  }
+
+  Future<void> _setSeedVersion(int version) async {
+    await _db.rawInsert(
+      'INSERT OR REPLACE INTO app_meta (key, value) VALUES (?, ?)',
+      ['seed_version', '$version'],
+    );
   }
 
   Future<void> import(SeedBundle bundle) async {

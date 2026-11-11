@@ -84,6 +84,43 @@ void main() {
     await database.close();
   });
 
+  test('обновление seed не удаляет пользовательский импорт', () async {
+    final database = await AppDatabase.open(path: inMemoryDatabasePath);
+    await database.seedIfNeeded(seed);
+
+    final userRecipe = Recipe(
+      id: 'user_recipe',
+      title: 'Пользовательский рецепт',
+      mealTypes: {MealType.snack},
+      servings: 1,
+      minutes: 3,
+      ingredients: const [RecipeIngredient(ingredientId: 'apple', grams: 100)],
+      steps: const ['Съешьте яблоко.'],
+    );
+    await database.merge(
+      SeedBundle(
+        version: 1,
+        ingredients: const [],
+        recipes: [userRecipe],
+        prices: const {},
+      ),
+    );
+
+    final bumped = SeedBundle(
+      version: seed.version + 1,
+      ingredients: seed.ingredients,
+      recipes: seed.recipes,
+      prices: seed.prices,
+    );
+    await database.seedIfNeeded(bumped);
+    final repository = await database.loadRepository();
+
+    expect(repository.recipeById('user_recipe'), isNotNull);
+    expect(repository.recipes, hasLength(seed.recipes.length + 1));
+
+    await database.close();
+  });
+
   test('merge добавляет новые ингредиенты и рецепты', () async {
     final database = await AppDatabase.open(path: inMemoryDatabasePath);
     await database.seedIfNeeded(seed);

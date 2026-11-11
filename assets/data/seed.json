@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 3,
   "ingredients": [
     {
       "id": "chicken_breast",
@@ -614,7 +614,8 @@
       "steps": [
         "Сварите овсяные хлопья на молоке 5–7 минут.",
         "Добавьте нарезанный банан, миндаль и мед."
-      ]
+      ],
+      "image": "assets/images/recipes/oatmeal_banana_almonds.png"
     },
     {
       "id": "veggie_omelet",
@@ -654,7 +655,8 @@
         "Взбейте яйца с молоком, посолите и поперчите.",
         "Обжарьте перец и помидор на масле, залейте яйцами.",
         "Готовьте под крышкой 3–4 минуты, посыпьте фетой."
-      ]
+      ],
+      "image": "assets/images/recipes/veggie_omelet.png"
     },
     {
       "id": "cottage_blueberry",
@@ -685,7 +687,8 @@
       "steps": [
         "Выложите творог в миску.",
         "Добавьте чернику, мед и измельченные орехи."
-      ]
+      ],
+      "image": "assets/images/recipes/cottage_blueberry.png"
     },
     {
       "id": "yogurt_apple_walnut",
@@ -716,7 +719,8 @@
       "steps": [
         "Нарежьте яблоко кубиками.",
         "Смешайте с йогуртом, добавьте орехи и мед."
-      ]
+      ],
+      "image": "assets/images/recipes/yogurt_apple_walnut.png"
     },
     {
       "id": "syrniki_blueberry",
@@ -752,7 +756,8 @@
         "Смешайте творог, яйцо и овсяные хлопья.",
         "Сформируйте сырники и обжарьте на масле по 3 минуты с каждой стороны.",
         "Подавайте с черникой."
-      ]
+      ],
+      "image": "assets/images/recipes/syrniki_blueberry.png"
     },
     {
       "id": "avocado_toast_egg",
@@ -788,7 +793,8 @@
         "Подсушите хлеб на сухой сковороде.",
         "Разомните авокадо, посолите и намажьте на тост.",
         "Добавьте ломтики помидора и яйцо, приготовленное на масле."
-      ]
+      ],
+      "image": "assets/images/recipes/avocado_toast_egg.png"
     },
     {
       "id": "oatmeal_water_walnut",
@@ -819,7 +825,8 @@
       "steps": [
         "Сварите овсяные хлопья на воде 5–7 минут.",
         "Добавьте банан, грецкий орех и мед."
-      ]
+      ],
+      "image": "assets/images/recipes/oatmeal_water_walnut.png"
     },
     {
       "id": "eggs_avocado_cucumber",
@@ -850,7 +857,8 @@
       "steps": [
         "Отварите яйца или приготовьте на масле.",
         "Нарежьте авокадо и огурец, подавайте вместе с яйцами."
-      ]
+      ],
+      "image": "assets/images/recipes/eggs_avocado_cucumber.png"
     },
     {
       "id": "oatmeal_banana_plain",
@@ -877,7 +885,8 @@
       "steps": [
         "Сварите овсяные хлопья на воде.",
         "Добавьте нарезанный банан и мед."
-      ]
+      ],
+      "image": "assets/images/recipes/oatmeal_banana_plain.png"
     },
     {
       "id": "chicken_buckwheat",
@@ -913,7 +922,8 @@
         "Отварите гречку и брокколи.",
         "Обжарьте курицу с луком на масле до готовности.",
         "Посолите и поперчите по вкусу."
-      ]
+      ],
+      "image": "assets/images/recipes/chicken_buckwheat.png"
     },
     {
       "id": "turkey_rice",
@@ -949,7 +959,8 @@
         "Отварите бурый рис.",
         "Обжарьте индейку с перцем и морковью на масле.",
         "Смешайте с рисом, посолите и поперчите."
-      ]
+      ],
+      "image": "assets/images/recipes/turkey_rice.png"
     },
     {
       "id": "lentil_soup",
@@ -989,7 +1000,8 @@
         "Отварите чечевицу с картофелем 20 минут.",
         "Обжарьте лук и морковь, добавьте томатную пасту.",
         "Соедините с супом и варите еще 5–7 минут."
-      ]
+      ],
+      "image": "assets/images/recipes/lentil_soup.png"
     },
     {
       "id": "tuna_rice",
@@ -1025,7 +1037,8 @@
         "Отварите рис.",
         "Нарежьте огурец и помидор.",
         "Смешайте тунец, рис и овощи, заправьте маслом."
-      ]
+      ],
+      "image": "assets/images/recipes/tuna_rice.png"
     },
     {
       "id": "shrimp_pasta",
@@ -1066,7 +1079,8 @@
         "Обжарьте креветки с луком на масле.",
         "Добавьте шпинат и помидор, прогрейте 2–3 минуты.",
         "Смешайте с пастой."
-      ]
+      ],
+      "image": "assets/images/recipes/shrimp_pasta.png"
     },
     {
       "id": "beef_potato_salad",
@@ -1102,7 +1116,8 @@
         "Отварите или запеките картофель.",
         "Обжарьте или запеките говядину.",
         "Нарежьте овощи и заправьте маслом."
-      ]
+      ],
+      "image": "assets/images/recipes/beef_potato_salad.png"
     },
     {
       "id": "salmon_sweet_potato",
@@ -1134,7 +1149,8 @@
         "Запеките батат и лосось при 200 °C около 20 минут.",
         "Прогрейте шпинат на масле 2–3 минуты.",
         "Посолите и поперчите по вкусу."
-      ]
+      ],
+      "image": "assets/images/recipes/salmon_sweet_potato.png"
     },
     {
       "id": "cod_potato_broccoli",
@@ -1166,7 +1182,8 @@
         "Отварите картофель и брокколи.",
         "Обжарьте треску на масле по 4 минуты с каждой стороны.",
         "Подавайте вместе, посолите и поперчите."
-      ]
+      ],
+      "image": "assets/images/recipes/cod_potato_broccoli.png"
     },
     {
       "id": "chicken_avocado_salad",
@@ -1206,7 +1223,8 @@
         "Обжарьте курицу и нарежьте.",
         "Нарежьте овощи и авокадо.",
         "Смешайте, добавьте шпинат и заправьте маслом."
-      ]
+      ],
+      "image": "assets/images/recipes/chicken_avocado_salad.png"
     },
     {
       "id": "baked_turkey_veg",
@@ -1242,7 +1260,8 @@
         "Нарежьте овощи и индейку.",
         "Смешайте с маслом, солью и перцем.",
         "Запекайте при 200 °C 25–30 минут."
-      ]
+      ],
+      "image": "assets/images/recipes/baked_turkey_veg.png"
     },
     {
       "id": "salmon_rice_cucumber",
@@ -1274,7 +1293,8 @@
         "Отварите рис.",
         "Обжарьте лосось на масле по 4 минуты с каждой стороны.",
         "Подавайте с рисом и нарезанным огурцом."
-      ]
+      ],
+      "image": "assets/images/recipes/salmon_rice_cucumber.png"
     },
     {
       "id": "lentil_stew",
@@ -1318,7 +1338,8 @@
         "Обжарьте лук, морковь и перец на масле.",
         "Добавьте картофель, чечевицу, томатную пасту и воду.",
         "Тушите 25 минут до готовности."
-      ]
+      ],
+      "image": "assets/images/recipes/lentil_stew.png"
     },
     {
       "id": "tuna_egg_salad",
@@ -1358,7 +1379,8 @@
         "Отварите яйца и нарежьте.",
         "Смешайте тунец, овощи и шпинат.",
         "Добавьте яйца и заправьте маслом."
-      ]
+      ],
+      "image": "assets/images/recipes/tuna_egg_salad.png"
     },
     {
       "id": "chicken_veg_salad",
@@ -1398,7 +1420,8 @@
       "steps": [
         "Обжарьте курицу тонкими ломтиками на масле.",
         "Нарежьте овощи и смешайте с курицей."
-      ]
+      ],
+      "image": "assets/images/recipes/chicken_veg_salad.png"
     },
     {
       "id": "avocado_veg_salad",
@@ -1433,7 +1456,8 @@
       "steps": [
         "Нарежьте авокадо и овощи.",
         "Смешайте, добавьте шпинат и заправьте маслом."
-      ]
+      ],
+      "image": "assets/images/recipes/avocado_veg_salad.png"
     },
     {
       "id": "tuna_toast",
@@ -1469,7 +1493,8 @@
         "Подсушите хлеб.",
         "Выложите тунец, огурец и помидор.",
         "Сбрызните маслом."
-      ]
+      ],
+      "image": "assets/images/recipes/tuna_toast.png"
     },
     {
       "id": "shrimp_avocado_salad",
@@ -1509,7 +1534,8 @@
         "Отварите креветки 3 минуты.",
         "Нарежьте овощи и авокадо.",
         "Смешайте и заправьте маслом."
-      ]
+      ],
+      "image": "assets/images/recipes/shrimp_avocado_salad.png"
     },
     {
       "id": "cod_steam_veg",
@@ -1541,7 +1567,8 @@
         "Готовьте треску на пару 10 минут.",
         "Припустите шпинат и брокколи 3–5 минут.",
         "Полейте маслом и посолите."
-      ]
+      ],
+      "image": "assets/images/recipes/cod_steam_veg.png"
     },
     {
       "id": "bean_avocado_salad",
@@ -1581,7 +1608,8 @@
         "Промойте фасоль.",
         "Нарежьте овощи и авокадо.",
         "Смешайте и заправьте маслом."
-      ]
+      ],
+      "image": "assets/images/recipes/bean_avocado_salad.png"
     },
     {
       "id": "apple_almonds",
@@ -1603,7 +1631,8 @@
       ],
       "steps": [
         "Нарежьте яблоко и подавайте с миндалем."
-      ]
+      ],
+      "image": "assets/images/recipes/apple_almonds.png"
     },
     {
       "id": "yogurt_blueberry_snack",
@@ -1629,7 +1658,8 @@
       ],
       "steps": [
         "Смешайте йогурт с черникой и медом."
-      ]
+      ],
+      "image": "assets/images/recipes/yogurt_blueberry_snack.png"
     },
     {
       "id": "banana_walnuts",
@@ -1651,7 +1681,8 @@
       ],
       "steps": [
         "Нарежьте банан и добавьте орехи."
-      ]
+      ],
+      "image": "assets/images/recipes/banana_walnuts.png"
     },
     {
       "id": "orange_cottage",
@@ -1674,7 +1705,8 @@
       "steps": [
         "Очистите апельсин и нарежьте.",
         "Подавайте с творогом."
-      ]
+      ],
+      "image": "assets/images/recipes/orange_cottage.png"
     },
     {
       "id": "veggie_sticks",
@@ -1696,7 +1728,8 @@
       ],
       "steps": [
         "Нарежьте морковь и огурец палочками."
-      ]
+      ],
+      "image": "assets/images/recipes/veggie_sticks.png"
     },
     {
       "id": "chicken_breast_buckwheat_broccoli",
@@ -1730,7 +1763,8 @@
         "Обжарьте курицу на масле до готовности.",
         "Добавьте брокколи и готовьте 5 минут.",
         "Соедините, посолите и поперчите."
-      ]
+      ],
+      "image": "assets/images/recipes/chicken_breast_buckwheat_broccoli.png"
     },
     {
       "id": "chicken_breast_buckwheat_carrot",
@@ -1764,7 +1798,8 @@
         "Обжарьте курицу на масле до готовности.",
         "Добавьте морковь и готовьте 5 минут.",
         "Соедините, посолите и поперчите."
-      ]
+      ],
+      "image": "assets/images/recipes/chicken_breast_buckwheat_carrot.png"
     },
     {
       "id": "chicken_breast_brown_rice_bell_pepper",
@@ -1798,7 +1833,8 @@
         "Обжарьте курицу на масле до готовности.",
         "Добавьте болгарский перец и готовьте 5 минут.",
         "Соедините, посолите и поперчите."
-      ]
+      ],
+      "image": "assets/images/recipes/chicken_breast_brown_rice_bell_pepper.png"
     },
     {
       "id": "chicken_breast_brown_rice_spinach",
@@ -1832,7 +1868,8 @@
         "Обжарьте курицу на масле до готовности.",
         "Добавьте шпинат и готовьте 5 минут.",
         "Соедините, посолите и поперчите."
-      ]
+      ],
+      "image": "assets/images/recipes/chicken_breast_brown_rice_spinach.png"
     },
     {
       "id": "chicken_breast_pasta_spinach",
@@ -1866,7 +1903,8 @@
         "Обжарьте курицу на масле до готовности.",
         "Добавьте шпинат и готовьте 5 минут.",
         "Соедините, посолите и поперчите."
-      ]
+      ],
+      "image": "assets/images/recipes/chicken_breast_pasta_spinach.png"
     },
     {
       "id": "chicken_breast_potato_carrot",
@@ -1900,7 +1938,8 @@
         "Обжарьте курицу на масле до готовности.",
         "Добавьте морковь и готовьте 5 минут.",
         "Соедините, посолите и поперчите."
-      ]
+      ],
+      "image": "assets/images/recipes/chicken_breast_potato_carrot.png"
     },
     {
       "id": "chicken_breast_sweet_potato_broccoli",
@@ -1934,7 +1973,8 @@
         "Обжарьте курицу на масле до готовности.",
         "Добавьте брокколи и готовьте 5 минут.",
         "Соедините, посолите и поперчите."
-      ]
+      ],
+      "image": "assets/images/recipes/chicken_breast_sweet_potato_broccoli.png"
     },
     {
       "id": "turkey_fillet_buckwheat_broccoli",
@@ -1968,7 +2008,8 @@
         "Обжарьте индейку на масле до готовности.",
         "Добавьте брокколи и готовьте 5 минут.",
         "Соедините, посолите и поперчите."
-      ]
+      ],
+      "image": "assets/images/recipes/turkey_fillet_buckwheat_broccoli.png"
     },
     {
       "id": "turkey_fillet_brown_rice_bell_pepper",
@@ -2002,7 +2043,8 @@
         "Обжарьте индейку на масле до готовности.",
         "Добавьте болгарский перец и готовьте 5 минут.",
         "Соедините, посолите и поперчите."
-      ]
+      ],
+      "image": "assets/images/recipes/turkey_fillet_brown_rice_bell_pepper.png"
     },
     {
       "id": "turkey_fillet_brown_rice_spinach",
@@ -2036,7 +2078,8 @@
         "Обжарьте индейку на масле до готовности.",
         "Добавьте шпинат и готовьте 5 минут.",
         "Соедините, посолите и поперчите."
-      ]
+      ],
+      "image": "assets/images/recipes/turkey_fillet_brown_rice_spinach.png"
     },
     {
       "id": "turkey_fillet_pasta_carrot",
@@ -2070,7 +2113,8 @@
         "Обжарьте индейку на масле до готовности.",
         "Добавьте морковь и готовьте 5 минут.",
         "Соедините, посолите и поперчите."
-      ]
+      ],
+      "image": "assets/images/recipes/turkey_fillet_pasta_carrot.png"
     },
     {
       "id": "turkey_fillet_potato_cabbage",
@@ -2104,7 +2148,8 @@
         "Обжарьте индейку на масле до готовности.",
         "Добавьте капусту и готовьте 5 минут.",
         "Соедините, посолите и поперчите."
-      ]
+      ],
+      "image": "assets/images/recipes/turkey_fillet_potato_cabbage.png"
     },
     {
       "id": "turkey_fillet_sweet_potato_broccoli",
@@ -2138,7 +2183,8 @@
         "Обжарьте индейку на масле до готовности.",
         "Добавьте брокколи и готовьте 5 минут.",
         "Соедините, посолите и поперчите."
-      ]
+      ],
+      "image": "assets/images/recipes/turkey_fillet_sweet_potato_broccoli.png"
     },
     {
       "id": "salmon_brown_rice_broccoli",
@@ -2172,7 +2218,8 @@
         "Обжарьте лосось на масле до готовности.",
         "Добавьте брокколи и готовьте 5 минут.",
         "Соедините, посолите и поперчите."
-      ]
+      ],
+      "image": "assets/images/recipes/salmon_brown_rice_broccoli.png"
     },
     {
       "id": "salmon_brown_rice_spinach",
@@ -2206,7 +2253,8 @@
         "Обжарьте лосось на масле до готовности.",
         "Добавьте шпинат и готовьте 5 минут.",
         "Соедините, посолите и поперчите."
-      ]
+      ],
+      "image": "assets/images/recipes/salmon_brown_rice_spinach.png"
     },
     {
       "id": "salmon_potato_bell_pepper",
@@ -2240,7 +2288,8 @@
         "Обжарьте лосось на масле до готовности.",
         "Добавьте болгарский перец и готовьте 5 минут.",
         "Соедините, посолите и поперчите."
-      ]
+      ],
+      "image": "assets/images/recipes/salmon_potato_bell_pepper.png"
     },
     {
       "id": "cod_buckwheat_broccoli",
@@ -2274,7 +2323,8 @@
         "Обжарьте треску на масле до готовности.",
         "Добавьте брокколи и готовьте 5 минут.",
         "Соедините, посолите и поперчите."
-      ]
+      ],
+      "image": "assets/images/recipes/cod_buckwheat_broccoli.png"
     },
     {
       "id": "cod_brown_rice_spinach",
@@ -2308,7 +2358,8 @@
         "Обжарьте треску на масле до готовности.",
         "Добавьте шпинат и готовьте 5 минут.",
         "Соедините, посолите и поперчите."
-      ]
+      ],
+      "image": "assets/images/recipes/cod_brown_rice_spinach.png"
     },
     {
       "id": "cod_potato_carrot",
@@ -2342,7 +2393,8 @@
         "Обжарьте треску на масле до готовности.",
         "Добавьте морковь и готовьте 5 минут.",
         "Соедините, посолите и поперчите."
-      ]
+      ],
+      "image": "assets/images/recipes/cod_potato_carrot.png"
     },
     {
       "id": "cod_pasta_bell_pepper",
@@ -2376,7 +2428,8 @@
         "Обжарьте треску на масле до готовности.",
         "Добавьте болгарский перец и готовьте 5 минут.",
         "Соедините, посолите и поперчите."
-      ]
+      ],
+      "image": "assets/images/recipes/cod_pasta_bell_pepper.png"
     },
     {
       "id": "shrimp_brown_rice_bell_pepper",
@@ -2410,7 +2463,8 @@
         "Обжарьте креветки на масле до готовности.",
         "Добавьте болгарский перец и готовьте 5 минут.",
         "Соедините, посолите и поперчите."
-      ]
+      ],
+      "image": "assets/images/recipes/shrimp_brown_rice_bell_pepper.png"
     },
     {
       "id": "shrimp_pasta_tomato",
@@ -2444,7 +2498,8 @@
         "Обжарьте креветки на масле до готовности.",
         "Добавьте помидор и готовьте 5 минут.",
         "Соедините, посолите и поперчите."
-      ]
+      ],
+      "image": "assets/images/recipes/shrimp_pasta_tomato.png"
     },
     {
       "id": "shrimp_buckwheat_spinach",
@@ -2478,7 +2533,8 @@
         "Обжарьте креветки на масле до готовности.",
         "Добавьте шпинат и готовьте 5 минут.",
         "Соедините, посолите и поперчите."
-      ]
+      ],
+      "image": "assets/images/recipes/shrimp_buckwheat_spinach.png"
     },
     {
       "id": "beef_chuck_buckwheat_cabbage",
@@ -2512,7 +2568,8 @@
         "Обжарьте говядину на масле до готовности.",
         "Добавьте капусту и готовьте 5 минут.",
         "Соедините, посолите и поперчите."
-      ]
+      ],
+      "image": "assets/images/recipes/beef_chuck_buckwheat_cabbage.png"
     },
     {
       "id": "beef_chuck_brown_rice_bell_pepper",
@@ -2546,7 +2603,8 @@
         "Обжарьте говядину на масле до готовности.",
         "Добавьте болгарский перец и готовьте 5 минут.",
         "Соедините, посолите и поперчите."
-      ]
+      ],
+      "image": "assets/images/recipes/beef_chuck_brown_rice_bell_pepper.png"
     },
     {
       "id": "beef_chuck_pasta_broccoli",
@@ -2580,7 +2638,8 @@
         "Обжарьте говядину на масле до готовности.",
         "Добавьте брокколи и готовьте 5 минут.",
         "Соедините, посолите и поперчите."
-      ]
+      ],
+      "image": "assets/images/recipes/beef_chuck_pasta_broccoli.png"
     },
     {
       "id": "beef_chuck_potato_carrot",
@@ -2614,7 +2673,8 @@
         "Обжарьте говядину на масле до готовности.",
         "Добавьте морковь и готовьте 5 минут.",
         "Соедините, посолите и поперчите."
-      ]
+      ],
+      "image": "assets/images/recipes/beef_chuck_potato_carrot.png"
     },
     {
       "id": "lentils_buckwheat_broccoli",
@@ -2648,7 +2708,8 @@
         "Обжарьте чечевицу на масле до готовности.",
         "Добавьте брокколи и готовьте 5 минут.",
         "Соедините, посолите и поперчите."
-      ]
+      ],
+      "image": "assets/images/recipes/lentils_buckwheat_broccoli.png"
     },
     {
       "id": "lentils_brown_rice_carrot",
@@ -2682,7 +2743,8 @@
         "Обжарьте чечевицу на масле до готовности.",
         "Добавьте морковь и готовьте 5 минут.",
         "Соедините, посолите и поперчите."
-      ]
+      ],
+      "image": "assets/images/recipes/lentils_brown_rice_carrot.png"
     },
     {
       "id": "lentils_potato_spinach",
@@ -2716,7 +2778,8 @@
         "Обжарьте чечевицу на масле до готовности.",
         "Добавьте шпинат и готовьте 5 минут.",
         "Соедините, посолите и поперчите."
-      ]
+      ],
+      "image": "assets/images/recipes/lentils_potato_spinach.png"
     },
     {
       "id": "canned_beans_buckwheat_spinach",
@@ -2750,7 +2813,8 @@
         "Обжарьте фасоль на масле до готовности.",
         "Добавьте шпинат и готовьте 5 минут.",
         "Соедините, посолите и поперчите."
-      ]
+      ],
+      "image": "assets/images/recipes/canned_beans_buckwheat_spinach.png"
     },
     {
       "id": "canned_beans_brown_rice_tomato",
@@ -2784,7 +2848,8 @@
         "Обжарьте фасоль на масле до готовности.",
         "Добавьте помидор и готовьте 5 минут.",
         "Соедините, посолите и поперчите."
-      ]
+      ],
+      "image": "assets/images/recipes/canned_beans_brown_rice_tomato.png"
     },
     {
       "id": "canned_beans_potato_broccoli",
@@ -2818,7 +2883,8 @@
         "Обжарьте фасоль на масле до готовности.",
         "Добавьте брокколи и готовьте 5 минут.",
         "Соедините, посолите и поперчите."
-      ]
+      ],
+      "image": "assets/images/recipes/canned_beans_potato_broccoli.png"
     },
     {
       "id": "salad_chicken_breast_cucumber_bell_pepper",
@@ -2850,7 +2916,8 @@
         "Нарежьте огурец и болгарский перец.",
         "Подготовьте курицу.",
         "Смешайте, посолите и заправьте маслом."
-      ]
+      ],
+      "image": "assets/images/recipes/salad_chicken_breast_cucumber_bell_pepper.png"
     },
     {
       "id": "salad_chicken_breast_cabbage_carrot",
@@ -2882,7 +2949,8 @@
         "Нарежьте капусту и морковь.",
         "Подготовьте курицу.",
         "Смешайте, посолите и заправьте маслом."
-      ]
+      ],
+      "image": "assets/images/recipes/salad_chicken_breast_cabbage_carrot.png"
     },
     {
       "id": "salad_turkey_fillet_cucumber_tomato",
@@ -2914,7 +2982,8 @@
         "Нарежьте огурец и помидор.",
         "Подготовьте индейку.",
         "Смешайте, посолите и заправьте маслом."
-      ]
+      ],
+      "image": "assets/images/recipes/salad_turkey_fillet_cucumber_tomato.png"
     },
     {
       "id": "salad_tuna_canned_cucumber_spinach",
@@ -2946,7 +3015,8 @@
         "Нарежьте огурец и шпинат.",
         "Слейте жидкость из тунца.",
         "Смешайте, посолите и заправьте маслом."
-      ]
+      ],
+      "image": "assets/images/recipes/salad_tuna_canned_cucumber_spinach.png"
     },
     {
       "id": "salad_tuna_canned_cabbage_carrot",
@@ -2978,7 +3048,8 @@
         "Нарежьте капусту и морковь.",
         "Слейте жидкость из тунца.",
         "Смешайте, посолите и заправьте маслом."
-      ]
+      ],
+      "image": "assets/images/recipes/salad_tuna_canned_cabbage_carrot.png"
     },
     {
       "id": "salad_shrimp_spinach_bell_pepper",
@@ -3010,7 +3081,8 @@
         "Нарежьте шпинат и болгарский перец.",
         "Подготовьте креветки.",
         "Смешайте, посолите и заправьте маслом."
-      ]
+      ],
+      "image": "assets/images/recipes/salad_shrimp_spinach_bell_pepper.png"
     },
     {
       "id": "salad_egg_cucumber_tomato",
@@ -3042,7 +3114,8 @@
         "Нарежьте огурец и помидор.",
         "Отварите яйца и нарежьте.",
         "Смешайте, посолите и заправьте маслом."
-      ]
+      ],
+      "image": "assets/images/recipes/salad_egg_cucumber_tomato.png"
     },
     {
       "id": "salad_egg_spinach_bell_pepper",
@@ -3074,7 +3147,8 @@
         "Нарежьте шпинат и болгарский перец.",
         "Отварите яйца и нарежьте.",
         "Смешайте, посолите и заправьте маслом."
-      ]
+      ],
+      "image": "assets/images/recipes/salad_egg_spinach_bell_pepper.png"
     },
     {
       "id": "salad_canned_beans_cucumber_tomato",
@@ -3106,7 +3180,8 @@
         "Нарежьте огурец и помидор.",
         "Подготовьте фасоль.",
         "Смешайте, посолите и заправьте маслом."
-      ]
+      ],
+      "image": "assets/images/recipes/salad_canned_beans_cucumber_tomato.png"
     },
     {
       "id": "salad_canned_beans_cabbage_carrot",
@@ -3138,7 +3213,8 @@
         "Нарежьте капусту и морковь.",
         "Подготовьте фасоль.",
         "Смешайте, посолите и заправьте маслом."
-      ]
+      ],
+      "image": "assets/images/recipes/salad_canned_beans_cabbage_carrot.png"
     },
     {
       "id": "soup_lentils_cabbage",
@@ -3182,7 +3258,8 @@
         "Промойте чечевицу.",
         "Добавьте нарезанные картофель, морковь, лук и капусту.",
         "Варите 25 минут, в конце добавьте томатную пасту и масло."
-      ]
+      ],
+      "image": "assets/images/recipes/soup_lentils_cabbage.png"
     },
     {
       "id": "soup_canned_beans_cabbage",
@@ -3226,7 +3303,8 @@
         "Промойте фасоль.",
         "Добавьте нарезанные картофель, морковь, лук и капусту.",
         "Варите 25 минут, в конце добавьте томатную пасту и масло."
-      ]
+      ],
+      "image": "assets/images/recipes/soup_canned_beans_cabbage.png"
     },
     {
       "id": "soup_canned_beans_spinach",
@@ -3270,7 +3348,8 @@
         "Промойте фасоль.",
         "Добавьте нарезанные картофель, морковь, лук и шпинат.",
         "Варите 25 минут, в конце добавьте томатную пасту и масло."
-      ]
+      ],
+      "image": "assets/images/recipes/soup_canned_beans_spinach.png"
     },
     {
       "id": "oats_apple_walnuts",
@@ -3305,7 +3384,8 @@
       "steps": [
         "Сварите овсяные хлопья на молоке.",
         "Добавьте нарезанное яблоко, орехи и мед."
-      ]
+      ],
+      "image": "assets/images/recipes/oats_apple_walnuts.png"
     },
     {
       "id": "oats_blueberry_almonds",
@@ -3340,7 +3420,8 @@
       "steps": [
         "Сварите овсяные хлопья на молоке.",
         "Добавьте чернику, миндаль и мед."
-      ]
+      ],
+      "image": "assets/images/recipes/oats_blueberry_almonds.png"
     },
     {
       "id": "oats_water_apple",
@@ -3371,7 +3452,8 @@
       "steps": [
         "Сварите овсяные хлопья на воде.",
         "Добавьте яблоко, орехи и мед."
-      ]
+      ],
+      "image": "assets/images/recipes/oats_water_apple.png"
     },
     {
       "id": "cottage_banana_walnuts",
@@ -3402,7 +3484,8 @@
       "steps": [
         "Выложите творог в миску.",
         "Добавьте банан, орехи и мед."
-      ]
+      ],
+      "image": "assets/images/recipes/cottage_banana_walnuts.png"
     },
     {
       "id": "cottage_apple_honey",
@@ -3429,7 +3512,8 @@
       "steps": [
         "Нарежьте яблоко.",
         "Смешайте с творогом и добавьте мед."
-      ]
+      ],
+      "image": "assets/images/recipes/cottage_apple_honey.png"
     },
     {
       "id": "yogurt_banana_almonds",
@@ -3460,7 +3544,8 @@
       "steps": [
         "Нарежьте банан.",
         "Смешайте с йогуртом, добавьте миндаль и мед."
-      ]
+      ],
+      "image": "assets/images/recipes/yogurt_banana_almonds.png"
     },
     {
       "id": "omelet_broccoli_cheese",
@@ -3496,7 +3581,8 @@
         "Взбейте яйца с молоком.",
         "Обжарьте брокколи на масле и залейте яйцами.",
         "Готовьте под крышкой 4 минуты, посыпьте сыром."
-      ]
+      ],
+      "image": "assets/images/recipes/omelet_broccoli_cheese.png"
     },
     {
       "id": "toast_cheese_tomato",
@@ -3527,7 +3613,8 @@
       "steps": [
         "Подсушите хлеб.",
         "Выложите сыр и помидор, сбрызните маслом."
-      ]
+      ],
+      "image": "assets/images/recipes/toast_cheese_tomato.png"
     },
     {
       "id": "snack_egg_cucumber",
@@ -3550,7 +3637,8 @@
       "steps": [
         "Отварите яйцо.",
         "Нарежьте огурец и подавайте."
-      ]
+      ],
+      "image": "assets/images/recipes/snack_egg_cucumber.png"
     },
     {
       "id": "snack_cottage_banana",
@@ -3573,7 +3661,8 @@
       "steps": [
         "Нарежьте банан.",
         "Смешайте с творогом."
-      ]
+      ],
+      "image": "assets/images/recipes/snack_cottage_banana.png"
     },
     {
       "id": "snack_yogurt_orange",
@@ -3596,7 +3685,8 @@
       "steps": [
         "Очистите апельсин.",
         "Подавайте с йогуртом."
-      ]
+      ],
+      "image": "assets/images/recipes/snack_yogurt_orange.png"
     },
     {
       "id": "snack_apple_walnuts",
@@ -3619,7 +3709,8 @@
       "steps": [
         "Нарежьте яблоко.",
         "Добавьте орехи."
-      ]
+      ],
+      "image": "assets/images/recipes/snack_apple_walnuts.png"
     },
     {
       "id": "snack_banana_almonds",
@@ -3642,7 +3733,8 @@
       "steps": [
         "Нарежьте банан.",
         "Добавьте миндаль."
-      ]
+      ],
+      "image": "assets/images/recipes/snack_banana_almonds.png"
     },
     {
       "id": "snack_cottage_blueberry",
@@ -3664,7 +3756,8 @@
       ],
       "steps": [
         "Смешайте творог с черникой."
-      ]
+      ],
+      "image": "assets/images/recipes/snack_cottage_blueberry.png"
     }
   ]
 }
