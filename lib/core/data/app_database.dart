@@ -240,6 +240,125 @@ CREATE TABLE app_meta (
     });
   }
 
+  Future<int> merge(SeedBundle bundle) async {
+    var importedRecipes = 0;
+    await _db.transaction((txn) async {
+      final existingRows = await txn.query('ingredients', columns: ['id']);
+      final knownIngredientIds = existingRows
+          .map((row) => row['id'] as String)
+          .toSet();
+      final bundleIngredientIds = bundle.ingredients
+          .map((ingredient) => ingredient.id)
+          .toSet();
+
+      for (final recipe in bundle.recipes) {
+        final ingredientsInRecipe = <String>{};
+        for (final item in recipe.ingredients) {
+          if (!ingredientsInRecipe.add(item.ingredientId)) {
+            throw FormatException(
+              'Ингредиент ${item.ingredientId} дублируется в «${recipe.title}»',
+            );
+          }
+          if (!knownIngredientIds.contains(item.ingredientId) &&
+              !bundleIngredientIds.contains(item.ingredientId)) {
+            throw FormatException(
+              'Неизвестный ингредиент: ${item.ingredientId}',
+            );
+          }
+        }
+      }
+
+      for (final ingredient in bundle.ingredients) {
+        await txn.rawInsert(
+          '''
+INSERT INTO ingredients (id, name, category, kcal, protein, fat, carbs)
+VALUES (?, ?, ?, ?, ?, ?, ?)
+ON CONFLICT(id) DO UPDATE SET
+  name = excluded.name,
+  category = excluded.category,
+  kcal = excluded.kcal,
+  protein = excluded.protein,
+  fat = excluded.fat,
+  carbs = excluded.carbs
+''',
+          [
+            ingredient.id,
+            ingredient.name,
+            ingredient.category,
+            ingredient.per100g.calories,
+            ingredient.per100g.protein,
+            ingredient.per100g.fat,
+            ingredient.per100g.carbs,
+          ],
+        );
+        await txn.delete(
+          'ingredient_allergens',
+          where: 'ingredient_id = ?',
+          whereArgs: [ingredient.id],
+        );
+        for (final allergen in ingredient.allergens) {
+          await txn.insert('ingredient_allergens', {
+            'ingredient_id': ingredient.id,
+            'allergen': allergen.name,
+          });
+        }
+        final price = bundle.prices[ingredient.id];
+        if (price != null) {
+          await txn.insert('ingredient_prices', {
+            'ingredient_id': ingredient.id,
+            'price_per_kg': price,
+          }, conflictAlgorithm: ffi.ConflictAlgorithm.replace);
+        }
+      }
+
+      for (final recipe in bundle.recipes) {
+        await txn.insert('recipes', {
+          'id': recipe.id,
+          'title': recipe.title,
+          'servings': recipe.servings,
+          'minutes': recipe.minutes,
+        }, conflictAlgorithm: ffi.ConflictAlgorithm.replace);
+        await txn.delete(
+          'recipe_meal_types',
+          where: 'recipe_id = ?',
+          whereArgs: [recipe.id],
+        );
+        for (final mealType in recipe.mealTypes) {
+          await txn.insert('recipe_meal_types', {
+            'recipe_id': recipe.id,
+            'meal_type': mealType.name,
+          });
+        }
+        await txn.delete(
+          'recipe_ingredients',
+          where: 'recipe_id = ?',
+          whereArgs: [recipe.id],
+        );
+        for (final item in recipe.ingredients) {
+          await txn.insert('recipe_ingredients', {
+            'recipe_id': recipe.id,
+            'ingredient_id': item.ingredientId,
+            'grams': item.grams,
+          });
+        }
+        await txn.delete(
+          'recipe_steps',
+          where: 'recipe_id = ?',
+          whereArgs: [recipe.id],
+        );
+        for (var index = 0; index < recipe.steps.length; index++) {
+          await txn.insert('recipe_steps', {
+            'recipe_id': recipe.id,
+            'step_no': index + 1,
+            'text': recipe.steps[index],
+          });
+        }
+        importedRecipes++;
+      }
+    });
+    return importedRecipes;
+  }
+
   Future<InMemoryRecipeRepository> loadRepository() async {
     final ingredientRows = await _db.query('ingredients', orderBy: 'id');
     final allergenRows = await _db.query('ingredient_allergens');

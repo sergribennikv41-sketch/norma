@@ -1,14 +1,18 @@
 import 'dart:async';
+import 'dart:convert';
 
+import 'package:file_selector/file_selector.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../../core/data/app_database.dart';
 import '../../core/data/recipe_repository.dart';
 import '../../core/data/session_storage.dart';
 import '../../core/models/daily_targets.dart';
 import '../../core/models/meal_plan.dart';
 import '../../core/models/plan_snapshot.dart';
 import '../../core/models/recipe.dart';
+import '../../core/models/seed_bundle.dart';
 import '../../core/models/user_profile.dart';
 import '../../core/nutrition/targets_calculator.dart';
 import '../../core/planner/menu_generator.dart';
@@ -20,7 +24,7 @@ import '../shared/recipe_details.dart';
 
 enum _MealAction { replace, like, block }
 
-enum _PlanMenuAction { editProfile, resetProfile }
+enum _PlanMenuAction { editProfile, importRecipes, resetProfile }
 
 class PlanPage extends StatefulWidget {
   const PlanPage({
@@ -41,7 +45,7 @@ class PlanPage extends StatefulWidget {
 }
 
 class _PlanPageState extends State<PlanPage> {
-  late final RecipeRepository _repository;
+  late RecipeRepository _repository;
   final SessionStorage _storage = SessionStorage();
   late UserProfile _profile;
   WeeklyPlan? _plan;
@@ -310,6 +314,83 @@ class _PlanPageState extends State<PlanPage> {
     );
   }
 
+  Future<void> _importRecipes() async {
+    const typeGroup = XTypeGroup(label: 'JSON', extensions: ['json']);
+    final file = await openFile(acceptedTypeGroups: [typeGroup]);
+    if (file == null || !mounted) {
+      return;
+    }
+
+    final SeedBundle bundle;
+    try {
+      final raw = await file.readAsString();
+      final decoded = jsonDecode(raw);
+      if (decoded is! Map) {
+        throw const FormatException('Ожидается JSON-объект');
+      }
+      bundle = SeedBundle.fromJson(Map<String, dynamic>.from(decoded));
+      if (bundle.recipes.isEmpty) {
+        throw const FormatException('В файле нет рецептов');
+      }
+    } on FormatException catch (error) {
+      _showMessage('Ошибка импорта: ${error.message}');
+      return;
+    } catch (error) {
+      _showMessage('Не удалось прочитать файл: $error');
+      return;
+    }
+
+    if (!mounted) {
+      return;
+    }
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (dialogContext) {
+        return AlertDialog(
+          title: const Text('Импортировать рецепты?'),
+          content: Text(
+            'Ингредиентов: ${bundle.ingredients.length}\n'
+            'Рецептов: ${bundle.recipes.length}\n\n'
+            'Совпадающие записи будут обновлены.',
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(dialogContext).pop(false),
+              child: const Text('Отмена'),
+            ),
+            FilledButton(
+              onPressed: () => Navigator.of(dialogContext).pop(true),
+              child: const Text('Импортировать'),
+            ),
+          ],
+        );
+      },
+    );
+    if (confirmed != true || !mounted) {
+      return;
+    }
+
+    AppDatabase? database;
+    try {
+      database = await AppDatabase.open();
+      final count = await database.merge(bundle);
+      final repository = await database.loadRepository();
+      if (!mounted) {
+        return;
+      }
+      setState(() {
+        _repository = repository;
+        _seed++;
+        _generate();
+      });
+      _showMessage('Импортировано рецептов: $count');
+    } catch (error) {
+      _showMessage('Не удалось импортировать: $error');
+    } finally {
+      await database?.close();
+    }
+  }
+
   void _showMessage(String message) {
     if (!mounted) {
       return;
@@ -384,6 +465,9 @@ class _PlanPageState extends State<PlanPage> {
                 case _PlanMenuAction.editProfile:
                   unawaited(_editProfile());
                   break;
+                case _PlanMenuAction.importRecipes:
+                  unawaited(_importRecipes());
+                  break;
                 case _PlanMenuAction.resetProfile:
                   unawaited(_resetProfile());
                   break;
@@ -393,6 +477,10 @@ class _PlanPageState extends State<PlanPage> {
               PopupMenuItem<_PlanMenuAction>(
                 value: _PlanMenuAction.editProfile,
                 child: Text('Изменить параметры'),
+              ),
+              PopupMenuItem<_PlanMenuAction>(
+                value: _PlanMenuAction.importRecipes,
+                child: Text('Импортировать рецепты'),
               ),
               PopupMenuItem<_PlanMenuAction>(
                 value: _PlanMenuAction.resetProfile,

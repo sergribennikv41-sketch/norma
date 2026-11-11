@@ -1,6 +1,11 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:norma/core/data/app_database.dart';
 import 'package:norma/core/models/enums.dart';
+import 'package:norma/core/models/ingredient.dart';
+import 'package:norma/core/models/nutrients.dart';
 import 'package:norma/core/models/recipe.dart';
 import 'package:norma/core/models/seed_bundle.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
@@ -75,6 +80,122 @@ void main() {
 
     expect(repository.recipes, hasLength(seed.recipes.length + 1));
     expect(repository.recipeById('test_extra'), isNotNull);
+
+    await database.close();
+  });
+
+  test('merge добавляет новые ингредиенты и рецепты', () async {
+    final database = await AppDatabase.open(path: inMemoryDatabasePath);
+    await database.seedIfNeeded(seed);
+
+    const ingredient = Ingredient(
+      id: 'test_import_ingredient',
+      name: 'Импорт-продукт',
+      category: 'Тест',
+      per100g: Nutrients(calories: 50, protein: 5, fat: 2, carbs: 3),
+      allergens: {Allergen.nuts},
+    );
+    final recipe = Recipe(
+      id: 'test_import_recipe',
+      title: 'Импорт-блюдо',
+      mealTypes: {MealType.snack},
+      servings: 1,
+      minutes: 5,
+      ingredients: const [
+        RecipeIngredient(ingredientId: 'test_import_ingredient', grams: 100),
+      ],
+      steps: const ['Съешьте.'],
+    );
+    final count = await database.merge(
+      SeedBundle(
+        version: 99,
+        ingredients: const [ingredient],
+        recipes: [recipe],
+        prices: const {'test_import_ingredient': 150},
+      ),
+    );
+    final repository = await database.loadRepository();
+
+    expect(count, 1);
+    expect(repository.recipes, hasLength(seed.recipes.length + 1));
+    expect(repository.recipeById('test_import_recipe'), isNotNull);
+    expect(repository.pricePerKg('test_import_ingredient'), 150);
+    expect(repository.allergensForRecipe(recipe), {Allergen.nuts});
+
+    await database.close();
+  });
+
+  test('merge обновляет рецепт с тем же id', () async {
+    final database = await AppDatabase.open(path: inMemoryDatabasePath);
+    await database.seedIfNeeded(seed);
+    final original = seed.recipes.first;
+    final updated = Recipe(
+      id: original.id,
+      title: 'Обновлённое название',
+      mealTypes: original.mealTypes,
+      servings: original.servings,
+      minutes: original.minutes,
+      ingredients: original.ingredients,
+      steps: original.steps,
+    );
+    final count = await database.merge(
+      SeedBundle(
+        version: 99,
+        ingredients: const [],
+        recipes: [updated],
+        prices: const {},
+      ),
+    );
+    final repository = await database.loadRepository();
+
+    expect(count, 1);
+    expect(repository.recipes, hasLength(seed.recipes.length));
+    expect(repository.recipeById(original.id)?.title, 'Обновлённое название');
+
+    await database.close();
+  });
+
+  test('merge откатывается при неизвестном ингредиенте', () async {
+    final database = await AppDatabase.open(path: inMemoryDatabasePath);
+    await database.seedIfNeeded(seed);
+    final badRecipe = Recipe(
+      id: 'bad_import',
+      title: 'Плохой импорт',
+      mealTypes: {MealType.snack},
+      servings: 1,
+      minutes: 5,
+      ingredients: const [
+        RecipeIngredient(ingredientId: 'missing_ingredient', grams: 100),
+      ],
+      steps: const ['Ничего.'],
+    );
+    final badBundle = SeedBundle(
+      version: 99,
+      ingredients: const [],
+      recipes: [badRecipe],
+      prices: const {},
+    );
+
+    await expectLater(database.merge(badBundle), throwsFormatException);
+    final repository = await database.loadRepository();
+    expect(repository.recipeById('bad_import'), isNull);
+    expect(repository.recipes, hasLength(seed.recipes.length));
+
+    await database.close();
+  });
+
+  test('пример импорта из examples применяется', () async {
+    final raw = File('examples/import_example.json').readAsStringSync();
+    final bundle = SeedBundle.fromJson(jsonDecode(raw) as Map<String, dynamic>);
+    final database = await AppDatabase.open(path: inMemoryDatabasePath);
+    await database.seedIfNeeded(seed);
+
+    final count = await database.merge(bundle);
+    final repository = await database.loadRepository();
+
+    expect(count, bundle.recipes.length);
+    expect(repository.recipeById('example_yogurt_chia'), isNotNull);
+    expect(repository.pricePerKg('chia_seeds'), 900);
 
     await database.close();
   });

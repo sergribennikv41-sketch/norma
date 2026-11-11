@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "ingredients": [
+    {
+      "id": "chia_seeds",
+      "name": "Семена чиа",
+      "category": "Бакалея",
+      "per100g": {
+        "calories": 486,
+        "protein": 16.5,
+        "fat": 30.7,
+        "carbs": 42.1
+      },
+      "allergens": [],
+      "pricePerKg": 900
+    }
+  ],
+  "recipes": [
+    {
+      "id": "example_yogurt_chia",
+      "title": "Йогурт с чиа и бананом",
+      "mealTypes": ["breakfast", "snack"],
+      "servings": 1,
+      "minutes": 5,
+      "ingredients": [
+        {"ingredientId": "greek_yogurt", "grams": 150},
+        {"ingredientId": "banana", "grams": 100},
+        {"ingredientId": "chia_seeds", "grams": 10}
+      ],
+      "steps": [
+        "Смешайте йогурт с семенами чиа.",
+        "Добавьте нарезанный банан."
+      ]
+    }
+  ]
+}
