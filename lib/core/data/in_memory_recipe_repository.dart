@@ -15,12 +15,14 @@ class InMemoryRecipeRepository implements RecipeRepository {
        _prices = Map.unmodifiable(prices),
        _byId = {
          for (final ingredient in ingredients) ingredient.id: ingredient,
-       };
+       },
+       _recipesById = {for (final recipe in recipes) recipe.id: recipe};
 
   final List<Ingredient> _ingredients;
   final List<Recipe> _recipes;
   final Map<String, double> _prices;
   final Map<String, Ingredient> _byId;
+  final Map<String, Recipe> _recipesById;
 
   @override
   List<Ingredient> get ingredients => _ingredients;
@@ -30,6 +32,9 @@ class InMemoryRecipeRepository implements RecipeRepository {
 
   @override
   Ingredient? ingredientById(String id) => _byId[id];
+
+  @override
+  Recipe? recipeById(String id) => _recipesById[id];
 
   @override
   Nutrients nutrientsForRecipe(Recipe recipe) {

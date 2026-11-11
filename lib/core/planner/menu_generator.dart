@@ -357,6 +357,67 @@ class MenuGenerator {
     );
   }
 
+  WeeklyPlan applyRecipeToMeal({
+    required WeeklyPlan plan,
+    required UserProfile profile,
+    required RecipeRepository repository,
+    required int dayIndex,
+    required int mealIndex,
+    required Recipe recipe,
+  }) {
+    if (dayIndex < 0 || dayIndex >= plan.days.length) {
+      throw StateError('Неверный день меню');
+    }
+    final day = plan.days[dayIndex];
+    if (mealIndex < 0 || mealIndex >= day.meals.length) {
+      throw StateError('Неверный приём пищи');
+    }
+    final current = day.meals[mealIndex];
+    if (!recipe.mealTypes.contains(current.type)) {
+      throw StateError('Блюдо не подходит для «${current.type.label}»');
+    }
+    if (!repository.canUseRecipe(recipe, profile) ||
+        !_fitsTime(recipe, profile)) {
+      throw StateError('Блюдо не подходит под ограничения');
+    }
+    final slots = slotsForMeals(profile.mealsPerDay);
+    if (mealIndex >= slots.length) {
+      throw StateError('Не удалось определить приём пищи');
+    }
+
+    final targetCalories =
+        plan.targets.nutrients.calories * slots[mealIndex].share;
+    final perServing = repository.nutrientsPerServing(recipe);
+    if (perServing.calories <= 0) {
+      throw StateError('Некорректная калорийность блюда');
+    }
+    final scale = (targetCalories / perServing.calories)
+        .clamp(0.5, 1.5)
+        .toDouble();
+    final meal = PlannedMeal(
+      type: current.type,
+      recipe: recipe,
+      scale: scale,
+      nutrients: perServing * scale,
+      ingredientGrams: {
+        for (final item in recipe.ingredients)
+          item.ingredientId: item.grams * scale,
+      },
+      cost: repository.costPerServing(recipe) * scale,
+    );
+
+    final newMeals = [...day.meals];
+    newMeals[mealIndex] = meal;
+    final newDays = [...plan.days];
+    newDays[dayIndex] = DayPlan(index: day.index, meals: newMeals);
+
+    return WeeklyPlan(
+      days: newDays,
+      targets: plan.targets,
+      shoppingList: buildShoppingList(newDays, repository),
+    );
+  }
+
   WeeklyPlan rescaleMeal({
     required WeeklyPlan plan,
     required int dayIndex,

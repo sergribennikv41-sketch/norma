@@ -11,6 +11,8 @@ abstract class RecipeRepository {
 
   Ingredient? ingredientById(String id);
 
+  Recipe? recipeById(String id);
+
   Nutrients nutrientsForRecipe(Recipe recipe);
 
   Nutrients nutrientsPerServing(Recipe recipe);

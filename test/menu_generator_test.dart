@@ -285,6 +285,53 @@ void main() {
     expect(updated.shoppingList, isNotEmpty);
   });
 
+  test('добавляет выбранный рецепт в подходящий слот', () {
+    final plan = const MenuGenerator().generate(
+      profile: profile,
+      targets: targets,
+      repository: repository,
+    );
+    final recipe = repository.recipeById('oatmeal_banana_almonds');
+    expect(recipe, isNotNull);
+
+    final updated = const MenuGenerator().applyRecipeToMeal(
+      plan: plan,
+      profile: profile,
+      repository: repository,
+      dayIndex: 3,
+      mealIndex: 0,
+      recipe: recipe!,
+    );
+    final meal = updated.days[3].meals[0];
+
+    expect(meal.recipe.id, 'oatmeal_banana_almonds');
+    expect(meal.type, MealType.breakfast);
+    expect(meal.scale, inInclusiveRange(0.5, 1.5));
+    expect(updated.days[3].meals[1].recipe.id, plan.days[3].meals[1].recipe.id);
+    expect(updated.shoppingList, isNotEmpty);
+  });
+
+  test('не даёт вставить блюдо в неподходящий слот', () {
+    final plan = const MenuGenerator().generate(
+      profile: profile,
+      targets: targets,
+      repository: repository,
+    );
+    final recipe = repository.recipeById('oatmeal_banana_almonds')!;
+
+    expect(
+      () => const MenuGenerator().applyRecipeToMeal(
+        plan: plan,
+        profile: profile,
+        repository: repository,
+        dayIndex: 0,
+        mealIndex: 1,
+        recipe: recipe,
+      ),
+      throwsStateError,
+    );
+  });
+
   test('изменение порции пересчитывает блюдо и покупки', () {
     final plan = const MenuGenerator().generate(
       profile: profile,

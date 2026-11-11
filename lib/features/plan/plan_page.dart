@@ -318,12 +318,43 @@ class _PlanPageState extends State<PlanPage> {
         .showSnackBar(SnackBar(content: Text(message)));
   }
 
-  void _openCatalog() {
-    Navigator.of(context).push(
-      MaterialPageRoute<void>(
-        builder: (context) => CatalogPage(repository: _repository),
+  Future<void> _openCatalog() async {
+    final plan = _plan;
+    if (plan == null) {
+      return;
+    }
+    final pick = await Navigator.of(context).push<CatalogPick>(
+      MaterialPageRoute<CatalogPick>(
+        builder: (context) => CatalogPage(repository: _repository, plan: plan),
       ),
     );
+    if (pick == null || !mounted) {
+      return;
+    }
+    final recipe = _repository.recipeById(pick.recipeId);
+    if (recipe == null) {
+      _showMessage('Рецепт не найден');
+      return;
+    }
+    final currentPlan = _plan;
+    if (currentPlan == null) {
+      return;
+    }
+    try {
+      final updated = const MenuGenerator().applyRecipeToMeal(
+        plan: currentPlan,
+        profile: _profile,
+        repository: _repository,
+        dayIndex: pick.dayIndex,
+        mealIndex: pick.mealIndex,
+        recipe: recipe,
+      );
+      setState(() => _plan = updated);
+      unawaited(_saveSession());
+      _showMessage('Блюдо добавлено в рацион');
+    } on StateError catch (error) {
+      _showMessage(error.message);
+    }
   }
 
   @override
@@ -335,7 +366,9 @@ class _PlanPageState extends State<PlanPage> {
         title: const Text('Ваш рацион'),
         actions: [
           IconButton(
-            onPressed: _openCatalog,
+            onPressed: () {
+              unawaited(_openCatalog());
+            },
             tooltip: 'Каталог рецептов',
             icon: const Icon(Icons.menu_book_outlined),
           ),

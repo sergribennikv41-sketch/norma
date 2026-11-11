@@ -13,6 +13,7 @@ Future<double?> showRecipeDetails(
   required RecipeRepository repository,
   bool allowScaleEdit = false,
   double initialScale = 1,
+  VoidCallback? onAddToPlan,
 }) {
   final safeScale = initialScale > 0 ? initialScale : 1.0;
   final baseNutrients = nutrients * (1 / safeScale);
@@ -98,6 +99,14 @@ Future<double?> showRecipeDetails(
               ),
             ),
             actions: [
+              if (onAddToPlan != null)
+                FilledButton.tonal(
+                  onPressed: () {
+                    Navigator.of(dialogContext).pop();
+                    onAddToPlan();
+                  },
+                  child: const Text('В рацион'),
+                ),
               TextButton(
                 onPressed: () => Navigator.of(dialogContext).pop(),
                 child: const Text('Закрыть'),
