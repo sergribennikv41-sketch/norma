@@ -12,12 +12,14 @@ import '../../core/models/daily_targets.dart';
 import '../../core/models/meal_plan.dart';
 import '../../core/models/plan_snapshot.dart';
 import '../../core/models/recipe.dart';
+import '../../core/models/retail.dart';
 import '../../core/models/seed_bundle.dart';
 import '../../core/models/user_profile.dart';
 import '../../core/nutrition/targets_calculator.dart';
 import '../../core/planner/menu_generator.dart';
 import '../../core/planner/plan_restorer.dart';
 import '../../core/planner/shopping_list_text.dart';
+import '../../core/price/price_lookup.dart';
 import '../catalog/catalog_page.dart';
 import '../onboarding/onboarding_page.dart';
 import '../shared/recipe_details.dart';
@@ -33,12 +35,14 @@ class PlanPage extends StatefulWidget {
     required this.repository,
     this.initialSeed = 1,
     this.initialPlan,
+    this.priceLookup,
   });
 
   final UserProfile profile;
   final RecipeRepository repository;
   final int initialSeed;
   final SavedPlan? initialPlan;
+  final PriceLookupService? priceLookup;
 
   @override
   State<PlanPage> createState() => _PlanPageState();
@@ -51,6 +55,10 @@ class _PlanPageState extends State<PlanPage> {
   WeeklyPlan? _plan;
   String? _error;
   late int _seed;
+  late final PriceLookupService _priceLookup;
+  final Map<String, PriceLookupState> _priceStates = {};
+  StreamSubscription<PriceLookupEvent>? _priceSubscription;
+  bool _shoppingExpanded = false;
   final Set<String> _checkedIngredients = {};
 
   @override
@@ -59,7 +67,14 @@ class _PlanPageState extends State<PlanPage> {
     _repository = widget.repository;
     _profile = widget.profile;
     _seed = widget.initialSeed;
+    _priceLookup = widget.priceLookup ?? ProcessPriceLookupService();
     _restoreOrGenerate();
+  }
+
+  @override
+  void dispose() {
+    unawaited(_priceSubscription?.cancel());
+    super.dispose();
   }
 
   void _restoreOrGenerate() {
@@ -95,6 +110,13 @@ class _PlanPageState extends State<PlanPage> {
       _error = error.message;
     }
     unawaited(_saveSession());
+    if (_shoppingExpanded) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted) {
+          _ensurePricesLoaded();
+        }
+      });
+    }
   }
 
   Future<void> _saveSession() async {
@@ -108,6 +130,91 @@ class _PlanPageState extends State<PlanPage> {
     } catch (_) {
       return;
     }
+  }
+
+  void _onShoppingExpanded() {
+    _shoppingExpanded = true;
+    _ensurePricesLoaded();
+  }
+
+  void _ensurePricesLoaded() {
+    if (_priceSubscription != null) {
+      return;
+    }
+    final plan = _plan;
+    if (plan == null) {
+      return;
+    }
+
+    final seen = <String>{};
+    final missing = <PriceLookupItem>[];
+    for (final item in plan.shoppingList) {
+      final ingredient = item.ingredient;
+      if (!seen.add(ingredient.id)) {
+        continue;
+      }
+      if (_priceStates[ingredient.id]?.status == PriceLookupStatus.found) {
+        continue;
+      }
+      missing.add(PriceLookupItem(id: ingredient.id, name: ingredient.name));
+    }
+    if (missing.isEmpty) {
+      return;
+    }
+
+    setState(() {
+      for (final item in missing) {
+        _priceStates[item.id] = const PriceLookupState.loading();
+      }
+    });
+
+    final stream = _priceLookup.lookup(
+      cityId: _profile.cityId,
+      storeId: _profile.storeId,
+      items: missing,
+    );
+    _priceSubscription = stream.listen(
+      (event) {
+        if (!mounted) {
+          return;
+        }
+        setState(() => _priceStates[event.ingredientId] = event.state);
+      },
+      onError: (Object error) {
+        if (!mounted) {
+          return;
+        }
+        setState(() {
+          for (final item in missing) {
+            if (_priceStates[item.id]?.status == PriceLookupStatus.loading) {
+              _priceStates[item.id] = PriceLookupState.failed(error.toString());
+            }
+          }
+        });
+      },
+      onDone: () {
+        _priceSubscription = null;
+        if (!mounted) {
+          return;
+        }
+        setState(() {
+          for (final item in missing) {
+            if (_priceStates[item.id]?.status == PriceLookupStatus.loading) {
+              _priceStates[item.id] = const PriceLookupState.failed(
+                'Нет ответа от магазина',
+              );
+            }
+          }
+        });
+      },
+    );
+  }
+
+  void _resetPrices() {
+    unawaited(_priceSubscription?.cancel());
+    _priceSubscription = null;
+    _priceLookup.clearCache();
+    _priceStates.clear();
   }
 
   void _regenerate() {
@@ -185,7 +292,6 @@ class _PlanPageState extends State<PlanPage> {
       context,
       title: meal.recipe.title,
       nutrients: meal.nutrients,
-      cost: meal.cost,
       ingredientGrams: meal.ingredientGrams,
       steps: meal.recipe.steps,
       repository: _repository,
@@ -275,11 +381,24 @@ class _PlanPageState extends State<PlanPage> {
     if (updated == null || !mounted) {
       return;
     }
+    final locationChanged =
+        updated.cityId != _profile.cityId ||
+        updated.storeId != _profile.storeId;
+    if (locationChanged) {
+      _resetPrices();
+    }
     setState(() {
       _profile = updated;
       _seed = 1;
       _generate();
     });
+    if (locationChanged && _shoppingExpanded) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted) {
+          _ensurePricesLoaded();
+        }
+      });
+    }
   }
 
   Future<void> _resetProfile() async {
@@ -507,6 +626,8 @@ class _PlanPageState extends State<PlanPage> {
               checkedIngredients: _checkedIngredients,
               onToggleIngredient: _toggleIngredient,
               onCopyShoppingList: _copyShoppingList,
+              priceStates: _priceStates,
+              onLoadPrices: _onShoppingExpanded,
             ),
     );
   }
@@ -523,6 +644,8 @@ class _PlanView extends StatelessWidget {
     required this.checkedIngredients,
     required this.onToggleIngredient,
     required this.onCopyShoppingList,
+    required this.priceStates,
+    required this.onLoadPrices,
   });
 
   final WeeklyPlan plan;
@@ -534,6 +657,8 @@ class _PlanView extends StatelessWidget {
   final Set<String> checkedIngredients;
   final void Function(String ingredientId, bool checked) onToggleIngredient;
   final VoidCallback onCopyShoppingList;
+  final Map<String, PriceLookupState> priceStates;
+  final VoidCallback onLoadPrices;
 
   @override
   Widget build(BuildContext context) {
@@ -558,11 +683,6 @@ class _PlanView extends StatelessWidget {
                 style: theme.textTheme.titleLarge?.copyWith(
                   fontWeight: FontWeight.w700,
                 ),
-              ),
-              const SizedBox(height: 4),
-              Text(
-                'Ориентировочно ${plan.totalCost.round()} ₽ за неделю',
-                style: theme.textTheme.bodySmall,
               ),
               const SizedBox(height: 8),
               for (final day in plan.days)
@@ -592,12 +712,20 @@ class _PlanView extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 4),
+              Text(
+                'Цены: ${storeChainById(profile.storeId).name} · '
+                '${retailCityById(profile.cityId).name}',
+                style: theme.textTheme.bodySmall,
+              ),
+              const SizedBox(height: 8),
               for (final entry in grouped.entries)
                 _ShoppingCard(
                   category: entry.key,
                   items: entry.value,
                   checkedIngredients: checkedIngredients,
                   onToggleIngredient: onToggleIngredient,
+                  priceStates: priceStates,
+                  onExpanded: onLoadPrices,
                 ),
               const SizedBox(height: 12),
               Text(
@@ -625,7 +753,6 @@ class _TargetsCard extends StatelessWidget {
     final nutrients = targets.nutrients;
     final limits = <String>[
       if (profile.maxCookMinutes != null) 'до ${profile.maxCookMinutes} мин',
-      if (profile.dailyBudgetRub != null) 'до ${profile.dailyBudgetRub} ₽/день',
     ];
     return Card(
       child: Padding(
@@ -732,8 +859,7 @@ class _DayCard extends StatelessWidget {
           '${totals.calories.round()} ккал · '
           'Б ${totals.protein.round()} · '
           'Ж ${totals.fat.round()} · '
-          'У ${totals.carbs.round()}\n'
-          '~${day.totalCost.round()} ₽ за день',
+          'У ${totals.carbs.round()}',
         ),
         children: [
           for (var mealIndex = 0; mealIndex < day.meals.length; mealIndex++)
@@ -749,7 +875,7 @@ class _DayCard extends StatelessWidget {
       title: Text(meal.recipe.title),
       subtitle: Text(
         '${meal.type.label} · ${meal.recipe.minutes} мин · '
-        '${(meal.scale * 100).round()}% порции · ~${meal.cost.round()} ₽',
+        '${(meal.scale * 100).round()}% порции',
       ),
       trailing: Row(
         mainAxisSize: MainAxisSize.min,
@@ -798,12 +924,16 @@ class _ShoppingCard extends StatelessWidget {
     required this.items,
     required this.checkedIngredients,
     required this.onToggleIngredient,
+    required this.priceStates,
+    required this.onExpanded,
   });
 
   final String category;
   final List<ShoppingItem> items;
   final Set<String> checkedIngredients;
   final void Function(String ingredientId, bool checked) onToggleIngredient;
+  final Map<String, PriceLookupState> priceStates;
+  final VoidCallback onExpanded;
 
   @override
   Widget build(BuildContext context) {
@@ -813,6 +943,11 @@ class _ShoppingCard extends StatelessWidget {
       child: ExpansionTile(
         title: Text(category),
         subtitle: Text('${items.length} поз.'),
+        onExpansionChanged: (expanded) {
+          if (expanded) {
+            onExpanded();
+          }
+        },
         children: [
           for (final item in items)
             ListTile(
@@ -829,7 +964,14 @@ class _ShoppingCard extends StatelessWidget {
                     ? const TextStyle(decoration: TextDecoration.lineThrough)
                     : null,
               ),
-              trailing: Text('${item.grams.round()} г'),
+              trailing: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text('${item.grams.round()} г'),
+                  const SizedBox(width: 8),
+                  _PriceBadge(state: priceStates[item.ingredient.id]),
+                ],
+              ),
               onTap: () {
                 onToggleIngredient(
                   item.ingredient.id,
@@ -838,6 +980,62 @@ class _ShoppingCard extends StatelessWidget {
               },
             ),
         ],
+      ),
+    );
+  }
+}
+
+class _PriceBadge extends StatelessWidget {
+  const _PriceBadge({required this.state});
+
+  final PriceLookupState? state;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final current = state;
+    if (current == null) {
+      return const SizedBox(width: 64);
+    }
+    return SizedBox(
+      width: 64,
+      child: Align(
+        alignment: Alignment.centerRight,
+        child: switch (current.status) {
+          PriceLookupStatus.loading => const SizedBox(
+            width: 16,
+            height: 16,
+            child: CircularProgressIndicator(strokeWidth: 2),
+          ),
+          PriceLookupStatus.found => Tooltip(
+            message: [
+              current.quote?.title ?? '',
+              if (current.quote?.unit != null) current.quote!.unit!,
+            ].where((item) => item.isNotEmpty).join(' · '),
+            child: Text(
+              '${current.quote!.price.round()} ₽',
+              style: theme.textTheme.bodyMedium?.copyWith(
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ),
+          PriceLookupStatus.notFound => Tooltip(
+            message: 'Цена не найдена',
+            child: Icon(
+              Icons.remove_circle_outline,
+              size: 18,
+              color: theme.colorScheme.outline,
+            ),
+          ),
+          PriceLookupStatus.failed => Tooltip(
+            message: current.message ?? 'Не удалось получить цену',
+            child: Icon(
+              Icons.error_outline,
+              size: 18,
+              color: theme.colorScheme.error,
+            ),
+          ),
+        },
       ),
     );
   }
@@ -880,8 +1078,7 @@ class _AlternativesSheet extends StatelessWidget {
                 subtitle: Text(
                   '${alternative.nutrients.calories.round()} ккал · '
                   'Б ${alternative.nutrients.protein.round()} · '
-                  '${alternative.recipe.minutes} мин · '
-                  '~${alternative.cost.round()} ₽',
+                  '${alternative.recipe.minutes} мин',
                 ),
                 trailing: Text('${(alternative.scale * 100).round()}%'),
                 onTap: () => Navigator.of(context).pop(alternative),

@@ -25,6 +25,8 @@ void main() {
     dailyBudgetRub: 900,
     preferredRecipeIds: {'chicken_buckwheat'},
     blockedRecipeIds: {'lentil_stew'},
+    cityId: 'kazan',
+    storeId: 'lenta',
   );
 
   test('сохраняет и загружает профиль', () async {
@@ -49,6 +51,8 @@ void main() {
     expect(loaded.profile.dailyBudgetRub, 900);
     expect(loaded.profile.preferredRecipeIds, {'chicken_buckwheat'});
     expect(loaded.profile.blockedRecipeIds, {'lentil_stew'});
+    expect(loaded.profile.cityId, 'kazan');
+    expect(loaded.profile.storeId, 'lenta');
   });
 
   test('сохраняет и загружает снимок плана', () async {

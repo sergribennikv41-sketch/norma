@@ -30,7 +30,24 @@ winget install --id Microsoft.VisualStudio.2022.BuildTools -e --override "--quie
 
 Нужен Flutter для symlink-поддержки плагинов (shared_preferences) при сборке под Windows.
 
-## 4. Проект
+## 4. Python и Playwright для цен
+
+Цены в списке покупок ищутся локальным обработчиком через браузер:
+
+```powershell
+py -3 -m pip install playwright
+py -3 -m playwright install chromium
+```
+
+Проверка:
+
+```powershell
+py -3 -c "import playwright; print('ok')"
+```
+
+Сейчас подключён Магнит. Для остальных сетей нужны отдельные адаптеры в `tool/price_lookup.py`. Цены не сохраняются на диск; кэш живёт только до закрытия приложения.
+
+## 5. Проект
 
 ```powershell
 git clone https://github.com/sergribennikv41-sketch/norma.git C:\dev\norma
@@ -39,7 +56,7 @@ flutter pub get
 flutter doctor
 ```
 
-## 5. Запуск
+## 6. Запуск
 
 ```powershell
 flutter run -d windows
@@ -63,7 +80,7 @@ powershell -ExecutionPolicy Bypass -File tool\build_installer.ps1
 
 Результаты в `dist\`.
 
-## 6. Проверки
+## 7. Проверки
 
 ```powershell
 flutter analyze
@@ -72,13 +89,14 @@ flutter test
 
 Тестов сейчас 47.
 
-## 7. Данные
+## 8. Данные
 
-- Рецепты, ингредиенты и цены: SQLite `%APPDATA%\ru.norma\norma\norma.db` (создаётся и заполняется при первом запуске).
-- Профиль и снимок рациона: shared_preferences (Windows: AppData/реестр).
-- Сервер не используется, всё локально.
+- Рецепты и ингредиенты: SQLite `%APPDATA%\ru.norma\norma\norma.db` (создаётся и заполняется при первом запуске).
+- Профиль, город, магазин и снимок рациона: shared_preferences (Windows: AppData/реестр).
+- Live-цены не сохраняются: кэш только в памяти до закрытия приложения.
+- Сервер приложения не используется; для цен нужен интернет и сайт магазина.
 
-## 8. Если изменений нет в репозитории
+## 9. Если изменений нет в репозитории
 
 Последние доработки могут быть ещё не запушены. На рабочей машине выполнить:
 

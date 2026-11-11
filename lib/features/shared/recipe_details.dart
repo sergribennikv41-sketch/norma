@@ -11,7 +11,6 @@ Future<double?> showRecipeDetails(
   BuildContext context, {
   required String title,
   required Nutrients nutrients,
-  required double cost,
   required Map<String, double> ingredientGrams,
   required List<String> steps,
   required RecipeRepository repository,
@@ -24,7 +23,6 @@ Future<double?> showRecipeDetails(
 }) {
   final safeScale = initialScale > 0 ? initialScale : 1.0;
   final baseNutrients = nutrients * (1 / safeScale);
-  final baseCost = cost / safeScale;
   final baseGrams = {
     for (final entry in ingredientGrams.entries)
       entry.key: entry.value / safeScale,
@@ -38,7 +36,6 @@ Future<double?> showRecipeDetails(
         builder: (dialogContext, setDialogState) {
           final theme = Theme.of(dialogContext);
           final currentNutrients = baseNutrients * scale;
-          final currentCost = baseCost * scale;
           return AlertDialog(
             title: Text(title),
             content: SizedBox(
@@ -61,8 +58,7 @@ Future<double?> showRecipeDetails(
                       '${currentNutrients.calories.round()} ккал · '
                       'Б ${currentNutrients.protein.round()} · '
                       'Ж ${currentNutrients.fat.round()} · '
-                      'У ${currentNutrients.carbs.round()} · '
-                      '~${currentCost.round()} ₽',
+                      'У ${currentNutrients.carbs.round()}',
                       style: theme.textTheme.bodyMedium,
                     ),
                     if (allowScaleEdit) ...[

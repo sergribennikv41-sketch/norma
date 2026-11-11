@@ -150,20 +150,6 @@ void main() {
     }
   });
 
-  test('дневной бюджет ограничивает стоимость меню', () {
-    final budgetProfile = profile.copyWith(dailyBudgetRub: 900);
-    final budgetTargets = const TargetsCalculator().calculate(budgetProfile);
-    final plan = const MenuGenerator().generate(
-      profile: budgetProfile,
-      targets: budgetTargets,
-      repository: repository,
-    );
-
-    for (final day in plan.days) {
-      expect(day.totalCost, lessThanOrEqualTo(900));
-    }
-  });
-
   test('замена блюда меняет только выбранный приём пищи', () {
     final plan = const MenuGenerator().generate(
       profile: profile,

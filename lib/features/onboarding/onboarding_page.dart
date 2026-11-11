@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 
 import '../../core/data/recipe_repository.dart';
 import '../../core/models/enums.dart';
+import '../../core/models/retail.dart';
 import '../../core/models/user_profile.dart';
 import '../plan/plan_page.dart';
 
@@ -36,8 +37,8 @@ class _OnboardingPageState extends State<OnboardingPage> {
   Pace _pace = Pace.medium;
   int _mealsPerDay = 4;
   int? _maxCookMinutes;
-  bool _limitBudget = false;
-  double _dailyBudget = 700;
+  String _cityId = defaultCityId;
+  String _storeId = defaultStoreId;
   final Set<Allergen> _excludedAllergens = {};
 
   @override
@@ -56,8 +57,8 @@ class _OnboardingPageState extends State<OnboardingPage> {
     _pace = profile.pace;
     _mealsPerDay = profile.mealsPerDay;
     _maxCookMinutes = profile.maxCookMinutes;
-    _limitBudget = profile.dailyBudgetRub != null;
-    _dailyBudget = (profile.dailyBudgetRub ?? 700).toDouble();
+    _cityId = profile.cityId;
+    _storeId = profile.storeId;
     _excludedAllergens.addAll(profile.excludedAllergens);
   }
 
@@ -109,8 +110,10 @@ class _OnboardingPageState extends State<OnboardingPage> {
       pace: _pace,
       mealsPerDay: _mealsPerDay,
       maxCookMinutes: _maxCookMinutes,
-      dailyBudgetRub: _limitBudget ? _dailyBudget.round() : null,
+      dailyBudgetRub: null,
       excludedAllergens: Set.unmodifiable(_excludedAllergens),
+      cityId: _cityId,
+      storeId: _storeId,
     );
     final navigator = Navigator.of(context);
     if (navigator.canPop()) {
@@ -314,7 +317,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                       ],
                     ),
                     _SectionCard(
-                      title: 'Время и бюджет',
+                      title: 'Готовка и магазин',
                       children: [
                         Text(
                           'Максимальное время на готовку',
@@ -339,27 +342,52 @@ class _OnboardingPageState extends State<OnboardingPage> {
                               ),
                           ],
                         ),
-                        const SizedBox(height: 8),
-                        SwitchListTile(
-                          contentPadding: EdgeInsets.zero,
-                          title: const Text('Ограничить бюджет'),
-                          subtitle: Text('${_dailyBudget.round()} ₽ в день'),
-                          value: _limitBudget,
+                        const SizedBox(height: 16),
+                        DropdownButtonFormField<String>(
+                          initialValue: _cityId,
+                          decoration: const InputDecoration(
+                            labelText: 'Город',
+                            border: OutlineInputBorder(),
+                          ),
+                          items: [
+                            for (final city in retailCities)
+                              DropdownMenuItem<String>(
+                                value: city.id,
+                                child: Text(city.name),
+                              ),
+                          ],
                           onChanged: (value) {
-                            setState(() => _limitBudget = value);
+                            if (value != null) {
+                              setState(() => _cityId = value);
+                            }
                           },
                         ),
-                        if (_limitBudget)
-                          Slider(
-                            value: _dailyBudget,
-                            min: 300,
-                            max: 1500,
-                            divisions: 24,
-                            label: '${_dailyBudget.round()} ₽',
-                            onChanged: (value) {
-                              setState(() => _dailyBudget = value);
-                            },
+                        const SizedBox(height: 12),
+                        DropdownButtonFormField<String>(
+                          initialValue: _storeId,
+                          decoration: const InputDecoration(
+                            labelText: 'Магазин для цен',
+                            border: OutlineInputBorder(),
                           ),
+                          items: [
+                            for (final store in storeChains)
+                              DropdownMenuItem<String>(
+                                value: store.id,
+                                child: Text(store.name),
+                              ),
+                          ],
+                          onChanged: (value) {
+                            if (value != null) {
+                              setState(() => _storeId = value);
+                            }
+                          },
+                        ),
+                        const SizedBox(height: 8),
+                        Text(
+                          'Цены появятся в списке покупок при его раскрытии. '
+                          'Сейчас подключён Магнит.',
+                          style: theme.textTheme.bodySmall,
+                        ),
                       ],
                     ),
                     _SectionCard(

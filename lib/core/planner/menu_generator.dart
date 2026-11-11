@@ -54,15 +54,10 @@ class MealAlternative {
 }
 
 class _MealOption {
-  const _MealOption({
-    required this.meal,
-    required this.score,
-    required this.overBudget,
-  });
+  const _MealOption({required this.meal, required this.score});
 
   final PlannedMeal meal;
   final double score;
-  final bool overBudget;
 }
 
 class _ScoredAlternative {
@@ -92,7 +87,6 @@ class MenuGenerator {
     for (var dayIndex = 0; dayIndex < days; dayIndex++) {
       final usedToday = <String>{};
       final meals = <PlannedMeal>[];
-      var spentToday = 0.0;
 
       for (final slot in slots) {
         var candidates = repository.recipes.where((recipe) {
@@ -125,13 +119,11 @@ class MenuGenerator {
           usedYesterday: usedYesterday,
           random: random,
           profile: profile,
-          spentToday: spentToday,
         );
 
         meals.add(meal);
         usedToday.add(meal.recipe.id);
         usage[meal.recipe.id] = (usage[meal.recipe.id] ?? 0) + 1;
-        spentToday += meal.cost;
       }
 
       dayPlans.add(DayPlan(index: dayIndex + 1, meals: meals));
@@ -183,10 +175,6 @@ class MenuGenerator {
         usage[meal.recipe.id] = (usage[meal.recipe.id] ?? 0) + 1;
       }
     }
-    final spentToday = day.meals.fold<double>(
-      0,
-      (sum, meal) => identical(meal, current) ? sum : sum + meal.cost,
-    );
     final usedYesterday = dayIndex > 0
         ? plan.days[dayIndex - 1].meals.map((meal) => meal.recipe.id).toSet()
         : <String>{};
@@ -221,7 +209,6 @@ class MenuGenerator {
       usedYesterday: usedYesterday,
       random: Random(seed + dayIndex * 31 + mealIndex * 17),
       profile: profile,
-      spentToday: spentToday,
     );
 
     final newMeals = [...day.meals];
@@ -491,13 +478,11 @@ class MenuGenerator {
     required Set<String> usedYesterday,
     required Random random,
     required UserProfile profile,
-    required double spentToday,
   }) {
     final targetCalories = targets.nutrients.calories * slot.share;
     final targetProtein = targets.nutrients.protein * slot.share;
     final targetFat = targets.nutrients.fat * slot.share;
     final targetCarbs = targets.nutrients.carbs * slot.share;
-    final dailyBudget = profile.dailyBudgetRub;
 
     final options = <_MealOption>[];
 
@@ -527,16 +512,6 @@ class MenuGenerator {
         score -= 0.35;
       }
 
-      var overBudget = false;
-      if (dailyBudget != null) {
-        final slotBudget = dailyBudget * slot.share;
-        score += (cost - slotBudget).abs() / max(slotBudget, 1) * 0.4;
-        overBudget = cost > slotBudget || spentToday + cost > dailyBudget;
-        if (overBudget) {
-          score += 5.0;
-        }
-      }
-
       score += random.nextDouble() * 0.04;
 
       options.add(
@@ -553,7 +528,6 @@ class MenuGenerator {
             cost: cost,
           ),
           score: score,
-          overBudget: overBudget,
         ),
       );
     }
@@ -562,9 +536,7 @@ class MenuGenerator {
       throw StateError('Не удалось подобрать блюдо для «${slot.type.label}»');
     }
 
-    final affordable = options.where((option) => !option.overBudget).toList();
-    final pool = affordable.isEmpty ? options : affordable;
-    pool.sort((a, b) => a.score.compareTo(b.score));
-    return pool.first.meal;
+    options.sort((a, b) => a.score.compareTo(b.score));
+    return options.first.meal;
   }
 }

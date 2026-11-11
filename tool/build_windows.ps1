@@ -24,6 +24,9 @@ if ($LASTEXITCODE -ne 0) {
     throw "flutter build failed with exit code $LASTEXITCODE"
 }
 
+$release = Join-Path $root 'build\windows\x64\runner\Release'
+Copy-Item -LiteralPath (Join-Path $root 'tool\price_lookup.py') -Destination (Join-Path $release 'price_lookup.py') -Force
+
 $dist = Join-Path $root 'dist'
 New-Item -ItemType Directory -Path $dist -Force | Out-Null
 $zip = Join-Path $dist "norma-$version-windows-x64-portable.zip"

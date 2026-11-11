@@ -1,4 +1,5 @@
 import 'enums.dart';
+import 'retail.dart';
 
 class UserProfile {
   const UserProfile({
@@ -16,6 +17,8 @@ class UserProfile {
     this.dailyBudgetRub,
     this.preferredRecipeIds = const {},
     this.blockedRecipeIds = const {},
+    this.cityId = defaultCityId,
+    this.storeId = defaultStoreId,
   });
 
   static const _unset = Object();
@@ -34,6 +37,8 @@ class UserProfile {
   final int? dailyBudgetRub;
   final Set<String> preferredRecipeIds;
   final Set<String> blockedRecipeIds;
+  final String cityId;
+  final String storeId;
 
   UserProfile copyWith({
     Sex? sex,
@@ -50,6 +55,8 @@ class UserProfile {
     Object? dailyBudgetRub = _unset,
     Set<String>? preferredRecipeIds,
     Set<String>? blockedRecipeIds,
+    String? cityId,
+    String? storeId,
   }) {
     return UserProfile(
       sex: sex ?? this.sex,
@@ -71,6 +78,8 @@ class UserProfile {
           : dailyBudgetRub as int?,
       preferredRecipeIds: preferredRecipeIds ?? this.preferredRecipeIds,
       blockedRecipeIds: blockedRecipeIds ?? this.blockedRecipeIds,
+      cityId: cityId ?? this.cityId,
+      storeId: storeId ?? this.storeId,
     );
   }
 
@@ -90,6 +99,8 @@ class UserProfile {
       'dailyBudgetRub': dailyBudgetRub,
       'preferredRecipeIds': preferredRecipeIds.toList(),
       'blockedRecipeIds': blockedRecipeIds.toList(),
+      'cityId': cityId,
+      'storeId': storeId,
     };
   }
 
@@ -109,6 +120,12 @@ class UserProfile {
       dailyBudgetRub: _nullableInt(json['dailyBudgetRub']),
       preferredRecipeIds: _stringsFromJson(json['preferredRecipeIds']),
       blockedRecipeIds: _stringsFromJson(json['blockedRecipeIds']),
+      cityId: retailCityById(
+        json['cityId'] is String ? json['cityId'] as String : defaultCityId,
+      ).id,
+      storeId: storeChainById(
+        json['storeId'] is String ? json['storeId'] as String : defaultStoreId,
+      ).id,
     );
   }
 }

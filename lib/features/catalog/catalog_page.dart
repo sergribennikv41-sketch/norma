@@ -167,12 +167,10 @@ class _CatalogPageState extends State<CatalogPage> {
 
   void _openRecipe(Recipe recipe) {
     final nutrients = widget.repository.nutrientsPerServing(recipe);
-    final cost = widget.repository.costPerServing(recipe);
     showRecipeDetails(
       context,
       title: recipe.title,
       nutrients: nutrients,
-      cost: cost,
       ingredientGrams: {
         for (final item in recipe.ingredients) item.ingredientId: item.grams,
       },
@@ -192,7 +190,6 @@ class _CatalogPageState extends State<CatalogPage> {
   }) {
     final theme = Theme.of(context);
     final nutrients = widget.repository.nutrientsPerServing(recipe);
-    final cost = widget.repository.costPerServing(recipe);
     final details =
         '${recipe.mealTypes.map((type) => type.label).join(' · ')} · '
         '${recipe.minutes} мин · '
@@ -214,7 +211,7 @@ class _CatalogPageState extends State<CatalogPage> {
               query: query,
               style: theme.textTheme.bodyMedium,
             ),
-      trailing: Text('~${cost.round()} ₽'),
+      trailing: const Icon(Icons.chevron_right),
       onTap: () => _openRecipe(recipe),
     );
   }
