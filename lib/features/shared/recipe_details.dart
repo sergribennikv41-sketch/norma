@@ -149,30 +149,14 @@ Future<double?> showRecipeDetails(
                 ),
               ),
               const SizedBox(height: 14),
-              _SectionCard(
-                title: 'Источник и видео',
-                child: Column(
-                  children: [
-                    _MetaRow(label: 'Источник', value: _sourceName(source)),
-                    _MetaRow(label: 'Лицензия', value: _sourceLicense(source)),
-                    _MetaRow(
-                      label: 'Фото',
-                      value: (source ?? '').contains('Фото:')
-                          ? 'Wikimedia Commons'
-                          : 'Заглушка',
-                    ),
-                    const SizedBox(height: 10),
-                    OutlinedButton.icon(
-                      onPressed: () {
-                        _openLink(context, pinterestVideoSearchUri(title));
-                      },
-                      icon: const Icon(Icons.play_circle_outline, size: 17),
-                      label: const Text('Видео в Pinterest'),
-                      style: OutlinedButton.styleFrom(
-                        minimumSize: const Size.fromHeight(42),
-                      ),
-                    ),
-                  ],
+              OutlinedButton.icon(
+                onPressed: () {
+                  _openLink(context, pinterestVideoSearchUri(title));
+                },
+                icon: const Icon(Icons.play_circle_outline, size: 17),
+                label: const Text('Видео в Pinterest'),
+                style: OutlinedButton.styleFrom(
+                  minimumSize: const Size.fromHeight(42),
                 ),
               ),
               const SizedBox(height: 14),
@@ -470,68 +454,6 @@ class _MacroBox extends StatelessWidget {
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-String _sourceName(String? source) {
-  if (source == null || source.isEmpty) {
-    return 'Не указан';
-  }
-  if (source.contains('vkuso.ru')) {
-    return 'vkuso.ru';
-  }
-  if (source.contains('wikibooks')) {
-    return 'Викиучебник';
-  }
-  return 'Источник';
-}
-
-String _sourceLicense(String? source) {
-  if (source == null || source.isEmpty) {
-    return 'Не указана';
-  }
-  if (source.contains('лицензия данных не указана')) {
-    return 'Не указана';
-  }
-  if (source.contains('CC BY-SA')) {
-    return 'CC BY-SA 4.0';
-  }
-  return 'Не указана';
-}
-
-class _MetaRow extends StatelessWidget {
-  const _MetaRow({required this.label, required this.value});
-
-  final String label;
-  final String value;
-
-  @override
-  Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
-    return Container(
-      padding: const EdgeInsets.symmetric(vertical: 9),
-      decoration: BoxDecoration(
-        border: Border(bottom: BorderSide(color: scheme.outlineVariant)),
-      ),
-      child: Row(
-        children: [
-          Expanded(
-            child: Text(
-              label,
-              style: TextStyle(color: scheme.onSurfaceVariant, fontSize: 11.5),
-            ),
-          ),
-          Text(
-            value,
-            style: TextStyle(
-              color: scheme.onSurface,
-              fontSize: 11.5,
-              fontWeight: FontWeight.w700,
-            ),
-          ),
-        ],
       ),
     );
   }

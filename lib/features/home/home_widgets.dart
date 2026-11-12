@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 import '../../core/models/retail.dart';
@@ -8,18 +10,10 @@ import '../../core/theme/theme_controller.dart';
 enum HomeSection { plan, catalog, shopping, profile }
 
 class AppSidebar extends StatelessWidget {
-  const AppSidebar({
-    super.key,
-    required this.section,
-    required this.profile,
-    required this.onSelect,
-    required this.onEditProfile,
-  });
+  const AppSidebar({super.key, required this.section, required this.onSelect});
 
   final HomeSection section;
-  final UserProfile profile;
   final ValueChanged<HomeSection> onSelect;
-  final VoidCallback onEditProfile;
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +27,6 @@ class AppSidebar extends StatelessWidget {
         ? const Color(0xFF10170E)
         : const Color(0xFF173A2C);
     const foreground = Color(0xFFF1F7EF);
-    final border = dark ? const Color(0xFF253127) : const Color(0x33FFFFFF);
 
     return Container(
       width: 248,
@@ -93,95 +86,135 @@ class AppSidebar extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 9),
-              _NavItem(
-                icon: Icons.calendar_month_outlined,
-                label: 'Рацион',
-                selected: section == HomeSection.plan,
+              _SidebarNav(
+                section: section,
+                onSelect: onSelect,
                 muted: muted,
                 foreground: foreground,
                 activeBackground: activeBackground,
                 activeForeground: activeForeground,
-                onTap: () => onSelect(HomeSection.plan),
-              ),
-              _NavItem(
-                icon: Icons.menu_book_outlined,
-                label: 'Каталог',
-                selected: section == HomeSection.catalog,
-                muted: muted,
-                foreground: foreground,
-                activeBackground: activeBackground,
-                activeForeground: activeForeground,
-                onTap: () => onSelect(HomeSection.catalog),
-              ),
-              _NavItem(
-                icon: Icons.shopping_bag_outlined,
-                label: 'Покупки',
-                selected: section == HomeSection.shopping,
-                muted: muted,
-                foreground: foreground,
-                activeBackground: activeBackground,
-                activeForeground: activeForeground,
-                onTap: () => onSelect(HomeSection.shopping),
-              ),
-              _NavItem(
-                icon: Icons.person_outline,
-                label: 'Профиль',
-                selected: section == HomeSection.profile,
-                muted: muted,
-                foreground: foreground,
-                activeBackground: activeBackground,
-                activeForeground: activeForeground,
-                onTap: () => onSelect(HomeSection.profile),
               ),
               const SizedBox(height: 28),
               const _SidebarThemeSwitch(),
-              const Spacer(),
-              Container(
-                padding: const EdgeInsets.all(14),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _SidebarNav extends StatelessWidget {
+  const _SidebarNav({
+    required this.section,
+    required this.onSelect,
+    required this.muted,
+    required this.foreground,
+    required this.activeBackground,
+    required this.activeForeground,
+  });
+
+  static const _items = [
+    (HomeSection.plan, Icons.calendar_month_outlined, 'Рацион'),
+    (HomeSection.catalog, Icons.menu_book_outlined, 'Каталог'),
+    (HomeSection.shopping, Icons.shopping_bag_outlined, 'Покупки'),
+    (HomeSection.profile, Icons.person_outline, 'Профиль'),
+  ];
+  static const _height = 46.0;
+
+  final HomeSection section;
+  final ValueChanged<HomeSection> onSelect;
+  final Color muted;
+  final Color foreground;
+  final Color activeBackground;
+  final Color activeForeground;
+
+  @override
+  Widget build(BuildContext context) {
+    final index = _items.indexWhere((item) => item.$1 == section);
+    final safeIndex = index < 0 ? 0 : index;
+    return SizedBox(
+      height: _items.length * _height,
+      child: Stack(
+        children: [
+          AnimatedPositioned(
+            duration: const Duration(milliseconds: 480),
+            curve: Curves.easeOutCubic,
+            top: safeIndex * _height + 5,
+            left: 4,
+            right: 4,
+            height: 34,
+            child: IgnorePointer(
+              child: Container(
                 decoration: BoxDecoration(
-                  color: dark
-                      ? const Color(0xFF111813)
-                      : const Color(0x14FFFFFF),
-                  borderRadius: BorderRadius.circular(16),
-                  border: Border.all(color: border),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Ваш профиль',
-                      style: TextStyle(
-                        color: foreground,
-                        fontSize: 13,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                    const SizedBox(height: 4),
-                    Text(
-                      '${profile.goal.label} · ${profile.mealsPerDay} приёма пищи\n'
-                      '${retailCityById(profile.cityId).name}',
-                      style: TextStyle(color: muted, fontSize: 11, height: 1.5),
-                    ),
-                    const SizedBox(height: 12),
-                    OutlinedButton(
-                      onPressed: onEditProfile,
-                      style: OutlinedButton.styleFrom(
-                        foregroundColor: foreground,
-                        side: BorderSide(color: border),
-                        minimumSize: const Size.fromHeight(34),
-                        textStyle: const TextStyle(
-                          fontSize: 11,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                      child: const Text('Настроить профиль'),
+                  color: activeBackground.withValues(alpha: 0.16),
+                  borderRadius: BorderRadius.circular(20),
+                  boxShadow: [
+                    BoxShadow(
+                      color: activeBackground.withValues(alpha: 0.22),
+                      blurRadius: 24,
+                      spreadRadius: 4,
                     ),
                   ],
                 ),
               ),
+            ),
+          ),
+          AnimatedPositioned(
+            duration: const Duration(milliseconds: 360),
+            curve: Curves.easeOutCubic,
+            top: safeIndex * _height,
+            left: 0,
+            right: 0,
+            height: 40,
+            child: IgnorePointer(
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(12),
+                child: BackdropFilter(
+                  filter: ImageFilter.blur(sigmaX: 12, sigmaY: 12),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        colors: [
+                          activeBackground.withValues(alpha: 0.92),
+                          activeBackground.withValues(alpha: 0.68),
+                        ],
+                      ),
+                      borderRadius: BorderRadius.circular(12),
+                      border: Border.all(
+                        color: Colors.white.withValues(alpha: 0.22),
+                      ),
+                      boxShadow: [
+                        BoxShadow(
+                          color: activeBackground.withValues(alpha: 0.28),
+                          blurRadius: 18,
+                          spreadRadius: 1,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          Column(
+            children: [
+              for (final item in _items)
+                _NavItem(
+                  icon: item.$2,
+                  label: item.$3,
+                  selected: section == item.$1,
+                  muted: muted,
+                  foreground: foreground,
+                  activeBackground: activeBackground,
+                  activeForeground: activeForeground,
+                  onTap: () => onSelect(item.$1),
+                ),
             ],
           ),
-        ),
+        ],
       ),
     );
   }
@@ -213,7 +246,7 @@ class _NavItem extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: 4),
       child: Material(
-        color: selected ? activeBackground : Colors.transparent,
+        color: Colors.transparent,
         borderRadius: BorderRadius.circular(12),
         child: InkWell(
           borderRadius: BorderRadius.circular(12),
@@ -265,29 +298,74 @@ class _SidebarThemeSwitch extends StatelessWidget {
         color: background,
         borderRadius: BorderRadius.circular(999),
       ),
-      child: Row(
-        children: [
-          Expanded(
-            child: _ThemeOption(
-              label: 'Светлая',
-              active: !dark,
-              background: active,
-              foreground: activeText,
-              muted: muted,
-              onTap: () => controller.setMode(ThemeMode.light),
+      child: SizedBox(
+        height: 30,
+        child: Stack(
+          children: [
+            AnimatedAlign(
+              duration: const Duration(milliseconds: 380),
+              curve: Curves.easeOutCubic,
+              alignment: dark ? Alignment.centerRight : Alignment.centerLeft,
+              child: FractionallySizedBox(
+                widthFactor: 0.5,
+                heightFactor: 1,
+                child: IgnorePointer(
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(999),
+                    child: BackdropFilter(
+                      filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                            colors: [
+                              active.withValues(alpha: 0.92),
+                              active.withValues(alpha: 0.68),
+                            ],
+                          ),
+                          borderRadius: BorderRadius.circular(999),
+                          border: Border.all(
+                            color: Colors.white.withValues(alpha: 0.22),
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                              color: active.withValues(alpha: 0.26),
+                              blurRadius: 16,
+                              spreadRadius: 1,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
             ),
-          ),
-          Expanded(
-            child: _ThemeOption(
-              label: 'Тёмная',
-              active: dark,
-              background: active,
-              foreground: activeText,
-              muted: muted,
-              onTap: () => controller.setMode(ThemeMode.dark),
+            Row(
+              children: [
+                Expanded(
+                  child: _ThemeOption(
+                    label: 'Светлая',
+                    active: !dark,
+                    foreground: activeText,
+                    muted: muted,
+                    onTap: () => controller.setMode(ThemeMode.light),
+                  ),
+                ),
+                Expanded(
+                  child: _ThemeOption(
+                    label: 'Тёмная',
+                    active: dark,
+                    foreground: activeText,
+                    muted: muted,
+                    onTap: () => controller.setMode(ThemeMode.dark),
+                  ),
+                ),
+              ],
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -297,7 +375,6 @@ class _ThemeOption extends StatelessWidget {
   const _ThemeOption({
     required this.label,
     required this.active,
-    required this.background,
     required this.foreground,
     required this.muted,
     required this.onTap,
@@ -305,7 +382,6 @@ class _ThemeOption extends StatelessWidget {
 
   final String label;
   final bool active;
-  final Color background;
   final Color foreground;
   final Color muted;
   final VoidCallback onTap;
@@ -314,21 +390,18 @@ class _ThemeOption extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 160),
+      behavior: HitTestBehavior.opaque,
+      child: Container(
         padding: const EdgeInsets.symmetric(vertical: 7),
-        decoration: BoxDecoration(
-          color: active ? background : Colors.transparent,
-          borderRadius: BorderRadius.circular(999),
-        ),
         alignment: Alignment.center,
-        child: Text(
-          label,
+        child: AnimatedDefaultTextStyle(
+          duration: const Duration(milliseconds: 220),
           style: TextStyle(
             color: active ? foreground : muted,
             fontSize: 10,
             fontWeight: FontWeight.w700,
           ),
+          child: Text(label),
         ),
       ),
     );

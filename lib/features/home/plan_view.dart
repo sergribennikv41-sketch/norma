@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 import '../../core/data/recipe_repository.dart';
@@ -20,9 +22,7 @@ class PlanView extends StatelessWidget {
     required this.onLike,
     required this.onBlock,
     required this.onOpenMeal,
-    required this.onOpenCatalog,
     required this.onOpenShopping,
-    required this.onRegenerate,
   });
 
   final WeeklyPlan plan;
@@ -34,9 +34,7 @@ class PlanView extends StatelessWidget {
   final ValueChanged<Recipe> onLike;
   final ValueChanged<Recipe> onBlock;
   final void Function(int dayIndex, int mealIndex) onOpenMeal;
-  final VoidCallback onOpenCatalog;
   final VoidCallback onOpenShopping;
-  final VoidCallback onRegenerate;
 
   @override
   Widget build(BuildContext context) {
@@ -50,11 +48,7 @@ class PlanView extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              _Topbar(
-                profile: profile,
-                onOpenCatalog: onOpenCatalog,
-                onRegenerate: onRegenerate,
-              ),
+              _Topbar(profile: profile),
               const SizedBox(height: 22),
               LayoutBuilder(
                 builder: (context, constraints) {
@@ -97,8 +91,6 @@ class PlanView extends StatelessWidget {
                         profile: profile,
                         onOpenShopping: onOpenShopping,
                       ),
-                      const SizedBox(height: 16),
-                      const _PricesNote(),
                     ],
                   );
                   if (!wide) {
@@ -126,15 +118,9 @@ class PlanView extends StatelessWidget {
 }
 
 class _Topbar extends StatelessWidget {
-  const _Topbar({
-    required this.profile,
-    required this.onOpenCatalog,
-    required this.onRegenerate,
-  });
+  const _Topbar({required this.profile});
 
   final UserProfile profile;
-  final VoidCallback onOpenCatalog;
-  final VoidCallback onRegenerate;
 
   @override
   Widget build(BuildContext context) {
@@ -145,17 +131,7 @@ class _Topbar extends StatelessWidget {
           spacing: 8,
           runSpacing: 8,
           crossAxisAlignment: WrapCrossAlignment.center,
-          children: [
-            StoreChip(profile: profile),
-            OutlinedButton(
-              onPressed: onOpenCatalog,
-              child: const Text('Каталог'),
-            ),
-            FilledButton(
-              onPressed: onRegenerate,
-              child: const Text('Перегенерировать'),
-            ),
-          ],
+          children: [StoreChip(profile: profile)],
         );
         final title = Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -302,21 +278,90 @@ class _DayTabs extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: Row(
-        children: [
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        const gap = 7.0;
+        final available = constraints.maxWidth - gap * (days - 1);
+        final width = available / days;
+        final tabs = [
           for (var index = 0; index < days; index++) ...[
             _DayTab(
               weekday: _weekdays[index % _weekdays.length],
               day: index + 1,
               selected: index == selectedIndex,
               onTap: () => onSelect(index),
+              width: width >= 62 ? null : 62,
             ),
-            if (index != days - 1) const SizedBox(width: 7),
+            if (index != days - 1) const SizedBox(width: gap),
           ],
-        ],
-      ),
+        ];
+        if (width >= 62) {
+          final scheme = Theme.of(context).colorScheme;
+          return Stack(
+            children: [
+              AnimatedPositioned(
+                duration: const Duration(milliseconds: 380),
+                curve: Curves.easeOutCubic,
+                left: selectedIndex * (width + gap),
+                top: 0,
+                bottom: 0,
+                width: width,
+                child: IgnorePointer(
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(13),
+                    child: BackdropFilter(
+                      filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                            colors: [
+                              scheme.primary.withValues(alpha: 0.90),
+                              scheme.primary.withValues(alpha: 0.66),
+                            ],
+                          ),
+                          borderRadius: BorderRadius.circular(13),
+                          border: Border.all(
+                            color: Colors.white.withValues(alpha: 0.22),
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                              color: scheme.primary.withValues(alpha: 0.26),
+                              blurRadius: 20,
+                              spreadRadius: 1,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Row(
+                children: [
+                  for (var index = 0; index < days; index++) ...[
+                    Expanded(
+                      child: _DayTab(
+                        weekday: _weekdays[index % _weekdays.length],
+                        day: index + 1,
+                        selected: index == selectedIndex,
+                        onTap: () => onSelect(index),
+                        filled: false,
+                      ),
+                    ),
+                    if (index != days - 1) const SizedBox(width: gap),
+                  ],
+                ],
+              ),
+            ],
+          );
+        }
+        return SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(children: tabs),
+        );
+      },
     );
   }
 }
@@ -327,24 +372,30 @@ class _DayTab extends StatelessWidget {
     required this.day,
     required this.selected,
     required this.onTap,
+    this.width,
+    this.filled = true,
   });
 
   final String weekday;
   final int day;
   final bool selected;
   final VoidCallback onTap;
+  final double? width;
+  final bool filled;
 
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
     return Material(
-      color: selected ? scheme.primary : scheme.surface,
+      color: selected
+          ? (filled ? scheme.primary : Colors.transparent)
+          : scheme.surface,
       borderRadius: BorderRadius.circular(13),
       child: InkWell(
         borderRadius: BorderRadius.circular(13),
         onTap: onTap,
         child: Container(
-          width: 62,
+          width: width,
           padding: const EdgeInsets.symmetric(vertical: 9),
           decoration: BoxDecoration(
             border: Border.all(
@@ -769,31 +820,6 @@ class _MiniCategory extends StatelessWidget {
               ),
             ],
           ),
-        ),
-      ),
-    );
-  }
-}
-
-class _PricesNote extends StatelessWidget {
-  const _PricesNote();
-
-  @override
-  Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
-    return Container(
-      padding: const EdgeInsets.all(14),
-      decoration: BoxDecoration(
-        color: scheme.primaryContainer,
-        borderRadius: BorderRadius.circular(14),
-      ),
-      child: Text(
-        'Цены не сохраняются на диск: при закрытии приложения кэш исчезнет. '
-        'Это live-поиск, а не база устаревших цен.',
-        style: TextStyle(
-          color: scheme.onPrimaryContainer,
-          fontSize: 11.5,
-          height: 1.5,
         ),
       ),
     );

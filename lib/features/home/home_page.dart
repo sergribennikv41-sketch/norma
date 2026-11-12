@@ -742,12 +742,7 @@ class _HomePageState extends State<HomePage> {
       body: Row(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          AppSidebar(
-            section: _section,
-            profile: _profile,
-            onSelect: _selectSection,
-            onEditProfile: () => _selectSection(HomeSection.profile),
-          ),
+          AppSidebar(section: _section, onSelect: _selectSection),
           Expanded(
             child: SafeArea(
               top: false,
@@ -779,9 +774,7 @@ class _HomePageState extends State<HomePage> {
       onLike: _likeRecipe,
       onBlock: _blockRecipe,
       onOpenMeal: _openMeal,
-      onOpenCatalog: () => _selectSection(HomeSection.catalog),
       onOpenShopping: () => _selectSection(HomeSection.shopping),
-      onRegenerate: _regenerate,
     );
   }
 }
