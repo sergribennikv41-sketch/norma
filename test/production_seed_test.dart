@@ -14,7 +14,7 @@ void main() {
       for (final ingredient in bundle.ingredients) ingredient.id,
     };
 
-    expect(bundle.version, 26);
+    expect(bundle.version, 27);
     expect(bundle.replaceAllRecipes, isTrue);
     expect(bundle.recipes, hasLength(5000));
     for (final recipe in bundle.recipes) {
