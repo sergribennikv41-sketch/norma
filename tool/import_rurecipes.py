@@ -61,19 +61,45 @@ def grams_for(quantity: str, ingredient_id: str) -> float | None:
     return number
 
 
+SPICE_WORDS = (
+    'соль', 'перец', 'паприка', 'кориандр', 'куркума', 'орегано', 'карри',
+    'хмели', 'имбирь', 'гвоздик', 'розмарин', 'лавров', 'травы', 'специ',
+    'зира', 'тмин', 'кардамон', 'мускат', 'ванил', 'разрыхлит', 'сода',
+    'уксус', 'вода', 'кипяток', 'лед',
+)
+
+
+def _is_spice_name(name: str) -> bool:
+    text = normalize(name)
+    return any(word in text for word in SPICE_WORDS)
+
+
 def parse_ingredients(raw: object, mapper: vkuso.Mapper, known: set[str]) -> list[dict] | None:
     if not isinstance(raw, list):
         return None
     mapped: dict[str, float] = {}
     total = 0.0
     for line in raw:
-        if not isinstance(line, str) or ' - ' not in line:
+        if not isinstance(line, str):
             return None
-        name, quantity = line.rsplit(' - ', 1)
+        text = line.strip()
+        if not text or text == '*' or text.endswith(':'):
+            continue
+        text = re.sub(r'\s+[—–]\s+', ' - ', text)
+        if ' - ' in text:
+            name, quantity = text.rsplit(' - ', 1)
+        elif ': ' in text:
+            name, quantity = text.rsplit(': ', 1)
+        else:
+            if _is_spice_name(text):
+                continue
+            return None
         ingredient_id = mapper.match(name)
         if ingredient_id is None:
+            if _is_spice_name(name):
+                continue
             return None
-        if ingredient_id in vkuso.SPICES:
+        if ingredient_id in vkuso.SPICES or _is_spice_name(name):
             continue
         if ingredient_id not in known:
             return None

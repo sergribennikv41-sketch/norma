@@ -2,7 +2,7 @@
 
 ## Russian Recipes Parser / vkuso.ru
 
-Пилот из 2000 рецептов импортирован из RuRecipes-93k (https://huggingface.co/datasets/epishchik/RuRecipes-93k), источник russianfood.com.
+Пилот из 5000 рецептов импортирован из RuRecipes-93k (https://huggingface.co/datasets/epishchik/RuRecipes-93k), источник russianfood.com.
 
 Датасет распространяется по лицензии CC BY-NC 4.0 (только некоммерческое использование). Фото russianfood.com требуют отдельного разрешения для публикации. Пилот используется локально.
 

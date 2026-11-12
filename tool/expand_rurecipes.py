@@ -60,8 +60,8 @@ def download_thumbnail(recipe_id: str, url: str, directory: Path) -> str | None:
             raw = response.read()
         with Image.open(io.BytesIO(raw)) as image:
             image = image.convert('RGB')
-            image.thumbnail((360, 270), Image.Resampling.LANCZOS)
-            image.save(target, 'JPEG', quality=76, optimize=True)
+            image.thumbnail((240, 180), Image.Resampling.LANCZOS)
+            image.save(target, 'JPEG', quality=72, optimize=True)
         return f'assets/images/recipes/{target.name}'
     except Exception as error:  # noqa: BLE001
         print(f'image error {recipe_id}: {error}')
