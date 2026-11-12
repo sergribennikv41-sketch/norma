@@ -14,7 +14,7 @@ void main() {
       for (final ingredient in bundle.ingredients) ingredient.id,
     };
 
-    expect(bundle.version, 28);
+    expect(bundle.version, 31);
     expect(bundle.replaceAllRecipes, isTrue);
     expect(bundle.recipes, hasLength(5000));
     for (final recipe in bundle.recipes) {
@@ -27,6 +27,7 @@ void main() {
         startsWith('assets/images/recipes/'),
         reason: recipe.id,
       );
+      expect(recipe.imageLarge, startsWith('https://'), reason: recipe.id);
       for (final item in recipe.ingredients) {
         expect(ingredientIds, contains(item.ingredientId), reason: recipe.id);
       }

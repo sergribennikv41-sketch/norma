@@ -16,7 +16,7 @@ import 'in_memory_recipe_repository.dart';
 class AppDatabase {
   AppDatabase._(this._db);
 
-  static const _version = 3;
+  static const _version = 4;
   static const _dbName = 'norma.db';
 
   final ffi.Database _db;
@@ -45,6 +45,9 @@ CREATE TABLE IF NOT EXISTS app_meta (
           }
           if (oldVersion < 3) {
             await db.execute('ALTER TABLE recipes ADD COLUMN image TEXT');
+          }
+          if (oldVersion < 4) {
+            await db.execute('ALTER TABLE recipes ADD COLUMN image_large TEXT');
           }
         },
       ),
@@ -100,7 +103,8 @@ CREATE TABLE recipes (
   servings INTEGER NOT NULL DEFAULT 1,
   minutes INTEGER NOT NULL,
   source TEXT,
-  image TEXT
+  image TEXT,
+  image_large TEXT
 )
 ''');
     await db.execute('''
@@ -283,6 +287,7 @@ CREATE TABLE app_meta (
           'servings': recipe.servings,
           'minutes': recipe.minutes,
           'image': recipe.image,
+          'image_large': recipe.imageLarge,
           'source': recipe.source,
         });
         for (final mealType in recipe.mealTypes) {
@@ -399,6 +404,7 @@ ON CONFLICT(id) DO UPDATE SET
           'servings': recipe.servings,
           'minutes': recipe.minutes,
           'image': recipe.image,
+          'image_large': recipe.imageLarge,
           'source': recipe.source,
         }, conflictAlgorithm: ffi.ConflictAlgorithm.replace);
         await txn.delete(
@@ -547,6 +553,11 @@ ON CONFLICT(id) DO UPDATE SET
           steps: stepsByRecipe[row['id']] ?? const [],
           image: row['image'] is String && (row['image'] as String).isNotEmpty
               ? row['image'] as String
+              : null,
+          imageLarge:
+              row['image_large'] is String &&
+                  (row['image_large'] as String).isNotEmpty
+              ? row['image_large'] as String
               : null,
           source:
               row['source'] is String && (row['source'] as String).isNotEmpty

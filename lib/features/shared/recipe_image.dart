@@ -15,6 +15,7 @@ class RecipeImage extends StatelessWidget {
     this.label,
     this.cacheWidth,
     this.cacheHeight,
+    this.fallbackImage,
   });
 
   final String? image;
@@ -25,43 +26,64 @@ class RecipeImage extends StatelessWidget {
   final String? label;
   final int? cacheWidth;
   final int? cacheHeight;
+  final String? fallbackImage;
 
   @override
   Widget build(BuildContext context) {
-    final path = image;
-    final Widget child;
-    if (path == null || path.isEmpty) {
-      child = _Placeholder(mealType: mealType, label: label);
-    } else if (path.startsWith('http://') || path.startsWith('https://')) {
-      child = Image.network(
-        path,
-        fit: BoxFit.cover,
-        cacheWidth: cacheWidth,
-        cacheHeight: cacheHeight,
-        filterQuality: FilterQuality.medium,
-        errorBuilder: (context, error, stackTrace) =>
-            _Placeholder(mealType: mealType, label: label),
-      );
-    } else if (path.startsWith('assets/')) {
-      child = Image.asset(
-        path,
-        fit: BoxFit.cover,
-        cacheWidth: cacheWidth,
-        cacheHeight: cacheHeight,
-        filterQuality: FilterQuality.medium,
-        errorBuilder: (context, error, stackTrace) =>
-            _Placeholder(mealType: mealType, label: label),
-      );
-    } else {
-      child = Image.file(
+    Widget placeholder() {
+      return _Placeholder(mealType: mealType, label: label);
+    }
+
+    Widget buildImage(String path, {bool allowFallback = true}) {
+      if (path.startsWith('http://') || path.startsWith('https://')) {
+        return Image.network(
+          path,
+          fit: BoxFit.cover,
+          cacheWidth: cacheWidth,
+          cacheHeight: cacheHeight,
+          filterQuality: FilterQuality.medium,
+          headers: const {'Referer': 'https://www.russianfood.com/'},
+          errorBuilder: (context, error, stackTrace) {
+            final fallback = fallbackImage;
+            if (allowFallback &&
+                fallback != null &&
+                fallback.isNotEmpty &&
+                fallback != path) {
+              return buildImage(fallback, allowFallback: false);
+            }
+            return placeholder();
+          },
+        );
+      }
+      if (path.startsWith('assets/')) {
+        return Image.asset(
+          path,
+          fit: BoxFit.cover,
+          cacheWidth: cacheWidth,
+          cacheHeight: cacheHeight,
+          filterQuality: FilterQuality.medium,
+          errorBuilder: (context, error, stackTrace) => placeholder(),
+        );
+      }
+      return Image.file(
         File(path),
         fit: BoxFit.cover,
         cacheWidth: cacheWidth,
         cacheHeight: cacheHeight,
         filterQuality: FilterQuality.medium,
-        errorBuilder: (context, error, stackTrace) =>
-            _Placeholder(mealType: mealType, label: label),
+        errorBuilder: (context, error, stackTrace) => placeholder(),
       );
+    }
+
+    final path = image;
+    final fallback = fallbackImage;
+    final Widget child;
+    if (path != null && path.isNotEmpty) {
+      child = buildImage(path);
+    } else if (fallback != null && fallback.isNotEmpty) {
+      child = buildImage(fallback, allowFallback: false);
+    } else {
+      child = placeholder();
     }
     return ClipRRect(
       borderRadius: BorderRadius.circular(borderRadius),

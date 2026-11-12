@@ -16,6 +16,7 @@ Future<double?> showRecipeDetails(
   required RecipeRepository repository,
   String? image,
   String? source,
+  String? fallbackImage,
   MealType? mealType,
   Set<MealType> suitableFor = const {},
   int? minutes,
@@ -52,6 +53,7 @@ Future<double?> showRecipeDetails(
             children: [
               RecipeImage(
                 image: image,
+                fallbackImage: fallbackImage,
                 mealType: mealType,
                 height: 300,
                 borderRadius: 20,
