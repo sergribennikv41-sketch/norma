@@ -71,12 +71,16 @@ def parse_ingredients(raw: object, mapper: vkuso.Mapper, known: set[str]) -> lis
             return None
         name, quantity = line.rsplit(' - ', 1)
         ingredient_id = mapper.match(name)
-        if ingredient_id is None or ingredient_id not in known:
+        if ingredient_id is None:
+            return None
+        if ingredient_id in vkuso.SPICES:
+            continue
+        if ingredient_id not in known:
             return None
         grams = grams_for(quantity, ingredient_id)
         if grams is None:
             return None
-        if ingredient_id in vkuso.SPICES or grams <= 0:
+        if grams <= 0:
             continue
         total += grams
         mapped[ingredient_id] = mapped.get(ingredient_id, 0) + grams
