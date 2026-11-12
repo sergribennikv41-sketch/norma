@@ -1,0 +1,532 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Норма — макет приложения</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="theme-warm">
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">н</div>
+        <span>норма</span>
+      </div>
+
+      <nav class="nav">
+        <div class="nav-label">Приложение</div>
+        <button class="nav-item active" data-screen="plan">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="4" width="18" height="17" rx="3"/><path d="M8 2v4M16 2v4M3 10h18"/><path d="M8 14h3M8 17h6"/></svg>
+          <span>Рацион</span>
+        </button>
+        <button class="nav-item" data-screen="catalog">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v18H6.5A2.5 2.5 0 0 0 4 22V4.5Z"/><path d="M4 4.5A2.5 2.5 0 0 0 6.5 7H20"/></svg>
+          <span>Каталог</span>
+        </button>
+        <button class="nav-item" data-screen="shopping">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 8h12l1 12H5L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+          <span>Покупки</span>
+        </button>
+        <button class="nav-item" data-screen="onboarding">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
+          <span>Профиль</span>
+        </button>
+      </nav>
+
+      <div class="theme-switch" aria-label="Вариант дизайна">
+        <a href="?theme=warm" data-theme="warm">Тёплый</a>
+        <a href="?theme=dark" data-theme="dark">Графит</a>
+        <a href="?theme=editorial" data-theme="editorial">Редакция</a>
+      </div>
+
+      <div class="sidebar-foot">
+        <strong>Антон, 34 года</strong>
+        <span>Похудение · 4 приёма пищи<br>Ростов-на-Дону</span>
+        <button data-go="onboarding">Настроить профиль</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <section id="plan" class="screen active">
+        <div class="topbar">
+          <div>
+            <p class="eyebrow">План на неделю</p>
+            <h1>Ваш рацион</h1>
+            <p class="subtitle">Сбалансировано под цель «Похудение» · 4 приёма пищи</p>
+          </div>
+          <div class="top-actions">
+            <span class="pill"><span class="dot"></span> Ростов-на-Дону</span>
+            <button class="btn btn-soft" data-go="catalog">Каталог</button>
+            <button class="btn btn-primary">Перегенерировать</button>
+          </div>
+        </div>
+
+        <div class="grid-plan">
+          <div class="stack">
+            <div class="card pad targets">
+              <div class="ring-wrap">
+                <div class="ring" style="--p:78"></div>
+                <div class="ring-copy"><strong>2 159</strong><span>ккал</span></div>
+              </div>
+              <div class="target-copy">
+                <h3>Норма на день</h3>
+                <p>78% от цели. Ужин чуть легче — так проще держать дефицит без голода.</p>
+                <div class="macro-row">
+                  <div class="macro"><span>Белки</span><strong>114 г</strong></div>
+                  <div class="macro"><span>Жиры</span><strong>66 г</strong></div>
+                  <div class="macro"><span>Углеводы</span><strong>275 г</strong></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="day-tabs">
+              <button class="day-tab"><span>Пн</span><strong>1</strong></button>
+              <button class="day-tab"><span>Вт</span><strong>2</strong></button>
+              <button class="day-tab"><span>Ср</span><strong>3</strong></button>
+              <button class="day-tab active"><span>Чт</span><strong>4</strong></button>
+              <button class="day-tab"><span>Пт</span><strong>5</strong></button>
+              <button class="day-tab"><span>Сб</span><strong>6</strong></button>
+              <button class="day-tab"><span>Вс</span><strong>7</strong></button>
+            </div>
+
+            <div class="stack">
+              <div class="meal-card" data-go="recipe">
+                <img src="../assets/images/recipes/wb_21678.jpg" alt="Испанская тортилья">
+                <div>
+                  <h4>Испанская тортилья</h4>
+                  <div class="meal-meta">Завтрак · 30 мин · 134% порции<br>Картофель, яйцо, лук</div>
+                </div>
+                <div class="meal-cal"><strong>540</strong>ккал<button class="icon-btn">···</button></div>
+              </div>
+              <div class="meal-card" data-go="recipe">
+                <img src="../assets/images/recipes/wb_19131.jpg" alt="Винегрет">
+                <div>
+                  <h4>Винегрет</h4>
+                  <div class="meal-meta">Обед · 25 мин · 100% порции<br>Свёкла, картофель, морковь</div>
+                </div>
+                <div class="meal-cal"><strong>320</strong>ккал<button class="icon-btn">···</button></div>
+              </div>
+              <div class="meal-card" data-go="recipe">
+                <img src="../assets/images/recipes/wb_21720.jpg" alt="Курабье">
+                <div>
+                  <h4>Курабье</h4>
+                  <div class="meal-meta">Полдник · 20 мин · 100% порции<br>Миндаль, мука, сахар</div>
+                </div>
+                <div class="meal-cal"><strong>180</strong>ккал<button class="icon-btn">···</button></div>
+              </div>
+              <div class="meal-card" data-go="recipe">
+                <img src="../assets/images/recipes/wb_21986.jpg" alt="Капрезе">
+                <div>
+                  <h4>Капрезе (торт)</h4>
+                  <div class="meal-meta">Ужин · 15 мин · 100% порции<br>Томаты, моцарелла, базилик</div>
+                </div>
+                <div class="meal-cal"><strong>410</strong>ккал<button class="icon-btn">···</button></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="stack">
+            <div class="card pad">
+              <div class="section-head"><h2>День 4</h2><span>2 020 ккал</span></div>
+              <div class="summary-line"><span>Белки</span><strong>102 г</strong></div>
+              <div class="summary-line"><span>Жиры</span><strong>61 г</strong></div>
+              <div class="summary-line"><span>Углеводы</span><strong>248 г</strong></div>
+              <button class="btn btn-soft" style="width:100%;margin-top:12px" data-go="shopping">Открыть покупки</button>
+            </div>
+
+            <div class="card pad">
+              <div class="section-head"><h2>Список покупок</h2><span>27 из 31</span></div>
+              <p class="hint" style="margin-bottom:12px">Цены: Магнит · Ростов-на-Дону. Загружаются при раскрытии категории.</p>
+
+              <div class="shopping-category open">
+                <div class="shopping-head">
+                  <div><h4>Овощи</h4><span>4 позиции</span></div>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+                </div>
+                <div class="shopping-body">
+                  <div class="shopping-row"><span class="check"></span><span>Свёкла</span><span class="grams">600 г</span><span class="price found" data-loaded="1">22 ₽</span></div>
+                  <div class="shopping-row"><span class="check"></span><span>Морковь</span><span class="grams">700 г</span><span class="price found" data-loaded="1">33 ₽</span></div>
+                  <div class="shopping-row"><span class="check"></span><span>Лук репчатый</span><span class="grams">350 г</span><span class="price found" data-loaded="1">45 ₽</span></div>
+                  <div class="shopping-row"><span class="check"></span><span>Картофель</span><span class="grams">1,2 кг</span><span class="price found" data-loaded="1">49 ₽</span></div>
+                </div>
+              </div>
+
+              <div class="shopping-category">
+                <div class="shopping-head">
+                  <div><h4>Молочные продукты</h4><span>5 позиций</span></div>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+                </div>
+                <div class="shopping-body">
+                  <div class="shopping-row"><span class="check"></span><span>Молоко 2,5%</span><span class="grams">1,2 л</span><span class="price" data-price="90">—</span></div>
+                  <div class="shopping-row"><span class="check"></span><span>Творог 5%</span><span class="grams">400 г</span><span class="price" data-price="130">—</span></div>
+                  <div class="shopping-row"><span class="check"></span><span>Сыр твёрдый</span><span class="grams">250 г</span><span class="price" data-price="250">—</span></div>
+                </div>
+              </div>
+
+              <button class="btn btn-soft" style="width:100%;margin-top:12px" data-go="shopping">Весь список</button>
+            </div>
+
+            <div class="note">Цены не сохраняются на диск: при закрытии приложения кэш исчезнет. Это честный live-поиск, а не база устаревших цен.</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="catalog" class="screen">
+        <div class="topbar">
+          <div>
+            <p class="eyebrow">Библиотека</p>
+            <h1>Каталог</h1>
+            <p class="subtitle">99 рецептов из Викиучебника · 69 ингредиентов</p>
+          </div>
+          <div class="top-actions">
+            <span class="pill"><span class="dot"></span> Магнит</span>
+            <button class="btn btn-soft" data-go="shopping">Список покупок</button>
+          </div>
+        </div>
+
+        <div class="search-bar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+          <input value="свёкла" aria-label="Поиск по блюду или продукту">
+          <button class="btn btn-primary">Найти</button>
+        </div>
+
+        <div class="chips">
+          <button class="chip active">Все</button>
+          <button class="chip">Завтрак</button>
+          <button class="chip">Обед</button>
+          <button class="chip">Ужин</button>
+          <button class="chip">Перекус</button>
+        </div>
+
+        <div class="result-head">
+          <h2>Продукты</h2>
+          <span>1 продукт · 3 блюда</span>
+        </div>
+
+        <div class="product-card">
+          <div class="product-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3c3 2 5 5 5 9a5 5 0 0 1-10 0c0-4 2-7 5-9Z"/><path d="M12 8v8M9 12h6"/></svg>
+          </div>
+          <div>
+            <h4><span class="highlight">Свёкла</span></h4>
+            <p>Овощи · 49 ₽ за кг · используется в 3 блюдах</p>
+          </div>
+          <button class="btn btn-soft">Показать блюда</button>
+        </div>
+
+        <div class="result-head">
+          <h2>Блюда с этим продуктом</h2>
+          <span>Сначала самые подходящие</span>
+        </div>
+
+        <div class="catalog-grid">
+          <div class="recipe-card" data-go="recipe">
+            <img src="../assets/images/recipes/wb_19131.jpg" alt="Винегрет">
+            <div class="body">
+              <h4>Винегрет</h4>
+              <p><span class="highlight">Свёкла</span> · 320 ккал · 25 мин</p>
+            </div>
+          </div>
+          <div class="recipe-card" data-go="recipe">
+            <img src="../assets/images/recipes/wb_30120.jpg" alt="Борщевые основы">
+            <div class="body">
+              <h4>Борщевые основы, заправки и добавки</h4>
+              <p><span class="highlight">Свёкла</span> · 280 ккал · 40 мин</p>
+            </div>
+          </div>
+          <div class="recipe-card" data-go="recipe">
+            <img src="../assets/images/recipes/wb_21997.jpg" alt="Капоната">
+            <div class="body">
+              <h4>Капоната</h4>
+              <p>Овощи · 210 ккал · 35 мин</p>
+            </div>
+          </div>
+          <div class="recipe-card" data-go="recipe">
+            <img src="../assets/images/recipes/wb_21678.jpg" alt="Испанская тортилья">
+            <div class="body">
+              <h4>Испанская тортилья</h4>
+              <p>540 ккал · 30 мин · завтрак</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="note">Поиск ищет по названию блюда и по продукту. Для продукта показываются все блюда, где он есть, — с подсветкой совпадения.</div>
+      </section>
+
+      <section id="shopping" class="screen">
+        <div class="topbar">
+          <div>
+            <p class="eyebrow">Покупки</p>
+            <h1>Список покупок</h1>
+            <p class="subtitle">31 позиция · 7 дней · цены загружаются по требованию</p>
+          </div>
+          <div class="top-actions">
+            <span class="store-chip"><span class="dot"></span> Магнит · Ростов-на-Дону</span>
+            <button class="btn btn-primary" data-refresh-prices>Обновить цены</button>
+          </div>
+        </div>
+
+        <div class="grid-plan">
+          <div class="card pad">
+            <div class="section-head"><h2>По категориям</h2><span>раскройте, чтобы найти цены</span></div>
+
+            <div class="shopping-category open">
+              <div class="shopping-head">
+                <div><h4>Овощи</h4><span>4 позиции</span></div>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+              </div>
+              <div class="shopping-body">
+                <div class="shopping-row"><span class="check"></span><span>Свёкла</span><span class="grams">600 г</span><span class="price found" data-loaded="1">22 ₽</span></div>
+                <div class="shopping-row"><span class="check"></span><span>Морковь</span><span class="grams">700 г</span><span class="price found" data-loaded="1">33 ₽</span></div>
+                <div class="shopping-row"><span class="check"></span><span>Лук репчатый</span><span class="grams">350 г</span><span class="price found" data-loaded="1">45 ₽</span></div>
+                <div class="shopping-row"><span class="check"></span><span>Картофель</span><span class="grams">1,2 кг</span><span class="price found" data-loaded="1">49 ₽</span></div>
+              </div>
+            </div>
+
+            <div class="shopping-category">
+              <div class="shopping-head">
+                <div><h4>Бакалея</h4><span>7 позиций</span></div>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+              </div>
+              <div class="shopping-body">
+                <div class="shopping-row"><span class="check"></span><span>Мука пшеничная</span><span class="grams">5,6 кг</span><span class="price" data-price="140">—</span></div>
+                <div class="shopping-row"><span class="check"></span><span>Сахар</span><span class="grams">850 г</span><span class="price" data-price="85">—</span></div>
+                <div class="shopping-row"><span class="check"></span><span>Дрожжи</span><span class="grams">30 г</span><span class="price" data-price="27">—</span></div>
+              </div>
+            </div>
+
+            <div class="shopping-category">
+              <div class="shopping-head">
+                <div><h4>Молочные продукты</h4><span>5 позиций</span></div>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+              </div>
+              <div class="shopping-body">
+                <div class="shopping-row"><span class="check"></span><span>Молоко 2,5%</span><span class="grams">1,2 л</span><span class="price" data-price="90">—</span></div>
+                <div class="shopping-row"><span class="check"></span><span>Творог 5%</span><span class="grams">400 г</span><span class="price" data-price="130">—</span></div>
+                <div class="shopping-row"><span class="check"></span><span>Сыр твёрдый</span><span class="grams">250 г</span><span class="price" data-price="250">—</span></div>
+              </div>
+            </div>
+
+            <div class="shopping-category">
+              <div class="shopping-head">
+                <div><h4>Мясо и птица</h4><span>3 позиции</span></div>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+              </div>
+              <div class="shopping-body">
+                <div class="shopping-row"><span class="check"></span><span>Куриная грудка</span><span class="grams">1,4 кг</span><span class="price" data-price="449">—</span></div>
+                <div class="shopping-row"><span class="check"></span><span>Говядина (лопатка)</span><span class="grams">700 г</span><span class="price" data-price="650">—</span></div>
+                <div class="shopping-row"><span class="check"></span><span>Фарш</span><span class="grams">500 г</span><span class="price" data-missing="true">—</span></div>
+              </div>
+            </div>
+
+            <div class="shopping-category">
+              <div class="shopping-head">
+                <div><h4>Яйца</h4><span>1 позиция</span></div>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+              </div>
+              <div class="shopping-body">
+                <div class="shopping-row"><span class="check"></span><span>Яйцо куриное</span><span class="grams">30 шт</span><span class="price" data-price="95">—</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="stack">
+            <div class="card pad">
+              <div class="section-head"><h2>Итог</h2><span>оценка</span></div>
+              <div class="ring-wrap" style="margin:4px auto 12px;width:118px;height:118px">
+                <div class="ring" style="--p:87"></div>
+                <div class="ring-copy"><strong>3 480</strong><span>рублей</span></div>
+              </div>
+              <div class="summary-line"><span>Найдено цен</span><strong>27 из 31</strong></div>
+              <div class="summary-line"><span>Магазин</span><strong>Магнит</strong></div>
+              <div class="summary-line"><span>Город</span><strong>Ростов-на-Дону</strong></div>
+              <div class="note" style="margin-top:12px">Если цена не нашлась, позиция остаётся с прочерком. Мы не подставляем случайное число.</div>
+            </div>
+
+            <div class="card pad">
+              <div class="section-head"><h2>Как это работает</h2></div>
+              <div class="steps">
+                <div class="step"><span class="step-num">1</span><p>Раскройте категорию — у каждой позиции появится индикатор загрузки.</p></div>
+                <div class="step"><span class="step-num">2</span><p>Цена приходит из каталога выбранного магазина и сразу показывается.</p></div>
+                <div class="step"><span class="step-num">3</span><p>Кэш живёт только до закрытия приложения. Старые цены не хранятся.</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="onboarding" class="screen">
+        <div class="topbar">
+          <div>
+            <p class="eyebrow">Настройка</p>
+            <h1>Рацион под вас</h1>
+            <p class="subtitle">Норма КБЖУ и меню на неделю с учётом цели и ограничений</p>
+          </div>
+          <div class="top-actions">
+            <span class="pill"><span class="dot"></span> Шаг 1 из 3</span>
+          </div>
+        </div>
+
+        <div class="hero">
+          <div class="hero-card">
+            <img src="../assets/images/recipes/wb_21678.jpg" alt="Испанская тортилья">
+            <div class="hero-overlay">
+              <h2>Неделя еды, которая сходится с вашей нормой</h2>
+              <p>Без случайных цен и блюд «на глаз». Сначала профиль, потом меню.</p>
+            </div>
+          </div>
+
+          <div class="card form-card">
+            <h3>Основные параметры</h3>
+            <p>Это займёт меньше минуты.</p>
+
+            <div class="segmented">
+              <button class="active">Мужчина</button>
+              <button>Женщина</button>
+            </div>
+
+            <div class="fields" style="margin-top:10px">
+              <div class="field"><label>Возраст</label><strong>34</strong></div>
+              <div class="field"><label>Рост, см</label><strong>180</strong></div>
+              <div class="field"><label>Вес, кг</label><strong>82</strong></div>
+            </div>
+
+            <div class="field" style="margin-top:10px">
+              <label>Активность</label>
+              <select><option>Средняя</option><option>Низкая</option><option>Высокая</option></select>
+            </div>
+
+            <div class="form-row" style="display:block">
+              <span style="display:block;margin-bottom:8px">Цель</span>
+              <div class="chips">
+                <button class="chip active">Похудение</button>
+                <button class="chip">Поддержание</button>
+                <button class="chip">Набор</button>
+              </div>
+            </div>
+
+            <div class="form-row" style="display:block">
+              <span style="display:block;margin-bottom:8px">Приёмов пищи</span>
+              <div class="chips">
+                <button class="chip">3</button>
+                <button class="chip active">4</button>
+                <button class="chip">5</button>
+              </div>
+            </div>
+
+            <div class="form-row" style="display:block">
+              <span style="display:block;margin-bottom:8px">Готовка</span>
+              <div class="chips">
+                <button class="chip">15 мин</button>
+                <button class="chip active">30 мин</button>
+                <button class="chip">45 мин</button>
+                <button class="chip">Любое</button>
+              </div>
+            </div>
+
+            <div class="fields fields-2" style="margin-top:16px">
+              <div class="field">
+                <label>Город</label>
+                <select><option>Ростов-на-Дону</option><option>Москва</option><option>Казань</option></select>
+              </div>
+              <div class="field">
+                <label>Магазин</label>
+                <select><option>Магнит</option><option>Пятёрочка</option><option>Перекрёсток</option></select>
+              </div>
+            </div>
+
+            <button class="btn btn-primary" style="width:100%;margin-top:16px" data-go="plan">Рассчитать рацион</button>
+            <p class="hint" style="margin-top:9px">Цены ищутся по выбранному магазину при раскрытии списка покупок.</p>
+          </div>
+        </div>
+
+        <div class="card pad">
+          <div class="section-head"><h2>Что будет дальше</h2><span>3 шага</span></div>
+          <div class="steps">
+            <div class="step"><span class="step-num">1</span><p>Считаем BMR/TDEE и целевую норму КБЖУ.</p></div>
+            <div class="step"><span class="step-num">2</span><p>Собираем меню на 7 дней с учётом аллергенов и времени готовки.</p></div>
+            <div class="step"><span class="step-num">3</span><p>Показываем покупки и подтягиваем live-цены по выбранному магазину.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="recipe" class="screen">
+        <div class="topbar">
+          <div>
+            <button class="btn btn-ghost" data-go="plan" style="padding-left:0">← Назад к рациону</button>
+            <h1 style="margin-top:7px">Испанская тортилья</h1>
+            <p class="subtitle">Завтрак · 30 мин · 4 порции · Викиучебник</p>
+          </div>
+          <div class="top-actions">
+            <span class="pill"><span class="dot"></span> 540 ккал / порция</span>
+            <button class="btn btn-primary">В рацион</button>
+          </div>
+        </div>
+
+        <div class="modal-grid">
+          <div class="stack">
+            <div class="recipe-hero">
+              <img src="../assets/images/recipes/wb_21678.jpg" alt="Испанская тортилья">
+              <span class="badge">Фото: Wikimedia Commons · CC BY-SA 3.0</span>
+            </div>
+
+            <div class="card pad">
+              <div class="section-head"><h2>Ингредиенты</h2><span>на 4 порции</span></div>
+              <div class="ingredient-list">
+                <div class="ingredient-row"><span>Яйцо куриное</span><strong>4 шт</strong></div>
+                <div class="ingredient-row"><span>Картофель</span><strong>600 г</strong></div>
+                <div class="ingredient-row"><span>Лук репчатый</span><strong>1 шт</strong></div>
+                <div class="ingredient-row"><span>Масло оливковое</span><strong>2 ст. л.</strong></div>
+                <div class="ingredient-row"><span>Соль</span><strong>по вкусу</strong></div>
+              </div>
+              <div class="note" style="margin-top:14px">Стоимость не показываем здесь: она появится в списке покупок после live-поиска по магазину.</div>
+            </div>
+
+            <div class="card pad">
+              <div class="section-head"><h2>Приготовление</h2><span>6 шагов</span></div>
+              <div class="steps">
+                <div class="step"><span class="step-num">1</span><p>Картофель очистить, нарезать тонкими ломтиками и обсушить.</p></div>
+                <div class="step"><span class="step-num">2</span><p>Лук очистить и тонко нарезать. Разогреть масло в сковороде.</p></div>
+                <div class="step"><span class="step-num">3</span><p>Выложить картофель, добавить лук и готовить до мягкости.</p></div>
+                <div class="step"><span class="step-num">4</span><p>Яйца взбить, посолить и залить смесью картофель.</p></div>
+                <div class="step"><span class="step-num">5</span><p>Накрыть крышкой и готовить на небольшом огне до схватывания.</p></div>
+                <div class="step"><span class="step-num">6</span><p>Дать немного остыть, нарезать и подавать.</p></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="stack">
+            <div class="card pad">
+              <div class="section-head"><h2>КБЖУ</h2><span>на порцию</span></div>
+              <div class="macro-row">
+                <div class="macro"><span>Белки</span><strong>27 г</strong></div>
+                <div class="macro"><span>Жиры</span><strong>16 г</strong></div>
+                <div class="macro"><span>Углеводы</span><strong>75 г</strong></div>
+              </div>
+              <div class="form-row">
+                <span>Порция</span>
+                <strong style="font-size:12px">134%</strong>
+              </div>
+              <div class="progress"><i style="width:67%"></i></div>
+              <p class="hint" style="margin-top:8px">Можно изменить порцию перед добавлением в рацион.</p>
+            </div>
+
+            <div class="card pad">
+              <div class="section-head"><h2>Источник и видео</h2></div>
+              <div class="toggle-row"><span>Рецепт</span><strong>Викиучебник</strong></div>
+              <div class="toggle-row"><span>Лицензия</span><strong>CC BY-SA 4.0</strong></div>
+              <div class="toggle-row"><span>Фото</span><strong>Wikimedia Commons</strong></div>
+              <button class="btn btn-soft" style="width:100%;margin-top:14px">Видео в Pinterest</button>
+            </div>
+
+            <div class="note">Норма — ориентир, а не медицинская рекомендация. Цены могут отличаться в зависимости от магазина и даты.</div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

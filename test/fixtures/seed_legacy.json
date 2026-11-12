@@ -1,0 +1,5091 @@
+{
+  "version": 16,
+  "ingredients": [
+    {
+      "id": "chicken_breast",
+      "name": "Куриная грудка",
+      "category": "Мясо и птица",
+      "per100g": {
+        "calories": 96.0,
+        "protein": 22.0,
+        "fat": 2.0,
+        "carbs": 0.0
+      },
+      "allergens": [],
+      "pricePerKg": 420.0
+    },
+    {
+      "id": "beef_chuck",
+      "name": "Говядина (лопатка)",
+      "category": "Мясо и птица",
+      "per100g": {
+        "calories": 208.0,
+        "protein": 18.0,
+        "fat": 14.0,
+        "carbs": 0.0
+      },
+      "allergens": [],
+      "pricePerKg": 650.0
+    },
+    {
+      "id": "egg",
+      "name": "Яйцо куриное",
+      "category": "Яйца",
+      "per100g": {
+        "calories": 143.0,
+        "protein": 12.6,
+        "fat": 9.5,
+        "carbs": 0.7
+      },
+      "allergens": [
+        "eggs"
+      ],
+      "pricePerKg": 260.0
+    },
+    {
+      "id": "cottage_5",
+      "name": "Творог 5%",
+      "category": "Молочные продукты",
+      "per100g": {
+        "calories": 121.0,
+        "protein": 17.0,
+        "fat": 5.0,
+        "carbs": 3.0
+      },
+      "allergens": [
+        "lactose"
+      ],
+      "pricePerKg": 320.0
+    },
+    {
+      "id": "greek_yogurt",
+      "name": "Йогурт греческий 2%",
+      "category": "Молочные продукты",
+      "per100g": {
+        "calories": 73.0,
+        "protein": 9.0,
+        "fat": 2.0,
+        "carbs": 4.0
+      },
+      "allergens": [
+        "lactose"
+      ],
+      "pricePerKg": 400.0
+    },
+    {
+      "id": "milk_25",
+      "name": "Молоко 2,5%",
+      "category": "Молочные продукты",
+      "per100g": {
+        "calories": 52.0,
+        "protein": 2.8,
+        "fat": 2.5,
+        "carbs": 4.7
+      },
+      "allergens": [
+        "lactose"
+      ],
+      "pricePerKg": 90.0
+    },
+    {
+      "id": "feta",
+      "name": "Сыр фета",
+      "category": "Молочные продукты",
+      "per100g": {
+        "calories": 264.0,
+        "protein": 14.2,
+        "fat": 21.3,
+        "carbs": 4.1
+      },
+      "allergens": [
+        "lactose"
+      ],
+      "pricePerKg": 700.0
+    },
+    {
+      "id": "hard_cheese",
+      "name": "Сыр твердый",
+      "category": "Молочные продукты",
+      "per100g": {
+        "calories": 363.0,
+        "protein": 23.4,
+        "fat": 29.4,
+        "carbs": 0.0
+      },
+      "allergens": [
+        "lactose"
+      ],
+      "pricePerKg": 900.0
+    },
+    {
+      "id": "brown_rice",
+      "name": "Рис бурый (сухой)",
+      "category": "Крупы и макароны",
+      "per100g": {
+        "calories": 337.0,
+        "protein": 7.4,
+        "fat": 1.8,
+        "carbs": 72.9
+      },
+      "allergens": [],
+      "pricePerKg": 140.0
+    },
+    {
+      "id": "potato",
+      "name": "Картофель",
+      "category": "Овощи",
+      "per100g": {
+        "calories": 77.0,
+        "protein": 2.0,
+        "fat": 0.4,
+        "carbs": 17.0
+      },
+      "allergens": [],
+      "pricePerKg": 40.0
+    },
+    {
+      "id": "olive_oil",
+      "name": "Масло оливковое",
+      "category": "Масла",
+      "per100g": {
+        "calories": 884.0,
+        "protein": 0.0,
+        "fat": 99.9,
+        "carbs": 0.0
+      },
+      "allergens": [],
+      "pricePerKg": 1100.0
+    },
+    {
+      "id": "butter",
+      "name": "Масло сливочное",
+      "category": "Масла",
+      "per100g": {
+        "calories": 717.0,
+        "protein": 0.8,
+        "fat": 81.1,
+        "carbs": 0.9
+      },
+      "allergens": [
+        "lactose"
+      ],
+      "pricePerKg": 900.0
+    },
+    {
+      "id": "cucumber",
+      "name": "Огурец",
+      "category": "Овощи",
+      "per100g": {
+        "calories": 15.0,
+        "protein": 0.8,
+        "fat": 0.1,
+        "carbs": 2.9
+      },
+      "allergens": [],
+      "pricePerKg": 120.0
+    },
+    {
+      "id": "tomato",
+      "name": "Помидор",
+      "category": "Овощи",
+      "per100g": {
+        "calories": 20.0,
+        "protein": 1.1,
+        "fat": 0.2,
+        "carbs": 3.8
+      },
+      "allergens": [],
+      "pricePerKg": 180.0
+    },
+    {
+      "id": "bell_pepper",
+      "name": "Перец болгарский",
+      "category": "Овощи",
+      "per100g": {
+        "calories": 27.0,
+        "protein": 1.3,
+        "fat": 0.1,
+        "carbs": 5.3
+      },
+      "allergens": [],
+      "pricePerKg": 250.0
+    },
+    {
+      "id": "cabbage",
+      "name": "Капуста белокочанная",
+      "category": "Овощи",
+      "per100g": {
+        "calories": 28.0,
+        "protein": 1.8,
+        "fat": 0.1,
+        "carbs": 4.7
+      },
+      "allergens": [],
+      "pricePerKg": 50.0
+    },
+    {
+      "id": "carrot",
+      "name": "Морковь",
+      "category": "Овощи",
+      "per100g": {
+        "calories": 41.0,
+        "protein": 0.9,
+        "fat": 0.2,
+        "carbs": 9.6
+      },
+      "allergens": [],
+      "pricePerKg": 60.0
+    },
+    {
+      "id": "onion",
+      "name": "Лук репчатый",
+      "category": "Овощи",
+      "per100g": {
+        "calories": 40.0,
+        "protein": 1.4,
+        "fat": 0.0,
+        "carbs": 10.4
+      },
+      "allergens": [],
+      "pricePerKg": 50.0
+    },
+    {
+      "id": "spinach",
+      "name": "Шпинат",
+      "category": "Овощи",
+      "per100g": {
+        "calories": 23.0,
+        "protein": 2.9,
+        "fat": 0.4,
+        "carbs": 3.6
+      },
+      "allergens": [],
+      "pricePerKg": 400.0
+    },
+    {
+      "id": "apple",
+      "name": "Яблоко",
+      "category": "Фрукты и ягоды",
+      "per100g": {
+        "calories": 52.0,
+        "protein": 0.4,
+        "fat": 0.2,
+        "carbs": 13.8
+      },
+      "allergens": [],
+      "pricePerKg": 120.0
+    },
+    {
+      "id": "banana",
+      "name": "Банан",
+      "category": "Фрукты и ягоды",
+      "per100g": {
+        "calories": 89.0,
+        "protein": 1.5,
+        "fat": 0.2,
+        "carbs": 22.8
+      },
+      "allergens": [],
+      "pricePerKg": 110.0
+    },
+    {
+      "id": "orange",
+      "name": "Апельсин",
+      "category": "Фрукты и ягоды",
+      "per100g": {
+        "calories": 43.0,
+        "protein": 0.9,
+        "fat": 0.1,
+        "carbs": 10.3
+      },
+      "allergens": [],
+      "pricePerKg": 150.0
+    },
+    {
+      "id": "almonds",
+      "name": "Миндаль",
+      "category": "Орехи",
+      "per100g": {
+        "calories": 579.0,
+        "protein": 21.2,
+        "fat": 49.9,
+        "carbs": 21.6
+      },
+      "allergens": [
+        "nuts"
+      ],
+      "pricePerKg": 1000.0
+    },
+    {
+      "id": "walnuts",
+      "name": "Грецкий орех",
+      "category": "Орехи",
+      "per100g": {
+        "calories": 654.0,
+        "protein": 15.2,
+        "fat": 65.2,
+        "carbs": 13.7
+      },
+      "allergens": [
+        "nuts"
+      ],
+      "pricePerKg": 900.0
+    },
+    {
+      "id": "salmon",
+      "name": "Лосось",
+      "category": "Рыба и морепродукты",
+      "per100g": {
+        "calories": 208.0,
+        "protein": 20.4,
+        "fat": 13.4,
+        "carbs": 0.0
+      },
+      "allergens": [
+        "fish"
+      ],
+      "pricePerKg": 1200.0
+    },
+    {
+      "id": "cod",
+      "name": "Треска",
+      "category": "Рыба и морепродукты",
+      "per100g": {
+        "calories": 69.0,
+        "protein": 16.0,
+        "fat": 0.7,
+        "carbs": 0.0
+      },
+      "allergens": [
+        "fish"
+      ],
+      "pricePerKg": 700.0
+    },
+    {
+      "id": "tomato_paste",
+      "name": "Томатная паста",
+      "category": "Бакалея",
+      "per100g": {
+        "calories": 82.0,
+        "protein": 3.6,
+        "fat": 0.5,
+        "carbs": 16.8
+      },
+      "allergens": [],
+      "pricePerKg": 300.0
+    },
+    {
+      "id": "honey",
+      "name": "Мед",
+      "category": "Бакалея",
+      "per100g": {
+        "calories": 304.0,
+        "protein": 0.3,
+        "fat": 0.0,
+        "carbs": 82.4
+      },
+      "allergens": [],
+      "pricePerKg": 800.0
+    },
+    {
+      "id": "beetroot",
+      "name": "Свёкла",
+      "category": "Овощи",
+      "per100g": {
+        "calories": 43,
+        "protein": 1.6,
+        "fat": 0.2,
+        "carbs": 9.6
+      },
+      "allergens": [],
+      "pricePerKg": 80
+    },
+    {
+      "id": "capers",
+      "name": "Каперсы",
+      "category": "Бакалея",
+      "per100g": {
+        "calories": 23,
+        "protein": 2.4,
+        "fat": 0.9,
+        "carbs": 4.9
+      },
+      "allergens": [],
+      "pricePerKg": 1500
+    },
+    {
+      "id": "cream",
+      "name": "Сливки 10%",
+      "category": "Молочные продукты",
+      "per100g": {
+        "calories": 119,
+        "protein": 2.8,
+        "fat": 10.0,
+        "carbs": 3.6
+      },
+      "allergens": [
+        "lactose"
+      ],
+      "pricePerKg": 400
+    },
+    {
+      "id": "eggplant",
+      "name": "Баклажан",
+      "category": "Овощи",
+      "per100g": {
+        "calories": 25,
+        "protein": 1.2,
+        "fat": 0.1,
+        "carbs": 5.9
+      },
+      "allergens": [],
+      "pricePerKg": 150
+    },
+    {
+      "id": "flour",
+      "name": "Мука пшеничная",
+      "category": "Бакалея",
+      "per100g": {
+        "calories": 342,
+        "protein": 10.3,
+        "fat": 1.1,
+        "carbs": 70.6
+      },
+      "allergens": [
+        "gluten"
+      ],
+      "pricePerKg": 80
+    },
+    {
+      "id": "garlic",
+      "name": "Чеснок",
+      "category": "Овощи",
+      "per100g": {
+        "calories": 149,
+        "protein": 6.4,
+        "fat": 0.5,
+        "carbs": 33.0
+      },
+      "allergens": [],
+      "pricePerKg": 250
+    },
+    {
+      "id": "green_peas",
+      "name": "Горошек зелёный консервированный",
+      "category": "Бакалея",
+      "per100g": {
+        "calories": 55,
+        "protein": 5.0,
+        "fat": 0.2,
+        "carbs": 8.3
+      },
+      "allergens": [],
+      "pricePerKg": 250
+    },
+    {
+      "id": "greens",
+      "name": "Зелень",
+      "category": "Овощи",
+      "per100g": {
+        "calories": 36,
+        "protein": 3.7,
+        "fat": 0.4,
+        "carbs": 8.0
+      },
+      "allergens": [],
+      "pricePerKg": 300
+    },
+    {
+      "id": "jam",
+      "name": "Варенье",
+      "category": "Бакалея",
+      "per100g": {
+        "calories": 250,
+        "protein": 0.3,
+        "fat": 0.0,
+        "carbs": 65.0
+      },
+      "allergens": [],
+      "pricePerKg": 400
+    },
+    {
+      "id": "lamb",
+      "name": "Баранина",
+      "category": "Мясо и птица",
+      "per100g": {
+        "calories": 203,
+        "protein": 18.0,
+        "fat": 14.0,
+        "carbs": 0.0
+      },
+      "allergens": [],
+      "pricePerKg": 800
+    },
+    {
+      "id": "lemon",
+      "name": "Лимон",
+      "category": "Фрукты и ягоды",
+      "per100g": {
+        "calories": 29,
+        "protein": 1.1,
+        "fat": 0.3,
+        "carbs": 9.3
+      },
+      "allergens": [],
+      "pricePerKg": 200
+    },
+    {
+      "id": "mushrooms",
+      "name": "Шампиньоны",
+      "category": "Овощи",
+      "per100g": {
+        "calories": 27,
+        "protein": 4.3,
+        "fat": 1.0,
+        "carbs": 0.1
+      },
+      "allergens": [],
+      "pricePerKg": 250
+    },
+    {
+      "id": "pickle",
+      "name": "Огурцы солёные",
+      "category": "Овощи",
+      "per100g": {
+        "calories": 19,
+        "protein": 0.8,
+        "fat": 0.1,
+        "carbs": 4.4
+      },
+      "allergens": [],
+      "pricePerKg": 200
+    },
+    {
+      "id": "pork",
+      "name": "Свинина",
+      "category": "Мясо и птица",
+      "per100g": {
+        "calories": 263,
+        "protein": 18.0,
+        "fat": 21.0,
+        "carbs": 0.0
+      },
+      "allergens": [],
+      "pricePerKg": 500
+    },
+    {
+      "id": "sour_cream",
+      "name": "Сметана 20%",
+      "category": "Молочные продукты",
+      "per100g": {
+        "calories": 206,
+        "protein": 2.8,
+        "fat": 20.0,
+        "carbs": 3.2
+      },
+      "allergens": [
+        "lactose"
+      ],
+      "pricePerKg": 350
+    },
+    {
+      "id": "sugar",
+      "name": "Сахар",
+      "category": "Бакалея",
+      "per100g": {
+        "calories": 400,
+        "protein": 0,
+        "fat": 0,
+        "carbs": 99.8
+      },
+      "allergens": [],
+      "pricePerKg": 80
+    },
+    {
+      "id": "sunflower_oil",
+      "name": "Масло подсолнечное",
+      "category": "Масла",
+      "per100g": {
+        "calories": 899,
+        "protein": 0,
+        "fat": 99.9,
+        "carbs": 0
+      },
+      "allergens": [],
+      "pricePerKg": 150
+    },
+    {
+      "id": "wine",
+      "name": "Вино",
+      "category": "Бакалея",
+      "per100g": {
+        "calories": 83,
+        "protein": 0.1,
+        "fat": 0.0,
+        "carbs": 2.6
+      },
+      "allergens": [],
+      "pricePerKg": 800
+    },
+    {
+      "id": "yeast",
+      "name": "Дрожжи",
+      "category": "Бакалея",
+      "per100g": {
+        "calories": 109,
+        "protein": 12.7,
+        "fat": 2.7,
+        "carbs": 36.4
+      },
+      "allergens": [],
+      "pricePerKg": 2000
+    },
+    {
+      "id": "zucchini",
+      "name": "Кабачок",
+      "category": "Овощи",
+      "per100g": {
+        "calories": 17,
+        "protein": 0.6,
+        "fat": 0.3,
+        "carbs": 4.6
+      },
+      "allergens": [],
+      "pricePerKg": 100
+    },
+    {
+      "id": "herring",
+      "name": "Сельдь",
+      "category": "Рыба и морепродукты",
+      "per100g": {
+        "calories": 161,
+        "protein": 17.0,
+        "fat": 9.0,
+        "carbs": 0.0
+      },
+      "allergens": [
+        "fish"
+      ],
+      "pricePerKg": 500
+    },
+    {
+      "id": "kefir",
+      "name": "Кефир 2,5%",
+      "category": "Молочные продукты",
+      "per100g": {
+        "calories": 51,
+        "protein": 3.0,
+        "fat": 2.5,
+        "carbs": 4.0
+      },
+      "allergens": [
+        "lactose"
+      ],
+      "pricePerKg": 100
+    },
+    {
+      "id": "bacon",
+      "name": "Бекон",
+      "category": "Мясо и птица",
+      "per100g": {
+        "calories": 500,
+        "protein": 20.0,
+        "fat": 45.0,
+        "carbs": 0.0
+      },
+      "allergens": [],
+      "pricePerKg": 600
+    },
+    {
+      "id": "bread_white",
+      "name": "Хлеб белый",
+      "category": "Хлеб",
+      "per100g": {
+        "calories": 265,
+        "protein": 7.6,
+        "fat": 3.2,
+        "carbs": 49.0
+      },
+      "allergens": [
+        "gluten"
+      ],
+      "pricePerKg": 150
+    },
+    {
+      "id": "breadcrumbs",
+      "name": "Сухари панировочные",
+      "category": "Бакалея",
+      "per100g": {
+        "calories": 395,
+        "protein": 11.9,
+        "fat": 5.1,
+        "carbs": 72.2
+      },
+      "allergens": [
+        "gluten"
+      ],
+      "pricePerKg": 200
+    },
+    {
+      "id": "liver",
+      "name": "Печень",
+      "category": "Мясо и птица",
+      "per100g": {
+        "calories": 135,
+        "protein": 19.0,
+        "fat": 5.0,
+        "carbs": 0.0
+      },
+      "allergens": [],
+      "pricePerKg": 300
+    },
+    {
+      "id": "mayonnaise",
+      "name": "Майонез",
+      "category": "Бакалея",
+      "per100g": {
+        "calories": 680,
+        "protein": 2.4,
+        "fat": 74.0,
+        "carbs": 2.6
+      },
+      "allergens": [
+        "eggs"
+      ],
+      "pricePerKg": 300
+    },
+    {
+      "id": "starch",
+      "name": "Крахмал",
+      "category": "Бакалея",
+      "per100g": {
+        "calories": 350,
+        "protein": 0.3,
+        "fat": 0.1,
+        "carbs": 85.0
+      },
+      "allergens": [],
+      "pricePerKg": 150
+    },
+    {
+      "id": "prunes",
+      "name": "Чернослив",
+      "category": "Фрукты и ягоды",
+      "per100g": {
+        "calories": 240,
+        "protein": 2.3,
+        "fat": 0.7,
+        "carbs": 57.5
+      },
+      "allergens": [],
+      "pricePerKg": 500
+    },
+    {
+      "id": "raisins",
+      "name": "Изюм",
+      "category": "Фрукты и ягоды",
+      "per100g": {
+        "calories": 299,
+        "protein": 2.5,
+        "fat": 0.6,
+        "carbs": 79.0
+      },
+      "allergens": [],
+      "pricePerKg": 400
+    },
+    {
+      "id": "chocolate",
+      "name": "Шоколад",
+      "category": "Бакалея",
+      "per100g": {
+        "calories": 550,
+        "protein": 5.0,
+        "fat": 30.0,
+        "carbs": 60.0
+      },
+      "allergens": [],
+      "pricePerKg": 700
+    },
+    {
+      "id": "cocoa",
+      "name": "Какао-порошок",
+      "category": "Бакалея",
+      "per100g": {
+        "calories": 374,
+        "protein": 20.0,
+        "fat": 11.0,
+        "carbs": 32.0
+      },
+      "allergens": [],
+      "pricePerKg": 800
+    },
+    {
+      "id": "ground_beef",
+      "name": "Фарш говяжий",
+      "category": "Мясо и птица",
+      "per100g": {
+        "calories": 250,
+        "protein": 17.0,
+        "fat": 20.0,
+        "carbs": 0.0
+      },
+      "allergens": [],
+      "pricePerKg": 600
+    },
+    {
+      "id": "ham",
+      "name": "Ветчина",
+      "category": "Мясо и птица",
+      "per100g": {
+        "calories": 145,
+        "protein": 16.0,
+        "fat": 8.0,
+        "carbs": 1.0
+      },
+      "allergens": [],
+      "pricePerKg": 600
+    },
+    {
+      "id": "millet",
+      "name": "Пшено",
+      "category": "Крупы и макароны",
+      "per100g": {
+        "calories": 348,
+        "protein": 11.5,
+        "fat": 3.3,
+        "carbs": 69.3
+      },
+      "allergens": [],
+      "pricePerKg": 100
+    },
+    {
+      "id": "pumpkin",
+      "name": "Тыква",
+      "category": "Овощи",
+      "per100g": {
+        "calories": 26,
+        "protein": 1.0,
+        "fat": 0.1,
+        "carbs": 6.5
+      },
+      "allergens": [],
+      "pricePerKg": 80
+    },
+    {
+      "id": "sauerkraut",
+      "name": "Капуста квашеная",
+      "category": "Овощи",
+      "per100g": {
+        "calories": 19,
+        "protein": 1.8,
+        "fat": 0.1,
+        "carbs": 4.4
+      },
+      "allergens": [],
+      "pricePerKg": 100
+    },
+    {
+      "id": "turnip",
+      "name": "Репа",
+      "category": "Овощи",
+      "per100g": {
+        "calories": 28,
+        "protein": 1.1,
+        "fat": 0.1,
+        "carbs": 6.2
+      },
+      "allergens": [],
+      "pricePerKg": 80
+    },
+    {
+      "id": "celery",
+      "name": "Сельдерей",
+      "category": "Овощи",
+      "per100g": {
+        "calories": 13,
+        "protein": 0.9,
+        "fat": 0.1,
+        "carbs": 2.1
+      },
+      "allergens": [],
+      "pricePerKg": 250
+    },
+    {
+      "id": "mustard",
+      "name": "Горчица",
+      "category": "Бакалея",
+      "per100g": {
+        "calories": 66,
+        "protein": 4.0,
+        "fat": 3.0,
+        "carbs": 4.0
+      },
+      "allergens": [],
+      "pricePerKg": 400
+    },
+    {
+      "id": "sesame",
+      "name": "Кунжут",
+      "category": "Орехи",
+      "per100g": {
+        "calories": 573,
+        "protein": 17.7,
+        "fat": 49.7,
+        "carbs": 12.2
+      },
+      "allergens": [],
+      "pricePerKg": 800
+    }
+  ],
+  "recipes": [
+    {
+      "id": "wb_12039",
+      "title": "Айнтопф с квашеной капустой",
+      "mealTypes": [
+        "lunch"
+      ],
+      "servings": 4,
+      "minutes": 75,
+      "ingredients": [
+        {
+          "ingredientId": "cabbage",
+          "grams": 500.0
+        },
+        {
+          "ingredientId": "onion",
+          "grams": 200.0
+        },
+        {
+          "ingredientId": "pork",
+          "grams": 500.0
+        },
+        {
+          "ingredientId": "potato",
+          "grams": 825.0
+        },
+        {
+          "ingredientId": "sour_cream",
+          "grams": 275.0
+        },
+        {
+          "ingredientId": "sunflower_oil",
+          "grams": 42.0
+        },
+        {
+          "ingredientId": "tomato_paste",
+          "grams": 40.0
+        }
+      ],
+      "steps": [
+        "Сварить свинину, посолив её при этом по вкусу.",
+        "Вынуть свинину из сваренного бульона, при этом совершенно необязательно давать ей остывать; нарезать её большими кубиками.",
+        "Чеснок измельчить в давилке, либо мелко порезав, либо подавив в ступке.",
+        "Лук нарезать полукольцами.",
+        "Мясо обжарить в масле, после чего добавить лук, измельченный чеснок и томатную пасту.",
+        "Капусту смешать с дольками картофеля и положить в кастрюлю.",
+        "Влить бульон и приправить тмином, перемешать и варить около 45 минут"
+      ],
+      "image": "assets/images/recipes/wb_12039.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Айнтопф_с_квашеной_капустой, CC BY-SA 4.0; фото: Josef Türk Jun. from Reit im Winkl, Deutschland, CC BY-SA 2.0"
+    },
+    {
+      "id": "wb_19759",
+      "title": "Банановый сплит",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "banana",
+          "grams": 480.0
+        },
+        {
+          "ingredientId": "chocolate",
+          "grams": 225.0
+        },
+        {
+          "ingredientId": "cocoa",
+          "grams": 50.0
+        },
+        {
+          "ingredientId": "cottage_5",
+          "grams": 250.0
+        },
+        {
+          "ingredientId": "cream",
+          "grams": 250.0
+        },
+        {
+          "ingredientId": "egg",
+          "grams": 330.0
+        },
+        {
+          "ingredientId": "flour",
+          "grams": 120.0
+        },
+        {
+          "ingredientId": "starch",
+          "grams": 25.0
+        },
+        {
+          "ingredientId": "sugar",
+          "grams": 260.0
+        }
+      ],
+      "steps": [
+        "Взять Соль, разом её пересыпать на белки",
+        "Потом добавить 50 г сахара",
+        "6 яиц смешать с 6 ложками кипятка 130 г сахара",
+        "Насыпать белки и муку",
+        "Дальше тесто делится пополам.",
+        "Так в одну часть 25 г крахмала, в другую 25 г какао",
+        "Одну часть теста засыпать в формую Поверх положить листок бумаги",
+        "Вторую часть теста положить на 30 минут в духовку",
+        "Потом часть из духовки вынуть и подкинуть на высоту 10 см",
+        "Чтобы был крем нужен творог, шоколад, пудинг, сахарную пудру и какао",
+        "В другой пудинг добавить ваниль",
+        "Взбить 250 г сливок"
+      ],
+      "image": "assets/images/recipes/wb_19759.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Банановый_сплит, CC BY-SA 4.0; фото: CC BY-SA 3.0"
+    },
+    {
+      "id": "wb_30120",
+      "title": "Борщевые основы, заправки и добавки",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "beef_chuck",
+          "grams": 1000.0
+        },
+        {
+          "ingredientId": "beetroot",
+          "grams": 500.0
+        },
+        {
+          "ingredientId": "carrot",
+          "grams": 400.0
+        },
+        {
+          "ingredientId": "celery",
+          "grams": 303.0
+        },
+        {
+          "ingredientId": "flour",
+          "grams": 3.0
+        },
+        {
+          "ingredientId": "garlic",
+          "grams": 21.7
+        },
+        {
+          "ingredientId": "greens",
+          "grams": 100.0
+        },
+        {
+          "ingredientId": "mushrooms",
+          "grams": 500.0
+        },
+        {
+          "ingredientId": "onion",
+          "grams": 1200.0
+        },
+        {
+          "ingredientId": "sunflower_oil",
+          "grams": 14.0
+        }
+      ],
+      "steps": [
+        "Бульонъ, т.е.",
+        "наваръ для суповъ и соусовъ.",
+        "Общiя указанiя.",
+        "Главнымъ и первымъ условiемъ кулинарнаго искусства является умѣнье варить бульонъ, ибо отъ качества бульона зависитъ изготовленiе хорошихъ суповъ, соусовъ, мясныхъ соковъ, лансника и т.п"
+      ],
+      "image": "assets/images/recipes/wb_30120.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Борщевые_основы,_заправки_и_добавки, CC BY-SA 4.0; фото: Игорь Хмиловский, CC0"
+    },
+    {
+      "id": "wb_27663",
+      "title": "Бостонский кремовый пирог",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "butter",
+          "grams": 145.0
+        },
+        {
+          "ingredientId": "chocolate",
+          "grams": 25.0
+        },
+        {
+          "ingredientId": "egg",
+          "grams": 275.0
+        },
+        {
+          "ingredientId": "flour",
+          "grams": 255.0
+        },
+        {
+          "ingredientId": "milk_25",
+          "grams": 430.0
+        },
+        {
+          "ingredientId": "sugar",
+          "grams": 380.0
+        }
+      ],
+      "steps": [
+        "Разогреть духовку до 190 градусов.",
+        "Смазать маслом две круглые разъемные формы диаметром 20 сантиметров.",
+        "Застелить промасленные формы пергаментом",
+        "Муку просеять в большую миску с разрыхлителем и солью",
+        "В большой миске взбить размягченное сливочное масло с сахаром до пышного состояния.",
+        "Ввести в масляную смесь яйца, хорошо взбивая после каждого.",
+        "Затем ввести ванильный экстракт и молоко.",
+        "Постепенно ввести муку, перемешать до однородности, но не переусердствовать, чтобы не забить тесто",
+        "Выложить тесто в подготовленные формочки и поставить в разогретую духовку, запекать до чистой деревянной палочки, минут 25",
+        "Приготовить крем.",
+        "В небольшой кастрюльке молоко довести до кипения, снять с плиты.",
+        "В стеклянной миске взбить яичные желтки, постепенно ввести сахар, взбивать до белого состояния."
+      ],
+      "image": "assets/images/recipes/wb_27663.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Бостонский_кремовый_пирог, CC BY-SA 4.0; фото: cara fealy choate, CC BY 2.0"
+    },
+    {
+      "id": "wb_21684",
+      "title": "Брецель",
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ],
+      "servings": 12,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "butter",
+          "grams": 40.0
+        },
+        {
+          "ingredientId": "flour",
+          "grams": 500.0
+        },
+        {
+          "ingredientId": "sugar",
+          "grams": 5.0
+        },
+        {
+          "ingredientId": "yeast",
+          "grams": 20.0
+        }
+      ],
+      "steps": [
+        "Наливаем в глубокую миску теплую (35-40 градусов) воду, добавляем сахар и дрожжи.",
+        "Оставляем на 5 минут",
+        "Насыпаем в миску необходимое количество просеянной муки, добавляем соль и мягкое масло",
+        "Замешиваем однородное тесто (Дрожжевое тесто для этого рецепта не требует длительной расстойки)",
+        "Делим тесто на 12-15 частей.",
+        "Каждую часть растягиваем в жгут (приблизительной длиной 40 см) с более тонкими краями",
+        "Формируем крендель, оставляем на 15-20 минут",
+        "Наливаем в сотейник 1 л воды и добавляем 1 ч.л.",
+        "пищевой соды.",
+        "Ждем, когда раствор закипит.",
+        "Снимаем кастрюлю с огня и опускаем каждый брецель в горячую воду на 30 секунд.",
+        "Вынимаем брецели из воды шумовкой (не алюминиевой!)"
+      ],
+      "image": "assets/images/recipes/wb_21684.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Брецель, CC BY-SA 4.0; фото: Arnaud 25, CC BY-SA 4.0"
+    },
+    {
+      "id": "wb_21813",
+      "title": "Бриошь",
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ],
+      "servings": 20,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "butter",
+          "grams": 250.0
+        },
+        {
+          "ingredientId": "egg",
+          "grams": 330.0
+        },
+        {
+          "ingredientId": "flour",
+          "grams": 700.0
+        },
+        {
+          "ingredientId": "sugar",
+          "grams": 80.0
+        }
+      ],
+      "steps": [
+        "В миску миксера просеиваем 700 граммов муки, добавляем 1 столовую ложку соли, 80 граммов сахара, 1,5 столовые ложки сухих дрожжей, перемешиваем",
+        "В отдельной посуде смешиваем 6 холодных яиц с 60 миллилитрами ледяной воды",
+        "Вливаем смесь яиц с водой в муку и в течение 7 минут, на малой скорости, замешиваем тесто",
+        "В это время скалкой разбиваем 250 граммов очень холодного сливочного масла до мягкости",
+        "Разбитое холодное масло небольшими кусочками, не прекращая замешивать, добавляем в тесто.",
+        "Вымешиваем тесто еще 10 минут",
+        "Готовое тесто накрываем пищевой пленкой и оставляем при комнатной температуре на 1 час",
+        "Через час, обмакивая руки в муку, аккуратно выкладываем тесто на стол.",
+        "Обмакивая руки в муку, загибаем с каждой стороны третью часть теста к середине, сметая кисточкой излишки муки",
+        "Возвращаем тесто в миску швом вниз, накрываем пищевой пленкой и ставим миску с тестом в холодильник минимум на 8 часов.",
+        "Если тесто стоит в холодильнике более восьми часов, то через восемь часов его надо обмять",
+        "Готовое тесто вынимаем из холодильника, выкладываем на стол, присыпанный мукой"
+      ],
+      "image": "assets/images/recipes/wb_21813.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Бриошь, CC BY-SA 4.0; фото: CC BY-SA 3.0"
+    },
+    {
+      "id": "wb_3619",
+      "title": "Брынзовые галушки",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "feta",
+          "grams": 300.0
+        },
+        {
+          "ingredientId": "flour",
+          "grams": 300.0
+        },
+        {
+          "ingredientId": "potato",
+          "grams": 1000.0
+        }
+      ],
+      "steps": [
+        "Очищенный картофель натереть на мелкой тёрке, посолить, замесить с мукой и сделать тесто.",
+        "В большом котле довести солёную воду до кипения и бросать туда маленькие куски теста.",
+        "Когда сваренные кусочки выплывают вверх, они выбираются в миску.",
+        "Отдельно поджарить шкварки из солонины.",
+        "Галушки поливаются шкварками, замешиваются с брынзой и подаются к столу"
+      ],
+      "image": "assets/images/recipes/wb_3619.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Брынзовые_галушки, CC BY-SA 4.0; фото: Matus Kacmar, CC BY 2.0"
+    },
+    {
+      "id": "wb_19131",
+      "title": "Винегрет",
+      "mealTypes": [
+        "lunch"
+      ],
+      "servings": 6,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "beetroot",
+          "grams": 600.0
+        },
+        {
+          "ingredientId": "carrot",
+          "grams": 240.0
+        },
+        {
+          "ingredientId": "green_peas",
+          "grams": 350.0
+        },
+        {
+          "ingredientId": "olive_oil",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "onion",
+          "grams": 160.0
+        },
+        {
+          "ingredientId": "pickle",
+          "grams": 200.0
+        },
+        {
+          "ingredientId": "potato",
+          "grams": 450.0
+        }
+      ],
+      "steps": [
+        "Свёкла обматывается фольгой и запекается в печке 1,5 часа при 200 градусах.",
+        "Картошка и морковь варится в кастрюле",
+        "Огурцы нарезать кубиками",
+        "Если капуста сильно соленая, ее промыть, мелко нашинковать",
+        "Смешать картофель, морковь, огурцы, лук, капусту, свеклу, немного посолить",
+        "Заправить растительным маслом",
+        "Винегретъ изъ рыбы Маседуанъ изъ овощей холодный № 600 заправить такъ, какъ описано въ этомъ номерѣ, или же горчичнымъ соусомъ № 451, соединить его съ кусками любой холодной рыбы, раковыми шейками или небольшими кусками омара, отпустить съ горчичнымъ соусомъ № 451, съ горчичною подливкой № 452 или съ соусомъ провансаль № 447",
+        "Въ рыбный винегретъ можно прибавить соленые или свѣжіе огурцы, соленые или маринованные грибы, маринованную бруснику, крыжовникъ, вишни",
+        "Винегретъ изъ телятины, дичи, другой живности.",
+        "Vinaigrette de veau à la russe.",
+        "Нарѣзать холодную телятину мелкими кубиками (сальпикономъ) или очень маленькими ломтиками (бланкетомъ), соединить съ холоднымъ маседуаномъ изъ овощей № 600, съ прибавленіемъ маринованныхъ грибовъ, вишенъ, соленыхъ огурцовъ, заправить соусомъ изъ горчицы № 451 или соусомъ № 458, отпустить",
+        "Телятина можетъ быть замѣнена дичью, индѣйкой, курицей, мясомъ."
+      ],
+      "image": "assets/images/recipes/wb_19131.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Винегрет, CC BY-SA 4.0; фото: Loyna (original image) ; processed by Off-shell, CC BY-SA 2.5"
+    },
+    {
+      "id": "wb_21643",
+      "title": "Вишисуаз",
+      "mealTypes": [
+        "lunch"
+      ],
+      "servings": 6,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "butter",
+          "grams": 50.0
+        },
+        {
+          "ingredientId": "onion",
+          "grams": 690.0
+        },
+        {
+          "ingredientId": "potato",
+          "grams": 250.0
+        }
+      ],
+      "steps": [
+        "Растапливаем масло в сковороде с толстым дном, засыпаем нарезанный кубиками лук и лук-порей, накрываем и готовим на медленном огне 15-20 минут, не доводя до золотистого цвета",
+        "Добавляем картофель, готовим, не накрывая, несколько минут",
+        "Вливаем бульон или воду, солим и перчим по вкусу, уменьшаем огонь и, накрыв неплотно крышкой, оставляем кипеть на медленном огне 15 мин.",
+        "или до готовности картофеля",
+        "Охлаждаем суп, затем измельчаем его в комбайне (или с помощью блендера)",
+        "Процеживаем суп, вливаем в него сливки.",
+        "Приправляем вишисуаз по вкусу.",
+        "Если суп покажется густым, можно добавить воду со льдом",
+        "Охлаждаем вишисуаз не менее 4 часов.",
+        "Пробуем, добавляем по вкусу специи и лимонный сок.",
+        "Разливаем суп по тарелкам, присыпаем зеленью шнитт-лука и подаём вишисуаз к столу"
+      ],
+      "image": "assets/images/recipes/wb_21643.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Вишисуаз, CC BY-SA 4.0; фото: BocaDorada, CC BY-SA 2.0"
+    },
+    {
+      "id": "wb_19786",
+      "title": "Гамбо",
+      "mealTypes": [
+        "lunch"
+      ],
+      "servings": 2,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "bacon",
+          "grams": 3.0
+        },
+        {
+          "ingredientId": "bell_pepper",
+          "grams": 120.0
+        },
+        {
+          "ingredientId": "brown_rice",
+          "grams": 190.0
+        },
+        {
+          "ingredientId": "chicken_breast",
+          "grams": 300.0
+        },
+        {
+          "ingredientId": "flour",
+          "grams": 50.0
+        },
+        {
+          "ingredientId": "garlic",
+          "grams": 12.5
+        },
+        {
+          "ingredientId": "onion",
+          "grams": 80.0
+        },
+        {
+          "ingredientId": "tomato",
+          "grams": 300.0
+        }
+      ],
+      "steps": [
+        "Бекон нарезать маленьким дольками.",
+        "Потом выложить на блюдо",
+        "Очистить, измельчить овощи",
+        "Смешать лук, перец, сельдерей.",
+        "На среднем огне жарить 6 минут.",
+        "Посолить добавив перец",
+        "Куриную грудку обсушить.",
+        "Добавить в неё соль и специи.",
+        "обжарить 5 минут",
+        "Добавить грудку в сотейник.",
+        "Очистить чеснок.",
+        "Добавить к ингредиентам"
+      ],
+      "image": "assets/images/recipes/wb_19786.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Гамбо, CC BY-SA 4.0; фото: jons2 at pdphoto.org, Public domain"
+    },
+    {
+      "id": "wb_4431",
+      "title": "Грибной суп",
+      "mealTypes": [
+        "lunch"
+      ],
+      "servings": 4,
+      "minutes": 40,
+      "ingredients": [
+        {
+          "ingredientId": "carrot",
+          "grams": 160.0
+        },
+        {
+          "ingredientId": "onion",
+          "grams": 160.0
+        },
+        {
+          "ingredientId": "potato",
+          "grams": 675.0
+        }
+      ],
+      "steps": [
+        "Поставить кипятиться воду, положить туда грибы.",
+        "После закипания поварить еще 20 минут",
+        "Несколько картофелин нарезать небольшими ломтиками и добавить в кипящую воду с грибами",
+        "Пару больших луковиц мелко нарезать и обжарить до золотого цвета на растительном масле",
+        "Пару средних морковок натереть на крупной терке, и добавить к луку, слегка обжарить",
+        "Когда картофель будет почти готов, добавить туда лук и морковь , соль, черный перец и довести до готовности",
+        "При подаче можно добавить зелень и сметану"
+      ],
+      "image": "assets/images/recipes/wb_4431.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Грибной_суп, CC BY-SA 4.0; фото: Pannet, CC BY-SA 4.0"
+    },
+    {
+      "id": "wb_18716",
+      "title": "Дюшбара",
+      "mealTypes": [
+        "lunch"
+      ],
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "egg",
+          "grams": 13.8
+        },
+        {
+          "ingredientId": "flour",
+          "grams": 40.0
+        },
+        {
+          "ingredientId": "lamb",
+          "grams": 108.0
+        },
+        {
+          "ingredientId": "onion",
+          "grams": 18.0
+        }
+      ],
+      "steps": [
+        "Для приготовления дюшбары, из костей барана варят бульон, а из мякоти баранины готовят фарш с добавлением репчатого лука и специй.",
+        "Пресное крутое тесто раскатывают толщиной до 1 мм, затем режут на ровные квадратики и в центре каждого кладут 2-3 грамма фарша.",
+        "Квадратики заворачивают складывая их пополам или треугольником, а кончики отводят назад.",
+        "Дюшбару варят в бульоне примерно 5 минут, после чего они всплывают наверх.",
+        "В домашних условиях дюшбару делают очень мелкими, так что в столовую ложку помещаются 4-5 штук.",
+        "При подаче дюшбары отдельно подается винный уксус с чесноком.",
+        "А сверху посыпают зеленью кинзы или сушёной мятой"
+      ],
+      "image": "assets/images/recipes/wb_18716.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Дюшбара, CC BY-SA 4.0; фото: Sefer azeri, CC BY-SA 4.0"
+    },
+    {
+      "id": "wb_18909",
+      "title": "Жаркое из говядины с картофелем",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 6,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "beef_chuck",
+          "grams": 400.0
+        },
+        {
+          "ingredientId": "onion",
+          "grams": 90.0
+        },
+        {
+          "ingredientId": "potato",
+          "grams": 500.0
+        },
+        {
+          "ingredientId": "sunflower_oil",
+          "grams": 60.0
+        }
+      ],
+      "steps": [
+        "Мясо нарезать 1 см, длина 5 см",
+        "Нашинковать лук полукольцами, картофель кружочками",
+        "На кастрюлю кинуть 2 столовые ложки масла, затем накинуть лук",
+        "Дальше должна прожариться говядина"
+      ],
+      "image": "assets/images/recipes/wb_18909.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Жаркое_из_говядины_с_картофелем, CC BY-SA 4.0; фото: jeffreyw, CC BY 2.0"
+    },
+    {
+      "id": "wb_31093",
+      "title": "Заалюк",
+      "mealTypes": [
+        "snack"
+      ],
+      "servings": 4,
+      "minutes": 45,
+      "ingredients": [
+        {
+          "ingredientId": "bell_pepper",
+          "grams": 480.0
+        },
+        {
+          "ingredientId": "eggplant",
+          "grams": 400.0
+        },
+        {
+          "ingredientId": "sunflower_oil",
+          "grams": 100.0
+        },
+        {
+          "ingredientId": "tomato",
+          "grams": 400.0
+        },
+        {
+          "ingredientId": "zucchini",
+          "grams": 700.0
+        }
+      ],
+      "steps": [
+        "Баклажаны и кабачки нарезать мелкими кусками, помыть, поместить в кастрюлю, залить водой.",
+        "Добавить масло, специи и чеснок, поставить варить",
+        "Помидоры очистить от кожицы и семян, нарезать кусочками, положить в кастрюлю и варить на малом огне, периодически помешивая",
+        "Стручковый перец пожарить, очистить от кожицы и семян, сполоснуть, нарезать ломтиками и добавить в кастрюлю, когда овощи будут почти готовы.",
+        "Варить до выпаривания жидкости",
+        "Подавать горячим или холодным.",
+        "Может храниться 2-3 дня"
+      ],
+      "image": "assets/images/recipes/wb_31093.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Заалюк, CC BY-SA 4.0; фото: Tamorlan, CC BY-SA 3.0"
+    },
+    {
+      "id": "wb_21723",
+      "title": "Заварной крем",
+      "mealTypes": [
+        "snack"
+      ],
+      "servings": 2,
+      "minutes": 40,
+      "ingredients": [
+        {
+          "ingredientId": "egg",
+          "grams": 220.0
+        },
+        {
+          "ingredientId": "flour",
+          "grams": 40.0
+        },
+        {
+          "ingredientId": "milk_25",
+          "grams": 500.0
+        },
+        {
+          "ingredientId": "sugar",
+          "grams": 200.0
+        }
+      ],
+      "steps": [
+        "Смешиваем яйца с сахаром",
+        "Добавляем муку, ванильный порошок (или ванильный сахар)",
+        "Разводим холодным молоком, перемешиваем до однородности (можно миксером)",
+        "Ставим на средний огонь и, непрерывно помешивая, доводим до кипения",
+        "Если крем нужен погуще, непрерывно помешивая, провариваем его ещё 5-10 минут до загустения",
+        "Охлаждаем до температуры 40-50 градусов.",
+        "Классический заварной крем готов к использованию",
+        "Кремъ заварной, кофейный (Crème au bain marie au café) Вскипятить три стакана молока, положить полфунта, только что изжареннаго кофе, снять съ огня, закрыть кастрюлю, черезъ полъ-часа процѣдить.",
+        "Пять цѣлыхъ яицъ, десять желтковъ тщательно взбить съ фунтомъ мелкаго сахара, чуточкою соли.",
+        "Влить въ эту массу понемногу приготовленное молоко съ кофе, прибавить стаканъ сырыхъ сливокъ, процѣдить два или три раза, наполнить толстую каменную или шарлотную форму, дно которой прикрыть чуть намасленною бумагой, закрыть форму, варить на пару около часа въ чѵть кипящей водѣ.",
+        "Когда кремъ готовъ, т.",
+        "когда онъ сверху затвердѣетъ и будетъ отставать оть стѣнок формы, вынуть послѣднюю изь воды, продержать четверть часа на столѣ, тонкимъ ножомъ обвести внутреннія стѣнки формы, опрокинуть на блюдо, облить англійскимъ кремомъ съ кофе № 1664, отпустить."
+      ],
+      "image": "assets/images/recipes/wb_21723.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Заварной_крем, CC BY-SA 4.0; фото: Brendan.truter, CC BY-SA 4.0"
+    },
+    {
+      "id": "wb_34320",
+      "title": "Зама",
+      "mealTypes": [
+        "lunch"
+      ],
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "carrot",
+          "grams": 80.0
+        },
+        {
+          "ingredientId": "chicken_breast",
+          "grams": 100.0
+        },
+        {
+          "ingredientId": "onion",
+          "grams": 40.0
+        }
+      ],
+      "steps": [
+        "Подготовить курицу (промыть, выпотрошить), залить холодной водой и варить до готовности, снимая жир",
+        "Нарезать морковь соломкой, а лук — полукольцами.",
+        "Обжарить.",
+        "Рис промыть.",
+        "Квас прокипятить",
+        "За 30 мин до конца варки посолить бульон, добавить обжаренные морковь и лук",
+        "По готовности, добавить в бульон промытый рис и довести до кипения.",
+        "Затем добавить обжаренные овощи(?) и специи",
+        "За 20 минут до конца влить квас и добавить зелень чабреца (через 2 минуты её вынуть)",
+        "Подавать готовый суп с кусочками курицы, посыпать рубленой зеленью петрушки"
+      ],
+      "image": "assets/images/recipes/wb_34320.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Зама, CC BY-SA 4.0; фото: Public domain"
+    },
+    {
+      "id": "wb_21229",
+      "title": "Икра из синих",
+      "mealTypes": [
+        "snack"
+      ],
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "eggplant",
+          "grams": 900.0
+        },
+        {
+          "ingredientId": "garlic",
+          "grams": 12.5
+        },
+        {
+          "ingredientId": "onion",
+          "grams": 120.0
+        },
+        {
+          "ingredientId": "tomato",
+          "grams": 900.0
+        }
+      ],
+      "steps": [
+        "Баклажаны (синие) вымыть, вытереть и запекать в духовке при температуре 160-180С до готовности, обычно около получаса (начинает обугливаться кожица), поворачивая по мере надобности.",
+        "Затем положить их под гнет на 15-30 минут, чтобы удалить горький сок.",
+        "После этого аккуратно снять тонкую плотную кожицу",
+        "Помидоры ошпарить кипятком и тоже снять с них шкурку",
+        "Очищенные помидоры и синие прокрутить в мясорубке, добавить очень мелко порезанный лук и выдавленный чеснок.",
+        "Посолить и добавить растительного масла по вкусу.",
+        "Тщательно перемешать, дать хотя бы немного настояться",
+        "Примечания",
+        "Такая икра из синих не предназначена для длительного хранения, на зиму.",
+        "Может стоять в холодильнике лишь несколько дней",
+        "Некоторые кулинары не рекомендуют прокручивать ингредиенты в мясорубке, предпочитая рубить баклажаны и помидоры ножом, даже деревянным, поскольку железо плохо влияет на вкус икры из синих.",
+        "Также в некоторых рецептах в икру из синих по-одесски добавляют запечёный болгарский перец и немного уксуса"
+      ],
+      "image": "assets/images/recipes/wb_21229.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Икра_из_синих, CC BY-SA 4.0; фото: Министерство пищевой промышленности СССР, Public domain"
+    },
+    {
+      "id": "wb_30895",
+      "title": "Имам баялды",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "brown_rice",
+          "grams": 100.0
+        },
+        {
+          "ingredientId": "egg",
+          "grams": 55.0
+        },
+        {
+          "ingredientId": "eggplant",
+          "grams": 1200.0
+        },
+        {
+          "ingredientId": "hard_cheese",
+          "grams": 100.0
+        },
+        {
+          "ingredientId": "lamb",
+          "grams": 400.0
+        },
+        {
+          "ingredientId": "sunflower_oil",
+          "grams": 30.0
+        }
+      ],
+      "steps": [
+        "Баклажаны нарезать вдоль пополам.",
+        "Мякоть баклажанов надрезать ножом крест-накрест",
+        "Уложить баклажаны разрезами вниз и обжарить в растительном масле",
+        "Мякоть выскоблить ложкой, порубить, смешать с тушёным луком, рисом и отваренной бараниной.",
+        "Приправить и скрепить яйцом",
+        "Половинки баклажанов наполнить полученной смесью, посыпать тёртым пармезаном, сбрызнуть растительным маслом и запечь в духовке"
+      ],
+      "image": "assets/images/recipes/wb_30895.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Имам_баялды, CC BY-SA 4.0; фото: AlexanderVanLoon, CC BY-SA 4.0"
+    },
+    {
+      "id": "wb_21678",
+      "title": "Испанская тортилья",
+      "mealTypes": [
+        "breakfast",
+        "lunch",
+        "dinner"
+      ],
+      "servings": 2,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "egg",
+          "grams": 220.0
+        },
+        {
+          "ingredientId": "onion",
+          "grams": 80.0
+        },
+        {
+          "ingredientId": "potato",
+          "grams": 600.0
+        }
+      ],
+      "steps": [
+        "Картофель очистить.",
+        "Нарезать тонкими ломтиками.",
+        "Обсушить бумажным полотенцем.",
+        "Лук очистить и тонко нарезать.",
+        "На сковороду с толстым дном щедро налить масло и хорошо нагреть его.",
+        "В разогретое масло выложить картофель.",
+        "Добавить лук.",
+        "Перемешать.",
+        "Лук и картофель должны быть полностью погружены в масло.",
+        "Посолить.",
+        "Накрыть крышкой и жарить до готовности.",
+        "Слить масло."
+      ],
+      "image": "assets/images/recipes/wb_21678.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Испанская_тортилья, CC BY-SA 4.0; фото: Tamorlan, CC BY-SA 3.0"
+    },
+    {
+      "id": "wb_31114",
+      "title": "Кабкабу",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "capers",
+          "grams": 50.0
+        },
+        {
+          "ingredientId": "cod",
+          "grams": 750.0
+        },
+        {
+          "ingredientId": "egg",
+          "grams": 110.0
+        },
+        {
+          "ingredientId": "hard_cheese",
+          "grams": 50.0
+        },
+        {
+          "ingredientId": "onion",
+          "grams": 80.0
+        },
+        {
+          "ingredientId": "sunflower_oil",
+          "grams": 75.0
+        }
+      ],
+      "steps": [
+        "Подготовленную рыбу нарезать кусками, посолить и поперчить",
+        "Томат-пасту развести 2 стаканами воды.",
+        "Лук измельчить, обжарить в растительном масле, добавить разведенную томат-пасту и положить в этот соус куски рыбы",
+        "Накрыть крышкой и тушить 15 минут, затем выложить рыбу на противень, посыпать каперсами, залить взбитыми с тёртым сыром яйцами и запечь в горячей духовке"
+      ],
+      "image": "assets/images/recipes/wb_31114.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Кабкабу, CC BY-SA 4.0; фото: Emna Mizouni, CC BY-SA 4.0"
+    },
+    {
+      "id": "wb_21997",
+      "title": "Капоната",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 1,
+      "minutes": 45,
+      "ingredients": [
+        {
+          "ingredientId": "bell_pepper",
+          "grams": 120.0
+        },
+        {
+          "ingredientId": "eggplant",
+          "grams": 600.0
+        },
+        {
+          "ingredientId": "garlic",
+          "grams": 5.0
+        },
+        {
+          "ingredientId": "olive_oil",
+          "grams": 100.0
+        },
+        {
+          "ingredientId": "onion",
+          "grams": 160.0
+        },
+        {
+          "ingredientId": "tomato",
+          "grams": 300.0
+        }
+      ],
+      "steps": [
+        "Баклажан нарезать кубиками, пересыпать солью, отложить минут на 20",
+        "Размочить изюм в чашке тёплой воды, опустить помидоры на 1 минуту в кастрюлю с кипящей водой, откинуть на дуршлаг и снять с них кожицу; порезать помидоры кубиками",
+        "Промыть в воде каперсы и мелко их порезать; очистить и порезать репчатый лук, перец и чеснок",
+        "В глубокой сковороде на оливковом масле припустить лук не поджаривая его, добавить помидоры, чеснок, соль, сахар, перец и тушить соус на медленном огне 10-15 минут",
+        "Добавить порезанный баклажан, кубики паприки, каперсы, изюм и орешки, перемешать, добавить стакан воды и тушить на медленном огне либо в духовке при температуре 180°С 30 - 40 минут",
+        "За 5 минут до готовности влить в капонату бальзамический уксус и добавить зелень.",
+        "Осторожно перемешать, накрыть сковороду крышкой и довести до готовности",
+        "Подавать блюдо по вкусу горячим или холодным",
+        "Примечания",
+        "Подаётся как в горячем, так и в холодном виде"
+      ],
+      "image": "assets/images/recipes/wb_21997.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Капоната, CC BY-SA 4.0; фото: Сведения об авторе отсутствуют или не читаются программно. Предположительно FaleBot (основываясь на заявлении об авторском праве), CC BY-SA 2.5"
+    },
+    {
+      "id": "wb_21986",
+      "title": "Капрезе (торт)",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 8,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "almonds",
+          "grams": 100.0
+        },
+        {
+          "ingredientId": "butter",
+          "grams": 120.0
+        },
+        {
+          "ingredientId": "chocolate",
+          "grams": 170.0
+        },
+        {
+          "ingredientId": "egg",
+          "grams": 220.0
+        },
+        {
+          "ingredientId": "sugar",
+          "grams": 100.0
+        }
+      ],
+      "steps": [
+        "Дно и стенки формы смазать сливочным маслом и посыпать какао",
+        "Чёрный и молочный шоколад поломать на кусочки.",
+        "Масло нарезать кубиками.",
+        "Поместить шоколад и масло в глубокую миску, поставить её на водяную баню (на кастрюлю с кипящей водой), но так, чтобы дно миски не касалось воды.",
+        "Помешивать, чтобы шоколад растопился и соединился с маслом в однородную массу",
+        "Снять шоколадную массу с огня и оставить остывать.",
+        "Миндаль измельчить в кофемолке или в блендере до состояния муки.",
+        "Кожуру с орехов можно не снимать, в этом пироге на вкус она не влияет",
+        "В глубокую миску разбить яйца и соединить их с сахаром",
+        "К яйцам с сахаром добавить молотый миндаль и какао, перемешать",
+        "Туда же влить остывшую шоколадную массу.",
+        "Перемешать блендером или венчиком"
+      ],
+      "image": "assets/images/recipes/wb_21986.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Капрезе_(торт), CC BY-SA 4.0; фото: fugzu from Pistoia, Italia, CC BY 2.0"
+    },
+    {
+      "id": "wb_3628",
+      "title": "Капустница",
+      "mealTypes": [
+        "lunch"
+      ],
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "cabbage",
+          "grams": 1000.0
+        },
+        {
+          "ingredientId": "carrot",
+          "grams": 80.0
+        },
+        {
+          "ingredientId": "garlic",
+          "grams": 10.0
+        },
+        {
+          "ingredientId": "millet",
+          "grams": 45.0
+        },
+        {
+          "ingredientId": "mushrooms",
+          "grams": 20.0
+        },
+        {
+          "ingredientId": "onion",
+          "grams": 80.0
+        },
+        {
+          "ingredientId": "potato",
+          "grams": 300.0
+        },
+        {
+          "ingredientId": "sauerkraut",
+          "grams": 350.0
+        },
+        {
+          "ingredientId": "sunflower_oil",
+          "grams": 28.0
+        }
+      ],
+      "steps": [
+        "Мясо варить до готовности, после добавить картошку.",
+        "В конце добавить остальные ингредиенты.",
+        "Морковь, лук в виде зажарки или сырыми в зависимости от предпочтений.",
+        "Подавать с сметаной"
+      ],
+      "image": "assets/images/recipes/wb_3628.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Капустница, CC BY-SA 4.0; фото: Mariuszjbie, CC BY-SA 3.0"
+    },
+    {
+      "id": "wb_34929",
+      "title": "Картофель Дюшес",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "butter",
+          "grams": 50.0
+        },
+        {
+          "ingredientId": "egg",
+          "grams": 165.0
+        },
+        {
+          "ingredientId": "potato",
+          "grams": 500.0
+        }
+      ],
+      "steps": [
+        "Картофель отварить, тщательно сцедить, протереть через сито, смешать на огне со сливочным маслом, приправить, вмешать желтки",
+        "Из подготовленного пюре слепить шарики размером с мандарин, слегка приплюснуть и наметить сверху надрез по кругу",
+        "Зарумянить шарики в большом количестве жира",
+        "Срезать верхушки, аккуратно выскоблить крокеты изнутри, оставим стенки около 0,5 см",
+        "Поместить внутрь начинку, накрыть ранее срезанными верхушками, сразу же подавать"
+      ],
+      "image": "assets/images/recipes/wb_34929.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Картофель_Дюшес, CC BY-SA 4.0; фото: Frank C. Müller, CC BY-SA 3.0"
+    },
+    {
+      "id": "wb_21607",
+      "title": "Кеджери с треской",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 6,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "brown_rice",
+          "grams": 190.0
+        },
+        {
+          "ingredientId": "butter",
+          "grams": 50.0
+        },
+        {
+          "ingredientId": "egg",
+          "grams": 110.0
+        },
+        {
+          "ingredientId": "milk_25",
+          "grams": 300.0
+        },
+        {
+          "ingredientId": "onion",
+          "grams": 80.0
+        },
+        {
+          "ingredientId": "salmon",
+          "grams": 450.0
+        }
+      ],
+      "steps": [
+        "Рыбу погрузить в сотейник с молоком, варить на медленном огне минут на 8-10.",
+        "Снять с рыбы шкурку и удалить все кости.",
+        "Филе разломать вилкой на небольшие кусочки.",
+        "Отложить рыбу в сторону",
+        "В большой кастрюле довести до кипения 600 граммов воды, высыпать рис и готовить под закрытой крышкой на медленном огне в течение примерно 25 минут, до полного выпаривания воды и мягкого состояния риса.",
+        "Готовый рис посыпать солью, черным молотым перцем, мускатным орехом и кайенским перцем",
+        "В сковороде на среднем огне разогреть 1 столовую ложку сливочного масла, высыпать лук и жарить, помешивая, до мягкого состояния.",
+        "Снять сковороду с плиты.",
+        "Одно вареное яйцо порубить мелкими кусочками, а второе яйцо порезать дольками",
+        "Оставшееся сливочное масло ввести в горячий рис, туда же выложить рыбу, жареный лук и резаные яйца.",
+        "Посолить и поперчить кеджери по вкусу, прогреть кеджери на медленном огне до горячего состояния",
+        "Подавать кеджери на порционных тарелках, посыпав петрушкой и украсив дольками лимона"
+      ],
+      "image": "assets/images/recipes/wb_21607.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Кеджери_с_треской, CC BY-SA 4.0; фото: User:Justinc, CC BY-SA 2.0"
+    },
+    {
+      "id": "wb_19793",
+      "title": "Клэм-чаудер",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 2,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "bacon",
+          "grams": 200.0
+        },
+        {
+          "ingredientId": "carrot",
+          "grams": 80.0
+        },
+        {
+          "ingredientId": "cream",
+          "grams": 300.0
+        },
+        {
+          "ingredientId": "onion",
+          "grams": 80.0
+        },
+        {
+          "ingredientId": "potato",
+          "grams": 225.0
+        }
+      ],
+      "steps": [
+        "Бекон порезать, жарить на кастрюле.",
+        "Потом переложить бекон на бумажное полотенце.",
+        "Жир вылить из кастрюли",
+        "Сельдерей, морковь, лук порезать.",
+        "Положить в кастрюлю",
+        "Дальше тушить чтобы овощи стали мягкими",
+        "В овощи положить муку.",
+        "Долить бульон, добавить картофель, лавровый лист",
+        "Варка может быть в пределах 10 минут",
+        "В кастрюлю положить моллюски и сок из них",
+        "Дальше солить положить тмин, табаско",
+        "Положить сливки, молоко."
+      ],
+      "image": "assets/images/recipes/wb_19793.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Клэм-чаудер, CC BY-SA 4.0; фото: Namiwoo, CC BY-SA 3.0"
+    },
+    {
+      "id": "wb_31121",
+      "title": "Кнедлик",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "egg",
+          "grams": 13.8
+        },
+        {
+          "ingredientId": "flour",
+          "grams": 60.0
+        },
+        {
+          "ingredientId": "potato",
+          "grams": 206.0
+        }
+      ],
+      "steps": [
+        "Очистить картофель и натереть на мелкой тёрке.",
+        "Слить часть образовавшегося сока",
+        "Добавить муку, яйца, соль и замесить тесто.",
+        "В низкой широкой кастрюле вскипятить воду и подсолить её",
+        "Отделить смоченной в воде ложкой небольшие кусочки теста и осторожно опускать их в кипящую подсоленную воду.",
+        "Варить, осторожно помешивая, 6—8 минут",
+        "При подаче полить кнедлики растопленным свиным салом с жареным луком, отдельно подать квашеную капусту",
+        "Кнедлики из варёного картофеля"
+      ],
+      "image": "assets/images/recipes/wb_31121.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Кнедлик, CC BY-SA 4.0; фото: Bernd Hutschenreuther, CC BY-SA 3.0"
+    },
+    {
+      "id": "wb_21531",
+      "title": "Кныш с картофелем",
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ],
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "egg",
+          "grams": 110.0
+        },
+        {
+          "ingredientId": "flour",
+          "grams": 400.0
+        },
+        {
+          "ingredientId": "onion",
+          "grams": 80.0
+        },
+        {
+          "ingredientId": "potato",
+          "grams": 500.0
+        },
+        {
+          "ingredientId": "sunflower_oil",
+          "grams": 125.0
+        }
+      ],
+      "steps": [
+        "В миску просеиваем муку, засыплем разрыхлитель, соль.",
+        "Ложкой мешаем ингредиенты до получения однородной смеси",
+        "В другой ёмкости с помощью венчика готовим более жидкую смесь из воды, яйца, уксуса и растительного масла",
+        "Приготовленную жидкую смесь заливаем к сухим компонентам, замешиваем тесто",
+        "Тесто должно получиться очень эластичным.",
+        "Охлаждаем его примерно 20 минут в холодильнике, обернув пищевой пленкой",
+        "Чистим картофель, выкладываем его в кастрюльку, заливаем водой, ставим на огонь.",
+        "Картофель будет готов минут через 20-25 от момента закипания",
+        "Мелко шинкуем луковицу",
+        "Обжариваем лук в разогретом на сковороде растительном масле",
+        "Горячий отваренный картофель выкладываем в миску, туда же добавляем обжаренный лук вместе с растительным маслом",
+        "Толчём картошку с луком, это будет картофельная начинка"
+      ],
+      "image": "assets/images/recipes/wb_21531.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Кныш_с_картофелем, CC BY-SA 4.0; фото: koritca ; processed by Off-shell, CC BY 3.0"
+    },
+    {
+      "id": "wb_21712",
+      "title": "Кололак",
+      "mealTypes": [
+        "lunch"
+      ],
+      "servings": 2,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "egg",
+          "grams": 55.0
+        },
+        {
+          "ingredientId": "lamb",
+          "grams": 500.0
+        },
+        {
+          "ingredientId": "onion",
+          "grams": 240.0
+        },
+        {
+          "ingredientId": "tomato",
+          "grams": 50.0
+        }
+      ],
+      "steps": [
+        "Мясо вместе с луком дважды пропустить через мясорубку",
+        "В фарш добавить яйцо, посолить, поперчить и хорошо перемешать",
+        "Мокрыми руками скатать небольшие шарики, обвалять их в муке и обжарить в масле",
+        "Муку обжарить до темно - коричневого цвета, разбавить бульоном, добавить мелко нарезанный репчатый лук, томатную пасту, посолить, поперчить, заправить по вкусу уксусом и закипятить",
+        "Полить тефтели приготовленной подливкой и посыпать зеленью петрушки"
+      ],
+      "image": "assets/images/recipes/wb_21712.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Кололак, CC BY-SA 4.0; фото: Սոնիա, CC BY-SA 3.0"
+    },
+    {
+      "id": "wb_23328",
+      "title": "Кростата с шоколадом",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 8,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "butter",
+          "grams": 125.0
+        },
+        {
+          "ingredientId": "chocolate",
+          "grams": 180.0
+        },
+        {
+          "ingredientId": "egg",
+          "grams": 55.0
+        },
+        {
+          "ingredientId": "flour",
+          "grams": 300.0
+        },
+        {
+          "ingredientId": "sugar",
+          "grams": 150.0
+        }
+      ],
+      "steps": [
+        "Переложить ингредиенты для теста в миску и замесить.",
+        "Переложить массу в прозрачный кулёк и месить, пока не будет комков.",
+        "Раскатать тесто в форме круга и положить в холодильник на 30 минут.",
+        "В форму для тортов положить бумагу для выпечки.",
+        "Раскатать тесто до толщины 0.5 см, вырезать из него круг чуть больше, чем форма для выпечки.",
+        "Переложить круг из теста в форму и слегка прижать края.",
+        "Разогреть духовку до 190С.",
+        "Смазать дно слоем шоколадного крема.",
+        "Оставшееся тесто нарезать полосками, выложить их сеточкой сверху крема.",
+        "Поставить в духовку на 35-45 минут.",
+        "Вынуть из духовки, с помощью кондитерского мешочка или шприца добавить шоколадный крем в каждую ячейку"
+      ],
+      "image": "assets/images/recipes/wb_23328.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Кростата_с_шоколадом, CC BY-SA 4.0; фото: Conan, CC BY 2.0"
+    },
+    {
+      "id": "wb_21707",
+      "title": "Куллама",
+      "mealTypes": [
+        "lunch"
+      ],
+      "servings": 2,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "beef_chuck",
+          "grams": 100.0
+        },
+        {
+          "ingredientId": "butter",
+          "grams": 10.0
+        },
+        {
+          "ingredientId": "carrot",
+          "grams": 35.0
+        },
+        {
+          "ingredientId": "onion",
+          "grams": 35.0
+        }
+      ],
+      "steps": [
+        "Жирную говядину или баранину, промыть, отделить от костей, разрезать на куски по 30—40 г, положить в соленую кипящую воду и сварить.",
+        "Мясо вынуть из бульона, остудить и нарезать тонкими кусками весом по 50 г поперек волокон",
+        "В одну часть наваристого мясного бульона положить нарезанный колечками лук, морковь кружочками, перец, лавровый лист и варить 15—20 мин.",
+        "Этим соусом залить мясо, закрыть посуду крышкой и поставить тушить на 10—15 мин",
+        "К мясу можно добавить отваренные печень, сердце, почки",
+        "Замесить пресное тесто, как для лапши, поделить его на жгутики толщиной около 1,5 см, нарезать, придавая каждому кусочку форму ракушки.",
+        "Тесто можно также раскатать на сочни (толщиной 2 мм), затем нарезать их на ленты (шириной 3 см), потом — на ромбики.",
+        "Ракушки (ромбики) варить в подсоленной воде.",
+        "Заправить топленым маслом",
+        "В разных районах Татарстана тесто для кулламы готовят по-разному.",
+        "Многие замешанное как для лапши тесто раскатывают толщиной около 2 мм и нарезают ромбики в 2 см, другие раскатывают тесто потолще — 3 мм и нарезают из него квадраты размером 3 см"
+      ],
+      "image": "assets/images/recipes/wb_21707.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Куллама, CC BY-SA 4.0; фото: Рафхат Зарипов, CC BY-SA 4.0"
+    },
+    {
+      "id": "wb_21720",
+      "title": "Курабье",
+      "mealTypes": [
+        "breakfast",
+        "lunch",
+        "dinner"
+      ],
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "butter",
+          "grams": 100.0
+        },
+        {
+          "ingredientId": "egg",
+          "grams": 55.0
+        },
+        {
+          "ingredientId": "flour",
+          "grams": 180.0
+        },
+        {
+          "ingredientId": "sugar",
+          "grams": 100.0
+        }
+      ],
+      "steps": [
+        "Муку просеять.",
+        "Даём маслу подтаять, чтобы оно стало мягким",
+        "В отдельной миске растираем масло с сахарной пудрой до однородности или взбиваем эту смесь миксером",
+        "Яичный белок добавляем к полученной масляной смеси.",
+        "Снова взобиваем венчиком или миксером",
+        "Просеянную муку небольшими количествами вводим в полученную массу, добавляем ванилин",
+        "Перемешаем ложкой, и затем руками.",
+        "Консистенция теста должна напоминать очень мягкий пластилин.",
+        "Если возникает необходимость, можно добавить муки",
+        "Противень покрываем пергаментом.",
+        "Кондитерский мешочек заполняем песочным тестом.",
+        "Аккуратно выдавливаем заготовки печенья на расстоянии не менее 1 см друг от друга"
+      ],
+      "image": "assets/images/recipes/wb_21720.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Курабье, CC BY-SA 4.0; фото: E4024, CC BY-SA 4.0"
+    },
+    {
+      "id": "wb_21297",
+      "title": "Куриный бульон",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "carrot",
+          "grams": 120.0
+        },
+        {
+          "ingredientId": "chicken_breast",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "onion",
+          "grams": 120.0
+        }
+      ],
+      "steps": [
+        "Положить курицу в 5 литров воды, вскипятить и слить воду, удалив бумажным полотенцем пену",
+        "Снова залить водой, добавить стебли сельдерея (связанные ниткой веточки укропа, петрушки), целые морковки, луковицу и лавровый лист.",
+        "Довести до кипения и оставить под крышкой на самом маленьком огне на 3-6 часов",
+        "В ходе процесса варки снимать пену шумовкой",
+        "В конце убрать зелень, лук и морковь, вытащить и оставить охлаждаться"
+      ],
+      "image": "assets/images/recipes/wb_21297.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Куриный_бульон, CC BY-SA 4.0; фото: Hrishikes, CC BY-SA 4.0"
+    },
+    {
+      "id": "wb_30912",
+      "title": "Кюфта",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 4,
+      "minutes": 15,
+      "ingredients": [
+        {
+          "ingredientId": "bread_white",
+          "grams": 70.0
+        },
+        {
+          "ingredientId": "egg",
+          "grams": 110.0
+        },
+        {
+          "ingredientId": "garlic",
+          "grams": 10.0
+        },
+        {
+          "ingredientId": "lamb",
+          "grams": 500.0
+        }
+      ],
+      "steps": [
+        "Хлеб вымочить, затем отжать",
+        "Мясо пропустить через мясорубку с толстыми ножами, смешать с хлебом, толчёным чесноком и яйцами.",
+        "Приправить солью и корицей",
+        "Выделать из мяса валики толщиной в палец и обжарить в растительном масле или бараньем жире"
+      ],
+      "image": "assets/images/recipes/wb_30912.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Кюфта, CC BY-SA 4.0; фото: Fabienkhan, CC BY-SA 2.5"
+    },
+    {
+      "id": "wb_21637",
+      "title": "Линцский торт",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "butter",
+          "grams": 100.0
+        },
+        {
+          "ingredientId": "egg",
+          "grams": 55.0
+        },
+        {
+          "ingredientId": "flour",
+          "grams": 200.0
+        },
+        {
+          "ingredientId": "jam",
+          "grams": 200.0
+        },
+        {
+          "ingredientId": "sugar",
+          "grams": 100.0
+        },
+        {
+          "ingredientId": "walnuts",
+          "grams": 80.0
+        }
+      ],
+      "steps": [
+        "Масло вытащить из холодильника, дать немного постоять",
+        "Тем временем перемолоть орехи",
+        "В чашу просеять муку и добавить к ней орехи.",
+        "Всыпать сахар, корицу, соду",
+        "Масло нарезать на куски, добавить к сухой смеси.",
+        "Размять хорошо вилкой, добавить яйцо и руками замесить тесто.",
+        "Убрать его в холодильник на 30-40 минут",
+        "Форму застелить бумагой.",
+        "Тесто разделить на две неравные части.",
+        "Из той, что побольше, сделать основу с бортиками.",
+        "Из маленькой части сделать жгутики",
+        "Варенье выложить в основу и украсить жгутиками"
+      ],
+      "image": "assets/images/recipes/wb_21637.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Линцский_торт, CC BY-SA 4.0; фото: Enzyklofant, CC BY-SA 3.0"
+    },
+    {
+      "id": "wb_31772",
+      "title": "Люля-кебаб",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "flour",
+          "grams": 90.0
+        },
+        {
+          "ingredientId": "greens",
+          "grams": 47.0
+        },
+        {
+          "ingredientId": "lamb",
+          "grams": 240.0
+        },
+        {
+          "ingredientId": "onion",
+          "grams": 15.0
+        }
+      ],
+      "steps": [
+        "Баранину, репчатый лук и курдюк порубить (или пропустить через мясорубку), заправить солью и перцем",
+        "Сформовать фарш в виде сарделек, нанизать на шпажку и жарить над раскаленными углями",
+        "Подавать с лавашом или без него, с зелёным луком и зеленью, сумах подаётся отдельно"
+      ],
+      "image": "assets/images/recipes/wb_31772.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Люля-кебаб, CC BY-SA 4.0; фото: Lesya Dolyk, CC BY-SA 2.0"
+    },
+    {
+      "id": "wb_31107",
+      "title": "Макруд",
+      "mealTypes": [
+        "snack"
+      ],
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "egg",
+          "grams": 275.0
+        },
+        {
+          "ingredientId": "flour",
+          "grams": 800.0
+        },
+        {
+          "ingredientId": "sugar",
+          "grams": 250.0
+        }
+      ],
+      "steps": [
+        "Смешать все ингредиенты (кроме фиников и воды) и, понемногу вливая воду, замесить тесто, консистенцией как слоёное.",
+        "При помощи скалки, раскатать его в пласт толщиной 1 см и шириной 7-10 см",
+        "Поместить начинку в середину теста, вдоль пласта, свернуть его в цилиндр и нарезать поперёк на кусочки весом около 50-60 г",
+        "Хорошо разогреть жир чтобы бурлил в середине и слегка дымился по краям и опускать туда нарезанные кусочки теста с начинкой",
+        "Когда кусочки всплывут и слегка подрумянятся, извлечь их и присыпать сахаром или сахарной пудрой"
+      ],
+      "image": "assets/images/recipes/wb_31107.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Макруд, CC BY-SA 4.0; фото: Touzrimounir, CC BY-SA 4.0"
+    },
+    {
+      "id": "wb_31802",
+      "title": "Мантие",
+      "mealTypes": [
+        "snack"
+      ],
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "flour",
+          "grams": 500.0
+        },
+        {
+          "ingredientId": "onion",
+          "grams": 240.0
+        },
+        {
+          "ingredientId": "sunflower_oil",
+          "grams": 20.0
+        },
+        {
+          "ingredientId": "wine",
+          "grams": 500.0
+        }
+      ],
+      "steps": [
+        "Замесить тесто из муки, масла, соли и тёплой воды, несколько мягче, чем для макарон.",
+        "Вымесить, оставить на 20 минут, затем раскатать и разрезать на квадраты 10x10 см",
+        "Измельчить лук, обжарить на растительном масле, добавить фарш и красный перец, а также специи по вкусу; ещё немного потушить смесь",
+        "Поместить на квадраты из теста немного фарша, залепить края",
+        "Смазать противень растительным маслом и поместить на него тесто с фаршем слепленными краями вниз.",
+        "Выпекать в разогретой духовке при 200 градусах",
+        "Готовую выпечку сбрызнуть водой и накрыть салфеткой, чтобы мантие стали мягкими",
+        "Употреблять как в горячем, так и в холодном виде"
+      ],
+      "image": "assets/images/recipes/wb_31802.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Мантие, CC BY-SA 4.0; фото: Milica Buha, CC BY-SA 4.0"
+    },
+    {
+      "id": "wb_30605",
+      "title": "Манты",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "egg",
+          "grams": 55.0
+        },
+        {
+          "ingredientId": "flour",
+          "grams": 500.0
+        },
+        {
+          "ingredientId": "onion",
+          "grams": 500.0
+        },
+        {
+          "ingredientId": "sour_cream",
+          "grams": 20.0
+        }
+      ],
+      "steps": [
+        "Смазать маслом ярусы паровой кастрюли (мантоварки), уложить на них манты так, чтобы они не соприкасались друг с другом, сбрызнуть холодной водой, закрыть крышкой и варить на пару 45 минут"
+      ],
+      "image": "assets/images/recipes/wb_30605.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Манты, CC BY-SA 4.0; фото: Ramón from Llanera, España ; brightened by Off-shell, CC BY-SA 2.0"
+    },
+    {
+      "id": "wb_32942",
+      "title": "Маседуан",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "butter",
+          "grams": 40.0
+        },
+        {
+          "ingredientId": "carrot",
+          "grams": 200.0
+        },
+        {
+          "ingredientId": "green_peas",
+          "grams": 450.0
+        },
+        {
+          "ingredientId": "turnip",
+          "grams": 200.0
+        }
+      ],
+      "steps": [
+        "Морковь и репу нарезать небольшими кубиками",
+        "Залить бульоном, добавить щепотку сахара и немного сливочного масла.",
+        "Варить на малом огне, до выкипания всего бульона и глазирования овощей",
+        "Стручковую фасоль нарезать, отварить в кипящей подсоленной вод, сцедить, смещать с морковью и репой",
+        "Горошек также отварить в кипящей подсоленной воде, сцедить, подсушить на огне, добавить большой кусок масла",
+        "Перед подачей обложить круглое блюдо горошком, в центре поместить смесь из овощей"
+      ],
+      "image": "assets/images/recipes/wb_32942.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Маседуан, CC BY-SA 4.0; фото: misbehave, CC BY 2.0"
+    },
+    {
+      "id": "wb_21570",
+      "title": "Мастава",
+      "mealTypes": [
+        "lunch"
+      ],
+      "servings": 4,
+      "minutes": 40,
+      "ingredients": [
+        {
+          "ingredientId": "brown_rice",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "carrot",
+          "grams": 70.0
+        },
+        {
+          "ingredientId": "garlic",
+          "grams": 5.0
+        },
+        {
+          "ingredientId": "lamb",
+          "grams": 400.0
+        },
+        {
+          "ingredientId": "onion",
+          "grams": 70.0
+        },
+        {
+          "ingredientId": "potato",
+          "grams": 200.0
+        },
+        {
+          "ingredientId": "tomato",
+          "grams": 80.0
+        }
+      ],
+      "steps": [
+        "Баранину нарезаем порционными кусочками.",
+        "В казан наливаем растительное масло и прогреваем его.",
+        "Выкладываем в казан баранину и обжариваем её до румяной корочки 15 минут на сильном огне",
+        "Лук репчатый нарезаем полукольцами, чеснок мелко рубим ножом, перец чили режем кружочками",
+        "Перекладываем лук, чеснок, перец чили в казан к мясу и обжариваем овощи с мясом 5-7 минут",
+        "Морковь нарезаем полукружочками и добавляем в казан.",
+        "Обжариваем всё вместе, помешивая, ещё 5-7 минут",
+        "Теперь всыпаем в казан рис.",
+        "Заливаем рис с овощами 2 литрами воды и готовим маставу ещё 15 минут",
+        "Нарезаем картофель и помидоры кубиком",
+        "Добавляем картофель и помидоры в суп.",
+        "Затем соль и чёрный молотый перец по вкусу."
+      ],
+      "image": "assets/images/recipes/wb_21570.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Мастава, CC BY-SA 4.0; фото: Sakateka, CC BY-SA 4.0"
+    },
+    {
+      "id": "wb_30593",
+      "title": "Мирпуа",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "butter",
+          "grams": 50.0
+        },
+        {
+          "ingredientId": "carrot",
+          "grams": 100.0
+        },
+        {
+          "ingredientId": "ham",
+          "grams": 100.0
+        },
+        {
+          "ingredientId": "onion",
+          "grams": 55.0
+        }
+      ],
+      "steps": [
+        "Ветчину и морковь нарезать кубиками, шалот и лук измельчить",
+        "Морковь, ветчину с луком-шалотом и луком обжарить на сливочном масле в течение 5 минут на сильном огне",
+        "Добавьте ароматические травы (тимьян, лавровый лист и петрушку),",
+        "Дать покипеть 10 минут",
+        "Мирпуа Mirepoix.",
+        "Мирпуа для тушенія мяса, птицы или рыбы приготовляется во всемъ такъ же, какъ № 111 ()Наваръ для тушенія мяса или птицы, но съ прибавленіемъ стакана марсалы или хереса и нарѣзанныхъ ломтиками шампиньоновъ № 462.",
+        "Количество же бульона можетъ быть уменьшено до шести стакановъ",
+        "Мирпуа высаженный Mirepoix reduite.",
+        "Одинъ фунтъ несоленой ветчины, одинъ фунтъ сливочнаго масла, двѣ обланжиренныя луковицы, нарѣзанные на мелкіе кусочки шампиньоны, двѣ моркови, немного тмина, лаврововаго листа, двѣ гвоздики припустить на легкомъ огнѣ, залить тремя стака(на)ми бульона № 89 и стаканомъ мадеры.",
+        "Снимая накипь и жиръ, варить на самомъ легкомъ огнѣ до тѣхъ поръ, пока бульонъ и мадера не превратятся въ густой сокъ, процѣдить",
+        "Пропорции не указаны, перечислены нарезанные кубиками обрезки ветчины и бекона, морковь, лук, а также лавровый лист, чабрец петрушка; иногда чеснок, обжаренный в сливочном масле"
+      ],
+      "image": "assets/images/recipes/wb_30593.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Мирпуа, CC BY-SA 4.0; фото: Pigup, CC BY-SA 3.0"
+    },
+    {
+      "id": "wb_35133",
+      "title": "Мусака",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "brown_rice",
+          "grams": 12.0
+        },
+        {
+          "ingredientId": "butter",
+          "grams": 20.0
+        },
+        {
+          "ingredientId": "onion",
+          "grams": 25.0
+        },
+        {
+          "ingredientId": "pumpkin",
+          "grams": 250.0
+        },
+        {
+          "ingredientId": "tomato",
+          "grams": 50.0
+        }
+      ],
+      "steps": [
+        "Говядину нарезать кубиками, залить водой чтобы покрыло, закрыть крышкой и тушить до готовности",
+        "Рис отварить до полуготовности, лук измельчить и обжарить в масле.",
+        "Тыкву очистить от кожуры и семян, нарезать тонкими ломтиками",
+        "Подготовленную говядину смешать с рисом и луком, приправить солью и перцем",
+        "На смазанную маслом сковородку последовательно выложить слой тыквы, слой мяса, вновь слой тыквы, обложить помидорами, влить немного бульона и довести до готовности в духовом шкафу"
+      ],
+      "image": "assets/images/recipes/wb_35133.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Мусака, CC BY-SA 4.0; фото: Fotograf: Dieter Mueller (dino1948) Kamera: de:Nikon 885, CC BY-SA 3.0"
+    },
+    {
+      "id": "wb_10461",
+      "title": "Ньокки",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "egg",
+          "grams": 55.0
+        },
+        {
+          "ingredientId": "flour",
+          "grams": 100.0
+        },
+        {
+          "ingredientId": "potato",
+          "grams": 500.0
+        }
+      ],
+      "steps": [
+        "Отварить картофель в мундире, очистить от кожуры.",
+        "Размять в пюре, добавить муку, яйцо и соль, замесить тесто",
+        "Переложить на поверхность, посыпанную мукой, вымесить тесто до гладкости",
+        "Разделить на 4 куска и скатать каждый в колбаску толщиной 2 см.",
+        "Нарезать колбаски поперек на одинаковые кружочки, придать ньоккам продолговатую форму",
+        "Довести до кипения в большой кастрюле подсоленную воду, бросить туда ньокки.",
+        "Варить 2-3 мин, пока ньокки не поднимутся на поверхность и вода снова закипит",
+        "Достать шумовкой и положить на тарелки и сразу же подавать",
+        "Категория:Итальянская кухня",
+        "Категория:Рецепты"
+      ],
+      "image": "assets/images/recipes/wb_10461.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Ньокки, CC BY-SA 4.0; фото: Paoletta S, CC BY 2.0"
+    },
+    {
+      "id": "wb_3794",
+      "title": "Пельмени",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "beef_chuck",
+          "grams": 450.0
+        },
+        {
+          "ingredientId": "cream",
+          "grams": 50.0
+        },
+        {
+          "ingredientId": "egg",
+          "grams": 110.0
+        },
+        {
+          "ingredientId": "flour",
+          "grams": 600.0
+        },
+        {
+          "ingredientId": "lamb",
+          "grams": 350.0
+        },
+        {
+          "ingredientId": "pork",
+          "grams": 200.0
+        }
+      ],
+      "steps": [
+        "Варить пельмени желательно в слегка подсоленной воде, закидывая сразу в кипящую воду.",
+        "Время готовности в разных кулинарных традициях определяют по разному.",
+        "Однако основной общий маркер готовности - всплытие пельменей через некоторое время после закипания.",
+        "Чаще всего указываются интервалы от 2 до 10 минут после всплытия.",
+        "Чем больше размер каждого пельменя - тем больше времени"
+      ],
+      "image": "assets/images/recipes/wb_3794.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Пельмени, CC BY-SA 4.0; фото: Eugene Kim @ Flickr, CC BY 2.0"
+    },
+    {
+      "id": "wb_32391",
+      "title": "Петух в вине",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "bacon",
+          "grams": 200.0
+        },
+        {
+          "ingredientId": "butter",
+          "grams": 80.0
+        },
+        {
+          "ingredientId": "carrot",
+          "grams": 160.0
+        },
+        {
+          "ingredientId": "garlic",
+          "grams": 10.0
+        },
+        {
+          "ingredientId": "mushrooms",
+          "grams": 200.0
+        },
+        {
+          "ingredientId": "wine",
+          "grams": 1000.0
+        }
+      ],
+      "steps": [
+        "Приготовьте маринад из вина, масла, перца, 1 зубчика чеснока (раздавить перед использованием) и зелени: рубленой петрушки, лаврового листа и тимьяна.",
+        "Оставить курицу мариноваться на шесть-двенадцать часов",
+        "Очистить лук и раздавить второй зубчик чеснока.",
+        "Обжарить их с беконом в кастрюле с маслом и половиной сливочного масла, затем извлечь и в том же жире слегка подрумянить кусочки курицы со всех сторон",
+        "Слить жир из запеканки.",
+        "Добавить к курице лук, чеснок и бекон.",
+        "Подогреть коньяк, полить им содержимое ёмкости и поджечь",
+        "Добавить вино и букет гарни.",
+        "Накрыть крышкой и тушить 1 час",
+        "Вымыть и нарезать грибы, обжарить их в оставшемся сливочном масле.",
+        "В конце тушения добавить их к курице и потушить ещё 20 минут",
+        "Смешать оставшиееся масло и муку, приготовив мучное масло \"бер-манье\", затем разбавить его небольшим количеством горячего бульона."
+      ],
+      "image": "assets/images/recipes/wb_32391.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Петух_в_вине, CC BY-SA 4.0; фото: Сведения об авторе отсутствуют или не читаются программно. Предположительно Gene.arboit (основываясь на заявлении об авторском праве), CC BY-SA 3.0"
+    },
+    {
+      "id": "wb_21605",
+      "title": "Печень по-берлински",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "apple",
+          "grams": 300.0
+        },
+        {
+          "ingredientId": "liver",
+          "grams": 500.0
+        },
+        {
+          "ingredientId": "onion",
+          "grams": 160.0
+        }
+      ],
+      "steps": [
+        "Подготовить продукты для печени по-берлински.",
+        "Для этого почистить лук и нарезать кольцами",
+        "Яблоки очистить от кожуры, удалить сердцевину и нарезать кольцами толщиной около 5 мм",
+        "Обжарить яблоки в сковороде на растительном масле с обеих сторон до легкого золотистого цвета.Переложить обжаренные яблоки в тарелку",
+        "В сковороду выложить кольца лука, посолить и поперчить",
+        "Обжарить лук до золотистого цвета и тоже переложить со сковороды в тарелку",
+        "Вымыть печень, удалить пленки и протоки, нарезать кусочками",
+        "Обвалять кусочки печени в муке, лишнюю муку стряхнуть",
+        "Печень обжарить с двух сторон в той же сковороде, где жарились лук и яблоки.",
+        "Жарить печень до появления прозрачного сока, примерно 5 минут",
+        "Вернуть в сковороду лук и яблоки",
+        "Накрыть крышкой и довести блюдо до готовности в течение 10-15 минут"
+      ],
+      "image": "assets/images/recipes/wb_21605.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Печень_по-берлински, CC BY-SA 4.0; фото: Riki1979, Public domain"
+    },
+    {
+      "id": "wb_35198",
+      "title": "Пинджур",
+      "mealTypes": [
+        "snack"
+      ],
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "bell_pepper",
+          "grams": 1000.0
+        },
+        {
+          "ingredientId": "eggplant",
+          "grams": 500.0
+        },
+        {
+          "ingredientId": "garlic",
+          "grams": 5.0
+        },
+        {
+          "ingredientId": "tomato",
+          "grams": 1000.0
+        }
+      ],
+      "steps": [
+        "Испечь перец, помидоры и баклажаны, снять кожицу.",
+        "Очищенные овощи пропустить через мясорубку",
+        "Измельченные овощи поместить в широкую кастрюлю, залить маслом, добавить рубленный чеснок, соль и перец",
+        "Варить до загустения массы",
+        "По готовности охладить; подавать, посыпав рубленой петрушкой"
+      ],
+      "image": "assets/images/recipes/wb_35198.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Пинджур, CC BY-SA 4.0; фото: Off-shell, CC BY-SA 4.0"
+    },
+    {
+      "id": "wb_31800",
+      "title": "Плескавица",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "beef_chuck",
+          "grams": 300.0
+        },
+        {
+          "ingredientId": "onion",
+          "grams": 160.0
+        },
+        {
+          "ingredientId": "pork",
+          "grams": 300.0
+        }
+      ],
+      "steps": [
+        "Из мяса приготовить фарш, добавить специи и оставить в холодном месте минимум на 2 часа, лучше на 4-5 часов.",
+        "Лука можно взять и больше, для гарнира",
+        "Перед приготовлением блюда мелко нарезать лук, добавить в фарш, хорошо перемешать и, смочив руки холодной водой, сформовать из фарша шарики примерно по 150 г на порцию.",
+        "По вкусу можно также добавить измельчённый острый перец",
+        "Шарики расплющить в руках чтобы получился плоский круглый шницель, смазать маслом и выпекать на противне, или смазанном жиром гриле с обеих сторон",
+        "Подавать горячими; можно с остатками нарезанного лука в качестве гарнира, или полить каймаком (10 г на порцию)",
+        "ИЛИ (на плескавицу в 70 г): 120 г говядины (шея, лопатка), 3 г раст.",
+        "масло, 30 г лука, 0,2 г чёрный перец, соль по вкусу",
+        "Лесковацкая плескавица",
+        "В фарш дополнительно добавить 100 г мелко рубленного сала.Вариант рецепта: 600 г смешанного фарша, 120 г копченого сала, 80 г твердого сыра, 3 дольки чеснока, острый перец в порошке или стручок, соль, чёрный перец.",
+        "Размер - с грецкий орех, подавать без гарнира",
+        "Цирчак-плескавица"
+      ],
+      "image": "assets/images/recipes/wb_31800.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Плескавица, CC BY-SA 4.0; фото: Biso, CC BY 3.0"
+    },
+    {
+      "id": "wb_3605",
+      "title": "Плов",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 3,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "beef_chuck",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "brown_rice",
+          "grams": 250.0
+        },
+        {
+          "ingredientId": "carrot",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "onion",
+          "grams": 100.0
+        }
+      ],
+      "steps": [
+        "Плов получится более рассыпчатым, если рис предварительно замочить: сухой рис посолить и залить водой при температуре около 60 °C.",
+        "Дать настояться 30—120 минут.",
+        "Воду слить и осторожно, чтобы не повредить зёрна, промыть рис в тёплой воде несколько раз до чистой сливной воды, после чего его сразу же погружают в казан с готовым зирваком.",
+        "Рецепт описан для незамоченного риса, поэтому в этом случае следует сократить количество добавляемой в казан соли и воды"
+      ],
+      "image": "assets/images/recipes/wb_3605.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Плов, CC BY-SA 4.0; фото: Ekrem Canli, CC BY-SA 3.0"
+    },
+    {
+      "id": "wb_21478",
+      "title": "Путин",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "flour",
+          "grams": 10.0
+        },
+        {
+          "ingredientId": "hard_cheese",
+          "grams": 100.0
+        },
+        {
+          "ingredientId": "potato",
+          "grams": 400.0
+        }
+      ],
+      "steps": [
+        "Картофель хорошо вымыть щеткой и нарезать полосками.",
+        "Можно очистить от кожуры.",
+        "Промыть нарезанный картофель под проточной водой, затем выложить его в миску и снова залить водой.",
+        "Поставить миску с картофелем в холодильник на 30-60 минут.",
+        "За это время пару раз поменять в миске воду",
+        "Приготовить соус (либо загустить говяжий бульон, добавив муку).",
+        "Картофель достать из холодильника, слить с картофеля воду и промокнуть его бумажным полотенцем.",
+        "Картофель для канадского путина готовят дважды.",
+        "Первый раз фритюрницу следует разогреть до 160 градусов.",
+        "Обжарить картофель 2-4 минуты и выложить его на полотенца, дать остыть.",
+        "Установить во фритюрнице температуру 180 градусов и обжарить картофель до румяной корочки.",
+        "Сверху положить кусочки творожного сыра."
+      ],
+      "image": "assets/images/recipes/wb_21478.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Путин, CC BY-SA 4.0; фото: Jonathunder, GFDL 1.2"
+    },
+    {
+      "id": "wb_30042",
+      "title": "Салат из огурцов с зелёным луком и укропом",
+      "mealTypes": [
+        "lunch"
+      ],
+      "servings": 2,
+      "minutes": 15,
+      "ingredients": [
+        {
+          "ingredientId": "cucumber",
+          "grams": 350.0
+        },
+        {
+          "ingredientId": "greens",
+          "grams": 46.0
+        },
+        {
+          "ingredientId": "sunflower_oil",
+          "grams": 35.0
+        }
+      ],
+      "steps": [
+        "Мытые огурцы шинкуют кружочками",
+        "Лук и укроп мелко нарезают и смешивают с огурцами",
+        "Салат заправляют солью и растительным маслом",
+        "Всё аккуратно перемешивают"
+      ],
+      "image": "assets/images/recipes/wb_30042.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Салат_из_огурцов_с_зелёным_луком_и_укропом, CC BY-SA 4.0; фото: Prostologin 1, CC BY-SA 4.0"
+    },
+    {
+      "id": "wb_35012",
+      "title": "Салат Снежанка",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "garlic",
+          "grams": 20.0
+        },
+        {
+          "ingredientId": "greek_yogurt",
+          "grams": 500.0
+        },
+        {
+          "ingredientId": "greens",
+          "grams": 15.0
+        },
+        {
+          "ingredientId": "walnuts",
+          "grams": 100.0
+        }
+      ],
+      "steps": [
+        "Измельчить огурцы (можно натереть) и укроп.",
+        "Раздавить (или мелко нарезать) зубчики чеснока, перемолоть грецкие орехи.",
+        "Процедить йогурт",
+        "Добавить подготовленные ингредиенты в процеженный йогурт вместе с оливковым маслом и солью",
+        "Хорошо перемешать; по желанию дополнительно посыпать молотыми грецкими орехами и украсить веточкой укропа"
+      ],
+      "image": "assets/images/recipes/wb_35012.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Салат_Снежанка, CC BY-SA 4.0; фото: ShockD, CC BY-SA 4.0"
+    },
+    {
+      "id": "wb_19514",
+      "title": "Сгущённое молоко",
+      "mealTypes": [
+        "snack"
+      ],
+      "servings": 10,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "butter",
+          "grams": 20.0
+        },
+        {
+          "ingredientId": "milk_25",
+          "grams": 200.0
+        },
+        {
+          "ingredientId": "sugar",
+          "grams": 200.0
+        }
+      ],
+      "steps": [
+        "Смешиваем в глубокой кастрюле молоко, сахар и масло",
+        "Ставим на маленький огонь.",
+        "Размешиваем до полного растворения ингредиентов",
+        "Доводим до кипения",
+        "Кипятим в течение 10-30 минут постоянно помешивая",
+        "Переливаем готовый продукт в соответствующую посуду, например, чистую сухую баночку с крышкой",
+        "После остывания храним в холодильнике",
+        "Если нагрев продолжать, то можно приготовить вареную сгущенку"
+      ],
+      "image": "assets/images/recipes/wb_19514.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Сгущённое_молоко, CC BY-SA 4.0; фото: Krassotkin, CC0"
+    },
+    {
+      "id": "wb_22154",
+      "title": "Семла",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 8,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "almonds",
+          "grams": 100.0
+        },
+        {
+          "ingredientId": "butter",
+          "grams": 50.0
+        },
+        {
+          "ingredientId": "cream",
+          "grams": 250.0
+        },
+        {
+          "ingredientId": "egg",
+          "grams": 110.0
+        },
+        {
+          "ingredientId": "milk_25",
+          "grams": 200.0
+        },
+        {
+          "ingredientId": "sugar",
+          "grams": 180.0
+        },
+        {
+          "ingredientId": "yeast",
+          "grams": 5.0
+        }
+      ],
+      "steps": [
+        "Сливки предварительно охлаждаем.",
+        "Сливочное масло наоборот заранее вынимаем из холодильника и даём подтаять",
+        "Молоко нагреваем, не доводя его температуру до 40 градусов",
+        "Готовим дрожжевое тесто для булочек.",
+        "Муку не используем всю сразу.",
+        "Отделяем от общего количества примерно треть стакана (50 г).",
+        "В остальную муку всыпаем дрожжи и перемешиваем",
+        "К муке с дрожжами всыпаем соль, сахар и разбиваем яйцо.",
+        "Можно ещё добавить молотый кардамон.",
+        "Перемешиваем",
+        "Вливаем слегка тёплое молоко",
+        "Замешиваем тесто в течение 8-10 минут."
+      ],
+      "image": "assets/images/recipes/wb_22154.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Семла, CC BY-SA 4.0; фото: my girlfriend, CC BY-SA 3.0"
+    },
+    {
+      "id": "wb_31063",
+      "title": "Смультринг",
+      "mealTypes": [
+        "snack"
+      ],
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "egg",
+          "grams": 220.0
+        },
+        {
+          "ingredientId": "flour",
+          "grams": 500.0
+        },
+        {
+          "ingredientId": "sugar",
+          "grams": 250.0
+        }
+      ],
+      "steps": [
+        "thumb|right|200px|Ручной инструмент для изготовления смултрингов",
+        "Взбить добела яйца с сахаром, затем смешать с растопленным сливочным маслом (или с густыми сливками и растопленным маргарином)",
+        "Добавить цедру, муку, бикарбонат аммония и кардамон.",
+        "Замесить тесто до однородной консистенции, накрыть плёнкой и оставьте хотя бы на час, а лучше до следующего дня",
+        "Раскатать тесто толщиной около 1 см и при помощи машинки вырезать из него пончики; либо вручную слепить небольшие колечки, по краю каждого сделать по 3 надреза",
+        "Смахнуть лишнюю муку.",
+        "Пончики до жарки поместить на присыпанные мукой листы",
+        "Растопите кулинарный жир в кастрюле или сковороде до примерно 180 градусов",
+        "Обжарить пончики на жире до румяной светло-коричневой корочки (около 5 минут, в зависимости от толщины), переворачивая шумовкой; и, по мере приготовления, выкладывать на застеленную бумажным полотенцем решётку, чтобы стекли излишки жира",
+        "Рекомендуется иметь в наличии крышку для кастрюли/сковороды, кухонный термометр, шумовку и бумажные полотенца"
+      ],
+      "image": "assets/images/recipes/wb_31063.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Смультринг, CC BY-SA 4.0; фото: Photo taken by Muu-karhu, CC BY-SA 3.0"
+    },
+    {
+      "id": "wb_31320",
+      "title": "Соус Айоли",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "egg",
+          "grams": 55.0
+        },
+        {
+          "ingredientId": "lemon",
+          "grams": 100.0
+        },
+        {
+          "ingredientId": "sunflower_oil",
+          "grams": 250.0
+        }
+      ],
+      "steps": [
+        "Чеснок хорошо измельчить в ступке.",
+        "Продолжая взбивать, добавить желток, соль, и растительное масло: сперва по капле, а когда соус начнёт густеть — тонкой струйкой",
+        "В конце приготовления добавить лимонный сок и воду"
+      ],
+      "image": "assets/images/recipes/wb_31320.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Соус_Айоли, CC BY-SA 4.0; фото: Ralph Sperling, Public domain"
+    },
+    {
+      "id": "wb_35064",
+      "title": "Страпачки",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "cottage_5",
+          "grams": 40.0
+        },
+        {
+          "ingredientId": "egg",
+          "grams": 5.5
+        },
+        {
+          "ingredientId": "flour",
+          "grams": 38.0
+        },
+        {
+          "ingredientId": "potato",
+          "grams": 200.0
+        },
+        {
+          "ingredientId": "sour_cream",
+          "grams": 20.0
+        }
+      ],
+      "steps": [
+        "Отобрать крупные клубни картофеля, почистить и вымыть",
+        "Картофель натереть на мелкой тёрке, добавить муку, яйцо, соль.",
+        "Всё хорошо перемешать, чтобы не осталось комков",
+        "Подготовленную массу протереть через дуршлаг с отверстиями 7-10 мм над кастрюлей с подсоленным кипятком, чтобы куски массы (страпачки) падали в кипящую воду",
+        "Варить при слабом кипении в течение 5-7 мин, следя, чтобы страпачки хорошо сварились и не слипались",
+        "Сваренные страпачки процедить, посыпать свежим тёртым сыром и полить вытопленным из сала горячим жиром, вместе со шкварками.",
+        "Подавать свежими и горячими",
+        "По желанию можно полить сметаной",
+        "Страпачки с капустой"
+      ],
+      "image": "assets/images/recipes/wb_35064.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Страпачки, CC BY-SA 4.0; фото: Maciarka, CC BY-SA 3.0"
+    },
+    {
+      "id": "wb_21737",
+      "title": "Сувлаки",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 2,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "bell_pepper",
+          "grams": 50.0
+        },
+        {
+          "ingredientId": "garlic",
+          "grams": 10.0
+        },
+        {
+          "ingredientId": "olive_oil",
+          "grams": 25.0
+        },
+        {
+          "ingredientId": "onion",
+          "grams": 100.0
+        },
+        {
+          "ingredientId": "pork",
+          "grams": 600.0
+        },
+        {
+          "ingredientId": "tomato",
+          "grams": 60.0
+        }
+      ],
+      "steps": [
+        "Мясо нарезать кубиками, лук – на четвертинки, мелко нарезать чеснок.",
+        "Ассорти перцев раздавить в ступке",
+        "В контейнер уложить мясо, переложить его луком, чесноком, перемешать с приправой, солью и перцем.",
+        "Полить оливковым маслом, бальзамическим уксусом и хорошенько перемешать руками.",
+        "Оставить на час в холодильнике, закрыв пленкой",
+        "К маринованному мясу добавить нарезанный на кусочки сладкий перец, помидоры, встряхнуть контейнер",
+        "Нанизать поочередно на деревянные шпажки мясо и овощи",
+        "Чтобы запечь сувлаки в духовке, необходима неглубокая жаропрочная форма, дно которой закрывается фольгой.",
+        "От бортика к бортику раскладываем наши шпажки",
+        "Выпекаем сувлаки в духовке, на нижнем уровне в режиме \"Гриль\" при 200 С около 20 мин",
+        "Перед подачей подачи на дно тарелки кладем лаваш, на него складываем горкой шпажки с сувлаки"
+      ],
+      "image": "assets/images/recipes/wb_21737.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Сувлаки, CC BY-SA 4.0; фото: Andrew Davidoff, CC BY-SA 2.0"
+    },
+    {
+      "id": "wb_33004",
+      "title": "Суп-пюре из цветной капусты",
+      "mealTypes": [
+        "lunch"
+      ],
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "cabbage",
+          "grams": 600.0
+        },
+        {
+          "ingredientId": "milk_25",
+          "grams": 200.0
+        },
+        {
+          "ingredientId": "potato",
+          "grams": 350.0
+        }
+      ],
+      "steps": [
+        "Отварить бланшированную цветную капусту и картофель в 1 л молока с солью",
+        "Пропустить через марлю; довести до консистенции пюре, добавив остальные 2 л молока, при необходимости и сливочное масло, а также украсить веточками кервеля",
+        "Это блюдо одновременно является и Кремом и Велюте",
+        "№ 188 Супы-пюре изъ овощей Нижеслѣдующіе супы-пюре изъ овощей готовятся почти одинаково, согласно указаніямъ, описаннымъ въ № 213.",
+        "(№№ 189-212)",
+        "№ 200.",
+        "Супъ-пюре изъ цвѣтной капусты.",
+        "Crème Dubarry",
+        "№ 213 Общія правила при изготовленіи суповъ пюре изъ овощей.",
+        "отъ № 189 до 227 включительно:",
+        "Сухія овощи, напримѣръ, горохъ, бѣлая фасоль, чечевица, до варки ихъ, должны быть вымочены въ холодной водѣ въ теченіе трехъ часовъ",
+        "Всѣ коренья и овощи, изъ коихъ дѣлается пюре, должны быть очищены, вымыты, крупные коренья разрѣзаны на мелкіе куски"
+      ],
+      "image": "assets/images/recipes/wb_33004.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Суп-пюре_из_цветной_капусты, CC BY-SA 4.0; фото: Министерство пищевой промышленности СССР, Public domain"
+    },
+    {
+      "id": "wb_35011",
+      "title": "Таратор",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "cucumber",
+          "grams": 100.0
+        },
+        {
+          "ingredientId": "garlic",
+          "grams": 7.5
+        },
+        {
+          "ingredientId": "greek_yogurt",
+          "grams": 750.0
+        }
+      ],
+      "steps": [
+        "Огурец мелко нарезать или натереть на тёрке.",
+        "Чеснок раздавить, укроп мелко нарезать",
+        "Добавить к огурцу чеснок, укроп и масло",
+        "Добавить к полученной смеси йогурт и холодную воду.",
+        "Хорошо перемешать и добавить соль.",
+        "Посыпать молотыми грецкими орехами",
+        "Подавать холодным, как закуску, либо в качестве гарнира, в глубоких мисках или тарелках (или в стакане, если он предназначен для разбавления мастики или ракии), можно добавить лед для поддержания температуры.",
+        "Хранить в холодильнике"
+      ],
+      "image": "assets/images/recipes/wb_35011.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Таратор, CC BY-SA 4.0; фото: Ikonact, CC BY-SA 3.0"
+    },
+    {
+      "id": "wb_30941",
+      "title": "Тарт Татен",
+      "mealTypes": [
+        "snack"
+      ],
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "apple",
+          "grams": 450.0
+        },
+        {
+          "ingredientId": "butter",
+          "grams": 125.0
+        },
+        {
+          "ingredientId": "flour",
+          "grams": 130.0
+        },
+        {
+          "ingredientId": "sugar",
+          "grams": 150.0
+        }
+      ],
+      "steps": [
+        "Муку, соль и сахар высыпать на доску, положить сверху сливочное масло и изрубить ножом.",
+        "Влить холодную воду и месить пока тесто не будет скатываться в один комок.",
+        "Поставить в холодильник на 1 ч",
+        "Форму с высокими краями смазать изнутри 2 ч.",
+        "сливочного масла и посыпать 3 ч.",
+        "сахарной пудры.",
+        "Положить яблоки в несколько слоев, смазать их оставшимся сливочным маслом и посыпать 3 ч.",
+        "сахарной пудры",
+        "Раскатать тесто и покрыть им яблоки.",
+        "Поставить форму в предварительно хорошо нагретую (до 190 °C) духовку на 30 мин.",
+        "Вынуть и дать постоять 5 мин.",
+        "Осторожно перевернуть форму с тортом на блюдо так, чтобы тесто было снизу, а яблоки сверху."
+      ],
+      "image": "assets/images/recipes/wb_30941.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Тарт_Татен, CC BY-SA 4.0; фото: Joanbanjo, CC BY-SA 4.0"
+    },
+    {
+      "id": "wb_21703",
+      "title": "Тейглах",
+      "mealTypes": [
+        "snack"
+      ],
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "butter",
+          "grams": 50.0
+        },
+        {
+          "ingredientId": "egg",
+          "grams": 275.0
+        },
+        {
+          "ingredientId": "flour",
+          "grams": 325.0
+        },
+        {
+          "ingredientId": "honey",
+          "grams": 250.0
+        },
+        {
+          "ingredientId": "sugar",
+          "grams": 100.0
+        }
+      ],
+      "steps": [
+        "Яйца растереть с сахарной пудрой и маслом, добавить муку и замесить тесто.",
+        "Тесто раскатать жгутами, нарезать их на кусочки и скатать кусочки в шарики.",
+        "Противень смазать маслом, выложить шарики и выпечь в духовке минут 20.",
+        "Сварить медовый сироп.",
+        "Как только он начнет бурлить, опустить в него готовые шарики и варить около 5 минут до загустения.",
+        "Готовые шарики выложить на лист, смазанный маслом, квадратом толщиной 1-1,5 см.",
+        "Посыпать корицей и нарезать ромбиками"
+      ],
+      "image": "assets/images/recipes/wb_21703.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Тейглах, CC BY-SA 4.0; фото: Klezmerguy, CC BY-SA 4.0"
+    },
+    {
+      "id": "wb_32457",
+      "title": "Тиан",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "egg",
+          "grams": 165.0
+        },
+        {
+          "ingredientId": "eggplant",
+          "grams": 200.0
+        },
+        {
+          "ingredientId": "hard_cheese",
+          "grams": 100.0
+        },
+        {
+          "ingredientId": "tomato",
+          "grams": 200.0
+        },
+        {
+          "ingredientId": "zucchini",
+          "grams": 400.0
+        }
+      ],
+      "steps": [
+        "Очистить и нарезать лук, поместить в керамическую посуду с небольшим количеством оливкового масла, поставить на огонь",
+        "Вымыть (при необходимости также очистить) кабачки и баклажаны, нарезать кубиками.",
+        "Добавьте их к луку.",
+        "Увеличить огонь",
+        "Взбить яйца, добавить к ним соль, перец и немного прованских трав, а также измельчённый чеснок",
+        "Нарезать кубиками помидоры, выложить их и обжаренные овощи на дно формы для запекания",
+        "Влить яичную смесь и присыпать сверху тёртым сыром",
+        "Поставить в духовку примерно на 20 минут при температуре 180°C.",
+        "В конце приготовления переключить духовку на режим гриля, чтобы сыр подрумянился",
+        "Tian de courgettes"
+      ],
+      "image": "assets/images/recipes/wb_32457.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Тиан, CC BY-SA 4.0; фото: pelican, CC BY-SA 2.0"
+    },
+    {
+      "id": "wb_35062",
+      "title": "Турошчуса",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "cottage_5",
+          "grams": 500.0
+        },
+        {
+          "ingredientId": "egg",
+          "grams": 220.0
+        },
+        {
+          "ingredientId": "flour",
+          "grams": 600.0
+        },
+        {
+          "ingredientId": "sour_cream",
+          "grams": 300.0
+        }
+      ],
+      "steps": [
+        "Замесить на доске пресное тесто из муки, соли и яйца с водой.",
+        "Месить до упругости.",
+        "Присыпать мукой, дать постоять и раскатать в лист толщиной около 2 мм",
+        "Измельчить тесто, отщипывая от него кусочки произвольной формы размером около 2*3 или 3*4 см, также присыпать мукой и разбросать их на доске, чтобы не слипались",
+        "Сварить тесто в крутом подсоленном кипятке.",
+        "По готовности откинуть на дуршлаг, сполоснуть холодной водой, дать стечь.",
+        "Поместить в сотейник с горячим жиром и разогревать несколько минут",
+        "Сало нарезать кубиками и обжарить до образования шкварок.",
+        "Творог протереть через сито",
+        "При подаче посыпать тесто творогом, полить холодной сметаной, присыпать и украсить шкварками"
+      ],
+      "image": "assets/images/recipes/wb_35062.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Турошчуса, CC BY-SA 4.0; фото: Christo, CC BY-SA 4.0"
+    },
+    {
+      "id": "wb_21676",
+      "title": "Фадж шоколадный",
+      "mealTypes": [
+        "snack"
+      ],
+      "servings": 6,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "butter",
+          "grams": 100.0
+        },
+        {
+          "ingredientId": "chocolate",
+          "grams": 180.0
+        },
+        {
+          "ingredientId": "sugar",
+          "grams": 190.0
+        }
+      ],
+      "steps": [
+        "В кастрюле с толстым дном соедините сахарный песок и сгущенное молоко",
+        "Добавьте сливочное масло и мед",
+        "Перемешайте и начните нагревать на среднем огне, часто помешивая.",
+        "Сливочное масло должно постепенно растопиться.",
+        "Масса станет однородной",
+        "Уваривайте сладкую массу в течение 10-15 минут, часто помешивая, до карамельного оттенка",
+        "Добавьте миндальный или мятный экстракт и разломанный на кусочки черный шоколад.",
+        "Также можно сюда же кусочки орехов",
+        "Снимите шоколадную массу с огня и перемешайте",
+        "Выложите массу в форму, застеленную пергаментной бумагой, и поставьте на холод минимум на 3 часа",
+        "Затем шоколадный фадж нужно аккуратно вынуть из формы и разрезать на кусочки произвольной формы",
+        "Кусочки фаджа можно декорировать сахарной пудрой при помощи бумажных трафаретов"
+      ],
+      "image": "assets/images/recipes/wb_21676.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Фадж_шоколадный, CC BY-SA 4.0; фото: jules, CC BY 2.0"
+    },
+    {
+      "id": "wb_21064",
+      "title": "Фаршированная шейка",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 4,
+      "minutes": 40,
+      "ingredients": [
+        {
+          "ingredientId": "carrot",
+          "grams": 80.0
+        },
+        {
+          "ingredientId": "chicken_breast",
+          "grams": 375.0
+        },
+        {
+          "ingredientId": "flour",
+          "grams": 225.0
+        },
+        {
+          "ingredientId": "onion",
+          "grams": 200.0
+        }
+      ],
+      "steps": [
+        "Мелко нарезается куриный жир, репчатый лук, добавляется мука.",
+        "Сюда же можно добавить шкварки из куриного жира.",
+        "Затем добавляется соль и перец, тщательно смешивается.",
+        "Узкий конец шейки зашивается, и шейка начиняется фаршем, при этом, начинка не должна быть плотной, иначе шейку в процессе тепловой обработки сильно раздует, кожа может лопнуть.",
+        "Зашивается широкий край шейки.",
+        "Начиненная шейка отваривается в курином бульоне с морковью и луком.",
+        "С готовой шейки снимаются нитки, готовая «колбаска» нарезается дольками.",
+        "Употребляется как в горячем, так и в холодном виде.",
+        "Как самостоятельное блюдо или с гарниром"
+      ],
+      "image": "assets/images/recipes/wb_21064.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Фаршированная_шейка, CC BY-SA 4.0; фото: Wizard85 (original file) ; Off-shell (cropped and reprocessed version), CC BY-SA 4.0"
+    },
+    {
+      "id": "wb_6527",
+      "title": "Фаршированный перец",
+      "mealTypes": [
+        "snack"
+      ],
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "carrot",
+          "grams": 120.0
+        },
+        {
+          "ingredientId": "onion",
+          "grams": 120.0
+        },
+        {
+          "ingredientId": "wine",
+          "grams": 400.0
+        }
+      ],
+      "steps": [
+        "Рис сварить до готовности, остудить.",
+        "Морковь и лук мелко порезать и поджарить на растительном масле.",
+        "Рис смешать с овощами и фаршем, посолить по вкусу.",
+        "Перцы вымыть, вырезать сердцевину и нафаршировать начинкой.",
+        "Поставить вертикально в кастрюлю, залить водой, добавить томатную пасту и соль.",
+        "Варить до готовности на медленном огне.",
+        "Подавать со сметаной"
+      ],
+      "image": "assets/images/recipes/wb_6527.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Фаршированный_перец, CC BY-SA 4.0; фото: Biskuit, CC BY-SA 2.0"
+    },
+    {
+      "id": "wb_21116",
+      "title": "Форшмак",
+      "mealTypes": [
+        "snack"
+      ],
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "apple",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "butter",
+          "grams": 100.0
+        },
+        {
+          "ingredientId": "egg",
+          "grams": 110.0
+        },
+        {
+          "ingredientId": "herring",
+          "grams": 150.0
+        }
+      ],
+      "steps": [
+        "Подготавливаем селёдку: чистим (если это не филе), максимально удаляем кости.",
+        "Отвариваем вкрутую и остужаем яйца.",
+        "Холодное сливочное масло (маргарин) нарезаем кусочками.",
+        "Яблоко, желательно кислых сортов, например, семеринка, чистим от кожуры и тоже нарезаем кусочками.",
+        "Пропускаем все ингредиенты через мясорубку.",
+        "Солим, перчим.",
+        "Перемешиваем ложкой, снова пропускаем через мясорубку или взбиваем в блендере.",
+        "Отправляем форшмак хотя бы на 1 час в холодильник",
+        "Форшмакъ.",
+        "Жареную курицу или фунтъ жареной, но отнюдь не пережареной телятины, очистить, истолочь, протереть чрезъ сито.",
+        "Протолочь четверть обланжиренной и припущенной въ маслѣ луковицы съ кускомъ сливочнаго масла, половиною или цѣлою селедкой, тщательно очищенной.",
+        "Соединить все вмѣстѣ, еще протолочь, прибавить по вкусу соли, перца, разбавить все густыми кипячеными сливками, выложить на блюдо, идущее въ печь, обсыпать сыромъ, наложить маленькіе кусочки сливочнаго масла, зарумянить, отпустить"
+      ],
+      "image": "assets/images/recipes/wb_21116.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Форшмак, CC BY-SA 4.0; фото: Ральф Ролечек, GFDL 1.2"
+    },
+    {
+      "id": "wb_32604",
+      "title": "Фрикадельки",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "butter",
+          "grams": 500.0
+        },
+        {
+          "ingredientId": "egg",
+          "grams": 220.0
+        },
+        {
+          "ingredientId": "onion",
+          "grams": 125.0
+        }
+      ],
+      "steps": [
+        "Измельчить мясо, смешать со сливочным маслом, панировочными сухарями, яйцами, солью и специями по вкусу",
+        "Измельчить лук, пассеровать на сливочном масле, хорошо перемешать с остальным фаршем",
+        "Полученную массу разделить на части весом около 100 г.",
+        "Сформовать из них \"шайбы\" и выложить на посыпанную мукой поверхность",
+        "Хорошо подрумянить с обеих сторон на сливочном масле или жире и запечь в духовке",
+        "Подавать с овощным пюре или острым соусом, например Пикан или Робер",
+        "Фрикадельки из отварного мяса"
+      ],
+      "image": "assets/images/recipes/wb_32604.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Фрикадельки, CC BY-SA 4.0; фото: Kagor, CC BY-SA 3.0"
+    },
+    {
+      "id": "wb_4009",
+      "title": "Хворост",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "egg",
+          "grams": 165.0
+        },
+        {
+          "ingredientId": "flour",
+          "grams": 325.0
+        },
+        {
+          "ingredientId": "milk_25",
+          "grams": 100.0
+        }
+      ],
+      "steps": [
+        "Молоко, сметану, сахар, соль и яйца смешать.",
+        "Затем всыпать муку и замесить.",
+        "Раскатать, нарезать узкими полосками, опускать в кипящее масло",
+        "После приготовления обсыпать сахарной пудрой",
+        "Хворостъ, кудри, розанчики.",
+        "Замѣсить фунтъ муки сь четырьмя желтками, четырьмя ложками мелкаго сахара, неполнымъ стаканомъ молока или сливокъ, рюмкою рома или коньяка, тонко раскатать, нарѣзать изъ тѣста полоски, переплести между собою по двѣ полоски, изжарить въ большомъ количествѣ горячаго фритюра, осушить, обсыпать сахаромъ, отпустить",
+        "Тѣ же полоски тѣста, навитыя на тонкую обточенную деревянную палочку, называются кудрями",
+        "Для розанчиковъ вырѣзать изъ того же тѣста однообразные кружки, наложить по три или четыре кружка одинъ на другой, смазать желткомъ только самую середину кружка, прорѣзать ножомъ всѣ кружки, не касаясь середины, изжарить въ горячемъ фритюре, осушить, обсыпать сахаромъ или наложить варенья, отпустить"
+      ],
+      "image": "assets/images/recipes/wb_4009.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Хворост, CC BY-SA 4.0; фото: Blazej Pieczynski, CC BY-SA 2.0"
+    },
+    {
+      "id": "wb_22068",
+      "title": "Цеппелины",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 3,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "onion",
+          "grams": 320.0
+        },
+        {
+          "ingredientId": "pork",
+          "grams": 500.0
+        },
+        {
+          "ingredientId": "potato",
+          "grams": 1000.0
+        },
+        {
+          "ingredientId": "sour_cream",
+          "grams": 4.0
+        }
+      ],
+      "steps": [
+        "Сырой картофель натереть на мелкой терке и отжать через марлю.",
+        "Сок оставить на 10-15 минут.",
+        "Когда крахмал осядет, осторожно слить воду, добавить кипяток, поставить на медленный огонь и, непрерывно помешивая, довести до кипения.",
+        "Затем снять с огня, соединить с отжатым картофелем, посолить и перемешать.",
+        "(Можно несколько предварительно отваренных картофелин размять и добавить в массу)",
+        "Свинину пропустить через мясорубку, посолить и поперчить.",
+        "Перемешать с обжаренным луком и салом",
+        "Картофельную массу разделить на 8 частей, внутрь каждой вложить фарш и свернуть в виде цеппелина (дирижабля).",
+        "Опускать подготовленные цеппелины в кипящую воду по одному и постоянно помешивать.",
+        "Варить в кипящей воде 10-15 минут (цеппелины должны сперва подняться на поверхность, а затем опуститься на дно)",
+        "Перед подачей на стол цеппелины полить луковым соусом.",
+        "Для приготовления соуса лук нашинковать соломкой, обжарить до золотистого цвета и смешать со сметаной"
+      ],
+      "image": "assets/images/recipes/wb_22068.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Цеппелины, CC BY-SA 4.0; фото: Jpatokal, CC BY-SA 3.0"
+    },
+    {
+      "id": "wb_32847",
+      "title": "Цимес морковный",
+      "mealTypes": [
+        "lunch"
+      ],
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "carrot",
+          "grams": 700.0
+        },
+        {
+          "ingredientId": "prunes",
+          "grams": 200.0
+        },
+        {
+          "ingredientId": "raisins",
+          "grams": 100.0
+        }
+      ],
+      "steps": [
+        "Очистить морковь, нарезать кружкАми толщиной 2-3 мм",
+        "Растопить в кастрюле маргарин, добавить морковь; тушить, помешивая ок.",
+        "5 минут.",
+        "Добавить воду и сахар и довести до кипения",
+        "Добавить остальные ингредиенты, накрыть крышкой и варить около 2 часов, периодически проверяя достаточно ли жидкости и не прекратилось ли кипение",
+        "Снять крышку, варить ещё 20 минут; цимес должен быть сочным, но не жидким",
+        "Подавать в горячем виде"
+      ],
+      "image": "assets/images/recipes/wb_32847.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Цимес_морковный, CC BY-SA 4.0; фото: J Doll, CC BY 3.0"
+    },
+    {
+      "id": "wb_3613",
+      "title": "Чебурек",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "egg",
+          "grams": 110.0
+        },
+        {
+          "ingredientId": "flour",
+          "grams": 110.0
+        },
+        {
+          "ingredientId": "lamb",
+          "grams": 78.0
+        },
+        {
+          "ingredientId": "onion",
+          "grams": 15.0
+        }
+      ],
+      "steps": [
+        "Жирную баранину для фарша очистить от костей и сухожилий, затем вместе с репчатым луком пропустить через мясорубку, добавить соли, перцу, воды, и всё хорошо перемешать.",
+        "Использовать в сыром виде",
+        "Из муки, воды и соли замешать крутое тесто, выдержать его полчаса и раскатать до толщины 2 мм.",
+        "Круглой выемкой вырезать лепёшки, смазать их края яйцом, а на середину положить фарш.",
+        "Один край лепёшки загнуть, придав чебуреку форму полумесяца.",
+        "Изготовленные чебуреки спряжить в глубокой сковороде спело и подавать горячими",
+        "Советы: Если добавить 2 яйца, тесто будет лучше, а чебурек вкуснее.",
+        "Если добавить пару столовых ложек подсолнечного масла, то это добавит чебуреку пузырчатости.",
+        "Чтобы чебуреки были хрустящими и с характерными пузырьками, лучше всего добавить пару столовых ложек обычной водки",
+        "thumb|left|50px",
+        "(КВЗП)",
+        "Чебуреки Мякоть баранины и баранье (желательно курдючное) сало вместе с репчатым луком пропустить через мясорубку или мелко изрубить ножом."
+      ],
+      "image": "assets/images/recipes/wb_3613.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Чебурек, CC BY-SA 4.0; фото: Loyna, CC BY-SA 2.5"
+    },
+    {
+      "id": "wb_35161",
+      "title": "Чулама",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "flour",
+          "grams": 5.0
+        },
+        {
+          "ingredientId": "hard_cheese",
+          "grams": 5.0
+        },
+        {
+          "ingredientId": "potato",
+          "grams": 276.0
+        }
+      ],
+      "steps": [
+        "Картофель очистить, промыть, нарезать толстыми кружочками, затем погрузить в кипящую подсоленную воду и варить.",
+        "Отвар сохранить",
+        "На топленом сале приготовить белый соус, разбавить картофельным отваром",
+        "Готовый, но ещё не разварившийся картофель) отцедить, залить белым соусом",
+        "Посыпать чуламу тертым сыром и nрогреть в жарочном шкафу.",
+        "Подавать на стол горячей",
+        "Чулама из телятины (Гуляш под белым соусом)"
+      ],
+      "image": "assets/images/recipes/wb_35161.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Чулама, CC BY-SA 4.0; фото: Sacha47, CC BY-SA 4.0"
+    },
+    {
+      "id": "wb_31139",
+      "title": "Швильпикай",
+      "mealTypes": [
+        "snack"
+      ],
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "egg",
+          "grams": 11.0
+        },
+        {
+          "ingredientId": "flour",
+          "grams": 41.0
+        },
+        {
+          "ingredientId": "onion",
+          "grams": 12.0
+        },
+        {
+          "ingredientId": "potato",
+          "grams": 250.0
+        },
+        {
+          "ingredientId": "sour_cream",
+          "grams": 10.0
+        }
+      ],
+      "steps": [
+        "Картофель отварит, очистить, протереть",
+        "Добавить яйца, муку, соль, перемешать, сформовать валики диаметром 20 мм",
+        "Придать им плоскую форму, нарезать наискось на палочки длиной 70 мм, уложить на посыпанный мукой лист, выпекать в жарочном шкафу",
+        "Сложить палочки в кастрюлю, залить жиром и сметаной, встряхнуть и немного подержать под закрытой крышкой на малом огне",
+        "При подаче полить соусом из поджаренного с луком и сметаной сала, или маслом и сметаной"
+      ],
+      "image": "assets/images/recipes/wb_31139.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Швильпикай, CC BY-SA 4.0; фото: Renessaince, Public domain"
+    },
+    {
+      "id": "wb_33809",
+      "title": "Яйца по-флорентийски",
+      "mealTypes": [
+        "breakfast",
+        "lunch",
+        "dinner"
+      ],
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "butter",
+          "grams": 50.0
+        },
+        {
+          "ingredientId": "egg",
+          "grams": 440.0
+        },
+        {
+          "ingredientId": "hard_cheese",
+          "grams": 30.0
+        },
+        {
+          "ingredientId": "spinach",
+          "grams": 500.0
+        }
+      ],
+      "steps": [
+        "Шпинат бланшировать в кипятке, отжать, отварить в сливочном масле, приправить мускатным орехом, солью, перцем, уложить на противень",
+        "Яйца-пашот (просушенные) разложить поверх шпината, равномерно залить соусом морне, посыпать тёртым сыром, полить растопленным сливочным маслом",
+        "Поставить противень в духовку и зарумянить яйца при большом верхнем огне",
+        "Яйца в кокотницах по-флорентийски",
+        "Выложить дно и стенки кокотницы тонким слоем стушенного в сливочном масле шпината.",
+        "Вбить яйцо, приправить и тушить на малом огне",
+        "Когда основание яйца затвердеет, полить ложкой сливок, посыпать тёртым сыром и быстро зарумянить верх в духовке"
+      ],
+      "image": "assets/images/recipes/wb_33809.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Яйца_по-флорентийски, CC BY-SA 4.0; фото: whatleydude from London, United Kingdom, CC BY 2.0"
+    },
+    {
+      "id": "wb_21728",
+      "title": "Яйцо по-шотландски",
+      "mealTypes": [
+        "breakfast",
+        "lunch",
+        "dinner"
+      ],
+      "servings": 6,
+      "minutes": 45,
+      "ingredients": [
+        {
+          "ingredientId": "breadcrumbs",
+          "grams": 50.0
+        },
+        {
+          "ingredientId": "egg",
+          "grams": 385.0
+        },
+        {
+          "ingredientId": "flour",
+          "grams": 40.0
+        },
+        {
+          "ingredientId": "ground_beef",
+          "grams": 700.0
+        }
+      ],
+      "steps": [
+        "Мясо измельчите на мясорубке с мелкой сеточкой.",
+        "Или смешайте готовый мясной фарш с измельчённым свежим базиликом, солью и перцем.",
+        "Слегка отбейте (аккуратно бросая в миску), чтобы фарш хорошо держался на яйце",
+        "Сварите 6 яиц (не больше 5 минут после закипания), остудите под холодной водой и очистите",
+        "Разделите фарш на шесть равных частей.",
+        "Каждую часть мокрыми руками распластайте в лепёшку, положите на нее варёное яйцо.",
+        "Залепите края фарша так, чтобы яйцо оказалось внутри",
+        "Котлетку из фарша с яйцом внутри обваляйте в муке.",
+        "Затем обмакните в сырое яйцо, которое предварительно нужно немного взбить вилкой и посолить",
+        "Затем обваляйте яйцо-котлетку в панировочных сухарях.",
+        "Панировка должна покрыть яйцо по-шотландски со всех сторон",
+        "Хорошо разогрейте на среднем огне достаточное для фритюра количество растительного рафинированного масла."
+      ],
+      "image": "assets/images/recipes/wb_21728.jpg",
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Яйцо_по-шотландски, CC BY-SA 4.0; фото: Kolforn (Kolforn) I'd appreciate if you could mail me (Kolforn@gmail.com) if you want to use this picture out of the Wikimedia project scope. Этот файл доступен по лицензии Creative Commons «С указанием авторства — С сохранением условий» версии 4.0 Международная Вы можете свободно: делиться произведением – копировать, распространять и передавать данное произведение создавать производные – переделывать данное произведение При соблюдении следующих условий: атрибуция – Вы должны указать авторство, предоставить ссылку на лицензию и указать, внёс ли автор какие-либо изменения. Это можно сделать любым разумным способом, но не создавая впечатление, что лицензиат поддерживает вас или использование вами данного произведения. распространение на тех же условиях – Если вы изменяете, преобразуете или создаёте иное произведение на основе данного, то обязаны использовать лицензию исходного произведения или лицензию, совместимую с исходной.https://creativecommons.org/licenses/by-sa/4.0CC BY-SA 4.0 Creative Commons Attribution-Share Alike 4.0 truetrue, CC BY-SA 4.0"
+    },
+    {
+      "id": "wb_31126",
+      "title": "Василопита",
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ],
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "butter",
+          "grams": 250.0
+        },
+        {
+          "ingredientId": "egg",
+          "grams": 330.0
+        },
+        {
+          "ingredientId": "flour",
+          "grams": 250.0
+        },
+        {
+          "ingredientId": "lemon",
+          "grams": 50.0
+        },
+        {
+          "ingredientId": "orange",
+          "grams": 450.0
+        },
+        {
+          "ingredientId": "sugar",
+          "grams": 80.0
+        }
+      ],
+      "steps": [
+        "Растопить масло, добавить сок цитрусовых",
+        "Взбить желтки с сахаром, добавить в смесь",
+        "Добавить коньяк, соду и муку",
+        "Выпекать 30 минут при температуре 160°С"
+      ],
+      "image": null,
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Василопита, CC BY-SA 4.0"
+    },
+    {
+      "id": "wb_31276",
+      "title": "Галушки",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "egg",
+          "grams": 192.5
+        },
+        {
+          "ingredientId": "flour",
+          "grams": 260.0
+        },
+        {
+          "ingredientId": "sunflower_oil",
+          "grams": 200.0
+        }
+      ],
+      "steps": [
+        "Вскипятить стакан воды со стаканом масла",
+        "Всыпать, помешивая, гречневую муку, проварить, снять с огня, остудить",
+        "Вбить яйца, посолить, отварить в солёном кипятке, в форме клёцок,",
+        "Отпустить с распущенным маслом, сметаною",
+        "Галушки малороссийские"
+      ],
+      "image": null,
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Галушки, CC BY-SA 4.0"
+    },
+    {
+      "id": "wb_34367",
+      "title": "Монблан",
+      "mealTypes": [
+        "snack"
+      ],
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "egg",
+          "grams": 275.0
+        },
+        {
+          "ingredientId": "milk_25",
+          "grams": 40.0
+        },
+        {
+          "ingredientId": "sugar",
+          "grams": 200.0
+        }
+      ],
+      "steps": [
+        "Поместить яичные желтки, ром и сахар в миску и взбивать, пока сахар не растворится",
+        "Добавить крахмал и перемешать",
+        "Взбить яичные белки со щепоткой соли до образования плотной пены",
+        "Понемногу добавить белки в тесто.",
+        "Вылить тесто в смазанную маслом и посыпанную мукой разъемную форму",
+        "Выпекать в духовке при температуре 4 (140–150 °C) в течение 40 минут.",
+        "Дать остыть на решетке",
+        "Поместить в кастрюлю кокосовое молоко, сгущённое молоко и цедру лайма",
+        "Налить немного этой смеси в миску, остальное вскипятить",
+        "Добавить муку к молоку в миске",
+        "После закипания убавить огонь, влить содержимое миски и помешивать до загустения (крем должен стать похожим на бешамель)",
+        "Добавить ром и дать остыть"
+      ],
+      "image": null,
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Монблан, CC BY-SA 4.0"
+    },
+    {
+      "id": "wb_31111",
+      "title": "Мрузия",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "almonds",
+          "grams": 100.0
+        },
+        {
+          "ingredientId": "beef_chuck",
+          "grams": 500.0
+        },
+        {
+          "ingredientId": "raisins",
+          "grams": 50.0
+        }
+      ],
+      "steps": [
+        "Мясо нарезать на 7-8 кусков, поместить в кастрюлю, заполнить её на 3/4 водой и варить вместе с каштанами 1,5 часа или более",
+        "Когда мясо уже сварится, а бульона останется около 1 л, отлить 1 стакан, немного остудить и развести в нём мёд, уксус и крахмал",
+        "Полученную смесь процедить через сито, вновь поставить кастрюлю на огонь и влить туда эту смесь, постоянно помешивая",
+        "Добавить миндаль, изюм и нарезанный солёный лимон",
+        "Когда блюдо загустеет, снять с огня.",
+        "Подавать холодным"
+      ],
+      "image": null,
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Мрузия, CC BY-SA 4.0"
+    },
+    {
+      "id": "wb_35163",
+      "title": "Наси-горенг",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "brown_rice",
+          "grams": 750.0
+        },
+        {
+          "ingredientId": "egg",
+          "grams": 55.0
+        },
+        {
+          "ingredientId": "garlic",
+          "grams": 10.0
+        },
+        {
+          "ingredientId": "onion",
+          "grams": 200.0
+        }
+      ],
+      "steps": [
+        "Отварить рис и дать остыть",
+        "Часть луковиц отложить для обжаривания, остальные растереть с чесноком, панцирями креветок и солью; обжарить смесь в растительном масле",
+        "Обжарить мясо, креветки и измельчённый лук-порей",
+        "Перемешать всё с остывшим рисом и обжаривать ещё несколько минут.",
+        "Отдельно поджарить яичницу-глазунью и измельчённый лук",
+        "Готовое блюдо положить на подогретую тарелку, сверху положить яичницу и посыпать жареным луком; на гарнир — крупные куски очищенного огурца.",
+        "Подавать горячим"
+      ],
+      "image": null,
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Наси-горенг, CC BY-SA 4.0"
+    },
+    {
+      "id": "wb_12635",
+      "title": "Пирог с творожной начинкой \"Забава\"",
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ],
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "butter",
+          "grams": 130.0
+        },
+        {
+          "ingredientId": "cottage_5",
+          "grams": 500.0
+        },
+        {
+          "ingredientId": "egg",
+          "grams": 220.0
+        },
+        {
+          "ingredientId": "flour",
+          "grams": 195.0
+        },
+        {
+          "ingredientId": "sugar",
+          "grams": 166.7
+        }
+      ],
+      "steps": [
+        "Приготовить тесто:",
+        "Сливочное масло растопить и охладить",
+        "Муку просеять и соединить с разрыхлителем",
+        "Яйцо слегка взбить вилкой или венчиком",
+        "В большую миску вылить масло, добавить сахар, ванильный сахар и перемешать",
+        "Всыпать какао и хорошо размешать, чтобы не было комков",
+        "Добавить в масляную смесь слегка взбитое яйцо и перемешать венчиком или вилкой",
+        "Постепенно всыпать муку с разрыхлителем и замесить тесто",
+        "От готового теста отделить 1/3 часть и убрать в морозилку",
+        "Оставшиеся 2/3 часть теста раскатать и выложить в форму для выпекания",
+        "Приготовить творожную начинку:",
+        "Изюм или другие сухофрукты вымыть и обсушить"
+      ],
+      "image": null,
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Пирог_с_творожной_начинкой_\"Забава\", CC BY-SA 4.0"
+    },
+    {
+      "id": "wb_3629",
+      "title": "Пянсе",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "cabbage",
+          "grams": 300.0
+        },
+        {
+          "ingredientId": "flour",
+          "grams": 600.0
+        },
+        {
+          "ingredientId": "garlic",
+          "grams": 20.0
+        },
+        {
+          "ingredientId": "onion",
+          "grams": 100.0
+        },
+        {
+          "ingredientId": "sesame",
+          "grams": 5.0
+        }
+      ],
+      "steps": [
+        "Для начинки в одинаковой пропорции взять свинину и говядину, пропустить через мясорубку.",
+        "Фарш смешать с мелко нарезанным луком, чесноком и черным перцем.",
+        "Нашинковать капусту и подсолить ее.",
+        "Через некоторое время отжать и смешать с мясом, добавить приправы (вместо капусты можно использовать кимчхи).",
+        "Готовое дрожжевое тесто разделить на шарики и раскатать в виде круглой лепешки.",
+        "Положить в центр лепешки фарш, соединить края теста и защипать.",
+        "Пянсе сложить на доску и дать им подняться в теплом месте.",
+        "Затем варить на пару"
+      ],
+      "image": null,
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Пянсе, CC BY-SA 4.0"
+    },
+    {
+      "id": "wb_10439",
+      "title": "Рататуй",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "eggplant",
+          "grams": 200.0
+        },
+        {
+          "ingredientId": "garlic",
+          "grams": 10.0
+        },
+        {
+          "ingredientId": "olive_oil",
+          "grams": 30.0
+        },
+        {
+          "ingredientId": "onion",
+          "grams": 80.0
+        },
+        {
+          "ingredientId": "tomato",
+          "grams": 200.0
+        },
+        {
+          "ingredientId": "tomato_paste",
+          "grams": 30.0
+        },
+        {
+          "ingredientId": "zucchini",
+          "grams": 200.0
+        }
+      ],
+      "steps": [
+        "Компоненты для соуса измельчить до однородной массы",
+        "Овощи нарезать брусочками, обильно полить соусом",
+        "Тушить на слабом огне до готовности",
+        "Файл:Ratatouille.jpg|Рататуй",
+        "Файл:Ratatouille02.jpg|Прованский Рататуй напоминает овощное рагу",
+        "Файл:Confit byaldi prep.jpg|Нарезка для рататуя «кружками»",
+        "Файл:Confit byaldi 1.jpg|Рататуй"
+      ],
+      "image": null,
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Рататуй, CC BY-SA 4.0"
+    },
+    {
+      "id": "wb_31082",
+      "title": "Рокот крумпли",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "egg",
+          "grams": 55.0
+        },
+        {
+          "ingredientId": "onion",
+          "grams": 31.0
+        },
+        {
+          "ingredientId": "potato",
+          "grams": 192.0
+        },
+        {
+          "ingredientId": "sour_cream",
+          "grams": 30.0
+        }
+      ],
+      "steps": [
+        "Отварить картофель \"в мундире\" в подсоленной воде, охладить, очистить и нарезать кружкАми.",
+        "Яйца сварить вкрутую и, вместе с колбасой, также нарезать кружкАми",
+        "Смазать жиром лист для выпекания, или сотейник, выложить на него последовательно слои из нарезанного картофеля, яиц и колбасы; посолить и посыпать красным и чёрным перцем",
+        "Выложить в той же последовательности остальные подготовленные продукты; верхним слоем должен быть картофель.",
+        "Залить сверху сметаной и растопленным смальцем",
+        "Поставить в разогретую духовку и выпекать до готовности (чтобы подрумянилось сверху)"
+      ],
+      "image": null,
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Рокот_крумпли, CC BY-SA 4.0"
+    },
+    {
+      "id": "wb_10063",
+      "title": "Салат овощной с хлебом",
+      "mealTypes": [
+        "lunch"
+      ],
+      "servings": 4,
+      "minutes": 15,
+      "ingredients": [
+        {
+          "ingredientId": "bread_white",
+          "grams": 125.0
+        },
+        {
+          "ingredientId": "cucumber",
+          "grams": 100.0
+        },
+        {
+          "ingredientId": "garlic",
+          "grams": 7.5
+        },
+        {
+          "ingredientId": "mustard",
+          "grams": 5.0
+        },
+        {
+          "ingredientId": "olive_oil",
+          "grams": 28.0
+        },
+        {
+          "ingredientId": "onion",
+          "grams": 80.0
+        },
+        {
+          "ingredientId": "sunflower_oil",
+          "grams": 28.0
+        },
+        {
+          "ingredientId": "tomato",
+          "grams": 300.0
+        }
+      ],
+      "steps": [
+        "С хлеба срезать корочки, смочить в холодной воде и раскрошить в мелкую крошку",
+        "Помидоры опустить на несколько секунд в кипящую воду, снять кожицу удалить семена и мелко нарезать",
+        "Огурец нарезать мелкими кубиками",
+        "Нарезать репчатый и зелёный лук, чеснок мелко порубить",
+        "Смешать хлебные крошки и нарезанные овощи и поставить в холодильник на 1-2 часа",
+        "Заправить салат, посыпать зеленью и украсить по желанию"
+      ],
+      "image": null,
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Салат_овощной_с_хлебом, CC BY-SA 4.0"
+    },
+    {
+      "id": "wb_35036",
+      "title": "Сальморехо",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 3,
+      "minutes": 20,
+      "ingredients": [
+        {
+          "ingredientId": "garlic",
+          "grams": 5.0
+        },
+        {
+          "ingredientId": "olive_oil",
+          "grams": 100.0
+        },
+        {
+          "ingredientId": "tomato",
+          "grams": 500.0
+        }
+      ],
+      "steps": [
+        "Измельчить помидоры и чеснок, смешать",
+        "Добавить кусочки хлеба и дать им пропитаться томатным соусом",
+        "Постепенно добавляя масло, смешать до однородной массы чтобы эмульгировать смесь до желаемой консистенции",
+        "Охладить"
+      ],
+      "image": null,
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Сальморехо, CC BY-SA 4.0"
+    },
+    {
+      "id": "wb_31149",
+      "title": "Соус Сацебели",
+      "mealTypes": [
+        "snack"
+      ],
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "garlic",
+          "grams": 20.0
+        },
+        {
+          "ingredientId": "greens",
+          "grams": 35.0
+        },
+        {
+          "ingredientId": "onion",
+          "grams": 210.0
+        },
+        {
+          "ingredientId": "walnuts",
+          "grams": 200.0
+        }
+      ],
+      "steps": [
+        "Орехи растолочь, затем развести уксусом.",
+        "Лук очистить и мелко нарубить, зелень также нарубить, чеснок растолочь",
+        "Добавить бульон или кипячёную воду, рубленый лук, толчёный чеснок, соль, красный перец и зелень.",
+        "Всё тщательно перемешать"
+      ],
+      "image": null,
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Соус_Сацебели, CC BY-SA 4.0"
+    },
+    {
+      "id": "wb_35059",
+      "title": "Суп Палоц",
+      "mealTypes": [
+        "lunch"
+      ],
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "onion",
+          "grams": 300.0
+        },
+        {
+          "ingredientId": "potato",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "sour_cream",
+          "grams": 1000.0
+        }
+      ],
+      "steps": [
+        "Мясо промыть и нарезать кубиками, лук измельчить, стручки фасоли нарезать ромбиками, картофель кубиками",
+        "Разогреть в кастрюле немного жира и, помешивая, обжарить там лук до золотистого оттенка, посыпать паприкой",
+        "Добавить к луку мясо, измельчённый тмин и лавровый лист, залить водой или бульоном и варить на малом огне",
+        "Отдельно отварить в подсоленной воде подготовленную фасоль и картофель",
+        "По готовности мяса добавить к нему фасоль и картофель, подливая воду, в которой их отваривали, примерно до густоты гуляша",
+        "Перед подачей, смешать сметану с небольшим количеством муки, подать отдельно"
+      ],
+      "image": null,
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Суп_Палоц, CC BY-SA 4.0"
+    },
+    {
+      "id": "wb_31110",
+      "title": "Таджин",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "egg",
+          "grams": 550.0
+        },
+        {
+          "ingredientId": "garlic",
+          "grams": 5.0
+        },
+        {
+          "ingredientId": "olive_oil",
+          "grams": 35.0
+        },
+        {
+          "ingredientId": "tomato",
+          "grams": 600.0
+        }
+      ],
+      "steps": [
+        "Помидоры очистить от кожицы, дать обсохнуть и нарезать",
+        "Очистить чеснок, натереть им толстостенную сковороду, разогреть в ней оливковое масло и обжарить помидоры с нарезанным луком, солью и перцем",
+        "Через 20-25 минут на большом огне выпарить остатки жидкости",
+        "Сырые яйца взбить, добавить соль и перец.",
+        "Залить яйцами помидоры и продолжать тушение под крышкой на малом огне",
+        "При подаче украсить кружочками нарезанных крутых яиц",
+        "Таджин по-тунисски",
+        "(перевод с fr-wikibooks) Пирог из слоёного теста на 6-8 человек"
+      ],
+      "image": null,
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Таджин, CC BY-SA 4.0"
+    },
+    {
+      "id": "wb_21292",
+      "title": "Фаршированная рыба",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "cod",
+          "grams": 800.0
+        },
+        {
+          "ingredientId": "cream",
+          "grams": 200.0
+        },
+        {
+          "ingredientId": "egg",
+          "grams": 165.0
+        },
+        {
+          "ingredientId": "onion",
+          "grams": 800.0
+        }
+      ],
+      "steps": [
+        "Традиционно фаршированную рыбу готовят из двух видов рыб, например, одного судака и одного толстолобика; щуки и карпа.",
+        "То есть одной более жирной, и другой менее жирной рыбы",
+        "Подготовленную тушку карпа промываем и обсушиваем бумажным полотенцем.",
+        "Обрезаем плавники так, чтобы не порвалась шкура",
+        "Делаем сверху небольшой разрез и аккуратно, ложкой (ручкой ложки) отделяем шкуру от филе",
+        "В задней части рыбы (снизу) делаем надрез и изнутри перерезаем филе, отделяя его от основания плавника.",
+        "Так же изнутри обрезаем верхние плавники",
+        "У нас остаются пустая шкура с хвостом и головой",
+        "Рыбу без шкуры помещаем на разделочную доску и отделяем от хребта и остальных костей",
+        "Готовое мясо нарезаем произвольными кусочками",
+        "Так же нарезаем филе судака",
+        "Замачиваем крекеры (или просто белый хлеб, булочку) в сливках (до размягчения)."
+      ],
+      "image": null,
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Фаршированная_рыба, CC BY-SA 4.0"
+    },
+    {
+      "id": "wb_6546",
+      "title": "Фаршированные баклажаны",
+      "mealTypes": [
+        "snack"
+      ],
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "carrot",
+          "grams": 120.0
+        },
+        {
+          "ingredientId": "eggplant",
+          "grams": 1100.0
+        },
+        {
+          "ingredientId": "onion",
+          "grams": 120.0
+        },
+        {
+          "ingredientId": "wine",
+          "grams": 300.0
+        }
+      ],
+      "steps": [
+        "Рис сварить до готовности, остудить.",
+        "Морковь и лук мелко порезать и поджарить на растительном масле.",
+        "Рис смешать с овощами и фаршем, посолить по вкусу",
+        "Баклажаны вымыть, разрезать попалам и надрезать крест накрест сердцевину, поджарить на подсолнечном масле сердцевиной вниз.",
+        "Вырезать ножом мякоть.",
+        "Мякоть нарезать кубиками и добавить в начинку",
+        "Заполнить начинкой баклажаны.",
+        "Выложить в глубокую сковороду.",
+        "Залить водой, добавить соль, чёрный молотый перец, корицу, сок лимона.",
+        "Тушить до готовности",
+        "Баклажаны фаршированные Aubergines farcies.",
+        "Разрѣзать баклажаны вдоль на двѣ половины, удалить сокъ, зернышки и наиболѣе мягкую часть мякоти."
+      ],
+      "image": null,
+      "source": "https://ru.wikibooks.org/wiki/Рецепт:Фаршированные_баклажаны, CC BY-SA 4.0"
+    },
+    {
+      "id": "wb_22976",
+      "title": "Беляши",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 1,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "egg",
+          "grams": 55.0
+        },
+        {
+          "ingredientId": "flour",
+          "grams": 125.0
+        },
+        {
+          "ingredientId": "milk_25",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "sugar",
+          "grams": 20.0
+        },
+        {
+          "ingredientId": "sunflower_oil",
+          "grams": 22.0
+        }
+      ],
+      "steps": [
+        "Воду нагревают до кипения.",
+        "В это время:",
+        "Яйца вбивают в посуду для теста, добавляют сахар и соль и тщательно перемешивают",
+        "Добавляют кислое молоко и снова перемешивают до однородности",
+        "Муку просеивают и добавляют к молочно-яичной смеси.",
+        "Вымешивают до однородности.",
+        "Получается тесто густоты жидкой сметаны",
+        "Приливают кипяток тонкой струйкой к тесту, непрерывно перемешивая.",
+        "Тесто становится весьма жидким",
+        "Добавляют масло и снова вымешивают до однородности",
+        "Выпекают на сковородах с толстым дном впереворот.",
+        "Готовые блины смазывают сливочным маслом"
+      ],
+      "image": null,
+      "source": "https://ru.wikibooks.org/wiki/Участник:Prostologin_1/Рецепт:Беляши, CC BY-SA 4.0"
+    },
+    {
+      "id": "wb_19804",
+      "title": "Плов по-узбекски",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 1,
+      "minutes": 80,
+      "ingredients": [
+        {
+          "ingredientId": "brown_rice",
+          "grams": 100.0
+        },
+        {
+          "ingredientId": "carrot",
+          "grams": 100.0
+        },
+        {
+          "ingredientId": "lamb",
+          "grams": 110.0
+        },
+        {
+          "ingredientId": "onion",
+          "grams": 30.0
+        }
+      ],
+      "steps": [
+        "замачивают рис в подсолёной воде (10 грамм соли на 1 литр воды) на 2 часа",
+        "баранину режут кусочками по 10—12 грамм и обжаривают в сильно разогретом жире до румяной корочки"
+      ],
+      "image": null,
+      "source": "https://ru.wikibooks.org/wiki/Участник:Prostologin_1/Рецепт:Плов_по-узбекски, CC BY-SA 4.0"
+    },
+    {
+      "id": "wb_21017",
+      "title": "Рыба жареная",
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "servings": 2,
+      "minutes": 60,
+      "ingredients": [
+        {
+          "ingredientId": "cod",
+          "grams": 1000.0
+        },
+        {
+          "ingredientId": "onion",
+          "grams": 150.0
+        },
+        {
+          "ingredientId": "sunflower_oil",
+          "grams": 80.0
+        }
+      ],
+      "steps": [
+        "Рыбу разделывают на тушку или на филе",
+        "Полученный полуфабрикат солят, добавляют специи и оставляют вылежаться на 10—15 минут",
+        "После расстойки рыбу панируют и обжаривают с одной стороны на предварительно разогретой сковороде в растительном масле на среднем огне",
+        "Куски рыбы переворачивают и дают обжариться пару минут на другой стороне",
+        "Засыпают рыбу кольцами репчатого лука, приподнимают куски рыбы так, чтобы лук оказался под ними и продолжают жарку несколько минут на среднем огне",
+        "Убавляют огонь до небольшого и продолжают жарить рыбу 5 минут под крышкой, а затем снова без крышки до подрумянивания лука",
+        "Подают на порционной тарелке с хлебом или с гарниром"
+      ],
+      "image": null,
+      "source": "https://ru.wikibooks.org/wiki/Участник:Prostologin_1/Рецепт:Рыба_жареная, CC BY-SA 4.0"
+    },
+    {
+      "id": "wb_20165",
+      "title": "Салат Оливье",
+      "mealTypes": [
+        "lunch"
+      ],
+      "servings": 4,
+      "minutes": 30,
+      "ingredients": [
+        {
+          "ingredientId": "carrot",
+          "grams": 100.0
+        },
+        {
+          "ingredientId": "cucumber",
+          "grams": 200.0
+        },
+        {
+          "ingredientId": "egg",
+          "grams": 110.0
+        },
+        {
+          "ingredientId": "green_peas",
+          "grams": 100.0
+        },
+        {
+          "ingredientId": "greens",
+          "grams": 20.0
+        },
+        {
+          "ingredientId": "mayonnaise",
+          "grams": 200.0
+        },
+        {
+          "ingredientId": "potato",
+          "grams": 200.0
+        }
+      ],
+      "steps": [
+        "Картофель и морковь варят «в мундире»",
+        "Яйца варят вкрутую",
+        "Остывшие после варки овощи и яйца очищают и нарезают небольшими кубиками",
+        "Огурцы с кожицей и колбасу также нарезают небольшими кубиками",
+        "Добавляют зелёный горошек, мелко нарезанный укроп, майонез и всё перемешивают"
+      ],
+      "image": null,
+      "source": "https://ru.wikibooks.org/wiki/Участник:Prostologin_1/Рецепт:Салат_Оливье, CC BY-SA 4.0"
+    },
+    {
+      "id": "wb_20959",
+      "title": "Шарлотка",
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ],
+      "servings": 10,
+      "minutes": 90,
+      "ingredients": [
+        {
+          "ingredientId": "butter",
+          "grams": 200.0
+        },
+        {
+          "ingredientId": "egg",
+          "grams": 220.0
+        },
+        {
+          "ingredientId": "flour",
+          "grams": 200.0
+        },
+        {
+          "ingredientId": "kefir",
+          "grams": 200.0
+        },
+        {
+          "ingredientId": "sugar",
+          "grams": 200.0
+        }
+      ],
+      "steps": [
+        "Форму смазывают сливочным маслом.",
+        "Духовку нагревают до 200° C",
+        "Яйца взбивают с сахаром",
+        "Вливают кефир и перемешивают",
+        "Яблоки разрезают на четыре части, удалив сердцевину, и складывают в отдельную посуду",
+        "Сливочное масло хорошенько замораживают",
+        "Муку просеивают и смешивают с яйцами и кефиром",
+        "Добавляют гашёную соду и быстро перемешивают смесь",
+        "Вводят яблоки и перемешивают их с тестом",
+        "Замороженное сливочное масло быстро натирают на крупной тёрке, добавляют к смеси, ещё раз перемешивают, выкладывают в форму и отправляют в духовку примерно на 50 минут"
+      ],
+      "image": null,
+      "source": "https://ru.wikibooks.org/wiki/Участник:Prostologin_1/Рецепт:Шарлотка, CC BY-SA 4.0"
+    }
+  ]
+}

@@ -9,8 +9,10 @@ import 'core/data/in_memory_recipe_repository.dart';
 import 'core/data/recipe_repository.dart';
 import 'core/data/seed_loader.dart';
 import 'core/data/session_storage.dart';
+import 'core/data/theme_storage.dart';
 import 'core/data/window_bounds_storage.dart';
 import 'core/models/seed_bundle.dart';
+import 'core/theme/theme_controller.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -46,7 +48,24 @@ Future<void> main() async {
     session = null;
   }
 
-  runApp(NormaApp(initialSession: session, repository: repository));
+  ThemeController themeController;
+  try {
+    final storage = ThemeStorage();
+    themeController = ThemeController(
+      storage: storage,
+      initialMode: await storage.load(),
+    );
+  } catch (_) {
+    themeController = ThemeController(storage: ThemeStorage());
+  }
+
+  runApp(
+    NormaApp(
+      initialSession: session,
+      repository: repository,
+      themeController: themeController,
+    ),
+  );
 }
 
 bool get _isDesktop =>

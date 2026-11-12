@@ -23,6 +23,7 @@ import '../../core/price/price_lookup.dart';
 import '../catalog/catalog_page.dart';
 import '../onboarding/onboarding_page.dart';
 import '../shared/recipe_details.dart';
+import '../shared/theme_mode_button.dart';
 
 enum _MealAction { replace, like, block }
 
@@ -298,6 +299,8 @@ class _PlanPageState extends State<PlanPage> {
       image: meal.recipe.image,
       source: meal.recipe.source,
       mealType: meal.type,
+      minutes: meal.recipe.minutes,
+      servings: meal.recipe.servings,
       allowScaleEdit: true,
       initialScale: meal.scale,
     );
@@ -568,6 +571,7 @@ class _PlanPageState extends State<PlanPage> {
       appBar: AppBar(
         title: const Text('Ваш рацион'),
         actions: [
+          const ThemeModeButton(),
           IconButton(
             onPressed: () {
               unawaited(_openCatalog());

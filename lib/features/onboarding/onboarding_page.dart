@@ -5,17 +5,21 @@ import '../../core/data/recipe_repository.dart';
 import '../../core/models/enums.dart';
 import '../../core/models/retail.dart';
 import '../../core/models/user_profile.dart';
+import '../../core/theme/theme_controller.dart';
 import '../plan/plan_page.dart';
+import '../shared/theme_mode_button.dart';
 
 class OnboardingPage extends StatefulWidget {
   const OnboardingPage({
     super.key,
     required this.repository,
     this.initialProfile,
+    this.onSubmit,
   });
 
   final RecipeRepository repository;
   final UserProfile? initialProfile;
+  final ValueChanged<UserProfile>? onSubmit;
 
   @override
   State<OnboardingPage> createState() => _OnboardingPageState();
@@ -115,6 +119,11 @@ class _OnboardingPageState extends State<OnboardingPage> {
       cityId: _cityId,
       storeId: _storeId,
     );
+    final onSubmit = widget.onSubmit;
+    if (onSubmit != null) {
+      onSubmit(profile);
+      return;
+    }
     final navigator = Navigator.of(context);
     if (navigator.canPop()) {
       navigator.pop(profile);
@@ -131,8 +140,12 @@ class _OnboardingPageState extends State<OnboardingPage> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final themeController = ThemeControllerScope.maybeOf(context);
     return Scaffold(
-      appBar: AppBar(title: const Text('Норма')),
+      appBar: AppBar(
+        title: const Text('Норма'),
+        actions: const [ThemeModeButton()],
+      ),
       body: SafeArea(
         child: Center(
           child: ConstrainedBox(
@@ -387,6 +400,29 @@ class _OnboardingPageState extends State<OnboardingPage> {
                           'Цены появятся в списке покупок при его раскрытии. '
                           'Сейчас подключён Магнит.',
                           style: theme.textTheme.bodySmall,
+                        ),
+                        const SizedBox(height: 16),
+                        Text('Оформление', style: theme.textTheme.labelLarge),
+                        const SizedBox(height: 8),
+                        Wrap(
+                          spacing: 8,
+                          runSpacing: 8,
+                          children: [
+                            ChoiceChip(
+                              label: const Text('Светлая'),
+                              selected: themeController?.mode != ThemeMode.dark,
+                              onSelected: (_) {
+                                themeController?.setMode(ThemeMode.light);
+                              },
+                            ),
+                            ChoiceChip(
+                              label: const Text('Тёмная'),
+                              selected: themeController?.mode == ThemeMode.dark,
+                              onSelected: (_) {
+                                themeController?.setMode(ThemeMode.dark);
+                              },
+                            ),
+                          ],
                         ),
                       ],
                     ),

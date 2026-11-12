@@ -107,6 +107,7 @@ void main() {
     await tester.pump();
     await tester.tap(find.widgetWithText(ListTile, 'Винегрет'));
     await tester.pumpAndSettle();
+    await tester.ensureVisible(find.text('В рацион'));
     await tester.tap(find.text('В рацион'));
     await tester.pumpAndSettle();
     await tester.tap(find.text('Добавить'));

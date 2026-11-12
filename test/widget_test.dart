@@ -30,9 +30,9 @@ void main() {
     expect(find.text('Ваш рацион'), findsOneWidget);
     expect(find.text('Норма на день'), findsOneWidget);
 
-    await tester.tap(find.byTooltip('Каталог рецептов'));
+    await tester.tap(find.text('Каталог').first);
     await tester.pumpAndSettle();
-    expect(find.text('Каталог рецептов'), findsOneWidget);
+    expect(find.text('Каталог'), findsWidgets);
   });
 
   testWidgets('сохранённая сессия сразу открывает рацион', (tester) async {

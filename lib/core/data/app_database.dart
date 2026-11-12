@@ -175,6 +175,9 @@ CREATE TABLE app_meta (
     if (stored != null && stored >= bundle.version) {
       return;
     }
+    if (bundle.replaceAllRecipes) {
+      await _db.delete('recipes');
+    }
     final previousIds = await _storedSeedRecipeIds();
     await merge(bundle);
     final newIds = bundle.recipes.map((recipe) => recipe.id).toSet();

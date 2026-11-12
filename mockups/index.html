@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Норма — варианты редизайна</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800&family=Unbounded:wght@400;500;600;700&family=Prata&display=swap');
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: #0d1210;
+      color: #edf5ee;
+      font-family: 'Golos Text', system-ui, sans-serif;
+    }
+    .page { max-width: 1280px; margin: 0 auto; padding: 46px 24px 70px; }
+    .kicker { margin: 0 0 10px; color: #8aa293; font-size: 11px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+    h1 { margin: 0 0 10px; font-family: 'Unbounded', sans-serif; font-size: clamp(32px, 5vw, 58px); line-height: 1.02; letter-spacing: -.055em; }
+    .lead { max-width: 680px; margin: 0; color: #93a79a; font-size: 15px; line-height: 1.65; }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 34px; }
+    .concept { display: flex; flex-direction: column; overflow: hidden; border: 1px solid #26352b; border-radius: 22px; background: #141b16; text-decoration: none; color: inherit; transition: 180ms ease; }
+    .concept:hover { transform: translateY(-3px); border-color: #4d6a54; }
+    .preview { position: relative; height: 230px; overflow: hidden; }
+    .preview::after { content: ""; position: absolute; inset: 0; background: linear-gradient(transparent 45%, rgba(10, 15, 12, .72)); }
+    .preview img { width: 100%; height: 100%; object-fit: cover; opacity: .78; }
+    .mini-ui { position: absolute; z-index: 1; left: 16px; right: 16px; bottom: 16px; display: flex; gap: 8px; align-items: flex-end; }
+    .mini-card { padding: 8px 10px; border-radius: 10px; font-size: 9px; font-weight: 700; backdrop-filter: blur(9px); }
+    .preview-warm .mini-card { background: rgba(255, 253, 249, .88); color: #173a2c; }
+    .preview-dark .mini-card { background: rgba(21, 28, 23, .88); color: #c9f56a; border: 1px solid #344438; }
+    .preview-editorial .mini-card { background: rgba(251, 248, 242, .9); color: #214b36; }
+    .concept-body { display: flex; flex: 1; flex-direction: column; padding: 17px 18px 19px; }
+    .concept-body h2 { margin: 0 0 5px; font-family: 'Unbounded', sans-serif; font-size: 18px; letter-spacing: -.04em; }
+    .concept-body p { margin: 0 0 16px; color: #8fa295; font-size: 12px; line-height: 1.6; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 18px; }
+    .tags span { padding: 5px 7px; border: 1px solid #2f4034; border-radius: 999px; color: #91a596; font-size: 9px; font-weight: 700; }
+    .open { display: flex; align-items: center; justify-content: space-between; margin-top: auto; padding-top: 14px; border-top: 1px solid #26352b; color: #c9f56a; font-size: 11px; font-weight: 700; }
+    .open span:last-child { font-size: 17px; }
+    .screens { margin-top: 40px; padding: 22px; border: 1px solid #26352b; border-radius: 22px; background: #141b16; }
+    .screens h3 { margin: 0 0 12px; font-family: 'Unbounded', sans-serif; font-size: 18px; letter-spacing: -.04em; }
+    .screen-links { display: flex; flex-wrap: wrap; gap: 8px; }
+    .screen-links a { padding: 9px 12px; border: 1px solid #2f4034; border-radius: 11px; color: #b5c8ba; font-size: 11px; font-weight: 700; text-decoration: none; }
+    .screen-links a:hover { border-color: #c9f56a; color: #c9f56a; }
+    .foot { margin-top: 26px; color: #6d8073; font-size: 10px; line-height: 1.6; }
+    @media (max-width: 980px) { .grid { grid-template-columns: 1fr; } .preview { height: 280px; } }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <p class="kicker">Норма · редизайн интерфейса</p>
+    <h1>Три направления.<br>Один рабочий сценарий.</h1>
+    <p class="lead">Онбординг, недельный рацион, каталог с поиском по продуктам, live-цены в покупках и карточка рецепта. В каждом макете можно переключать тему и ходить по экранам.</p>
+
+    <div class="grid">
+      <a class="concept" href="app.html?theme=warm">
+        <div class="preview preview-warm">
+          <img src="../assets/images/recipes/wb_21678.jpg" alt="Тёплый макет">
+          <div class="mini-ui">
+            <div class="mini-card">2 159 ккал</div>
+            <div class="mini-card">Испанская тортилья</div>
+          </div>
+        </div>
+        <div class="concept-body">
+          <h2>Тёплый</h2>
+          <p>Кремовая бумага, глубокий зелёный, мягкие карточки. Спокойный интерфейс для ежедневного использования.</p>
+          <div class="tags"><span>Unbounded</span><span>глубокий зелёный</span><span>мягкие тени</span></div>
+          <div class="open"><span>Открыть макет</span><span>→</span></div>
+        </div>
+      </a>
+
+      <a class="concept" href="app.html?theme=dark">
+        <div class="preview preview-dark">
+          <img src="../assets/images/recipes/wb_19131.jpg" alt="Графитовый макет">
+          <div class="mini-ui">
+            <div class="mini-card">27 из 31</div>
+            <div class="mini-card">Свёкла · 22 ₽</div>
+          </div>
+        </div>
+        <div class="concept-body">
+          <h2>Графит</h2>
+          <p>Тёмная тема с лаймовыми акцентами. Плотнее по данным, больше похоже на рабочий инструмент.</p>
+          <div class="tags"><span>dark UI</span><span>lime accent</span><span>data-first</span></div>
+          <div class="open"><span>Открыть макет</span><span>→</span></div>
+        </div>
+      </a>
+
+      <a class="concept" href="app.html?theme=editorial">
+        <div class="preview preview-editorial">
+          <img src="../assets/images/recipes/wb_21986.jpg" alt="Редакционный макет">
+          <div class="mini-ui">
+            <div class="mini-card">День 4</div>
+            <div class="mini-card">Капрезе</div>
+          </div>
+        </div>
+        <div class="concept-body">
+          <h2>Редакция</h2>
+          <p>Светлая журнальная подача, крупные фото и антиква. Больше воздуха, меньше интерфейсного шума.</p>
+          <div class="tags"><span>Prata</span><span>журнал</span><span>крупные фото</span></div>
+          <div class="open"><span>Открыть макет</span><span>→</span></div>
+        </div>
+      </a>
+    </div>
+
+    <section class="screens">
+      <h3>Сценарии внутри</h3>
+      <div class="screen-links">
+        <a href="app.html?theme=warm&screen=onboarding">Онбординг</a>
+        <a href="app.html?theme=warm&screen=plan">Рацион</a>
+        <a href="app.html?theme=warm&screen=catalog">Каталог</a>
+        <a href="app.html?theme=warm&screen=shopping">Покупки</a>
+        <a href="app.html?theme=warm&screen=recipe">Карточка рецепта</a>
+      </div>
+      <p class="foot">В макете работают переключение экранов, дней недели, раскрытие категорий покупок с имитацией загрузки цен и переключение трёх тем. Цены демонстрационные; реальные данные в приложении подтягиваются по выбранному магазину.</p>
+    </section>
+  </main>
+</body>
+</html>

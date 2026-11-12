@@ -7,6 +7,7 @@ import '../../core/models/meal_plan.dart';
 import '../../core/models/recipe.dart';
 import '../shared/recipe_details.dart';
 import '../shared/recipe_image.dart';
+import '../shared/theme_mode_button.dart';
 
 class CatalogPick {
   const CatalogPick({
@@ -179,6 +180,8 @@ class _CatalogPageState extends State<CatalogPage> {
       image: recipe.image,
       source: recipe.source,
       mealType: recipe.mealTypes.isEmpty ? null : recipe.mealTypes.first,
+      minutes: recipe.minutes,
+      servings: recipe.servings,
       onAddToPlan: widget.plan == null ? null : () => _addToPlan(recipe),
     );
   }
@@ -202,6 +205,7 @@ class _CatalogPageState extends State<CatalogPage> {
         width: 56,
         height: 56,
         borderRadius: 10,
+        label: recipe.title,
       ),
       title: Text(recipe.title),
       subtitle: containsIngredient == null
@@ -313,7 +317,10 @@ class _CatalogPageState extends State<CatalogPage> {
               '${productMatches.length} ${_plural(productMatches.length, 'продукт', 'продукта', 'продуктов')}';
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Каталог рецептов')),
+      appBar: AppBar(
+        title: const Text('Каталог рецептов'),
+        actions: const [ThemeModeButton()],
+      ),
       body: SafeArea(
         child: Center(
           child: ConstrainedBox(

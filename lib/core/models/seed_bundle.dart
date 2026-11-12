@@ -7,12 +7,14 @@ class SeedBundle {
     required this.recipes,
     required this.prices,
     this.version = 1,
+    this.replaceAllRecipes = false,
   });
 
   final List<Ingredient> ingredients;
   final List<Recipe> recipes;
   final Map<String, double> prices;
   final int version;
+  final bool replaceAllRecipes;
 
   factory SeedBundle.fromJson(Map<String, dynamic> json) {
     final ingredients = <Ingredient>[];
@@ -48,12 +50,14 @@ class SeedBundle {
       recipes: recipes,
       prices: prices,
       version: json['version'] is num ? (json['version'] as num).toInt() : 1,
+      replaceAllRecipes: json['replaceAllRecipes'] == true,
     );
   }
 
   Map<String, Object?> toJson() {
     return {
       'version': version,
+      'replaceAllRecipes': replaceAllRecipes,
       'ingredients': [
         for (final ingredient in ingredients)
           {...ingredient.toJson(), 'pricePerKg': prices[ingredient.id]},

@@ -9,6 +9,7 @@ import 'package:norma/core/models/user_profile.dart';
 import 'package:norma/core/nutrition/targets_calculator.dart';
 import 'package:norma/core/planner/menu_generator.dart';
 import 'package:norma/core/price/price_lookup.dart';
+import 'package:norma/features/home/home_page.dart';
 import 'package:norma/features/plan/plan_page.dart';
 
 import 'support/seed_fixture.dart';
@@ -70,6 +71,57 @@ void main() {
     await tester.pump();
 
     expect(find.text('123 ₽'), findsWidgets);
+  });
+
+  testWidgets('новый экран покупок загружает цены по категории', (
+    tester,
+  ) async {
+    const profile = UserProfile(
+      sex: Sex.male,
+      age: 30,
+      heightCm: 180,
+      weightKg: 80,
+      activity: ActivityLevel.moderate,
+      goal: Goal.lose,
+      pace: Pace.medium,
+      mealsPerDay: 4,
+      cityId: 'rostov_on_don',
+      storeId: 'magnit',
+    );
+    final targets = const TargetsCalculator().calculate(profile);
+    final plan = const MenuGenerator().generate(
+      profile: profile,
+      targets: targets,
+      repository: repository,
+    );
+    final fake = _FakePriceLookupService();
+    addTearDown(fake.dispose);
+
+    await tester.pumpWidget(
+      MaterialApp(
+        home: HomePage(
+          profile: profile,
+          initialPlan: SavedPlan.fromWeeklyPlan(plan),
+          repository: repository,
+          priceLookup: fake,
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.text('Покупки'));
+    await tester.pumpAndSettle();
+
+    final category = plan.shoppingList.first.ingredient.category;
+    await tester.tap(find.text(category).first);
+    await tester.pump(const Duration(milliseconds: 300));
+
+    expect(find.byType(CircularProgressIndicator), findsWidgets);
+
+    fake.emitAll(price: 321.0);
+    await tester.pump();
+
+    expect(find.text('321 ₽'), findsWidgets);
   });
 }
 

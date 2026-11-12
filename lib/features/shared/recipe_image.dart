@@ -12,6 +12,7 @@ class RecipeImage extends StatelessWidget {
     this.width,
     this.height,
     this.borderRadius = 12,
+    this.label,
   });
 
   final String? image;
@@ -19,26 +20,34 @@ class RecipeImage extends StatelessWidget {
   final double? width;
   final double? height;
   final double borderRadius;
+  final String? label;
 
   @override
   Widget build(BuildContext context) {
     final path = image;
     final Widget child;
     if (path == null || path.isEmpty) {
-      child = _Placeholder(mealType: mealType);
+      child = _Placeholder(mealType: mealType, label: label);
+    } else if (path.startsWith('http://') || path.startsWith('https://')) {
+      child = Image.network(
+        path,
+        fit: BoxFit.cover,
+        errorBuilder: (context, error, stackTrace) =>
+            _Placeholder(mealType: mealType, label: label),
+      );
     } else if (path.startsWith('assets/')) {
       child = Image.asset(
         path,
         fit: BoxFit.cover,
         errorBuilder: (context, error, stackTrace) =>
-            _Placeholder(mealType: mealType),
+            _Placeholder(mealType: mealType, label: label),
       );
     } else {
       child = Image.file(
         File(path),
         fit: BoxFit.cover,
         errorBuilder: (context, error, stackTrace) =>
-            _Placeholder(mealType: mealType),
+            _Placeholder(mealType: mealType, label: label),
       );
     }
     return ClipRRect(
@@ -49,32 +58,34 @@ class RecipeImage extends StatelessWidget {
 }
 
 class _Placeholder extends StatelessWidget {
-  const _Placeholder({this.mealType});
+  const _Placeholder({this.mealType, this.label});
 
   final MealType? mealType;
+  final String? label;
 
   @override
   Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
     final (icon, colors) = switch (mealType) {
       MealType.breakfast => (
         Icons.free_breakfast_outlined,
-        const [Color(0xFFFFE0B2), Color(0xFFFFCC80)],
+        [scheme.secondaryContainer, scheme.tertiaryContainer],
       ),
       MealType.lunch => (
         Icons.lunch_dining_outlined,
-        const [Color(0xFFC8E6C9), Color(0xFFA5D6A7)],
+        [scheme.primaryContainer, scheme.secondaryContainer],
       ),
       MealType.dinner => (
         Icons.dinner_dining_outlined,
-        const [Color(0xFFB2DFDB), Color(0xFF80CBC4)],
+        [scheme.tertiaryContainer, scheme.primaryContainer],
       ),
       MealType.snack => (
         Icons.emoji_food_beverage_outlined,
-        const [Color(0xFFD1C4E9), Color(0xFFB39DDB)],
+        [scheme.surfaceContainerHigh, scheme.secondaryContainer],
       ),
       null => (
         Icons.restaurant_outlined,
-        const [Color(0xFFE0E0E0), Color(0xFFBDBDBD)],
+        [scheme.surfaceContainerHigh, scheme.surfaceContainerHighest],
       ),
     };
     return DecoratedBox(
@@ -85,8 +96,35 @@ class _Placeholder extends StatelessWidget {
           end: Alignment.bottomRight,
         ),
       ),
-      child: Center(
-        child: Icon(icon, color: const Color(0xFF2E7D32), size: 28),
+      child: Stack(
+        fit: StackFit.expand,
+        children: [
+          Center(child: Icon(icon, color: scheme.onPrimaryContainer, size: 28)),
+          if (label != null && label!.isNotEmpty)
+            Positioned(
+              left: 5,
+              right: 5,
+              bottom: 5,
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
+                decoration: BoxDecoration(
+                  color: scheme.surface.withValues(alpha: 0.78),
+                  borderRadius: BorderRadius.circular(6),
+                ),
+                child: Text(
+                  label!,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: scheme.onSurface,
+                    fontSize: 8,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              ),
+            ),
+        ],
       ),
     );
   }
