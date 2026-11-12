@@ -738,22 +738,51 @@ class _HomePageState extends State<HomePage> {
         onReset: _resetProfile,
       ),
     };
+    final mobile = MediaQuery.sizeOf(context).width < 820;
+    final body = ColoredBox(
+      color: Theme.of(context).colorScheme.surfaceContainerLowest,
+      child: content,
+    );
     return Scaffold(
-      body: Row(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          AppSidebar(section: _section, onSelect: _selectSection),
-          Expanded(
-            child: SafeArea(
-              top: false,
-              child: ColoredBox(
-                color: Theme.of(context).colorScheme.surfaceContainerLowest,
-                child: content,
-              ),
+      body: mobile
+          ? SafeArea(child: body)
+          : Row(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                AppSidebar(section: _section, onSelect: _selectSection),
+                Expanded(child: SafeArea(top: false, child: body)),
+              ],
             ),
-          ),
-        ],
-      ),
+      bottomNavigationBar: mobile
+          ? NavigationBar(
+              selectedIndex: _section.index,
+              onDestinationSelected: (index) {
+                _selectSection(HomeSection.values[index]);
+              },
+              destinations: const [
+                NavigationDestination(
+                  icon: Icon(Icons.calendar_month_outlined),
+                  selectedIcon: Icon(Icons.calendar_month),
+                  label: 'Рацион',
+                ),
+                NavigationDestination(
+                  icon: Icon(Icons.menu_book_outlined),
+                  selectedIcon: Icon(Icons.menu_book),
+                  label: 'Каталог',
+                ),
+                NavigationDestination(
+                  icon: Icon(Icons.shopping_bag_outlined),
+                  selectedIcon: Icon(Icons.shopping_bag),
+                  label: 'Покупки',
+                ),
+                NavigationDestination(
+                  icon: Icon(Icons.person_outline),
+                  selectedIcon: Icon(Icons.person),
+                  label: 'Профиль',
+                ),
+              ],
+            )
+          : null,
     );
   }
 

@@ -14,9 +14,9 @@ void main() {
       for (final ingredient in bundle.ingredients) ingredient.id,
     };
 
-    expect(bundle.version, 21);
+    expect(bundle.version, 22);
     expect(bundle.replaceAllRecipes, isTrue);
-    expect(bundle.recipes, hasLength(10));
+    expect(bundle.recipes, hasLength(247));
     for (final recipe in bundle.recipes) {
       expect(recipe.ingredients, isNotEmpty, reason: recipe.id);
       expect(recipe.steps, isNotEmpty, reason: recipe.id);

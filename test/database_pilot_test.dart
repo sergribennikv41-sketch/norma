@@ -16,7 +16,7 @@ void main() {
     final db = await AppDatabase.open(path: path);
     await db.seedIfNeeded(bundle);
     final repo = await db.loadRepository();
-    expect(repo.recipes, hasLength(10));
+    expect(repo.recipes, hasLength(247));
     expect(repo.ingredients, hasLength(75));
     await db.close();
     File(path).deleteSync();

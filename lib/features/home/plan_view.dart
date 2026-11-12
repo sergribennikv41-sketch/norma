@@ -8,6 +8,7 @@ import '../../core/models/recipe.dart';
 import '../../core/models/retail.dart';
 import '../../core/models/user_profile.dart';
 import '../shared/recipe_image.dart';
+import '../shared/theme_mode_button.dart';
 import 'home_widgets.dart';
 
 class PlanView extends StatelessWidget {
@@ -40,8 +41,14 @@ class PlanView extends StatelessWidget {
   Widget build(BuildContext context) {
     final dayIndex = selectedDayIndex.clamp(0, plan.days.length - 1);
     final day = plan.days[dayIndex];
+    final compact = MediaQuery.sizeOf(context).width < 600;
     return SingleChildScrollView(
-      padding: const EdgeInsets.fromLTRB(32, 28, 32, 42),
+      padding: EdgeInsets.fromLTRB(
+        compact ? 16 : 32,
+        compact ? 20 : 28,
+        compact ? 16 : 32,
+        compact ? 32 : 42,
+      ),
       child: Center(
         child: ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 1400),
@@ -131,7 +138,10 @@ class _Topbar extends StatelessWidget {
           spacing: 8,
           runSpacing: 8,
           crossAxisAlignment: WrapCrossAlignment.center,
-          children: [StoreChip(profile: profile)],
+          children: [
+            StoreChip(profile: profile),
+            if (MediaQuery.sizeOf(context).width < 820) const ThemeModeButton(),
+          ],
         );
         final title = Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -290,12 +300,12 @@ class _DayTabs extends StatelessWidget {
               day: index + 1,
               selected: index == selectedIndex,
               onTap: () => onSelect(index),
-              width: width >= 62 ? null : 62,
+              width: width >= 44 ? null : 44,
             ),
             if (index != days - 1) const SizedBox(width: gap),
           ],
         ];
-        if (width >= 62) {
+        if (width >= 44) {
           final scheme = Theme.of(context).colorScheme;
           return Stack(
             children: [
@@ -453,6 +463,7 @@ class _MealCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
     final recipe = meal.recipe;
+    final compact = MediaQuery.sizeOf(context).width < 420;
     return Material(
       color: scheme.surface,
       borderRadius: BorderRadius.circular(17),
@@ -470,8 +481,8 @@ class _MealCard extends StatelessWidget {
               RecipeImage(
                 image: recipe.image,
                 mealType: meal.type,
-                width: 88,
-                height: 72,
+                width: compact ? 68 : 88,
+                height: compact ? 64 : 72,
                 borderRadius: 13,
                 label: recipe.title,
               ),
@@ -494,7 +505,8 @@ class _MealCard extends StatelessWidget {
                     const SizedBox(height: 5),
                     Text(
                       '${meal.type.label} · ${recipe.minutes} мин · '
-                      '${(meal.scale * 100).round()}% порции\n'
+                      '${(meal.scale * 100).round()}% порции'
+                      '${compact ? ' · ${meal.nutrients.calories.round()} ккал' : ''}\n'
                       '${_ingredientPreview(meal)}',
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
@@ -511,22 +523,24 @@ class _MealCard extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  Text(
-                    '${meal.nutrients.calories.round()}',
-                    style: TextStyle(
-                      color: scheme.onSurface,
-                      fontSize: 15,
-                      fontWeight: FontWeight.w700,
+                  if (!compact) ...[
+                    Text(
+                      '${meal.nutrients.calories.round()}',
+                      style: TextStyle(
+                        color: scheme.onSurface,
+                        fontSize: 15,
+                        fontWeight: FontWeight.w700,
+                      ),
                     ),
-                  ),
-                  Text(
-                    'ккал',
-                    style: TextStyle(
-                      color: scheme.onSurfaceVariant,
-                      fontSize: 10,
+                    Text(
+                      'ккал',
+                      style: TextStyle(
+                        color: scheme.onSurfaceVariant,
+                        fontSize: 10,
+                      ),
                     ),
-                  ),
-                  const SizedBox(height: 6),
+                    const SizedBox(height: 6),
+                  ],
                   PopupMenuButton<_MealAction>(
                     tooltip: 'Действия с блюдом',
                     padding: EdgeInsets.zero,

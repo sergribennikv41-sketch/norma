@@ -142,8 +142,14 @@ class _ProfileViewState extends State<ProfileView> {
     final theme = Theme.of(context);
     final scheme = theme.colorScheme;
     final themeController = ThemeControllerScope.maybeOf(context);
+    final compact = MediaQuery.sizeOf(context).width < 600;
     return SingleChildScrollView(
-      padding: const EdgeInsets.fromLTRB(32, 24, 32, 42),
+      padding: EdgeInsets.fromLTRB(
+        compact ? 16 : 32,
+        compact ? 18 : 24,
+        compact ? 16 : 32,
+        compact ? 30 : 42,
+      ),
       child: Center(
         child: ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 1200),

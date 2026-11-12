@@ -21,9 +21,9 @@
 - Полный редизайн: сайдбар, экран рациона с днём и карточками блюд, каталог, покупки и профиль.
 - Светлая «Тёплая» и тёмная «Графит» темы с переключением и сохранением выбора.
 - Своя иконка, заголовок окна «Норма» и запоминание размера/позиции.
-- SQLite-база: 75 ингредиентов и 10 рецептов пилота из RuRecipes-93k.
+- SQLite-база: 75 ингредиентов и 247 рецептов пилота из RuRecipes-93k.
 - Seed-файл `assets/data/seed.json` — канонический источник, при первом запуске импортируется в SQLite.
-- Все 10 рецептов с локальными фото из russianfood.com.
+- Все 247 рецептов с локальными фото из russianfood.com.
 - Импорт/экспорт seed-данных через JSON-структуру; повторный импорт пилота — `tool/import_vkuso.py`.
 
 ## Стек
@@ -75,6 +75,16 @@ powershell -ExecutionPolicy Bypass -File tool\build_installer.ps1
 
 Результат: `dist\norma-<версия>-windows-x64-setup.exe`.
 
+## Android
+
+```powershell
+flutter build apk --release
+```
+
+APK: `build\app\outputs\flutter-apk\app-release.apk`.
+
+Live-цены сейчас работают в Windows-версии через локальный Python-обработчик. В Android APK они появятся после подключения мобильного источника цен.
+
 ## Подпись установщика
 
 Нужен сертификат code signing (OV/EV) в формате PFX:
@@ -87,10 +97,10 @@ powershell -ExecutionPolicy Bypass -File tool\sign_installer.ps1 -PfxPath C:\pat
 
 ## Данные
 
-- Seed: `assets/data/seed.json` (ассет приложения, версия 21).
-- Пилот: 10 рецептов из RuRecipes-93k, отобранных по маппингу ингредиентов.
+- Seed: `assets/data/seed.json` (ассет приложения, версия 22).
+- Пилот: 247 рецептов из RuRecipes-93k, отобранных по маппингу ингредиентов.
 - Фото: локальные файлы, скачанные с russianfood.com для этих рецептов.
-- Импорт пилота: `tool/import_vkuso.py` (старый эксперимент); текущие 10 рецептов собраны из RuRecipes-93k.
+- Импорт пилота: `tool/import_vkuso.py` (старый эксперимент); текущие 247 рецептов собраны из RuRecipes-93k.
 - Рецепты и ингредиенты: SQLite `%APPDATA%\ru.norma\norma\norma.db`.
 - Профиль, город, магазин и снимок рациона: `shared_preferences`.
 - Live-цены не сохраняются: кэш живёт только в памяти до закрытия приложения.

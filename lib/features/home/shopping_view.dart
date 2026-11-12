@@ -4,6 +4,7 @@ import '../../core/models/meal_plan.dart';
 import '../../core/models/retail.dart';
 import '../../core/models/user_profile.dart';
 import '../../core/price/price_lookup.dart';
+import '../shared/theme_mode_button.dart';
 import 'home_widgets.dart';
 
 class ShoppingView extends StatelessWidget {
@@ -47,8 +48,14 @@ class ShoppingView extends StatelessWidget {
         ? 0.0
         : found.length / plan.shoppingList.length;
 
+    final compact = MediaQuery.sizeOf(context).width < 600;
     return SingleChildScrollView(
-      padding: const EdgeInsets.fromLTRB(32, 28, 32, 42),
+      padding: EdgeInsets.fromLTRB(
+        compact ? 16 : 32,
+        compact ? 20 : 28,
+        compact ? 16 : 32,
+        compact ? 32 : 42,
+      ),
       child: Center(
         child: ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 1400),
@@ -193,6 +200,7 @@ class _Topbar extends StatelessWidget {
           crossAxisAlignment: WrapCrossAlignment.center,
           children: [
             StoreChip(profile: profile),
+            if (MediaQuery.sizeOf(context).width < 820) const ThemeModeButton(),
             OutlinedButton.icon(
               onPressed: onCopy,
               icon: const Icon(Icons.copy_all_outlined, size: 16),

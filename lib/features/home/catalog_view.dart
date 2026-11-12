@@ -6,6 +6,7 @@ import '../../core/models/ingredient.dart';
 import '../../core/models/recipe.dart';
 import '../../core/models/user_profile.dart';
 import '../shared/recipe_image.dart';
+import '../shared/theme_mode_button.dart';
 import 'home_widgets.dart';
 
 class CatalogView extends StatefulWidget {
@@ -86,8 +87,14 @@ class _CatalogViewState extends State<CatalogView> {
         .where((recipe) => !productDishIds.contains(recipe.id))
         .toList();
 
+    final compact = MediaQuery.sizeOf(context).width < 600;
     return SingleChildScrollView(
-      padding: const EdgeInsets.fromLTRB(32, 28, 32, 42),
+      padding: EdgeInsets.fromLTRB(
+        compact ? 16 : 32,
+        compact ? 20 : 28,
+        compact ? 16 : 32,
+        compact ? 32 : 42,
+      ),
       child: Center(
         child: ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 1400),
@@ -209,6 +216,7 @@ class _CatalogViewState extends State<CatalogView> {
           crossAxisAlignment: WrapCrossAlignment.center,
           children: [
             StoreChip(profile: widget.profile),
+            if (MediaQuery.sizeOf(context).width < 820) const ThemeModeButton(),
             OutlinedButton(
               onPressed: widget.onOpenShopping,
               child: const Text('Список покупок'),
