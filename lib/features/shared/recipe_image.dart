@@ -13,6 +13,8 @@ class RecipeImage extends StatelessWidget {
     this.height,
     this.borderRadius = 12,
     this.label,
+    this.cacheWidth,
+    this.cacheHeight,
   });
 
   final String? image;
@@ -21,6 +23,8 @@ class RecipeImage extends StatelessWidget {
   final double? height;
   final double borderRadius;
   final String? label;
+  final int? cacheWidth;
+  final int? cacheHeight;
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +36,9 @@ class RecipeImage extends StatelessWidget {
       child = Image.network(
         path,
         fit: BoxFit.cover,
+        cacheWidth: cacheWidth,
+        cacheHeight: cacheHeight,
+        filterQuality: FilterQuality.medium,
         errorBuilder: (context, error, stackTrace) =>
             _Placeholder(mealType: mealType, label: label),
       );
@@ -39,6 +46,9 @@ class RecipeImage extends StatelessWidget {
       child = Image.asset(
         path,
         fit: BoxFit.cover,
+        cacheWidth: cacheWidth,
+        cacheHeight: cacheHeight,
+        filterQuality: FilterQuality.medium,
         errorBuilder: (context, error, stackTrace) =>
             _Placeholder(mealType: mealType, label: label),
       );
@@ -46,6 +56,9 @@ class RecipeImage extends StatelessWidget {
       child = Image.file(
         File(path),
         fit: BoxFit.cover,
+        cacheWidth: cacheWidth,
+        cacheHeight: cacheHeight,
+        filterQuality: FilterQuality.medium,
         errorBuilder: (context, error, stackTrace) =>
             _Placeholder(mealType: mealType, label: label),
       );

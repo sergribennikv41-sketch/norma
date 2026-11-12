@@ -43,7 +43,7 @@ def image_url(url: str) -> str:
 def download_thumbnail(recipe_id: str, url: str, directory: Path) -> str | None:
     if not url:
         return None
-    target = directory / f'{recipe_id}.jpg'
+    target = directory / f'{recipe_id}.webp'
     if target.exists() and target.stat().st_size > 2000:
         return f'assets/images/recipes/{target.name}'
     try:
@@ -61,7 +61,7 @@ def download_thumbnail(recipe_id: str, url: str, directory: Path) -> str | None:
         with Image.open(io.BytesIO(raw)) as image:
             image = image.convert('RGB')
             image.thumbnail((240, 180), Image.Resampling.LANCZOS)
-            image.save(target, 'JPEG', quality=72, optimize=True)
+            image.save(target, 'WEBP', quality=75, method=6)
         return f'assets/images/recipes/{target.name}'
     except Exception as error:  # noqa: BLE001
         print(f'image error {recipe_id}: {error}')
@@ -199,7 +199,7 @@ def main() -> int:
         encoding='utf-8',
     )
 
-    for path in args.images.glob('rf_*.jpg'):
+    for path in args.images.glob('rf_*.webp'):
         asset = f'assets/images/recipes/{path.name}'
         if asset not in used_images and int(path.stem.split('_')[1]) > max_id:
             path.unlink(missing_ok=True)

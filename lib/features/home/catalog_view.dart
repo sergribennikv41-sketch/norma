@@ -40,8 +40,6 @@ class _CatalogViewState extends State<CatalogView> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final scheme = theme.colorScheme;
     final query = normalizeSearch(_query.trim());
     final filtered = widget.repository.recipes.where((recipe) {
       return _mealType == null || recipe.mealTypes.contains(_mealType);
@@ -88,16 +86,35 @@ class _CatalogViewState extends State<CatalogView> {
         .toList();
 
     final compact = MediaQuery.sizeOf(context).width < 600;
-    return SingleChildScrollView(
-      padding: EdgeInsets.fromLTRB(
-        compact ? 16 : 32,
-        compact ? 20 : 28,
-        compact ? 16 : 32,
-        compact ? 32 : 42,
-      ),
-      child: Center(
-        child: ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 1400),
+    final screenWidth = MediaQuery.sizeOf(context).width;
+    final baseSide = compact ? 16.0 : 32.0;
+    final side = screenWidth > 1400
+        ? (screenWidth - 1400) / 2 + baseSide
+        : baseSide;
+    final horizontal = EdgeInsets.symmetric(horizontal: side);
+
+    Widget box(Widget child) {
+      return SliverPadding(
+        padding: horizontal,
+        sliver: SliverToBoxAdapter(child: child),
+      );
+    }
+
+    Widget grid(List<Recipe> recipes) {
+      return SliverPadding(
+        padding: horizontal,
+        sliver: _RecipeSliverGrid(
+          recipes: recipes,
+          query: _query,
+          onOpenRecipe: widget.onOpenRecipe,
+        ),
+      );
+    }
+
+    final slivers = <Widget>[
+      SliverPadding(
+        padding: EdgeInsets.fromLTRB(side, compact ? 20 : 28, side, 0),
+        sliver: SliverToBoxAdapter(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
@@ -106,81 +123,107 @@ class _CatalogViewState extends State<CatalogView> {
               _buildSearch(context),
               const SizedBox(height: 12),
               _buildFilters(),
-              const SizedBox(height: 22),
-              if (query.isEmpty)
-                _buildAllRecipes(context, filtered)
-              else ...[
-                if (productMatches.isNotEmpty) ...[
-                  _SectionHead(
-                    title: 'Продукты',
-                    subtitle:
-                        '${productMatches.length} '
-                        '${pluralRu(productMatches.length, 'продукт', 'продукта', 'продуктов')}',
-                  ),
-                  const SizedBox(height: 10),
-                  for (final match in productMatches) ...[
-                    _ProductCard(
-                      ingredient: match.ingredient,
-                      recipes: match.recipes,
-                      query: _query,
-                    ),
-                    const SizedBox(height: 16),
-                    _SectionHead(
-                      title: 'Блюда с этим продуктом',
-                      subtitle:
-                          '${match.recipes.length} '
-                          '${pluralRu(match.recipes.length, 'блюдо', 'блюда', 'блюд')}',
-                    ),
-                    const SizedBox(height: 10),
-                    _RecipeGrid(
-                      recipes: match.recipes,
-                      query: _query,
-                      onOpenRecipe: widget.onOpenRecipe,
-                    ),
-                    const SizedBox(height: 18),
-                  ],
-                ],
-                if (standaloneDishes.isNotEmpty) ...[
-                  _SectionHead(
-                    title: 'Блюда',
-                    subtitle:
-                        '${standaloneDishes.length} '
-                        '${pluralRu(standaloneDishes.length, 'блюдо', 'блюда', 'блюд')}',
-                  ),
-                  const SizedBox(height: 10),
-                  _RecipeGrid(
-                    recipes: standaloneDishes,
-                    query: _query,
-                    onOpenRecipe: widget.onOpenRecipe,
-                  ),
-                ],
-                if (productMatches.isEmpty && standaloneDishes.isEmpty)
-                  const _EmptyState(),
-              ],
-              if (query.isNotEmpty) ...[
-                const SizedBox(height: 18),
-                Container(
-                  padding: const EdgeInsets.all(14),
-                  decoration: BoxDecoration(
-                    color: scheme.primaryContainer,
-                    borderRadius: BorderRadius.circular(14),
-                  ),
-                  child: Text(
-                    'Поиск идёт по названию блюда и по продукту. Для продукта '
-                    'показываются все блюда, где он есть, — с подсветкой совпадения.',
-                    style: TextStyle(
-                      color: scheme.onPrimaryContainer,
-                      fontSize: 11.5,
-                      height: 1.5,
-                    ),
-                  ),
-                ),
-              ],
             ],
           ),
         ),
       ),
-    );
+      const SliverToBoxAdapter(child: SizedBox(height: 22)),
+    ];
+
+    if (query.isEmpty) {
+      slivers.add(
+        box(
+          _SectionHead(
+            title: 'Все рецепты',
+            subtitle:
+                '${filtered.length} '
+                '${pluralRu(filtered.length, 'блюдо', 'блюда', 'блюд')}',
+          ),
+        ),
+      );
+      slivers.add(const SliverToBoxAdapter(child: SizedBox(height: 10)));
+      slivers.add(filtered.isEmpty ? box(const _EmptyState()) : grid(filtered));
+    } else {
+      if (productMatches.isNotEmpty) {
+        slivers.add(
+          box(
+            _SectionHead(
+              title: 'Продукты',
+              subtitle:
+                  '${productMatches.length} '
+                  '${pluralRu(productMatches.length, 'продукт', 'продукта', 'продуктов')}',
+            ),
+          ),
+        );
+        slivers.add(const SliverToBoxAdapter(child: SizedBox(height: 10)));
+        for (final match in productMatches) {
+          slivers.add(
+            box(
+              _ProductCard(
+                ingredient: match.ingredient,
+                recipes: match.recipes,
+                query: _query,
+              ),
+            ),
+          );
+          slivers.add(const SliverToBoxAdapter(child: SizedBox(height: 16)));
+          slivers.add(
+            box(
+              _SectionHead(
+                title: 'Блюда с этим продуктом',
+                subtitle:
+                    '${match.recipes.length} '
+                    '${pluralRu(match.recipes.length, 'блюдо', 'блюда', 'блюд')}',
+              ),
+            ),
+          );
+          slivers.add(const SliverToBoxAdapter(child: SizedBox(height: 10)));
+          slivers.add(grid(match.recipes));
+          slivers.add(const SliverToBoxAdapter(child: SizedBox(height: 18)));
+        }
+      }
+      if (standaloneDishes.isNotEmpty) {
+        slivers.add(
+          box(
+            _SectionHead(
+              title: 'Блюда',
+              subtitle:
+                  '${standaloneDishes.length} '
+                  '${pluralRu(standaloneDishes.length, 'блюдо', 'блюда', 'блюд')}',
+            ),
+          ),
+        );
+        slivers.add(const SliverToBoxAdapter(child: SizedBox(height: 10)));
+        slivers.add(grid(standaloneDishes));
+      }
+      if (productMatches.isEmpty && standaloneDishes.isEmpty) {
+        slivers.add(box(const _EmptyState()));
+      }
+      slivers.add(const SliverToBoxAdapter(child: SizedBox(height: 18)));
+      slivers.add(
+        box(
+          Container(
+            padding: const EdgeInsets.all(14),
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.primaryContainer,
+              borderRadius: BorderRadius.circular(14),
+            ),
+            child: Text(
+              'Если блюда нет в каталоге по названию, попробуйте найти '
+              'продукт. Например, «курица» покажет блюда, где она есть.',
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.onPrimaryContainer,
+                fontSize: 11.5,
+                height: 1.5,
+              ),
+            ),
+          ),
+        ),
+      );
+    }
+
+    slivers.add(SliverToBoxAdapter(child: SizedBox(height: compact ? 32 : 42)));
+    return CustomScrollView(slivers: slivers);
   }
 
   Widget _buildTopbar(BuildContext context) {
@@ -311,29 +354,6 @@ class _CatalogViewState extends State<CatalogView> {
           ],
         ],
       ),
-    );
-  }
-
-  Widget _buildAllRecipes(BuildContext context, List<Recipe> recipes) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        _SectionHead(
-          title: 'Все рецепты',
-          subtitle:
-              '${recipes.length} '
-              '${pluralRu(recipes.length, 'блюдо', 'блюда', 'блюд')}',
-        ),
-        const SizedBox(height: 10),
-        if (recipes.isEmpty)
-          const _EmptyState()
-        else
-          _RecipeGrid(
-            recipes: recipes,
-            query: '',
-            onOpenRecipe: widget.onOpenRecipe,
-          ),
-      ],
     );
   }
 }
@@ -487,8 +507,8 @@ class _ProductCard extends StatelessWidget {
   }
 }
 
-class _RecipeGrid extends StatelessWidget {
-  const _RecipeGrid({
+class _RecipeSliverGrid extends StatelessWidget {
+  const _RecipeSliverGrid({
     required this.recipes,
     required this.query,
     required this.onOpenRecipe,
@@ -500,30 +520,30 @@ class _RecipeGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
+    return SliverLayoutBuilder(
       builder: (context, constraints) {
-        final columns = constraints.maxWidth >= 1080
+        final columns = constraints.crossAxisExtent >= 1080
             ? 4
-            : constraints.maxWidth >= 760
+            : constraints.crossAxisExtent >= 760
             ? 3
-            : constraints.maxWidth >= 480
+            : constraints.crossAxisExtent >= 480
             ? 2
             : 1;
-        final width = (constraints.maxWidth - (columns - 1) * 12) / columns;
-        return Wrap(
-          spacing: 12,
-          runSpacing: 12,
-          children: [
-            for (final recipe in recipes)
-              SizedBox(
-                width: width,
-                child: _RecipeCard(
-                  recipe: recipe,
-                  query: query,
-                  onTap: () => onOpenRecipe(recipe),
-                ),
-              ),
-          ],
+        return SliverGrid(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: columns,
+            mainAxisSpacing: 12,
+            crossAxisSpacing: 12,
+            mainAxisExtent: 200,
+          ),
+          delegate: SliverChildBuilderDelegate((context, index) {
+            final recipe = recipes[index];
+            return _RecipeCard(
+              recipe: recipe,
+              query: query,
+              onTap: () => onOpenRecipe(recipe),
+            );
+          }, childCount: recipes.length),
         );
       },
     );
@@ -566,6 +586,7 @@ class _RecipeCard extends StatelessWidget {
                 height: 118,
                 label: recipe.title,
                 borderRadius: 15,
+                cacheWidth: 400,
               ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(12, 10, 12, 12),

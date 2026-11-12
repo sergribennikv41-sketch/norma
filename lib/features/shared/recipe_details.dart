@@ -56,6 +56,7 @@ Future<double?> showRecipeDetails(
                 height: 300,
                 borderRadius: 20,
                 label: title,
+                cacheWidth: 800,
               ),
               const SizedBox(height: 16),
               _SectionCard(
