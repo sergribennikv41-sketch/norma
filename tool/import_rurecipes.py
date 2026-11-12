@@ -88,16 +88,52 @@ def parse_ingredients(raw: object, mapper: vkuso.Mapper, known: set[str]) -> lis
     ]
 
 
+BREAKFAST_WORDS = (
+    'омлет', 'яичниц', 'каша', 'овсяная каша', 'овсянка', 'овсяные хлопья',
+    'гречнев', 'сырник', 'творожник', 'блин', 'оладь', 'тост', 'бутерброд',
+    'сэндвич', 'завтрак', 'гранол', 'мюсли', 'шакшук', 'драник', 'вареник',
+    'панкейк', 'вафл', 'круассан', 'творожная запеканка',
+    'запеканка из творога', 'ленивые вареники',
+)
+
+DESSERT_WORDS = (
+    'конфет', 'пирожн', 'торт', 'печенье', 'кекс', 'маффин', 'брауни',
+    'бисквит', 'десерт', 'пудинг', 'желе', 'мусс', 'зефир', 'мармелад',
+    'пирог', 'шарлотк', 'кулич', 'пахлав', 'эклер', 'рулет', 'тарт',
+    'чизкейк', 'морожен', 'сгущ', 'карамел', 'безе', 'профитрол',
+    'пончик', 'донат', 'суфле', 'сырки', 'пасха', 'трайфл', 'фондан',
+    'крем', 'керд', 'курд', 'глясе', 'сорбет', 'запеченные яблоки', 'шоколадный соус',
+)
+
+SNACK_WORDS = (
+    'йогурт', 'творог', 'фрукт', 'ягод', 'орех', 'гренк', 'коктейль',
+    'шоколад',
+)
+
+SAVORY_ROLL_WORDS = ('рулет из сельди', 'баклажановые рулет')
+
+
 def meal_types(title: str) -> list[str]:
     text = normalize(title)
-    if any(word in text for word in ('салат', 'закуска', 'брускетт')):
-        return ['lunch', 'dinner']
-    if 'суп' in text:
-        return ['lunch', 'dinner']
-    if any(word in text for word in ('завтрак', 'омлет', 'сырник', 'блин', 'олад', 'каша', 'тост')):
+    if 'тортилья' in text and 'омлет' in text:
         return ['breakfast', 'snack']
-    if any(word in text for word in ('пирог', 'торт', 'печень', 'кекс', 'десерт', 'пудинг', 'кулич')):
+    if 'крем-суп' in text or 'суп' in text or 'салат' in text:
+        return ['lunch', 'dinner']
+    if any(word in text for word in SAVORY_ROLL_WORDS):
+        return ['lunch', 'dinner']
+    if 'запеканка из ветчины' in text or 'картофельная запеканка' in text:
+        return ['lunch', 'dinner']
+    if any(word in text for word in DESSERT_WORDS):
+        return ['snack']
+    if any(word in text for word in BREAKFAST_WORDS):
         return ['breakfast', 'snack']
+    if 'запеканка' in text and any(
+        word in text
+        for word in ('творож', 'йогурт', 'банан', 'морков', 'рис', 'тыкв', 'макарон', 'сладк')
+    ):
+        return ['breakfast', 'snack']
+    if any(word in text for word in SNACK_WORDS):
+        return ['snack']
     return ['lunch', 'dinner']
 
 

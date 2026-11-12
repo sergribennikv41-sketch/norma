@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'core/data/recipe_repository.dart';
 import 'core/data/session_storage.dart';
 import 'core/data/theme_storage.dart';
+import 'core/models/plan_snapshot.dart';
 import 'core/theme/app_theme.dart';
 import 'core/theme/theme_controller.dart';
 import 'features/home/home_page.dart';
@@ -13,11 +14,13 @@ class NormaApp extends StatefulWidget {
     super.key,
     required this.repository,
     this.initialSession,
+    this.initialWeeks = const {},
     this.themeController,
   });
 
   final RecipeRepository repository;
   final SavedSession? initialSession;
+  final Map<String, SavedWeek> initialWeeks;
   final ThemeController? themeController;
 
   @override
@@ -67,6 +70,7 @@ class _NormaAppState extends State<NormaApp> {
                           MaterialPageRoute<void>(
                             builder: (context) => HomePage(
                               profile: profile,
+                              initialWeeks: widget.initialWeeks,
                               repository: widget.repository,
                             ),
                           ),
@@ -78,6 +82,7 @@ class _NormaAppState extends State<NormaApp> {
                     profile: session.profile,
                     initialSeed: session.seed,
                     initialPlan: session.plan,
+                    initialWeeks: widget.initialWeeks,
                     repository: widget.repository,
                   ),
           );

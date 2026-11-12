@@ -7,6 +7,7 @@ import '../../core/models/meal_plan.dart';
 import '../../core/models/recipe.dart';
 import '../../core/models/retail.dart';
 import '../../core/models/user_profile.dart';
+import '../../core/planner/week_calendar.dart';
 import '../shared/recipe_image.dart';
 import '../shared/theme_mode_button.dart';
 import 'home_widgets.dart';
@@ -19,6 +20,11 @@ class PlanView extends StatelessWidget {
     required this.repository,
     required this.selectedDayIndex,
     required this.onSelectDay,
+    required this.weekStart,
+    required this.isCurrentWeek,
+    required this.onPreviousWeek,
+    required this.onNextWeek,
+    required this.onCurrentWeek,
     required this.onReplace,
     required this.onLike,
     required this.onBlock,
@@ -31,6 +37,11 @@ class PlanView extends StatelessWidget {
   final RecipeRepository repository;
   final int selectedDayIndex;
   final ValueChanged<int> onSelectDay;
+  final DateTime weekStart;
+  final bool isCurrentWeek;
+  final VoidCallback onPreviousWeek;
+  final VoidCallback onNextWeek;
+  final VoidCallback onCurrentWeek;
   final void Function(int dayIndex, int mealIndex) onReplace;
   final ValueChanged<Recipe> onLike;
   final ValueChanged<Recipe> onBlock;
@@ -56,7 +67,15 @@ class PlanView extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               _Topbar(profile: profile),
-              const SizedBox(height: 22),
+              const SizedBox(height: 16),
+              _WeekSwitcher(
+                weekStart: weekStart,
+                isCurrent: isCurrentWeek,
+                onPrevious: onPreviousWeek,
+                onNext: onNextWeek,
+                onCurrent: onCurrentWeek,
+              ),
+              const SizedBox(height: 18),
               LayoutBuilder(
                 builder: (context, constraints) {
                   final wide = constraints.maxWidth >= 940;
@@ -67,6 +86,7 @@ class PlanView extends StatelessWidget {
                       const SizedBox(height: 20),
                       _DayTabs(
                         days: plan.days.length,
+                        weekStart: weekStart,
                         selectedIndex: dayIndex,
                         onSelect: onSelectDay,
                       ),
@@ -185,6 +205,81 @@ class _Topbar extends StatelessWidget {
   }
 }
 
+class _WeekSwitcher extends StatelessWidget {
+  const _WeekSwitcher({
+    required this.weekStart,
+    required this.isCurrent,
+    required this.onPrevious,
+    required this.onNext,
+    required this.onCurrent,
+  });
+
+  final DateTime weekStart;
+  final bool isCurrent;
+  final VoidCallback onPrevious;
+  final VoidCallback onNext;
+  final VoidCallback onCurrent;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final scheme = theme.colorScheme;
+    final compact = MediaQuery.sizeOf(context).width < 600;
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: compact ? 4 : 8, vertical: 4),
+      decoration: BoxDecoration(
+        color: scheme.surface,
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: scheme.outlineVariant),
+      ),
+      child: Row(
+        children: [
+          IconButton(
+            onPressed: onPrevious,
+            tooltip: 'Предыдущая неделя',
+            icon: const Icon(Icons.chevron_left),
+          ),
+          Expanded(
+            child: Column(
+              children: [
+                Text(
+                  isCurrent ? 'Текущая неделя' : 'Неделя',
+                  style: theme.textTheme.labelSmall?.copyWith(
+                    color: isCurrent ? scheme.primary : scheme.onSurfaceVariant,
+                    fontWeight: FontWeight.w800,
+                    letterSpacing: 0.8,
+                  ),
+                ),
+                const SizedBox(height: 2),
+                Text(
+                  formatWeekRange(weekStart),
+                  textAlign: TextAlign.center,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: theme.textTheme.titleMedium?.copyWith(
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          if (!isCurrent)
+            IconButton(
+              onPressed: onCurrent,
+              tooltip: 'Текущая неделя',
+              icon: const Icon(Icons.today_outlined),
+            ),
+          IconButton(
+            onPressed: onNext,
+            tooltip: 'Следующая неделя',
+            icon: const Icon(Icons.chevron_right),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 class _TargetsCard extends StatelessWidget {
   const _TargetsCard({required this.plan, required this.day});
 
@@ -276,18 +371,19 @@ class _TargetsCard extends StatelessWidget {
 class _DayTabs extends StatelessWidget {
   const _DayTabs({
     required this.days,
+    required this.weekStart,
     required this.selectedIndex,
     required this.onSelect,
   });
 
   final int days;
+  final DateTime weekStart;
   final int selectedIndex;
   final ValueChanged<int> onSelect;
 
-  static const _weekdays = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'];
-
   @override
   Widget build(BuildContext context) {
+    final today = DateTime.now();
     return LayoutBuilder(
       builder: (context, constraints) {
         const gap = 7.0;
@@ -296,9 +392,10 @@ class _DayTabs extends StatelessWidget {
         final tabs = [
           for (var index = 0; index < days; index++) ...[
             _DayTab(
-              weekday: _weekdays[index % _weekdays.length],
-              day: index + 1,
+              weekday: formatWeekdayShort(addDays(weekStart, index)),
+              day: addDays(weekStart, index).day,
               selected: index == selectedIndex,
+              isToday: isSameDay(addDays(weekStart, index), today),
               onTap: () => onSelect(index),
               width: width >= 44 ? null : 44,
             ),
@@ -353,9 +450,10 @@ class _DayTabs extends StatelessWidget {
                   for (var index = 0; index < days; index++) ...[
                     Expanded(
                       child: _DayTab(
-                        weekday: _weekdays[index % _weekdays.length],
-                        day: index + 1,
+                        weekday: formatWeekdayShort(addDays(weekStart, index)),
+                        day: addDays(weekStart, index).day,
                         selected: index == selectedIndex,
+                        isToday: isSameDay(addDays(weekStart, index), today),
                         onTap: () => onSelect(index),
                         filled: false,
                       ),
@@ -381,6 +479,7 @@ class _DayTab extends StatelessWidget {
     required this.weekday,
     required this.day,
     required this.selected,
+    required this.isToday,
     required this.onTap,
     this.width,
     this.filled = true,
@@ -389,6 +488,7 @@ class _DayTab extends StatelessWidget {
   final String weekday;
   final int day;
   final bool selected;
+  final bool isToday;
   final VoidCallback onTap;
   final double? width;
   final bool filled;
@@ -409,7 +509,11 @@ class _DayTab extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 9),
           decoration: BoxDecoration(
             border: Border.all(
-              color: selected ? Colors.transparent : scheme.outlineVariant,
+              color: selected
+                  ? Colors.transparent
+                  : isToday
+                  ? scheme.primary.withValues(alpha: 0.55)
+                  : scheme.outlineVariant,
             ),
             borderRadius: BorderRadius.circular(13),
           ),
@@ -420,16 +524,22 @@ class _DayTab extends StatelessWidget {
                 style: TextStyle(
                   color: selected
                       ? scheme.onPrimary.withValues(alpha: 0.72)
+                      : isToday
+                      ? scheme.primary
                       : scheme.onSurfaceVariant,
                   fontSize: 10,
-                  fontWeight: FontWeight.w600,
+                  fontWeight: isToday ? FontWeight.w800 : FontWeight.w600,
                 ),
               ),
               const SizedBox(height: 2),
               Text(
                 '$day',
                 style: TextStyle(
-                  color: selected ? scheme.onPrimary : scheme.onSurface,
+                  color: selected
+                      ? scheme.onPrimary
+                      : isToday
+                      ? scheme.primary
+                      : scheme.onSurface,
                   fontSize: 14,
                   fontWeight: FontWeight.w700,
                 ),

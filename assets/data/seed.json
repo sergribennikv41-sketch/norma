@@ -1,5 +1,5 @@
 {
-  "version": 22,
+  "version": 23,
   "replaceAllRecipes": true,
   "ingredients": [
     {
@@ -1054,7 +1054,6 @@
       "id": "rf_2",
       "title": "английский кулич",
       "mealTypes": [
-        "breakfast",
         "snack"
       ],
       "servings": 4,
@@ -1116,8 +1115,7 @@
       "id": "rf_3",
       "title": "апельсиновый крем",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -1158,8 +1156,7 @@
       "id": "rf_4",
       "title": "апельсиновый трайфл",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -1300,8 +1297,7 @@
       "id": "rf_7",
       "title": "банановый заварной крем",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -1413,8 +1409,7 @@
       "id": "rf_9",
       "title": "бисквит классический",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -1454,7 +1449,6 @@
       "id": "rf_10",
       "title": "бисквит шоколадный",
       "mealTypes": [
-        "breakfast",
         "snack"
       ],
       "servings": 4,
@@ -1493,8 +1487,7 @@
       "id": "rf_11",
       "title": "бисквитный рулет с кремом из творога и варенья",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -1589,7 +1582,6 @@
       "id": "rf_13",
       "title": "брауни (шоколадный пирог)",
       "mealTypes": [
-        "breakfast",
         "snack"
       ],
       "servings": 4,
@@ -1638,8 +1630,7 @@
       "id": "rf_14",
       "title": "брауни с творожно-банановым слоем",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -1701,8 +1692,8 @@
       "id": "rf_15",
       "title": "бутерброды с курицей",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "breakfast",
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -1739,8 +1730,8 @@
       "id": "rf_16",
       "title": "бутерброды с сыром и ветчиной",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "breakfast",
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -1854,8 +1845,8 @@
       "id": "rf_19",
       "title": "вафли-трубочки",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "breakfast",
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -1949,8 +1940,7 @@
       "id": "rf_21",
       "title": "глазированные творожные сырки с изюмом",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -2062,8 +2052,7 @@
       "id": "rf_23",
       "title": "гозинаки (козинаки) - грецкие орехи с медом",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -2104,8 +2093,8 @@
       "id": "rf_24",
       "title": "горячие бутерброды с ветчиной, яблоками и сыром",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "breakfast",
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -2150,8 +2139,8 @@
       "id": "rf_25",
       "title": "горячие бутерброды с помидорами и беконом",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "breakfast",
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -2190,8 +2179,8 @@
       "id": "rf_26",
       "title": "горячие бутерброды с творогом (в духовке)",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "breakfast",
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -2329,8 +2318,8 @@
       "id": "rf_29",
       "title": "горячий бутерброд со шпинатом, луком и сыром",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "breakfast",
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -2382,8 +2371,7 @@
       "id": "rf_30",
       "title": "гренки классические",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -2423,8 +2411,7 @@
       "id": "rf_31",
       "title": "гренки с тертым сыром и яйцами",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -2470,7 +2457,6 @@
       "id": "rf_32",
       "title": "десерт с печеньем и кремом из сгущённого молока и сливок",
       "mealTypes": [
-        "breakfast",
         "snack"
       ],
       "servings": 4,
@@ -2517,7 +2503,6 @@
       "id": "rf_33",
       "title": "десерт с печеньем, апельсиновым и шоколадным заварным кремом",
       "mealTypes": [
-        "breakfast",
         "snack"
       ],
       "servings": 4,
@@ -2578,7 +2563,6 @@
       "id": "rf_34",
       "title": "десерт с фруктами и печеньем в апельсинах (в духовке)",
       "mealTypes": [
-        "breakfast",
         "snack"
       ],
       "servings": 4,
@@ -2681,8 +2665,7 @@
       "id": "rf_36",
       "title": "домашнее мороженое \"пломбир\"",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -2728,8 +2711,7 @@
       "id": "rf_37",
       "title": "домашнее мороженое из морковки",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -2851,8 +2833,7 @@
       "id": "rf_40",
       "title": "заварной крем",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -2897,8 +2878,7 @@
       "id": "rf_41",
       "title": "заварной крем",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -2936,7 +2916,6 @@
       "id": "rf_42",
       "title": "заварной крем для любого торта",
       "mealTypes": [
-        "breakfast",
         "snack"
       ],
       "servings": 4,
@@ -2979,7 +2958,6 @@
       "id": "rf_43",
       "title": "заварной крем для торта \"наполеон\" (без масла)",
       "mealTypes": [
-        "breakfast",
         "snack"
       ],
       "servings": 4,
@@ -3142,8 +3120,8 @@
       "id": "rf_47",
       "title": "закусочные бутерброды с лососем и огурцом",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "breakfast",
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -3182,8 +3160,8 @@
       "id": "rf_48",
       "title": "закусочный сэндвич с сыром тофу и огурцом",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "breakfast",
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -3258,8 +3236,8 @@
       "id": "rf_50",
       "title": "запеканка из йогурта с кефиром и бананом",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "breakfast",
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -3310,8 +3288,8 @@
       "id": "rf_51",
       "title": "запеканка из моркови, яблок и риса",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "breakfast",
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -3370,8 +3348,8 @@
       "id": "rf_52",
       "title": "запеканка из риса и тыквы",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "breakfast",
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -3426,8 +3404,8 @@
       "id": "rf_53",
       "title": "запечённые сэндвичи с творогом и изюмом",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "breakfast",
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -3486,7 +3464,6 @@
       "id": "rf_54",
       "title": "запечённые яблоки с творогом и шоколадом",
       "mealTypes": [
-        "breakfast",
         "snack"
       ],
       "servings": 4,
@@ -3530,8 +3507,7 @@
       "id": "rf_55",
       "title": "зразы из творога",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -3745,8 +3721,7 @@
       "id": "rf_60",
       "title": "карамель сливочная",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -3919,7 +3894,6 @@
       "id": "rf_64",
       "title": "кексы с жидким шоколадом",
       "mealTypes": [
-        "breakfast",
         "snack"
       ],
       "servings": 4,
@@ -3961,7 +3935,6 @@
       "id": "rf_65",
       "title": "китайское печенье с предсказаниями",
       "mealTypes": [
-        "breakfast",
         "snack"
       ],
       "servings": 4,
@@ -4001,8 +3974,7 @@
       "id": "rf_66",
       "title": "классическая шарлотка с яблоками",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -4052,7 +4024,6 @@
       "id": "rf_67",
       "title": "коктейль из кефира с шоколадом",
       "mealTypes": [
-        "breakfast",
         "snack"
       ],
       "servings": 4,
@@ -4092,7 +4063,6 @@
       "id": "rf_68",
       "title": "конфеты из белого шоколада, с цедрой и соком лимона",
       "mealTypes": [
-        "breakfast",
         "snack"
       ],
       "servings": 4,
@@ -4144,7 +4114,6 @@
       "id": "rf_69",
       "title": "конфеты из вермишели со сгущёнкой, в шоколаде",
       "mealTypes": [
-        "breakfast",
         "snack"
       ],
       "servings": 4,
@@ -4193,8 +4162,7 @@
       "id": "rf_70",
       "title": "конфеты из злаковых хлебцев с бананом и какао",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -4288,8 +4256,7 @@
       "id": "rf_72",
       "title": "крем \"пломбир\" (\"дипломат\")",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -4337,7 +4304,6 @@
       "id": "rf_73",
       "title": "крем для медового торта",
       "mealTypes": [
-        "breakfast",
         "snack"
       ],
       "servings": 4,
@@ -4391,8 +4357,7 @@
       "id": "rf_74",
       "title": "крем для наполеона",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -4428,7 +4393,6 @@
       "id": "rf_75",
       "title": "крем для печенья",
       "mealTypes": [
-        "breakfast",
         "snack"
       ],
       "servings": 4,
@@ -4474,8 +4438,7 @@
       "id": "rf_76",
       "title": "крем заварной без масла",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -4515,7 +4478,6 @@
       "id": "rf_77",
       "title": "крем заварной с шоколадом",
       "mealTypes": [
-        "breakfast",
         "snack"
       ],
       "servings": 4,
@@ -4552,7 +4514,6 @@
       "id": "rf_78",
       "title": "крем заварной шоколадный",
       "mealTypes": [
-        "breakfast",
         "snack"
       ],
       "servings": 4,
@@ -4734,8 +4695,7 @@
       "id": "rf_82",
       "title": "лимонный крем",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -4777,8 +4737,7 @@
       "id": "rf_83",
       "title": "лимонный курд (заварной лимонный крем)",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -4826,8 +4785,7 @@
       "id": "rf_84",
       "title": "лимонный кёрд (в мультиварке)",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -4867,8 +4825,7 @@
       "id": "rf_85",
       "title": "лимонный чизкейк",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -4972,8 +4929,7 @@
       "id": "rf_87",
       "title": "масляный крем с лимоном и сгущенным молоком",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -5096,8 +5052,7 @@
       "id": "rf_90",
       "title": "молочный коктейль с тыквой и яблоком",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -5134,8 +5089,7 @@
       "id": "rf_91",
       "title": "морковное суфле с творогом",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -5185,8 +5139,7 @@
       "id": "rf_92",
       "title": "мраморный бисквит",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -5233,7 +5186,6 @@
       "id": "rf_93",
       "title": "мягкие шоколадные конфеты",
       "mealTypes": [
-        "breakfast",
         "snack"
       ],
       "servings": 4,
@@ -5544,7 +5496,6 @@
       "id": "rf_99",
       "title": "овсяное печенье с медом и апельсином",
       "mealTypes": [
-        "breakfast",
         "snack"
       ],
       "servings": 4,
@@ -5640,7 +5591,6 @@
       "id": "rf_101",
       "title": "песочное печенье \"овечки\"",
       "mealTypes": [
-        "breakfast",
         "snack"
       ],
       "servings": 4,
@@ -5693,7 +5643,6 @@
       "id": "rf_102",
       "title": "песочное печенье \"паучки\"",
       "mealTypes": [
-        "breakfast",
         "snack"
       ],
       "servings": 4,
@@ -5750,7 +5699,6 @@
       "id": "rf_103",
       "title": "песочное печенье с апельсиновым джемом",
       "mealTypes": [
-        "breakfast",
         "snack"
       ],
       "servings": 4,
@@ -5802,7 +5750,6 @@
       "id": "rf_104",
       "title": "песочное печенье с джемом",
       "mealTypes": [
-        "breakfast",
         "snack"
       ],
       "servings": 4,
@@ -5848,7 +5795,6 @@
       "id": "rf_105",
       "title": "песочное печенье с клубничным джемом",
       "mealTypes": [
-        "breakfast",
         "snack"
       ],
       "servings": 4,
@@ -5887,7 +5833,6 @@
       "id": "rf_106",
       "title": "песочное печенье с лимоном и имбирем",
       "mealTypes": [
-        "breakfast",
         "snack"
       ],
       "servings": 4,
@@ -5928,7 +5873,6 @@
       "id": "rf_107",
       "title": "песочное печенье с отварным яичным белком",
       "mealTypes": [
-        "breakfast",
         "snack"
       ],
       "servings": 4,
@@ -6091,7 +6035,6 @@
       "id": "rf_111",
       "title": "печенье \"детство\"",
       "mealTypes": [
-        "breakfast",
         "snack"
       ],
       "servings": 4,
@@ -6131,7 +6074,6 @@
       "id": "rf_112",
       "title": "печенье \"кошачьи язычки\"",
       "mealTypes": [
-        "breakfast",
         "snack"
       ],
       "servings": 4,
@@ -6174,7 +6116,6 @@
       "id": "rf_113",
       "title": "печенье \"московские хлебцы\" с изюмом",
       "mealTypes": [
-        "breakfast",
         "snack"
       ],
       "servings": 4,
@@ -6220,7 +6161,6 @@
       "id": "rf_114",
       "title": "печенье «взлетное»",
       "mealTypes": [
-        "breakfast",
         "snack"
       ],
       "servings": 4,
@@ -6259,7 +6199,6 @@
       "id": "rf_115",
       "title": "печенье с лимонной глазурью",
       "mealTypes": [
-        "breakfast",
         "snack"
       ],
       "servings": 4,
@@ -6300,7 +6239,6 @@
       "id": "rf_116",
       "title": "печенье сахарное",
       "mealTypes": [
-        "breakfast",
         "snack"
       ],
       "servings": 4,
@@ -6342,7 +6280,6 @@
       "id": "rf_117",
       "title": "печенье сметанное",
       "mealTypes": [
-        "breakfast",
         "snack"
       ],
       "servings": 4,
@@ -6382,7 +6319,6 @@
       "id": "rf_118",
       "title": "пирог со сладким перцем",
       "mealTypes": [
-        "breakfast",
         "snack"
       ],
       "servings": 4,
@@ -6421,8 +6357,7 @@
       "id": "rf_119",
       "title": "пирожное \"апельсиновый рай\"",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -6456,8 +6391,7 @@
       "id": "rf_120",
       "title": "пирожное \"картошка\"",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -6506,8 +6440,7 @@
       "id": "rf_121",
       "title": "пирожное \"картошка\"",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -6554,8 +6487,7 @@
       "id": "rf_122",
       "title": "пирожное \"шишка\"",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -6597,8 +6529,7 @@
       "id": "rf_123",
       "title": "пирожное «колбаска»",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -6636,8 +6567,8 @@
       "id": "rf_124",
       "title": "полосатые бутерброды с ветчиной, плавленым сыром, огурцами и кунжутом",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "breakfast",
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -6702,8 +6633,7 @@
       "id": "rf_125",
       "title": "простая шарлотка",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -6743,7 +6673,6 @@
       "id": "rf_126",
       "title": "простое печенье из трёх ингредиентов",
       "mealTypes": [
-        "breakfast",
         "snack"
       ],
       "servings": 4,
@@ -6784,8 +6713,7 @@
       "id": "rf_127",
       "title": "простое пирожное \"свеча\"",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -6872,8 +6800,7 @@
       "id": "rf_129",
       "title": "протеиновый коктейль",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -6919,7 +6846,6 @@
       "id": "rf_130",
       "title": "пудинг с бананом и какао",
       "mealTypes": [
-        "breakfast",
         "snack"
       ],
       "servings": 4,
@@ -7014,8 +6940,7 @@
       "id": "rf_132",
       "title": "рецепт бисквитного теста",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -8673,7 +8598,6 @@
       "id": "rf_165",
       "title": "самый простой шоколадный кекс",
       "mealTypes": [
-        "breakfast",
         "snack"
       ],
       "servings": 4,
@@ -8723,8 +8647,7 @@
       "id": "rf_166",
       "title": "свекольные конфеты с кунжутом",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -8834,7 +8757,6 @@
       "id": "rf_168",
       "title": "сдобный кекс",
       "mealTypes": [
-        "breakfast",
         "snack"
       ],
       "servings": 4,
@@ -8988,8 +8910,8 @@
       "id": "rf_171",
       "title": "сладкая запеканка из макарон в яично-молочной заливке",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "breakfast",
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -9122,7 +9044,6 @@
       "id": "rf_174",
       "title": "сладкие гренки с орехово-шоколадной пастой",
       "mealTypes": [
-        "breakfast",
         "snack"
       ],
       "servings": 4,
@@ -9172,8 +9093,8 @@
       "id": "rf_175",
       "title": "сладкие сэндвичи с джемом и бананами",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "breakfast",
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -9212,7 +9133,6 @@
       "id": "rf_176",
       "title": "сливочное мороженое со сгущёнкой, шоколадной пастой и печеньем",
       "mealTypes": [
-        "breakfast",
         "snack"
       ],
       "servings": 4,
@@ -9493,8 +9413,7 @@
       "id": "rf_182",
       "title": "сырные гренки",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -9610,8 +9529,8 @@
       "id": "rf_185",
       "title": "сэндвичи с помидорами и сыром",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "breakfast",
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -9654,7 +9573,6 @@
       "id": "rf_186",
       "title": "тарт (открытый пирог) со сгущёнкой",
       "mealTypes": [
-        "breakfast",
         "snack"
       ],
       "servings": 4,
@@ -9699,8 +9617,7 @@
       "id": "rf_187",
       "title": "творог с тыквенным пюре",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -9739,8 +9656,7 @@
       "id": "rf_188",
       "title": "творог со сметаной и жареными бананами",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -9778,8 +9694,8 @@
       "id": "rf_189",
       "title": "творожная запеканка без муки и манки, с бананом и какао",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "breakfast",
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -9839,8 +9755,8 @@
       "id": "rf_190",
       "title": "творожная запеканка с яблоками",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "breakfast",
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -9889,8 +9805,8 @@
       "id": "rf_191",
       "title": "творожник с изюмом",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "breakfast",
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -9942,7 +9858,6 @@
       "id": "rf_192",
       "title": "творожно-банановое суфле с шоколадом (в микроволновке)",
       "mealTypes": [
-        "breakfast",
         "snack"
       ],
       "servings": 4,
@@ -9991,8 +9906,7 @@
       "id": "rf_193",
       "title": "творожно-банановый крем",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -10039,7 +9953,6 @@
       "id": "rf_194",
       "title": "творожно-йогуртовое суфле с крошкой из печенья",
       "mealTypes": [
-        "breakfast",
         "snack"
       ],
       "servings": 4,
@@ -10106,7 +10019,6 @@
       "id": "rf_195",
       "title": "творожно-сливочный десерт с карамелизованными яблоками",
       "mealTypes": [
-        "breakfast",
         "snack"
       ],
       "servings": 4,
@@ -10156,7 +10068,6 @@
       "id": "rf_196",
       "title": "творожные кексы с изюмом",
       "mealTypes": [
-        "breakfast",
         "snack"
       ],
       "servings": 4,
@@ -10254,7 +10165,6 @@
       "id": "rf_198",
       "title": "творожные сырки в шоколаде",
       "mealTypes": [
-        "breakfast",
         "snack"
       ],
       "servings": 4,
@@ -10298,7 +10208,6 @@
       "id": "rf_199",
       "title": "творожные сырки в шоколаде, с цедрой апельсина",
       "mealTypes": [
-        "breakfast",
         "snack"
       ],
       "servings": 4,
@@ -10348,8 +10257,7 @@
       "id": "rf_200",
       "title": "творожный чизкейк со сгущенкой",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -10437,7 +10345,6 @@
       "id": "rf_202",
       "title": "торт \"муравейник\" (за 10 минут)",
       "mealTypes": [
-        "breakfast",
         "snack"
       ],
       "servings": 4,
@@ -10476,7 +10383,6 @@
       "id": "rf_203",
       "title": "торт \"наполеон\" из печенья \"ушки\"",
       "mealTypes": [
-        "breakfast",
         "snack"
       ],
       "servings": 4,
@@ -10525,7 +10431,6 @@
       "id": "rf_204",
       "title": "торт «медовый»",
       "mealTypes": [
-        "breakfast",
         "snack"
       ],
       "servings": 4,
@@ -10570,7 +10475,6 @@
       "id": "rf_205",
       "title": "торт из овсяного печенья, с бананами и сметаной (без выпечки)",
       "mealTypes": [
-        "breakfast",
         "snack"
       ],
       "servings": 4,
@@ -10622,7 +10526,6 @@
       "id": "rf_206",
       "title": "торт из печенья с кремом из сметаны и сгущёнки",
       "mealTypes": [
-        "breakfast",
         "snack"
       ],
       "servings": 4,
@@ -10672,7 +10575,6 @@
       "id": "rf_207",
       "title": "торт-десерт  «графские развалины» со сгущенкой",
       "mealTypes": [
-        "breakfast",
         "snack"
       ],
       "servings": 4,
@@ -10804,7 +10706,6 @@
       "id": "rf_210",
       "title": "тосты со сливочным сыром и карамелизированными яблоками",
       "mealTypes": [
-        "breakfast",
         "snack"
       ],
       "servings": 4,
@@ -11038,8 +10939,7 @@
       "id": "rf_215",
       "title": "тыквенный заварной крем",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -11226,8 +11126,7 @@
       "id": "rf_219",
       "title": "цветущие пестрые маффины",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -11364,8 +11263,7 @@
       "id": "rf_222",
       "title": "чизкейк из творога",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -11409,8 +11307,7 @@
       "id": "rf_223",
       "title": "шарлотка из яблок",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -11454,8 +11351,7 @@
       "id": "rf_224",
       "title": "шарлотка с яблоками",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -11491,8 +11387,7 @@
       "id": "rf_225",
       "title": "шарлотка хлебная с яблоками",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -11533,7 +11428,6 @@
       "id": "rf_226",
       "title": "шоколадная творожная пасха",
       "mealTypes": [
-        "breakfast",
         "snack"
       ],
       "servings": 4,
@@ -11584,7 +11478,6 @@
       "id": "rf_227",
       "title": "шоколадно-творожный десерт с вафлями и бананом",
       "mealTypes": [
-        "breakfast",
         "snack"
       ],
       "servings": 4,
@@ -11626,7 +11519,6 @@
       "id": "rf_228",
       "title": "шоколадные кексы",
       "mealTypes": [
-        "breakfast",
         "snack"
       ],
       "servings": 4,
@@ -11665,7 +11557,6 @@
       "id": "rf_229",
       "title": "шоколадные кексы с печеньем \"орео\"",
       "mealTypes": [
-        "breakfast",
         "snack"
       ],
       "servings": 4,
@@ -11719,7 +11610,6 @@
       "id": "rf_230",
       "title": "шоколадный бисквит \"брошенный\"",
       "mealTypes": [
-        "breakfast",
         "snack"
       ],
       "servings": 4,
@@ -11766,7 +11656,6 @@
       "id": "rf_231",
       "title": "шоколадный заварной крем",
       "mealTypes": [
-        "breakfast",
         "snack"
       ],
       "servings": 4,
@@ -11812,7 +11701,6 @@
       "id": "rf_232",
       "title": "шоколадный соус",
       "mealTypes": [
-        "breakfast",
         "snack"
       ],
       "servings": 4,
@@ -11853,7 +11741,6 @@
       "id": "rf_233",
       "title": "шоколадный торт без муки",
       "mealTypes": [
-        "breakfast",
         "snack"
       ],
       "servings": 4,
@@ -11894,7 +11781,6 @@
       "id": "rf_234",
       "title": "шоколадный торт со сливочным сыром (без выпечки)",
       "mealTypes": [
-        "breakfast",
         "snack"
       ],
       "servings": 4,
@@ -11957,7 +11843,6 @@
       "id": "rf_235",
       "title": "шоколадный трайфл с бананами",
       "mealTypes": [
-        "breakfast",
         "snack"
       ],
       "servings": 4,
@@ -12025,7 +11910,6 @@
       "id": "rf_236",
       "title": "шоколадный фондан",
       "mealTypes": [
-        "breakfast",
         "snack"
       ],
       "servings": 4,
@@ -12065,7 +11949,6 @@
       "id": "rf_237",
       "title": "шоколадный фондан",
       "mealTypes": [
-        "breakfast",
         "snack"
       ],
       "servings": 4,
@@ -12114,7 +11997,6 @@
       "id": "rf_238",
       "title": "шоколадный швейцарский рулет с масляным кремом",
       "mealTypes": [
-        "breakfast",
         "snack"
       ],
       "servings": 4,
@@ -12254,8 +12136,7 @@
       "id": "rf_241",
       "title": "яблоки, запеченные с творогом, в духовке",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -12301,8 +12182,7 @@
       "id": "rf_242",
       "title": "яблочная шарлотка в мультиварке",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,
@@ -12431,8 +12311,7 @@
       "id": "rf_245",
       "title": "яблочно-банановый смузи с творогом",
       "mealTypes": [
-        "lunch",
-        "dinner"
+        "snack"
       ],
       "servings": 4,
       "minutes": 30,

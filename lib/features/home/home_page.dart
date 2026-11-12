@@ -8,6 +8,7 @@ import 'package:flutter/services.dart';
 import '../../core/data/app_database.dart';
 import '../../core/data/recipe_repository.dart';
 import '../../core/data/session_storage.dart';
+import '../../core/data/week_storage.dart';
 import '../../core/models/meal_plan.dart';
 import '../../core/models/plan_snapshot.dart';
 import '../../core/models/recipe.dart';
@@ -16,6 +17,7 @@ import '../../core/models/user_profile.dart';
 import '../../core/nutrition/targets_calculator.dart';
 import '../../core/planner/menu_generator.dart';
 import '../../core/planner/plan_restorer.dart';
+import '../../core/planner/week_calendar.dart';
 import '../../core/planner/shopping_list_text.dart';
 import '../../core/price/price_lookup.dart';
 import '../shared/recipe_details.dart';
@@ -32,6 +34,7 @@ class HomePage extends StatefulWidget {
     required this.repository,
     this.initialSeed = 1,
     this.initialPlan,
+    this.initialWeeks = const {},
     this.priceLookup,
   });
 
@@ -39,18 +42,22 @@ class HomePage extends StatefulWidget {
   final RecipeRepository repository;
   final int initialSeed;
   final SavedPlan? initialPlan;
+  final Map<String, SavedWeek> initialWeeks;
   final PriceLookupService? priceLookup;
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
   late RecipeRepository _repository;
   late UserProfile _profile;
   late int _seed;
   late final PriceLookupService _priceLookup;
   final SessionStorage _storage = SessionStorage();
+  final WeekStorage _weekStorage = WeekStorage();
+  late Map<String, SavedWeek> _weeks;
+  late DateTime _weekStart;
   final Map<String, PriceLookupState> _priceStates = {};
   final Set<String> _checkedIngredients = {};
   StreamSubscription<PriceLookupEvent>? _priceSubscription;
@@ -66,31 +73,106 @@ class _HomePageState extends State<HomePage> {
     _repository = widget.repository;
     _profile = widget.profile;
     _seed = widget.initialSeed;
+    _weeks = Map<String, SavedWeek>.of(widget.initialWeeks);
+    _weekStart = startOfWeek(DateTime.now());
+    _selectedDayIndex = _defaultDayIndex;
     _priceLookup = widget.priceLookup ?? ProcessPriceLookupService();
-    _restoreOrGenerate();
+    WidgetsBinding.instance.addObserver(this);
+    _restoreWeekOrGenerate(useInitialPlan: true);
   }
 
   @override
   void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
     unawaited(_priceSubscription?.cancel());
     super.dispose();
   }
 
-  void _restoreOrGenerate() {
-    final snapshot = widget.initialPlan;
-    if (snapshot != null) {
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state != AppLifecycleState.resumed) {
+      return;
+    }
+    final current = startOfWeek(DateTime.now());
+    if (!isSameDay(current, _weekStart)) {
+      _openWeek(current);
+    }
+  }
+
+  String get _weekKey => dateKey(_weekStart);
+
+  bool get _isCurrentWeek => isCurrentWeek(_weekStart);
+
+  int get _defaultDayIndex => _isCurrentWeek ? currentDayIndex() : 0;
+
+  void _restoreWeekOrGenerate({bool useInitialPlan = false}) {
+    final targets = const TargetsCalculator().calculate(_profile);
+    final saved = _weeks[_weekKey];
+    if (saved != null) {
       final restored = restorePlan(
-        snapshot: snapshot,
+        snapshot: saved.plan,
         repository: _repository,
-        targets: const TargetsCalculator().calculate(_profile),
+        targets: targets,
       );
       if (restored != null) {
         _plan = restored;
+        _seed = saved.seed;
+        _checkedIngredients
+          ..clear()
+          ..addAll(saved.checkedIngredients);
         _error = null;
+        _selectedDayIndex = _defaultDayIndex.clamp(0, restored.days.length - 1);
         return;
       }
     }
+    if (useInitialPlan && widget.initialWeeks.isEmpty) {
+      final snapshot = widget.initialPlan;
+      if (snapshot != null) {
+        final restored = restorePlan(
+          snapshot: snapshot,
+          repository: _repository,
+          targets: targets,
+        );
+        if (restored != null) {
+          _plan = restored;
+          _error = null;
+          _selectedDayIndex = _defaultDayIndex.clamp(
+            0,
+            restored.days.length - 1,
+          );
+          unawaited(_saveSession());
+          return;
+        }
+      }
+    }
+    _seed = useInitialPlan && widget.initialSeed != 1
+        ? widget.initialSeed
+        : seedForWeek(_weekStart);
+    _selectedDayIndex = _defaultDayIndex;
     _generate();
+  }
+
+  void _openWeek(DateTime target) {
+    final normalized = startOfWeek(target);
+    if (isSameDay(normalized, _weekStart)) {
+      if (_isCurrentWeek) {
+        setState(() => _selectedDayIndex = currentDayIndex());
+      }
+      return;
+    }
+    setState(() {
+      _weekStart = normalized;
+      _resetPrices();
+      _restoreWeekOrGenerate();
+    });
+  }
+
+  void _shiftWeek(int delta) {
+    _openWeek(addDays(_weekStart, delta * 7));
+  }
+
+  void _goToCurrentWeek() {
+    _openWeek(startOfWeek(DateTime.now()));
   }
 
   void _generate() {
@@ -118,11 +200,17 @@ class _HomePageState extends State<HomePage> {
   Future<void> _saveSession() async {
     try {
       final plan = _plan;
-      await _storage.save(
-        _profile,
-        _seed,
-        plan: plan == null ? null : SavedPlan.fromWeeklyPlan(plan),
-      );
+      final savedPlan = plan == null ? null : SavedPlan.fromWeeklyPlan(plan);
+      await _storage.save(_profile, _seed, plan: savedPlan);
+      if (savedPlan != null) {
+        _weeks[_weekKey] = SavedWeek(
+          weekStart: _weekStart,
+          seed: _seed,
+          plan: savedPlan,
+          checkedIngredients: {..._checkedIngredients},
+        );
+        await _weekStorage.save(_weeks);
+      }
     } catch (_) {
       return;
     }
@@ -213,6 +301,7 @@ class _HomePageState extends State<HomePage> {
       image: meal.recipe.image,
       source: meal.recipe.source,
       mealType: meal.type,
+      suitableFor: meal.recipe.mealTypes,
       minutes: meal.recipe.minutes,
       servings: meal.recipe.servings,
       allowScaleEdit: true,
@@ -258,6 +347,7 @@ class _HomePageState extends State<HomePage> {
       image: recipe.image,
       source: recipe.source,
       mealType: recipe.mealTypes.isEmpty ? null : recipe.mealTypes.first,
+      suitableFor: recipe.mealTypes,
       minutes: recipe.minutes,
       servings: recipe.servings,
       onAddToPlan: () => _addRecipeToPlan(recipe),
@@ -397,6 +487,7 @@ class _HomePageState extends State<HomePage> {
         _checkedIngredients.remove(ingredientId);
       }
     });
+    unawaited(_saveSession());
   }
 
   Future<void> _copyShoppingList() async {
@@ -444,6 +535,9 @@ class _HomePageState extends State<HomePage> {
       _profile = updated;
       _seed = 1;
       _section = HomeSection.plan;
+      _weekStart = startOfWeek(DateTime.now());
+      _selectedDayIndex = _defaultDayIndex;
+      _weeks.removeWhere((key, week) => week.weekStart.isAfter(_weekStart));
       _generate();
     });
   }
@@ -472,6 +566,7 @@ class _HomePageState extends State<HomePage> {
       return;
     }
     await _storage.clear();
+    await _weekStorage.clear();
     if (!mounted) {
       return;
     }
@@ -799,6 +894,11 @@ class _HomePageState extends State<HomePage> {
       repository: _repository,
       selectedDayIndex: _selectedDayIndex,
       onSelectDay: (index) => setState(() => _selectedDayIndex = index),
+      weekStart: _weekStart,
+      isCurrentWeek: _isCurrentWeek,
+      onPreviousWeek: () => _shiftWeek(-1),
+      onNextWeek: () => _shiftWeek(1),
+      onCurrentWeek: _goToCurrentWeek,
       onReplace: _replaceMeal,
       onLike: _likeRecipe,
       onBlock: _blockRecipe,

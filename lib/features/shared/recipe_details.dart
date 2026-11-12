@@ -17,6 +17,7 @@ Future<double?> showRecipeDetails(
   String? image,
   String? source,
   MealType? mealType,
+  Set<MealType> suitableFor = const {},
   int? minutes,
   int? servings,
   bool allowScaleEdit = false,
@@ -212,6 +213,17 @@ Future<double?> showRecipeDetails(
                                   style: TextStyle(
                                     color: scheme.onSurfaceVariant,
                                     fontSize: 12,
+                                  ),
+                                ),
+                              ],
+                              if (suitableFor.isNotEmpty) ...[
+                                const SizedBox(height: 6),
+                                Text(
+                                  'Подходит: ${_mealTypesLabel(suitableFor)}',
+                                  style: TextStyle(
+                                    color: scheme.primary,
+                                    fontSize: 11.5,
+                                    fontWeight: FontWeight.w700,
                                   ),
                                 ),
                               ],
@@ -466,4 +478,12 @@ Future<void> _openLink(BuildContext context, Uri uri) async {
       context,
     ).showSnackBar(const SnackBar(content: Text('Не удалось открыть ссылку')));
   }
+}
+
+String _mealTypesLabel(Set<MealType> types) {
+  final ordered = [
+    for (final type in MealType.values)
+      if (types.contains(type)) type.label,
+  ];
+  return ordered.join(', ');
 }

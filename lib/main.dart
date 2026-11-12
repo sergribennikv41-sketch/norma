@@ -10,7 +10,9 @@ import 'core/data/recipe_repository.dart';
 import 'core/data/seed_loader.dart';
 import 'core/data/session_storage.dart';
 import 'core/data/theme_storage.dart';
+import 'core/data/week_storage.dart';
 import 'core/data/window_bounds_storage.dart';
+import 'core/models/plan_snapshot.dart';
 import 'core/models/seed_bundle.dart';
 import 'core/theme/theme_controller.dart';
 
@@ -48,6 +50,13 @@ Future<void> main() async {
     session = null;
   }
 
+  Map<String, SavedWeek> weeks = {};
+  try {
+    weeks = await WeekStorage().load();
+  } catch (_) {
+    weeks = {};
+  }
+
   ThemeController themeController;
   try {
     final storage = ThemeStorage();
@@ -62,6 +71,7 @@ Future<void> main() async {
   runApp(
     NormaApp(
       initialSession: session,
+      initialWeeks: weeks,
       repository: repository,
       themeController: themeController,
     ),

@@ -96,3 +96,60 @@ MealType _mealTypeFromName(Object? name) {
     orElse: () => MealType.breakfast,
   );
 }
+
+class SavedWeek {
+  const SavedWeek({
+    required this.weekStart,
+    required this.seed,
+    required this.plan,
+    this.checkedIngredients = const {},
+  });
+
+  final DateTime weekStart;
+  final int seed;
+  final SavedPlan plan;
+  final Set<String> checkedIngredients;
+
+  String get key {
+    final month = weekStart.month.toString().padLeft(2, '0');
+    final day = weekStart.day.toString().padLeft(2, '0');
+    return '${weekStart.year}-$month-$day';
+  }
+
+  Map<String, Object?> toJson() {
+    return {
+      'weekStart': key,
+      'seed': seed,
+      'plan': plan.toJson(),
+      'checked': checkedIngredients.toList(),
+    };
+  }
+
+  factory SavedWeek.fromJson(Map<String, dynamic> json) {
+    final parsed = DateTime.tryParse(
+      json['weekStart'] is String ? json['weekStart'] as String : '',
+    );
+    final weekStart = parsed == null
+        ? DateTime(1970)
+        : DateTime(parsed.year, parsed.month, parsed.day);
+    final rawPlan = json['plan'];
+    final plan = rawPlan is Map
+        ? SavedPlan.fromJson(Map<String, dynamic>.from(rawPlan))
+        : const SavedPlan(meals: []);
+    final checked = <String>{};
+    final rawChecked = json['checked'];
+    if (rawChecked is List) {
+      for (final item in rawChecked) {
+        if (item is String && item.isNotEmpty) {
+          checked.add(item);
+        }
+      }
+    }
+    return SavedWeek(
+      weekStart: weekStart,
+      seed: _intValue(json['seed'], 1),
+      plan: plan,
+      checkedIngredients: checked,
+    );
+  }
+}
