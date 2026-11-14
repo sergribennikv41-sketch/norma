@@ -1,6 +1,6 @@
 # Норма
 
-Локальное приложение для Windows и Android на Flutter: расчёт КБЖУ и подбор рациона на неделю с учётом цели, активности, аллергенов и времени готовки.
+Локальное приложение для Windows, Android и iOS на Flutter: расчёт КБЖУ и подбор рациона на неделю с учётом цели, активности, аллергенов и времени готовки.
 
 ## Возможности
 
@@ -88,6 +88,19 @@ flutter build apk --release
 APK: `build\app\outputs\flutter-apk\app-release.apk`.
 
 Live-цены сейчас работают в Windows-версии через локальный Python-обработчик. В Android APK они появятся после подключения мобильного источника цен.
+
+## iOS
+
+Сборка и установка на iPhone без App Store — в [SETUP-IOS.md](SETUP-IOS.md). Кратко:
+
+```bash
+# только macOS + Xcode + CocoaPods
+flutter pub get
+bash tool/build_ios_unsigned.sh
+```
+
+Результат: `build/ios/norma-unsigned.ipa` для Sideloadly или AltStore.
+Бесплатный Apple ID даёт подпись на 7 дней, платный — Ad Hoc/TestFlight.
 
 ## Подпись установщика
 

@@ -591,7 +591,12 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
   }
 
   Future<void> _importRecipes() async {
-    const typeGroup = XTypeGroup(label: 'JSON', extensions: ['json']);
+    const typeGroup = XTypeGroup(
+      label: 'JSON',
+      extensions: ['json'],
+      mimeTypes: ['application/json'],
+      uniformTypeIdentifiers: ['public.json'],
+    );
     final file = await openFile(acceptedTypeGroups: [typeGroup]);
     if (file == null || !mounted) {
       return;
