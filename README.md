@@ -94,7 +94,7 @@ Live-цены сейчас работают в Windows-версии через �
 Сборка и установка на iPhone без App Store — в [SETUP-IOS.md](SETUP-IOS.md). Кратко:
 
 ```bash
-# только macOS + Xcode + CocoaPods
+# только macOS + Xcode; CocoaPods не нужен при включённом SPM
 flutter pub get
 bash tool/build_ios_unsigned.sh
 ```

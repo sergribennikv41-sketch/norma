@@ -8,11 +8,20 @@
 ## Что нужно
 
 - Mac с macOS и установленным **Xcode** (App Store → Xcode).
-- **CocoaPods** — Flutter использует его для iOS-плагинов.
-- Бесплатный **Apple ID**, добавленный в Xcode.
+- Бесплатный **Apple ID**, добавленный в Xcode (для прямого запуска) или
+  введённый в Sideloadly.
 - iPhone с iOS 15+ и кабелем.
 - На iPhone включён **Режим разработчика**: Настройки → Конфиденциальность и
   безопасность → Режим разработчика.
+
+CocoaPods не обязателен: проект собирается через Swift Package Manager.
+Если SPM выключен, включите его:
+
+```bash
+flutter config --enable-swift-package-manager
+```
+
+CocoaPods нужен только как запасной вариант, если SPM почему-то недоступен.
 
 ## 1. Подготовка Mac
 
@@ -24,7 +33,7 @@ sudo xcodebuild -runFirstLaunch
 Откройте Xcode один раз и дождитесь установки компонентов. Затем добавьте
 Apple ID: Xcode → Settings → Accounts → «+» → Apple ID.
 
-CocoaPods:
+CocoaPods (запасной вариант):
 
 ```bash
 sudo gem install cocoapods
@@ -54,7 +63,8 @@ flutter pub get
 bash tool/build_ios_unsigned.sh
 ```
 
-Результат: `build/ios/norma-unsigned.ipa`.
+Результат: `build/ios/norma-unsigned.ipa`. Проверено на Xcode 27.2 и
+Flutter 3.47.9: сборка идёт через Swift Package Manager, CocoaPods не требуется.
 
 Скрипт выполняет `flutter build ios --release --no-codesign` и упаковывает
 `Runner.app` в `Payload/` — такой IPA подписывает Sideloadly или AltStore.
